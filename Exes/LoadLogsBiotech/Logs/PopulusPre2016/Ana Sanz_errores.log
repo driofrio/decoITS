@@ -1,0 +1,56 @@
+accionrealizada|f0t1|entregarbata|entregarbata|2013-05-23T15:31:53.0000000Z
+accionrealizada|f0t1|entregarbata|entregarbata|2013-05-23T15:31:55.0000000Z
+accionrealizada|f0t1|entregarbata|entregarbata|2013-05-23T15:32:04.0000000Z
+accionrealizada|f0t1|entregarbata|entregarbata|2013-05-23T15:32:09.0000000Z
+dependenciabloq|f0t4|leerprotocolo|f0t3|2013-05-23T15:32:56.0000000Z
+accionnoencontrada| |bloquearpoyata| |2013-05-23T15:48:07.0000000Z
+accionnoencontrada| |bloquearpoyata| |2013-05-23T15:48:09.0000000Z
+dependenciasnobloq|f1t35|soltarbandeja|f1t31|2013-05-23T16:02:22.0000000Z
+dependenciabloq|f1t36|llenarbotes|f1t32|2013-05-23T16:03:04.0000000Z
+dependenciabloq|f1t36|llenarbotes|f1t32|2013-05-23T16:03:06.0000000Z
+dependenciabloq|f1t36|llenarbotes|f1t32|2013-05-23T16:04:15.0000000Z
+dependenciabloq|f1t36|llenarbotes|f1t32|2013-05-23T16:04:24.0000000Z
+dependenciabloq|f1t36|llenarbotes|f1t32|2013-05-23T16:06:21.0000000Z
+dependenciabloq|f1t36|llenarbotes|f1t32|2013-05-23T16:07:54.0000000Z
+dependenciabloq|f1t36|llenarbotes|f1t32|2013-05-23T16:08:28.0000000Z
+dependenciabloq|f1t28|entregarbotellaautoclavada|f1t27|2013-05-23T16:13:20.0000000Z
+dependenciabloq|f1t40|cortarplanta|f1t39|2013-05-23T16:18:23.0000000Z
+accionrealizada|f1t40|cortarplanta|cortarplanta|2013-05-23T16:23:19.0000000Z
+dependenciabloq|f2t33|iniciarmezcla|f2t29|2013-05-23T16:41:05.0000000Z
+dependenciabloq|f2t33|iniciarmezcla|f2t31|2013-05-23T16:50:04.0000000Z
+accionrealizada|f2t32|cargarpuntaamarilla|cargarpuntaamarilla|2013-05-23T16:50:22.0000000Z
+dependenciasnobloq|f2t52|finmezcla|f2t37-f2t39-f2t40-f2t41|2013-05-23T16:51:30.0000000Z
+incompatibilidadnobloq|f2t52|finmezcla|f2t43|2013-05-23T16:51:30.0000000Z
+accionnoencontrada| |encenderpcr| |2013-05-23T16:53:08.0000000Z
+accionnoencontrada| |encenderpcr| |2013-05-23T16:53:39.0000000Z
+accionnoencontrada| |encenderpcr| |2013-05-23T16:53:42.0000000Z
+accionnoencontrada| |encenderpcr| |2013-05-23T16:53:45.0000000Z
+accionnoencontrada| |encenderpcr| |2013-05-23T16:53:55.0000000Z
+accionnoencontrada| |encenderpcr| |2013-05-23T16:53:59.0000000Z
+accionnoencontrada| |encenderpcr| |2013-05-23T16:54:01.0000000Z
+accionnoencontrada| |encenderpcr| |2013-05-23T16:54:03.0000000Z
+accionnoencontrada| |encenderpcr| |2013-05-23T16:54:50.0000000Z
+dependenciabloq|f2t57|cerrarpcr|f2t56|2013-05-23T16:55:23.0000000Z
+dependenciabloq|f3t1|encendertermobloque|f2t60|2013-05-23T16:55:30.0000000Z
+dependenciabloq|f2t60|guardarpcr|f2t59|2013-05-23T16:56:09.0000000Z
+accionnoencontrada| |guardarligacion| |2013-05-23T16:56:26.0000000Z
+dependenciabloq|f2t60|guardarpcr|f2t59|2013-05-23T16:56:31.0000000Z
+dependenciabloq|f2t14|tomaraguadestilada|f2t6|2013-05-23T16:57:11.0000000Z
+accionnoencontrada| |sacartuboligacion| |2013-05-23T16:57:57.0000000Z
+accionnoencontrada| |entregarguantes| |2013-05-23T16:58:01.0000000Z
+accionrealizada|f2t5|entregarbandejahielo|entregarbandejahielo|2013-05-23T17:02:25.0000000Z
+accionrealizada|f2t5|entregarbandejahielo|entregarbandejahielo|2013-05-23T17:02:28.0000000Z
+accionnoencontrada| |sacartuboligacion| |2013-05-23T17:07:14.0000000Z
+dependenciabloq|f2t57|cerrarpcr|f2t56|2013-05-23T17:15:33.0000000Z
+dependenciabloq|f2t57|cerrarpcr|f2t56|2013-05-23T17:15:36.0000000Z
+dependenciabloq|f3t1|encendertermobloque|f2t60|2013-05-23T17:15:55.0000000Z
+dependenciabloq|f2t57|cerrarpcr|f2t56|2013-05-23T17:17:38.0000000Z
+accionnoencontrada| |sacartuboligacion| |2013-05-23T17:22:13.0000000Z
+accionnoencontrada| |sacartuboligacion| |2013-05-23T17:22:15.0000000Z
+dependenciabloq|f2t57|cerrarpcr|f2t56|2013-05-23T17:32:18.0000000Z
+accionnoencontrada| |encenderpcr| |2013-05-23T17:37:52.0000000Z
+dependenciabloq|f3t57|cerrartermobloque|f3t56|2013-05-23T17:37:52.0000000Z
+dependenciabloq|f3t25|tomarmezclaligacion|f3t6|2013-05-23T17:38:40.0000000Z
+accionrealizada|f3t31|cargarpuntaamarilla|cargarpuntaamarilla|2013-05-23T17:46:19.0000000Z
+dependenciasnobloq|f3t52|finmezcla|f3t37|2013-05-23T17:47:26.0000000Z
+dependenciabloq|f3t57|cerrartermobloque|f3t56|2013-05-23T17:49:24.0000000Z

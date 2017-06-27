@@ -1,0 +1,17 @@
+dependenciasnobloq|f1t1|entregarvaso| f0t7-f0t8|2014-05-23T17:39:52.0000000Z
+objetobloqueado|f1t5|bloquearfregadero|ValvulaFregadero_2|2014-05-23T17:41:03.0000000Z
+accionrealizada|f1t14|ajustarph|ajustarph|2014-05-23T17:49:37.0000000Z
+accionrealizada|f1t14|ajustarph|ajustarph|2014-05-23T17:49:50.0000000Z
+accionnoencontrada| |agregaragarosa| |2014-05-23T17:52:17.0000000Z
+dependenciasnobloq|f1t21|entregarbotella|f0t8|2014-05-23T18:02:17.0000000Z
+accionrealizada|f1t37|esterilizar|esterilizar|2014-05-23T18:19:31.0000000Z
+accionrealizada|f1t42|apagarcabina|apagarcabina|2014-05-23T18:24:24.0000000Z
+accionnoencontrada| |entregarguantes| |2014-05-23T18:28:19.0000000Z
+accionnoencontrada| |entregarguantes| |2014-05-23T18:28:35.0000000Z
+accionnoencontrada| |entregarguantes| |2014-05-23T18:29:04.0000000Z
+accionnoencontrada| |entregarguantes| |2014-05-23T18:29:30.0000000Z
+accionnoencontrada| |entregarguantes| |2014-05-23T18:30:30.0000000Z
+dependenciabloq|f2t32|cargarpuntaamarilla|f2t31|2014-05-23T19:07:28.0000000Z
+accionrealizada|f2t54|entregartubomezcla|entregartubomezcla|2014-05-23T19:12:28.0000000Z
+dependenciabloq|f3t31|cargarpuntaamarilla|f3t30|2014-05-23T19:32:24.0000000Z
+accionrealizada|f3t32|iniciarmezcla|iniciarmezcla|2014-05-23T19:32:58.0000000Z

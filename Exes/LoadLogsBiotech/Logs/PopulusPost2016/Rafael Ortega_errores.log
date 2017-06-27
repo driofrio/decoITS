@@ -1,0 +1,31 @@
+dependenciabloq|f0t8|entregarguantes|f0t7|2016-05-31T14:45:46.0000000Z
+accionrealizada|f1t6|llenarvasoconagua|llenarvasoconagua|2016-05-31T14:52:40.0000000Z
+dependenciasnobloq|f1t16|agregaragar| f1t12-f1t13-f1t14|2016-05-31T14:55:01.0000000Z
+dependenciasnobloq|f1t20|apagaragitador| f1t14-ord_f1t20|2016-05-31T14:56:22.0000000Z
+accionrealizada|f1t11|encenderagitador|encenderagitador|2016-05-31T14:57:06.0000000Z
+accionnoencontrada| |bloquearpoyata| |2016-05-31T15:14:49.0000000Z
+accionnoencontrada| |bloquearpoyata| |2016-05-31T15:15:43.0000000Z
+dependenciabloq|f2t57|cerrarpcr|f2t56|2016-05-31T15:16:01.0000000Z
+dependenciabloq|f2t57|cerrarpcr|f2t56|2016-05-31T15:16:36.0000000Z
+dependenciabloq|f3t1|encendertermobloque|f2t60|2016-05-31T15:16:43.0000000Z
+dependenciabloq|f2t60|guardarpcr|f2t59|2016-05-31T15:17:19.0000000Z
+dependenciabloq|f2t57|cerrarpcr|f2t56|2016-05-31T15:29:13.0000000Z
+dependenciabloq|f2t8|tomaroligonucleicoizq|f2t6|2016-05-31T15:31:28.0000000Z
+dependenciabloq|f2t10|tomartamponpolimerasa|f2t6|2016-05-31T15:31:44.0000000Z
+dependenciabloq|f2t9|tomaroligonucleicoder|f2t6|2016-05-31T15:32:05.0000000Z
+dependenciabloq|f2t7|tomaradn|f2t6|2016-05-31T15:32:28.0000000Z
+dependenciabloq|f2t11|tomarmgcl|f2t6|2016-05-31T15:33:01.0000000Z
+dependenciabloq|f2t13|tomarpolimerasa|f2t6|2016-05-31T15:33:11.0000000Z
+dependenciabloq|f2t14|tomaraguadestilada|f2t6|2016-05-31T15:33:34.0000000Z
+dependenciasnobloq|f2t52|finmezcla|f2t34-f2t35-f2t36-f2t37-f2t38-f2t39-f2t40-f2t41|2016-05-31T15:42:19.0000000Z
+accionrealizada|f2t5|entregarbandejahielo|entregarbandejahielo|2016-05-31T15:43:15.0000000Z
+accionrealizada|f2t5|entregarbandejahielo|entregarbandejahielo|2016-05-31T15:43:55.0000000Z
+accionrealizada|f2t5|entregarbandejahielo|entregarbandejahielo|2016-05-31T15:46:09.0000000Z
+dependenciabloq|f2t57|cerrarpcr|f2t56|2016-05-31T15:47:20.0000000Z
+dependenciabloq|f2t57|cerrarpcr|f2t56|2016-05-31T15:47:41.0000000Z
+dependenciabloq|f3t57|cerrartermobloque|f3t56|2016-05-31T15:53:10.0000000Z
+accionrealizada|f3t10|tomarenzimaligasa|tomarenzimaligasa|2016-05-31T15:58:04.0000000Z
+accionrealizada|f3t27|soltarbandejapoyata|soltarbandejapoyata|2016-05-31T15:59:09.0000000Z
+accionrealizada|f3t28|sacartuboligacion|sacartuboligacion|2016-05-31T15:59:31.0000000Z
+accionrealizada|f3t28|sacartuboligacion|sacartuboligacion|2016-05-31T15:59:34.0000000Z
+dependenciabloq|f3t57|cerrartermobloque|f3t56|2016-05-31T16:02:39.0000000Z

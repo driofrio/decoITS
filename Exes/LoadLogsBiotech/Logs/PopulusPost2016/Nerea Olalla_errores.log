@@ -1,0 +1,21 @@
+dependenciabloq|f1t1|entregarvaso|f0t7|2016-05-27T14:42:03.0000000Z
+accionrealizada|f0t8|entregarguantes|entregarguantes|2016-05-27T14:43:36.0000000Z
+accionnoencontrada| |lavarsemanos| |2016-05-27T14:45:48.0000000Z
+accionnoencontrada| |lavarsemanos| |2016-05-27T14:46:06.0000000Z
+accionnoencontrada| |lavarsemanos| |2016-05-27T14:46:19.0000000Z
+accionnoencontrada| |lavarsemanos| |2016-05-27T14:47:02.0000000Z
+accionnoencontrada| |lavarsemanos| |2016-05-27T14:47:07.0000000Z
+dependenciasnobloq|f1t20|apagaragitador| f1t12-f1t13-f1t14-f1t16|2016-05-27T14:50:01.0000000Z
+accionnoencontrada| |bloquearpoyata| |2016-05-27T14:50:34.0000000Z
+accionrealizada|f1t11|encenderagitador|encenderagitador|2016-05-27T14:53:21.0000000Z
+dependenciasnobloq|f2t52|finmezcla|f2t34-f2t35-f2t36-f2t37-f2t38-f2t39-f2t40-f2t41|2016-05-27T15:23:18.0000000Z
+accionnoencontrada| |encenderpcr| |2016-05-27T15:24:13.0000000Z
+accionnoencontrada| |encendertermobloque| |2016-05-27T15:27:42.0000000Z
+accionrealizada|f3t5|entregarbandejahielo|entregarbandejahielo|2016-05-27T15:30:45.0000000Z
+accionrealizada|f3t5|entregarbandejahielo|entregarbandejahielo|2016-05-27T15:31:05.0000000Z
+accionnoencontrada| |tomaragrobacterium| |2016-05-27T15:39:49.0000000Z
+accionnoencontrada| |tomaragrobacterium| |2016-05-27T15:41:03.0000000Z
+dependenciabloq|f3t32|iniciarmezcla|f3t28|2016-05-27T15:43:31.0000000Z
+accionrealizada|f3t31|cargarpuntaamarilla|cargarpuntaamarilla|2016-05-27T15:44:47.0000000Z
+dependenciasnobloq|f3t52|finmezcla|f3t33-f3t34-f3t35-f3t36-f3t37|2016-05-27T15:45:20.0000000Z
+accionrealizada|f3t29|entregarpipetaamarilla|entregarpipetaamarilla|2016-05-27T15:45:46.0000000Z

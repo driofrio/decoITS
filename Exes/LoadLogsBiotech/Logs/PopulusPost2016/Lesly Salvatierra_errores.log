@@ -1,0 +1,34 @@
+dependenciabloq|f0t2|bloquearpoyata|f0t1|2016-05-27T15:14:55.0000000Z
+accionrealizada|f0t8|entregarguantes|entregarguantes|2016-05-27T15:22:49.0000000Z
+accionrealizada|f1t6|llenarvasoconagua|llenarvasoconagua|2016-05-27T15:28:42.0000000Z
+accionrealizada|f1t6|llenarvasoconagua|llenarvasoconagua|2016-05-27T15:28:48.0000000Z
+accionrealizada|f1t6|llenarvasoconagua|llenarvasoconagua|2016-05-27T15:28:50.0000000Z
+accionrealizada|f1t6|llenarvasoconagua|llenarvasoconagua|2016-05-27T15:28:52.0000000Z
+accionrealizada|f1t6|llenarvasoconagua|llenarvasoconagua|2016-05-27T15:28:55.0000000Z
+accionrealizada|f1t6|llenarvasoconagua|llenarvasoconagua|2016-05-27T15:28:57.0000000Z
+dependenciasnobloq|f1t14|ajustarph| f1t12-f1t13|2016-05-27T15:31:16.0000000Z
+dependenciasnobloq|f1t20|apagaragitador| f1t12-f1t13-f1t16|2016-05-27T15:31:40.0000000Z
+accionnoencontrada| |entregarboteeppendorf| |2016-05-27T15:32:46.0000000Z
+accionnoencontrada| |entregarpipetaazul| |2016-05-27T15:39:23.0000000Z
+accionnoencontrada| |entregarpipetaamarilla| |2016-05-27T15:39:31.0000000Z
+accionrealizada|f1t33|agregariaa|agregariaa|2016-05-27T15:54:44.0000000Z
+accionrealizada|f1t41|adjuntarbandeja|adjuntarbandeja|2016-05-27T16:02:13.0000000Z
+accionnoencontrada| |BandejaBotes| |2016-05-27T16:06:41.0000000Z
+accionrealizada|f2t32|cargarpuntaamarilla|cargarpuntaamarilla|2016-05-27T16:21:22.0000000Z
+accionnoencontrada| |encenderpcr| |2016-05-27T16:25:38.0000000Z
+accionnoencontrada| |encenderpcr| |2016-05-27T16:25:58.0000000Z
+accionnoencontrada| |encenderpcr| |2016-05-27T16:26:07.0000000Z
+accionnoencontrada| |encenderpcr| |2016-05-27T16:27:10.0000000Z
+dependenciabloq|f2t56|soltarmezcla|f2t55|2016-05-27T16:27:46.0000000Z
+dependenciabloq|f3t1|encendertermobloque|f2t60|2016-05-27T16:27:53.0000000Z
+dependenciabloq|f2t56|soltarmezcla|f2t55|2016-05-27T16:28:06.0000000Z
+dependenciabloq|f3t1|encendertermobloque|f2t60|2016-05-27T16:28:10.0000000Z
+dependenciabloq|f2t56|soltarmezcla|f2t55|2016-05-27T16:28:22.0000000Z
+accionnoencontrada| |tomaradn| |2016-05-27T16:35:53.0000000Z
+dependenciabloq|f3t32|iniciarmezcla|f3t28|2016-05-27T16:36:31.0000000Z
+accionrealizada|f3t31|cargarpuntaamarilla|cargarpuntaamarilla|2016-05-27T16:37:09.0000000Z
+accionrealizada|f3t32|iniciarmezcla|iniciarmezcla|2016-05-27T16:37:16.0000000Z
+dependenciasnobloq|f3t52|finmezcla|f3t33|2016-05-27T16:38:00.0000000Z
+incompatibilidadnobloq|f3t52|finmezcla|f3t44|2016-05-27T16:38:04.0000000Z
+dependenciabloq|f3t56|soltarmezcla|f3t55|2016-05-27T16:39:01.0000000Z
+accionnoencontrada| |encenderpcr| |2016-05-27T16:39:13.0000000Z

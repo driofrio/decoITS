@@ -1,0 +1,39 @@
+dependenciabloq|f0t4|leerprotocolo|f0t3|2014-06-06T16:56:14.0000000Z
+dependenciabloq|f0t4|leerprotocolo|f0t3|2014-06-06T16:56:38.0000000Z
+dependenciabloq|f0t4|leerprotocolo|f0t3|2014-06-06T16:58:24.0000000Z
+accionnoencontrada| |agregaragarosa| |2014-06-06T17:15:20.0000000Z
+dependenciasnobloq|f1t20|apagaragitador| f1t14-f1t16|2014-06-06T17:16:10.0000000Z
+incompatibilidadnobloq|f1t20|apagaragitador|f1t19|2014-06-06T17:16:11.0000000Z
+dependenciasnobloq|f1t36|llenarbotes|f1t29|2014-06-06T17:41:06.0000000Z
+dependenciabloq|f2t13|tomarpolimerasa|f2t6|2014-06-06T17:55:05.0000000Z
+accionrealizada|f2t13|tomarpolimerasa|tomarpolimerasa|2014-06-06T17:57:00.0000000Z
+accionnoencontrada| |sacartuboligacion| |2014-06-06T18:13:31.0000000Z
+accionnoencontrada| |sacartuboligacion| |2014-06-06T18:15:21.0000000Z
+dependenciabloq|f2t33|iniciarmezcla|f2t31|2014-06-06T18:15:23.0000000Z
+dependenciabloq|f2t33|iniciarmezcla|f2t31|2014-06-06T18:15:28.0000000Z
+accionnoencontrada| |sacartuboligacion| |2014-06-06T18:16:07.0000000Z
+accionrealizada|f2t33|iniciarmezcla|iniciarmezcla|2014-06-06T18:16:45.0000000Z
+accionrealizada|f2t33|iniciarmezcla|iniciarmezcla|2014-06-06T18:16:48.0000000Z
+accionrealizada|f2t33|iniciarmezcla|iniciarmezcla|2014-06-06T18:16:51.0000000Z
+dependenciasnobloq|f2t52|finmezcla|f2t35-f2t36-f2t37-f2t38-f2t41|2014-06-06T18:17:28.0000000Z
+incompatibilidadnobloq|f2t52|finmezcla|f2t42|2014-06-06T18:17:32.0000000Z
+accionrealizada|f2t52|finmezcla|finmezcla|2014-06-06T18:17:39.0000000Z
+accionnoencontrada| |encenderpcr| |2014-06-06T18:18:46.0000000Z
+accionnoencontrada| |encenderpcr| |2014-06-06T18:19:10.0000000Z
+accionnoencontrada| |encenderpcr| |2014-06-06T18:21:30.0000000Z
+accionnoencontrada| |encenderpcr| |2014-06-06T18:21:43.0000000Z
+dependenciabloq|f2t56|soltarmezcla|f2t55|2014-06-06T18:22:43.0000000Z
+dependenciabloq|f3t1|encendertermobloque|f2t60|2014-06-06T18:22:53.0000000Z
+dependenciabloq|f2t56|soltarmezcla|f2t55|2014-06-06T18:23:03.0000000Z
+dependenciabloq|f3t1|encendertermobloque|f2t60|2014-06-06T18:23:08.0000000Z
+dependenciabloq|f3t10|tomarenzimaligasa|f3t6|2014-06-06T18:36:15.0000000Z
+accionrealizada|f3t32|iniciarmezcla|iniciarmezcla|2014-06-06T18:39:25.0000000Z
+accionrealizada|f3t32|iniciarmezcla|iniciarmezcla|2014-06-06T18:39:29.0000000Z
+accionrealizada|f3t32|iniciarmezcla|iniciarmezcla|2014-06-06T18:39:33.0000000Z
+accionrealizada|f3t32|iniciarmezcla|iniciarmezcla|2014-06-06T18:39:37.0000000Z
+accionrealizada|f3t32|iniciarmezcla|iniciarmezcla|2014-06-06T18:39:40.0000000Z
+dependenciasnobloq|f3t52|finmezcla|f3t33-f3t34|2014-06-06T18:40:20.0000000Z
+incompatibilidadnobloq|f3t52|finmezcla|f3t43|2014-06-06T18:40:32.0000000Z
+accionrealizada|f3t60|guardarligacion|guardarligacion|2014-06-06T18:43:45.0000000Z
+accionrealizada|f3t60|guardarligacion|guardarligacion|2014-06-06T18:44:59.0000000Z
+accionrealizada|f3t60|guardarligacion|guardarligacion|2014-06-06T18:45:16.0000000Z

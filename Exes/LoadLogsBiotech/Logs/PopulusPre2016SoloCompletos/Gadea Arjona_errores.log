@@ -1,0 +1,28 @@
+dependenciabloq|f0t8|entregarguantes|f0t7|2014-05-27T16:57:01.0000000Z
+dependenciabloq|f0t7|lavarsemanos|f0t4|2014-05-27T16:57:22.0000000Z
+dependenciabloq|f0t7|lavarsemanos|f0t4|2014-05-27T16:57:24.0000000Z
+accionnoencontrada| |agregaragarosa| |2014-05-27T17:10:01.0000000Z
+accionnoencontrada| |agregaragarosa| |2014-05-27T17:10:08.0000000Z
+dependenciasnobloq|f1t16|agregaragar| f1t14|2014-05-27T17:10:20.0000000Z
+dependenciasnobloq|f1t20|apagaragitador| f1t14|2014-05-27T17:10:52.0000000Z
+accionnoencontrada| |sacartuboligacion| |2014-05-27T17:38:26.0000000Z
+accionnoencontrada| |sacartuboligacion| |2014-05-27T17:38:44.0000000Z
+accionrealizada|f2t34|agregaradn|agregaradn|2014-05-27T17:39:10.0000000Z
+dependenciasnobloq|f2t52|finmezcla|f2t35-f2t37-f2t38-f2t40-f2t41|2014-05-27T17:41:08.0000000Z
+accionrealizada|f2t52|finmezcla|finmezcla|2014-05-27T17:41:18.0000000Z
+accionrealizada|f3t32|iniciarmezcla|iniciarmezcla|2014-05-27T17:51:12.0000000Z
+accionrealizada|f3t29|entregarpipetaamarilla|entregarpipetaamarilla|2014-05-27T17:51:33.0000000Z
+dependenciabloq|f3t32|iniciarmezcla|f3t30|2014-05-27T17:51:39.0000000Z
+accionrealizada|f3t31|cargarpuntaamarilla|cargarpuntaamarilla|2014-05-27T17:51:49.0000000Z
+dependenciabloq|f3t32|iniciarmezcla|f3t30|2014-05-27T17:52:11.0000000Z
+accionrealizada|f3t29|entregarpipetaamarilla|entregarpipetaamarilla|2014-05-27T17:52:20.0000000Z
+accionrealizada|f3t31|cargarpuntaamarilla|cargarpuntaamarilla|2014-05-27T17:52:52.0000000Z
+accionrealizada|f3t31|cargarpuntaamarilla|cargarpuntaamarilla|2014-05-27T17:52:57.0000000Z
+accionrealizada|f3t32|iniciarmezcla|iniciarmezcla|2014-05-27T17:53:09.0000000Z
+accionrealizada|f3t31|cargarpuntaamarilla|cargarpuntaamarilla|2014-05-27T17:53:30.0000000Z
+accionrealizada|f3t32|iniciarmezcla|iniciarmezcla|2014-05-27T17:55:42.0000000Z
+dependenciasnobloq|f3t52|finmezcla|f3t34-f3t37|2014-05-27T17:55:57.0000000Z
+incompatibilidadnobloq|f3t52|finmezcla|f3t39-f3t42-f3t44|2014-05-27T17:56:08.0000000Z
+accionrealizada|f3t52|finmezcla|finmezcla|2014-05-27T17:56:15.0000000Z
+dependenciabloq|f3t57|cerrartermobloque|f3t56|2014-05-27T17:57:31.0000000Z
+accionnoencontrada| |encendertermobloque| |2014-05-27T18:00:31.0000000Z

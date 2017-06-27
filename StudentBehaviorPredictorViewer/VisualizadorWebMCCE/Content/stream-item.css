@@ -1,0 +1,93 @@
+#stream {
+  list-style: none;
+  position: relative;
+}
+#stream .stream-item {
+  padding: 5px 5px;
+}
+
+#stream .stream-item .stream-panel {
+  border: 1px solid #d4d4d4;
+  border-radius: 3px;
+  background-color: #FFFFFF;
+  color: #666;
+  padding: 10px;
+  position: relative;
+  -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+  cursor: pointer;
+}
+
+#stream .stream-item .stream-panel.active{
+  background-color: rgba(40, 141, 29, 0.12);
+}
+
+#stream .stream-item .stream-panel .stream-panel-ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#stream .stream-item .stream-panel.credits .stream-panel-ul {
+  text-align: left;
+}
+
+#stream .stream-item .stream-panel.credits .stream-panel-ul li {
+  color: #666;
+}
+
+#stream .stream-item .stream-panel.credits .stream-panel-ul li span.item-title {
+  color: #575757;
+  font-size: 1.3em;
+}
+
+#stream .stream-item .stream-panel.credits .stream-panel-ul li span.item-content {
+}
+
+#stream .stream-item .stream-panel.credits .stream-panel-ul li small strong.item-status-open {
+  color: #468c1f;
+}
+
+#stream .stream-item .stream-panel.credits .stream-panel-ul li small strong.item-status-closed {
+  color: #e2001a;
+}
+
+#stream .stream-item .stream-panel.credits .stream-panel-ul li p small strong.item-status-planned {
+  color: #ae627d;
+}
+
+#stream .stream-item .stream-panel.credits .stream-panel-ul li p small strong.item-status-future {
+  color: #651f8c;
+}
+
+/* for sprint */
+#stream .stream-item .stream-panel.credits .stream-panel-ul li p small strong.item-status-in-progress {
+  color: #468c1f;
+}
+
+/* for task */
+#stream .stream-item .stream-panel.credits .stream-panel-ul li small strong.item-status-in-progress {
+  color: #468c1f;
+}
+
+#stream .stream-item .stream-panel.credits .stream-panel-ul li small strong.item-status-Not-Started {
+  color: rgba(215, 110, 25, 0.85);
+}
+
+#stream .stream-item .stream-panel.credits .stream-panel-ul li  small strong.item-status-completed {
+  color: rgba(33, 181, 82, 0.88);
+}
+
+#stream .stream-item .stream-panel.credits .stream-panel-ul li  small strong.item-status-blocked {
+  color: rgba(185, 36, 36, 0.83);
+}
+
+
+
+#stream .stream-item .stream-panel.debits .stream-panel-ul {
+  text-align: left;
+}
+#stream .stream-item .stream-panel.debits .stream-panel-ul span.item-title {
+  color: #e2001a;
+  font-size: 1.3em;
+}

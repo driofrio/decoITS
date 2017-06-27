@@ -1,0 +1,165 @@
+<rdf:RDF
+    xmlns="http://www.owl-ontologies.com/log/Tutorial14.owl"
+    xmlns:world_error="http://www.owl-ontologies.com/knowledge_object.owl/world_error.owl#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:knowledge_object="http://www.owl-ontologies.com/knowledge_object.owl#"
+    xmlns:other_error="http://www.owl-ontologies.com/knowledge_object.owl/other_error.owl#"
+    xmlns:student_profile="http://www.owl-ontologies.com/student_profile.owl#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:student_information="http://www.owl-ontologies.com/student_information#"
+    xmlns:student_state="http://www.owl-ontologies.com/student_state.owl#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:student_trace="http://www.owl-ontologies.com/student_trace.owl#">
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.owl-ontologies.com/student_information#"/>
+  </owl:Ontology>
+  <owl:Ontology rdf:about="file:///Users/Diego/Documents/workspace/ITS/Exes/LoadLogsBiotech/bin/Debug/">
+    <owl:imports rdf:resource="http://www.owl-ontologies.com/student_information#"/>
+  </owl:Ontology>
+  <owl:Ontology rdf:about="file:///C:/Users/Diego/Documents/ITS/Exes/TestSBP/bin/Debug/">
+    <owl:imports rdf:resource="http://www.owl-ontologies.com/student_information#"/>
+  </owl:Ontology>
+  <owl:Ontology rdf:about="file:///Users/Diego/Documents/workspace/ITS/Exes/TestSBP/bin/Debug/">
+    <owl:imports rdf:resource="http://www.owl-ontologies.com/student_information#"/>
+  </owl:Ontology>
+  <owl:Ontology rdf:about="file:///Users/Diego/Documents/workspace/ITS/Exes/Test/TestSBP/bin/Debug/">
+    <owl:imports rdf:resource="http://www.owl-ontologies.com/student_information#"/>
+  </owl:Ontology>
+  <student_trace:Action_Trace rdf:about="http://www.owl-ontologies.com/student_trace.owl#LogTutorial14f0t213/05/201416:10:42.000">
+    <student_trace:associatedActionState>
+      <student_state:Action_Execution_State rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionExecutionStateTutorial14f0t213/05/201416:10:42.000">
+        <student_state:wasApplied rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+        >true</student_state:wasApplied>
+      </student_state:Action_Execution_State>
+    </student_trace:associatedActionState>
+    <student_trace:associatedSpecificAction rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf0t2_Tutorial"/>
+    <student_trace:belongsToStudent rdf:resource="http://www.owl-ontologies.com/student_information#Student14"/>
+    <student_trace:initialTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime"
+    >2014-05-13T14:10:42Z</student_trace:initialTime>
+  </student_trace:Action_Trace>
+  <student_trace:Action_Trace rdf:about="http://www.owl-ontologies.com/student_trace.owl#LogTutorial14f0t2f0t113/05/201416:09:38.000">
+    <student_trace:associatedActionState>
+      <student_state:Action_Execution_State rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionExecutionStateTutorial14f0t2f0t113/05/201416:09:38.000">
+        <student_state:consistsOfPrecondState>
+          <student_state:Precondition_State rdf:about="http://www.owl-ontologies.com/student_state.owl#PreconditionStateTutorial14f0t2f0t113/05/201416:09:38.000">
+            <student_state:refersToCondition>
+              <knowledge_object:Punctual_Action_Element rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#PunctualActionElementTutorial14f0t2f0t113/05/201416:09:38.000">
+                <knowledge_object:condOnState>
+                  <knowledge_object:Condition_On_State rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ConditionOnStateTutorial14f0t2f0t113/05/201416:09:38.000">
+                    <knowledge_object:idObject rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                    >1</knowledge_object:idObject>
+                    <knowledge_object:descriptorObject rdf:datatype=
+                    "http://www.w3.org/2001/XMLSchema#string"
+                    >No tiene taza donde añadir el café.</knowledge_object:descriptorObject>
+                    <knowledge_object:conditionStateType rdf:datatype=
+                    "http://www.w3.org/2001/XMLSchema#boolean"
+                    >false</knowledge_object:conditionStateType>
+                  </knowledge_object:Condition_On_State>
+                </knowledge_object:condOnState>
+                <knowledge_object:idObject rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                >f0t1</knowledge_object:idObject>
+                <knowledge_object:descriptorObject rdf:datatype=
+                "http://www.w3.org/2001/XMLSchema#string">dependence</knowledge_object:descriptorObject>
+              </knowledge_object:Punctual_Action_Element>
+            </student_state:refersToCondition>
+            <student_state:isMet rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+            >false</student_state:isMet>
+          </student_state:Precondition_State>
+        </student_state:consistsOfPrecondState>
+        <student_state:wasApplied rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+        >true</student_state:wasApplied>
+      </student_state:Action_Execution_State>
+    </student_trace:associatedActionState>
+    <student_trace:associatedSpecificAction rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf0t2_Tutorial"/>
+    <student_trace:belongsToStudent rdf:resource="http://www.owl-ontologies.com/student_information#Student14"/>
+    <student_trace:initialTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime"
+    >2014-05-13T14:09:38Z</student_trace:initialTime>
+  </student_trace:Action_Trace>
+  <student_trace:Action_Trace rdf:about="http://www.owl-ontologies.com/student_trace.owl#LogTutorial14f0t6f0t513/05/201416:12:18.000">
+    <student_trace:associatedActionState>
+      <student_state:Action_Execution_State rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionExecutionStateTutorial14f0t6f0t513/05/201416:12:18.000">
+        <student_state:consistsOfPrecondState>
+          <student_state:Precondition_State rdf:about="http://www.owl-ontologies.com/student_state.owl#PreconditionStateTutorial14f0t6f0t513/05/201416:12:18.000">
+            <student_state:refersToCondition>
+              <knowledge_object:Punctual_Action_Element rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#PunctualActionElementTutorial14f0t6f0t513/05/201416:12:18.000">
+                <knowledge_object:condOnState>
+                  <knowledge_object:Condition_On_State rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ConditionOnStateTutorial14f0t6f0t513/05/201416:12:18.000">
+                    <knowledge_object:idObject rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                    >6</knowledge_object:idObject>
+                    <knowledge_object:descriptorObject rdf:datatype=
+                    "http://www.w3.org/2001/XMLSchema#string"
+                    >Debe soltar la taza antes de sentarse.</knowledge_object:descriptorObject>
+                    <knowledge_object:conditionStateType rdf:datatype=
+                    "http://www.w3.org/2001/XMLSchema#boolean"
+                    >false</knowledge_object:conditionStateType>
+                  </knowledge_object:Condition_On_State>
+                </knowledge_object:condOnState>
+                <knowledge_object:idObject rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                >f0t5</knowledge_object:idObject>
+                <knowledge_object:descriptorObject rdf:datatype=
+                "http://www.w3.org/2001/XMLSchema#string">dependence</knowledge_object:descriptorObject>
+              </knowledge_object:Punctual_Action_Element>
+            </student_state:refersToCondition>
+            <student_state:isMet rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+            >false</student_state:isMet>
+          </student_state:Precondition_State>
+        </student_state:consistsOfPrecondState>
+        <student_state:wasApplied rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+        >true</student_state:wasApplied>
+      </student_state:Action_Execution_State>
+    </student_trace:associatedActionState>
+    <student_trace:associatedSpecificAction rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf0t6_Tutorial"/>
+    <student_trace:belongsToStudent rdf:resource="http://www.owl-ontologies.com/student_information#Student14"/>
+    <student_trace:initialTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime"
+    >2014-05-13T14:12:18Z</student_trace:initialTime>
+  </student_trace:Action_Trace>
+  <student_trace:Action_Trace rdf:about="http://www.owl-ontologies.com/student_trace.owl#LogTutorial14f0t313/05/201416:10:51.000">
+    <student_trace:associatedActionState>
+      <student_state:Action_Execution_State rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionExecutionStateTutorial14f0t313/05/201416:10:51.000">
+        <student_state:wasApplied rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+        >true</student_state:wasApplied>
+      </student_state:Action_Execution_State>
+    </student_trace:associatedActionState>
+    <student_trace:associatedSpecificAction rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf0t3_Tutorial"/>
+    <student_trace:belongsToStudent rdf:resource="http://www.owl-ontologies.com/student_information#Student14"/>
+    <student_trace:initialTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime"
+    >2014-05-13T14:10:51Z</student_trace:initialTime>
+  </student_trace:Action_Trace>
+  <student_trace:Action_Trace rdf:about="http://www.owl-ontologies.com/student_trace.owl#LogTutorial14f0t113/05/201416:09:55.000">
+    <student_trace:associatedActionState>
+      <student_state:Action_Execution_State rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionExecutionStateTutorial14f0t113/05/201416:09:55.000">
+        <student_state:wasApplied rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+        >true</student_state:wasApplied>
+      </student_state:Action_Execution_State>
+    </student_trace:associatedActionState>
+    <student_trace:associatedSpecificAction rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf0t1_Tutorial"/>
+    <student_trace:belongsToStudent rdf:resource="http://www.owl-ontologies.com/student_information#Student14"/>
+    <student_trace:initialTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime"
+    >2014-05-13T14:09:55Z</student_trace:initialTime>
+  </student_trace:Action_Trace>
+  <student_trace:Action_Trace rdf:about="http://www.owl-ontologies.com/student_trace.owl#LogTutorial14f0crearLog13/05/201416:09:04.000">
+    <student_trace:associatedActionState>
+      <student_state:Action_Execution_State rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionExecutionStateTutorial14f0crearLog13/05/201416:09:04.000">
+        <student_state:wasApplied rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+        >true</student_state:wasApplied>
+      </student_state:Action_Execution_State>
+    </student_trace:associatedActionState>
+    <student_trace:associatedSpecificAction rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf0crearLog_Tutorial"/>
+    <student_trace:belongsToStudent rdf:resource="http://www.owl-ontologies.com/student_information#Student14"/>
+    <student_trace:initialTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime"
+    >2014-05-13T14:09:04Z</student_trace:initialTime>
+  </student_trace:Action_Trace>
+  <student_trace:Action_Trace rdf:about="http://www.owl-ontologies.com/student_trace.owl#LogTutorial14f0t413/05/201416:11:01.000">
+    <student_trace:associatedActionState>
+      <student_state:Action_Execution_State rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionExecutionStateTutorial14f0t413/05/201416:11:01.000">
+        <student_state:wasApplied rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+        >true</student_state:wasApplied>
+      </student_state:Action_Execution_State>
+    </student_trace:associatedActionState>
+    <student_trace:associatedSpecificAction rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf0t4_Tutorial"/>
+    <student_trace:belongsToStudent rdf:resource="http://www.owl-ontologies.com/student_information#Student14"/>
+    <student_trace:initialTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime"
+    >2014-05-13T14:11:01Z</student_trace:initialTime>
+  </student_trace:Action_Trace>
+</rdf:RDF>

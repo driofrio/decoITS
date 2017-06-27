@@ -1,0 +1,52 @@
+accionrealizada|f0t1|entregarbata|entregarbata|2013-05-22T15:12:36.0000000Z
+dependenciabloq|f0t4|leerprotocolo|f0t3|2013-05-22T15:15:11.0000000Z
+accionnoencontrada| |lavarsemanos| |2013-05-22T15:20:28.0000000Z
+accionrealizada|f1t6|llenarvasoconagua|llenarvasoconagua|2013-05-22T15:21:32.0000000Z
+dependenciasnobloq|f1t20|apagaragitador| f1t14-f1t16-ord_f1t20|2013-05-22T15:28:54.0000000Z
+accionrealizada|f1t37|esterilizar|esterilizar|2013-05-22T15:42:10.0000000Z
+accionrealizada|f1t37|esterilizar|esterilizar|2013-05-22T15:44:21.0000000Z
+accionrealizada|f1t37|esterilizar|esterilizar|2013-05-22T15:44:23.0000000Z
+accionrealizada|f1t37|esterilizar|esterilizar|2013-05-22T15:44:27.0000000Z
+accionrealizada|f1t37|esterilizar|esterilizar|2013-05-22T15:44:45.0000000Z
+accionrealizada|f1t41|adjuntarbandeja|adjuntarbandeja|2013-05-22T15:50:14.0000000Z
+accionrealizada|f1t41|adjuntarbandeja|adjuntarbandeja|2013-05-22T15:50:16.0000000Z
+accionrealizada|f1t41|adjuntarbandeja|adjuntarbandeja|2013-05-22T15:50:18.0000000Z
+accionnoencontrada| |bloquearpoyata| |2013-05-22T15:52:48.0000000Z
+accionnoencontrada| |bloquearpoyata| |2013-05-22T15:53:04.0000000Z
+accionrealizada|f2t10|tomartamponpolimerasa|tomartamponpolimerasa|2013-05-22T16:00:13.0000000Z
+accionrealizada|f2t26|soltarbandejapoyata|soltarbandejapoyata|2013-05-22T16:00:36.0000000Z
+accionrealizada|f2t29|sacartuboeppendorf|sacartuboeppendorf|2013-05-22T16:01:55.0000000Z
+accionrealizada|f2t29|sacartuboeppendorf|sacartuboeppendorf|2013-05-22T16:01:57.0000000Z
+dependenciasnobloq|f2t52|finmezcla|f2t40|2013-05-22T16:03:28.0000000Z
+dependenciabloq|f3t7|tomaradnplasmidico|f3t6|2013-05-22T16:08:45.0000000Z
+dependenciasnobloq|f3t52|finmezcla|f3t34|2013-05-22T16:11:38.0000000Z
+incompatibilidadnobloq|f3t52|finmezcla|f3t43|2013-05-22T16:11:38.0000000Z
+accionnoencontrada| |encenderpcr| |2013-05-22T16:12:09.0000000Z
+accionnoencontrada| |encenderpcr| |2013-05-22T16:12:16.0000000Z
+accionnoencontrada| |encenderpcr| |2013-05-22T16:12:34.0000000Z
+accionnoencontrada| |encenderpcr| |2013-05-22T16:12:52.0000000Z
+dependenciabloq|f3t56|soltarmezcla|f3t55|2013-05-22T16:13:04.0000000Z
+accionnoencontrada| |encenderpcr| |2013-05-22T16:13:09.0000000Z
+accionnoencontrada| |encenderpcr| |2013-05-22T16:13:16.0000000Z
+accionnoencontrada| |encenderpcr| |2013-05-22T16:13:18.0000000Z
+dependenciabloq|f3t56|soltarmezcla|f3t55|2013-05-22T16:13:19.0000000Z
+accionnoencontrada| |encenderpcr| |2013-05-22T16:13:43.0000000Z
+accionnoencontrada| |encenderpcr| |2013-05-22T16:13:45.0000000Z
+accionnoencontrada| |encenderpcr| |2013-05-22T16:13:47.0000000Z
+accionnoencontrada| |encenderpcr| |2013-05-22T16:13:49.0000000Z
+accionnoencontrada| |encenderpcr| |2013-05-22T16:13:51.0000000Z
+dependenciabloq|f3t56|soltarmezcla|f3t55|2013-05-22T16:13:56.0000000Z
+accionnoencontrada| |encenderpcr| |2013-05-22T16:14:04.0000000Z
+accionnoencontrada| |bloquearpoyata| |2013-05-22T16:14:27.0000000Z
+accionnoencontrada| |bloquearpoyata| |2013-05-22T16:14:38.0000000Z
+accionnoencontrada| |bloquearpoyata| |2013-05-22T16:14:48.0000000Z
+dependenciabloq|f3t56|soltarmezcla|f3t55|2013-05-22T16:14:58.0000000Z
+accionnoencontrada| |encenderpcr| |2013-05-22T16:15:04.0000000Z
+accionnoencontrada| |encenderpcr| |2013-05-22T16:15:07.0000000Z
+accionnoencontrada| |encenderpcr| |2013-05-22T16:15:09.0000000Z
+accionnoencontrada| |bloquearpoyata| |2013-05-22T16:15:53.0000000Z
+accionnoencontrada| |encenderpcr| |2013-05-22T16:16:01.0000000Z
+accionnoencontrada| |encenderpcr| |2013-05-22T16:16:30.0000000Z
+accionnoencontrada| |encenderpcr| |2013-05-22T16:16:32.0000000Z
+accionnoencontrada| |encenderpcr| |2013-05-22T16:16:36.0000000Z
+accionrealizada|f3t58|amplificarfragmento|amplificarfragmento|2013-05-22T16:16:54.0000000Z

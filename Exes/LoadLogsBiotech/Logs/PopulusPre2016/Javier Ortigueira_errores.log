@@ -1,0 +1,22 @@
+accionnoencontrada| |lavarsemanos| |2015-06-16T09:34:13.0000000Z
+accionrealizada|f1t11|encenderagitador|encenderagitador|2015-06-16T09:35:26.0000000Z
+dependenciasnobloq|f1t20|apagaragitador| f1t14-f1t16|2015-06-16T09:36:11.0000000Z
+accionnoencontrada| |entregarboteeppendorf| |2015-06-16T09:41:52.0000000Z
+accionrealizada|f1t34|entregarbandeja|entregarbandeja|2015-06-16T09:58:57.0000000Z
+accionrealizada|f1t34|entregarbandeja|entregarbandeja|2015-06-16T09:59:52.0000000Z
+accionrealizada|f1t36|llenarbotes|llenarbotes|2015-06-16T10:05:03.0000000Z
+dependenciabloq|f1t40|cortarplanta|f1t39|2015-06-16T10:05:33.0000000Z
+dependenciasnobloq|f2t52|finmezcla|f2t34-f2t35-f2t36-f2t37-f2t38-f2t39-f2t40-f2t41|2015-06-16T10:17:57.0000000Z
+accionrealizada|f2t52|finmezcla|finmezcla|2015-06-16T10:19:19.0000000Z
+accionrealizada|f2t52|finmezcla|finmezcla|2015-06-16T10:20:22.0000000Z
+accionrealizada|f2t53|soltarpipetaamarilla|soltarpipetaamarilla|2015-06-16T10:25:00.0000000Z
+accionrealizada|f2t53|soltarpipetaamarilla|soltarpipetaamarilla|2015-06-16T10:25:03.0000000Z
+accionrealizada|f2t57|cerrarpcr|cerrarpcr|2015-06-16T10:26:02.0000000Z
+accionnoencontrada| |encendertermobloque| |2015-06-16T10:28:00.0000000Z
+accionrealizada|f3t8|tomarmezclapcr|tomarmezclapcr|2015-06-16T10:33:02.0000000Z
+accionrealizada|f3t37|agregaraguadestilada|agregaraguadestilada|2015-06-16T10:33:34.0000000Z
+dependenciasnobloq|f3t52|finmezcla|f3t34|2015-06-16T10:33:39.0000000Z
+accionrealizada|f3t52|finmezcla|finmezcla|2015-06-16T10:33:49.0000000Z
+accionrealizada|f3t53|soltarpipetaamarilla|soltarpipetaamarilla|2015-06-16T10:34:04.0000000Z
+accionrealizada|f3t53|soltarpipetaamarilla|soltarpipetaamarilla|2015-06-16T10:34:08.0000000Z
+accionrealizada|f3t53|soltarpipetaamarilla|soltarpipetaamarilla|2015-06-16T10:34:11.0000000Z

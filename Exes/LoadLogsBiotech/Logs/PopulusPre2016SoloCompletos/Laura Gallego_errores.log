@@ -1,0 +1,34 @@
+accionnoencontrada| |entregarTaza| |2013-05-06T14:49:17.0000000Z
+accionnoencontrada| |entregarTaza| |2013-05-06T14:49:29.0000000Z
+accionnoencontrada| |entregarTaza| |2013-05-06T14:52:02.0000000Z
+accionrealizada|f0t1|entregarbata|entregarbata|2013-05-06T14:56:52.0000000Z
+accionrealizada|f0t1|entregarbata|entregarbata|2013-05-06T14:59:38.0000000Z
+accionrealizada|f0t1|entregarbata|entregarbata|2013-05-06T14:59:47.0000000Z
+accionrealizada|f0t1|entregarbata|entregarbata|2013-05-06T15:00:04.0000000Z
+dependenciabloq|f0t4|leerprotocolo|f0t3|2013-05-06T15:03:33.0000000Z
+accionrealizada|f1t6|llenarvasoconagua|llenarvasoconagua|2013-05-06T15:13:05.0000000Z
+dependenciasnobloq|f1t16|agregaragar| f1t12-f1t13-f1t14|2013-05-06T15:15:08.0000000Z
+accionnoencontrada| |agregaragarosa| |2013-05-06T15:15:17.0000000Z
+accionrealizada|f1t12|agregarmys|agregarmys|2013-05-06T15:16:13.0000000Z
+dependenciasnobloq|f1t20|apagaragitador| f1t14-ord_f1t20|2013-05-06T15:16:23.0000000Z
+incompatibilidadnobloq|f1t20|apagaragitador|f1t17-f1t18-f1t19|2013-05-06T15:16:23.0000000Z
+accionrealizada|f1t11|encenderagitador|encenderagitador|2013-05-06T15:17:08.0000000Z
+accionrealizada|f1t11|encenderagitador|encenderagitador|2013-05-06T15:19:15.0000000Z
+accionrealizada|f1t11|encenderagitador|encenderagitador|2013-05-06T15:19:29.0000000Z
+accionrealizada|f1t11|encenderagitador|encenderagitador|2013-05-06T15:21:06.0000000Z
+accionnoencontrada| |entregarbandeja| |2013-05-06T15:58:47.0000000Z
+dependenciabloq|f2t32|cargarpuntaamarilla|f2t31|2013-05-06T16:01:22.0000000Z
+dependenciasnobloq|f2t52|finmezcla|f2t37-f2t41|2013-05-06T16:04:24.0000000Z
+accionrealizada|f2t59|entregarmezclapcr|entregarmezclapcr|2013-05-06T16:07:24.0000000Z
+accionrealizada|f2t59|entregarmezclapcr|entregarmezclapcr|2013-05-06T16:07:26.0000000Z
+accionrealizada|f2t59|entregarmezclapcr|entregarmezclapcr|2013-05-06T16:07:37.0000000Z
+accionrealizada|f2t59|entregarmezclapcr|entregarmezclapcr|2013-05-06T16:07:43.0000000Z
+accionrealizada|f2t59|entregarmezclapcr|entregarmezclapcr|2013-05-06T16:07:45.0000000Z
+accionrealizada|f2t59|entregarmezclapcr|entregarmezclapcr|2013-05-06T16:07:47.0000000Z
+accionrealizada|f2t59|entregarmezclapcr|entregarmezclapcr|2013-05-06T16:07:49.0000000Z
+accionrealizada|f2t60|guardarpcr|guardarpcr|2013-05-06T16:09:05.0000000Z
+accionrealizada|f3t32|iniciarmezcla|iniciarmezcla|2013-05-06T16:21:56.0000000Z
+accionrealizada|f3t6|adjuntarbandejahielo|adjuntarbandejahielo|2013-05-06T16:22:04.0000000Z
+accionrealizada|f3t29|entregarpipetaamarilla|entregarpipetaamarilla|2013-05-06T16:23:38.0000000Z
+dependenciasnobloq|f3t52|finmezcla|f3t34-f3t37|2013-05-06T16:24:35.0000000Z
+incompatibilidadnobloq|f3t52|finmezcla|f3t44|2013-05-06T16:24:35.0000000Z

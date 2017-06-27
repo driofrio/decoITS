@@ -1,0 +1,24 @@
+dependenciabloq|f0t4|leerprotocolo|f0t3|2013-05-21T14:32:21.0000000Z
+accionnoencontrada| |entregarbotella| |2013-05-21T14:38:26.0000000Z
+accionrealizada|f0t2|bloquearpoyata|bloquearpoyata|2013-05-21T14:39:04.0000000Z
+accionrealizada|f0t2|bloquearpoyata|bloquearpoyata|2013-05-21T14:39:58.0000000Z
+accionrealizada|f0t7|lavarsemanos|lavarsemanos|2013-05-21T14:44:45.0000000Z
+accionrealizada|f1t6|llenarvasoconagua|llenarvasoconagua|2013-05-21T14:46:35.0000000Z
+accionrealizada|f1t13|agregarsacarosa|agregarsacarosa|2013-05-21T14:49:07.0000000Z
+dependenciasnobloq|f1t20|apagaragitador| f1t12-f1t14-f1t16|2013-05-21T14:49:18.0000000Z
+accionnoencontrada| |entregarvaso| |2013-05-21T14:55:01.0000000Z
+accionnoencontrada| |entregarvaso| |2013-05-21T14:55:44.0000000Z
+accionnoencontrada| |entregarvaso| |2013-05-21T14:57:07.0000000Z
+accionnoencontrada| |entregarvaso| |2013-05-21T14:58:28.0000000Z
+accionrealizada|f1t21|entregarbotella|entregarbotella|2013-05-21T14:58:44.0000000Z
+accionrealizada|f1t13|agregarsacarosa|agregarsacarosa|2013-05-21T14:59:01.0000000Z
+accionnoencontrada| |entregarvaso| |2013-05-21T15:01:08.0000000Z
+dependenciasnobloq|f1t16|agregaragar| f1t12-f1t14|2013-05-21T15:02:13.0000000Z
+incompatibilidadnobloq|f1t16|agregaragar|f1t20|2013-05-21T15:02:13.0000000Z
+accionnoencontrada| |entregarguantes| |2013-05-21T15:07:28.0000000Z
+accionnoencontrada| |cargarpuntaamarilla| |2013-05-21T15:07:35.0000000Z
+accionrealizada|f1t37|esterilizar|esterilizar|2013-05-21T15:18:23.0000000Z
+accionrealizada|f1t37|esterilizar|esterilizar|2013-05-21T15:18:42.0000000Z
+dependenciabloq|f1t40|cortarplanta|f1t39|2013-05-21T15:21:27.0000000Z
+accionrealizada|f1t37|esterilizar|esterilizar|2013-05-21T15:22:01.0000000Z
+dependenciabloq|f1t40|cortarplanta|f1t39|2013-05-21T15:22:08.0000000Z

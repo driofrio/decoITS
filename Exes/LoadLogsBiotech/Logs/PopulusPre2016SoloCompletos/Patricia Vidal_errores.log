@@ -1,0 +1,47 @@
+accionrealizada|f0t1|entregarbata|entregarbata|2013-05-21T14:58:32.0000000Z
+accionrealizada|f0t1|entregarbata|entregarbata|2013-05-21T14:58:34.0000000Z
+accionnoencontrada| |agregarmys| |2013-05-21T15:31:00.0000000Z
+accionnoencontrada| |agregarmys| |2013-05-21T15:31:16.0000000Z
+accionnoencontrada| |agregarmys| |2013-05-21T15:32:38.0000000Z
+accionnoencontrada| |agregaragarosa| |2013-05-21T15:48:04.0000000Z
+accionnoencontrada| |agregaragarosa| |2013-05-21T15:48:32.0000000Z
+accionnoencontrada| |agregaragarosa| |2013-05-21T15:48:52.0000000Z
+dependenciasnobloq|f1t20|apagaragitador| f1t14-f1t16|2013-05-21T15:51:24.0000000Z
+dependenciabloq|f1t36|llenarbotes|f1t32|2013-05-21T16:04:23.0000000Z
+dependenciabloq|f1t36|llenarbotes|f1t32|2013-05-21T16:04:32.0000000Z
+accionrealizada|f1t34|entregarbandeja|entregarbandeja|2013-05-21T16:07:40.0000000Z
+accionrealizada|f1t34|entregarbandeja|entregarbandeja|2013-05-21T16:13:30.0000000Z
+accionrealizada|f1t34|entregarbandeja|entregarbandeja|2013-05-21T16:38:06.0000000Z
+accionrealizada|f1t37|esterilizar|esterilizar|2013-05-21T16:38:50.0000000Z
+dependenciabloq|f1t40|cortarplanta|f1t39|2013-05-21T16:39:03.0000000Z
+dependenciabloq|f1t40|cortarplanta|f1t39|2013-05-21T16:39:56.0000000Z
+accionrealizada|f2t5|entregarbandejahielo|entregarbandejahielo|2013-05-21T17:12:33.0000000Z
+dependenciabloq|f3t1|encendertermobloque|f2t60|2013-05-21T17:16:13.0000000Z
+accionnoencontrada| |leerprotocolo| |2013-05-21T17:18:58.0000000Z
+dependenciabloq|f2t57|cerrarpcr|f2t56|2013-05-21T17:31:02.0000000Z
+dependenciabloq|f2t57|cerrarpcr|f2t56|2013-05-21T17:31:16.0000000Z
+accionnoencontrada| |guardarligacion| |2013-05-21T17:43:34.0000000Z
+accionnoencontrada| |agregaragrobacterium| |2013-05-21T17:43:47.0000000Z
+accionnoencontrada| |guardarligacion| |2013-05-21T17:43:57.0000000Z
+dependenciabloq|f2t60|guardarpcr|f2t59|2013-05-21T17:45:03.0000000Z
+accionnoencontrada| |agregaragrobacterium| |2013-05-21T17:47:41.0000000Z
+dependenciabloq|f2t33|iniciarmezcla|f2t31|2013-05-21T17:48:57.0000000Z
+accionrealizada|f2t30|entregarpipetaamarilla|entregarpipetaamarilla|2013-05-21T17:49:08.0000000Z
+dependenciasnobloq|f2t52|finmezcla|f2t34-f2t35-f2t36-f2t37-f2t38-f2t39-f2t40-f2t41|2013-05-21T17:49:44.0000000Z
+accionnoencontrada| |encenderpcr| |2013-05-21T17:53:42.0000000Z
+accionnoencontrada| |encenderpcr| |2013-05-21T17:54:08.0000000Z
+accionnoencontrada| |encenderpcr| |2013-05-21T17:54:59.0000000Z
+accionnoencontrada| |encenderpcr| |2013-05-21T17:55:06.0000000Z
+accionnoencontrada| |encenderpcr| |2013-05-21T17:56:27.0000000Z
+dependenciabloq|f2t57|cerrarpcr|f2t56|2013-05-21T17:59:04.0000000Z
+dependenciabloq|f3t1|encendertermobloque|f2t60|2013-05-21T18:01:51.0000000Z
+dependenciabloq|f2t60|guardarpcr|f2t59|2013-05-21T18:03:37.0000000Z
+dependenciabloq|f3t1|encendertermobloque|f2t60|2013-05-21T18:05:24.0000000Z
+accionrealizada|f3t4|calentartermobloque|calentartermobloque|2013-05-21T18:16:52.0000000Z
+accionnoencontrada| |encenderpcr| |2013-05-21T18:17:01.0000000Z
+accionrealizada|f3t55|abrirtermobloque|abrirtermobloque|2013-05-21T18:20:06.0000000Z
+accionnoencontrada| |tomaragrobacterium| |2013-05-21T18:21:03.0000000Z
+dependenciabloq|f3t9|tomartamponligasa|f3t6|2013-05-21T18:21:57.0000000Z
+dependenciasnobloq|f3t52|finmezcla|f3t33-f3t34-f3t37|2013-05-21T18:26:00.0000000Z
+incompatibilidadnobloq|f3t52|finmezcla|f3t39|2013-05-21T18:26:00.0000000Z
+dependenciabloq|f3t57|cerrartermobloque|f3t56|2013-05-21T18:26:51.0000000Z

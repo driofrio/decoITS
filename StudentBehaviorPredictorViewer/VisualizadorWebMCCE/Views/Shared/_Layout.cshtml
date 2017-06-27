@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Student Behavior</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <button type="button" class="navbar-toggle visible-xs" data-toggle="collapse" onclick="showBar1()">
+                <img height="20px" width="20px" src="~/Content/Imgs/add-button-white-hi.png">
+            </button> 
+            <div class="navbar-header hidden-xs" id="barHome">
+                @Html.ActionLink("Student Predictor Viewer Home", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-header hidden-xs" id="barStudent">
+                @Html.ActionLink("Student View", "Student", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-header hidden-xs" id="barDate">
+                @Html.ActionLink("Date View", "Date", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

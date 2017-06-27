@@ -1,0 +1,83 @@
+accionrealizada|f0t1|entregarbata|entregarbata|2014-05-19T16:52:31.0000000Z
+accionnoencontrada| |lavarsemanos| |2014-05-19T17:06:40.0000000Z
+accionnoencontrada| |entregarvaso| |2014-05-19T17:11:23.0000000Z
+dependenciasnobloq|f1t20|apagaragitador| f1t14-f1t16|2014-05-19T17:16:10.0000000Z
+accionrealizada|f1t30|encendercabina|encendercabina|2014-05-19T17:25:24.0000000Z
+dependenciasnobloq|f1t32|soltarbotellacabina|f1t31|2014-05-19T17:25:45.0000000Z
+accionrealizada|f1t37|esterilizar|esterilizar|2014-05-19T17:28:31.0000000Z
+accionrealizada|f1t38|entregarchopo|entregarchopo|2014-05-19T17:29:06.0000000Z
+accionrealizada|f1t40|cortarplanta|cortarplanta|2014-05-19T17:29:59.0000000Z
+accionrealizada|f1t41|adjuntarbandeja|adjuntarbandeja|2014-05-19T17:30:26.0000000Z
+accionrealizada|f1t42|apagarcabina|apagarcabina|2014-05-19T17:30:42.0000000Z
+accionnoencontrada| |entregarchopocrecido| |2014-05-19T17:34:22.0000000Z
+accionnoencontrada| |encenderpcr| |2014-05-19T17:39:21.0000000Z
+accionnoencontrada| |encenderpcr| |2014-05-19T17:40:01.0000000Z
+accionnoencontrada| |encenderpcr| |2014-05-19T17:40:06.0000000Z
+accionrealizada|f2t4|calentartermobloque|calentartermobloque|2014-05-19T17:40:16.0000000Z
+accionrealizada|f2t5|entregarbandejahielo|entregarbandejahielo|2014-05-19T17:40:28.0000000Z
+accionrealizada|f2t5|entregarbandejahielo|entregarbandejahielo|2014-05-19T17:41:01.0000000Z
+dependenciabloq|f2t14|tomaraguadestilada|f2t6|2014-05-19T17:41:28.0000000Z
+dependenciabloq|f2t10|tomartamponpolimerasa|f2t6|2014-05-19T17:41:40.0000000Z
+dependenciabloq|f2t55|abrirpcr|f2t4|2014-05-19T17:41:45.0000000Z
+accionrealizada|f2t5|entregarbandejahielo|entregarbandejahielo|2014-05-19T17:41:51.0000000Z
+accionrealizada|f2t5|entregarbandejahielo|entregarbandejahielo|2014-05-19T17:42:08.0000000Z
+accionrealizada|f2t5|entregarbandejahielo|entregarbandejahielo|2014-05-19T17:42:26.0000000Z
+accionrealizada|f2t5|entregarbandejahielo|entregarbandejahielo|2014-05-19T17:42:48.0000000Z
+dependenciabloq|f2t55|abrirpcr|f2t4|2014-05-19T17:43:08.0000000Z
+dependenciabloq|f2t55|abrirpcr|f2t4|2014-05-19T17:43:24.0000000Z
+dependenciabloq|f2t14|tomaraguadestilada|f2t6|2014-05-19T17:43:56.0000000Z
+dependenciabloq|f3t1|encendertermobloque|f2t60|2014-05-19T17:44:10.0000000Z
+dependenciabloq|f3t1|encendertermobloque|f2t60|2014-05-19T17:44:19.0000000Z
+dependenciabloq|f3t1|encendertermobloque|f2t60|2014-05-19T17:44:37.0000000Z
+accionrealizada|f2t5|entregarbandejahielo|entregarbandejahielo|2014-05-19T17:44:42.0000000Z
+dependenciabloq|f2t14|tomaraguadestilada|f2t6|2014-05-19T17:44:53.0000000Z
+accionrealizada|f2t5|entregarbandejahielo|entregarbandejahielo|2014-05-19T17:45:04.0000000Z
+dependenciabloq|f2t60|guardarpcr|f2t59|2014-05-19T17:45:17.0000000Z
+dependenciabloq|f2t55|abrirpcr|f2t4|2014-05-19T17:46:31.0000000Z
+accionrealizada|f2t5|entregarbandejahielo|entregarbandejahielo|2014-05-19T17:46:44.0000000Z
+dependenciabloq|f3t1|encendertermobloque|f2t60|2014-05-19T17:46:56.0000000Z
+dependenciabloq|f2t10|tomartamponpolimerasa|f2t6|2014-05-19T17:47:14.0000000Z
+accionrealizada|f2t5|entregarbandejahielo|entregarbandejahielo|2014-05-19T17:47:56.0000000Z
+dependenciabloq|f3t1|encendertermobloque|f2t60|2014-05-19T17:48:29.0000000Z
+accionrealizada|f2t5|entregarbandejahielo|entregarbandejahielo|2014-05-19T17:48:44.0000000Z
+dependenciabloq|f2t55|abrirpcr|f2t4|2014-05-19T17:49:10.0000000Z
+dependenciabloq|f3t1|encendertermobloque|f2t60|2014-05-19T17:49:29.0000000Z
+accionrealizada|f2t27|entregarboteeppendorf|entregarboteeppendorf|2014-05-19T18:00:18.0000000Z
+accionrealizada|f2t32|cargarpuntaamarilla|cargarpuntaamarilla|2014-05-19T18:03:47.0000000Z
+accionrealizada|f2t33|iniciarmezcla|iniciarmezcla|2014-05-19T18:03:58.0000000Z
+accionrealizada|f2t33|iniciarmezcla|iniciarmezcla|2014-05-19T18:04:06.0000000Z
+accionnoencontrada| |sacartuboligacion| |2014-05-19T18:04:10.0000000Z
+accionnoencontrada| |sacartuboligacion| |2014-05-19T18:04:20.0000000Z
+accionrealizada|f2t32|cargarpuntaamarilla|cargarpuntaamarilla|2014-05-19T18:04:25.0000000Z
+accionrealizada|f2t33|iniciarmezcla|iniciarmezcla|2014-05-19T18:04:33.0000000Z
+accionrealizada|f2t33|iniciarmezcla|iniciarmezcla|2014-05-19T18:04:40.0000000Z
+dependenciasnobloq|f2t52|finmezcla|f2t34-f2t35-f2t38-f2t39-f2t40-f2t41|2014-05-19T18:05:49.0000000Z
+accionrealizada|f2t57|cerrarpcr|cerrarpcr|2014-05-19T18:08:05.0000000Z
+dependenciabloq|f2t59|entregarmezclapcr|f2t58|2014-05-19T18:08:43.0000000Z
+accionrealizada|f2t60|guardarpcr|guardarpcr|2014-05-19T18:13:10.0000000Z
+accionrealizada|f2t60|guardarpcr|guardarpcr|2014-05-19T18:14:06.0000000Z
+accionrealizada|f2t60|guardarpcr|guardarpcr|2014-05-19T18:14:29.0000000Z
+accionrealizada|f2t5|entregarbandejahielo|entregarbandejahielo|2014-05-19T18:15:56.0000000Z
+accionrealizada|f3t15|tomarmgcl|tomarmgcl|2014-05-19T18:26:14.0000000Z
+accionrealizada|f3t12|tomaroligonucleicoizq|tomaroligonucleicoizq|2014-05-19T18:27:20.0000000Z
+accionrealizada|f3t11|tomaraguadestilada|tomaraguadestilada|2014-05-19T18:28:19.0000000Z
+accionrealizada|f3t11|tomaraguadestilada|tomaraguadestilada|2014-05-19T18:28:54.0000000Z
+accionrealizada|f3t31|cargarpuntaamarilla|cargarpuntaamarilla|2014-05-19T18:34:02.0000000Z
+accionrealizada|f3t27|soltarbandejapoyata|soltarbandejapoyata|2014-05-19T18:34:36.0000000Z
+accionrealizada|f3t27|soltarbandejapoyata|soltarbandejapoyata|2014-05-19T18:35:32.0000000Z
+accionrealizada|f3t27|soltarbandejapoyata|soltarbandejapoyata|2014-05-19T18:35:58.0000000Z
+accionrealizada|f3t27|soltarbandejapoyata|soltarbandejapoyata|2014-05-19T18:36:14.0000000Z
+accionrealizada|f3t27|soltarbandejapoyata|soltarbandejapoyata|2014-05-19T18:36:24.0000000Z
+accionrealizada|f3t27|soltarbandejapoyata|soltarbandejapoyata|2014-05-19T18:36:29.0000000Z
+accionrealizada|f3t27|soltarbandejapoyata|soltarbandejapoyata|2014-05-19T18:36:53.0000000Z
+accionrealizada|f3t32|iniciarmezcla|iniciarmezcla|2014-05-19T18:38:00.0000000Z
+accionrealizada|f3t6|adjuntarbandejahielo|adjuntarbandejahielo|2014-05-19T18:38:10.0000000Z
+accionrealizada|f3t32|iniciarmezcla|iniciarmezcla|2014-05-19T18:38:20.0000000Z
+accionrealizada|f3t32|iniciarmezcla|iniciarmezcla|2014-05-19T18:39:04.0000000Z
+accionrealizada|f3t32|iniciarmezcla|iniciarmezcla|2014-05-19T18:39:26.0000000Z
+accionrealizada|f3t32|iniciarmezcla|iniciarmezcla|2014-05-19T18:42:26.0000000Z
+accionrealizada|f3t32|iniciarmezcla|iniciarmezcla|2014-05-19T18:42:38.0000000Z
+accionrealizada|f3t32|iniciarmezcla|iniciarmezcla|2014-05-19T18:43:20.0000000Z
+accionrealizada|f3t28|sacartuboligacion|sacartuboligacion|2014-05-19T18:45:11.0000000Z
+accionrealizada|f3t41|agregaroligonucleicoder|agregaroligonucleicoder|2014-05-19T18:47:43.0000000Z
+accionrealizada|f3t28|sacartuboligacion|sacartuboligacion|2014-05-19T18:48:06.0000000Z

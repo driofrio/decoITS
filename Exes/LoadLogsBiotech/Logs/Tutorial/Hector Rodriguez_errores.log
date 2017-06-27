@@ -1,0 +1,12 @@
+accionnoencontrada| |entregarTaza| |2014-05-18T17:47:19.0000000Z
+accionnoencontrada| |entregarTaza| |2014-05-18T17:47:27.0000000Z
+accionnoencontrada| |entregarTaza| |2014-05-18T17:47:34.0000000Z
+accionnoencontrada| |entregarTaza| |2014-05-18T17:47:44.0000000Z
+accionnoencontrada| |entregarTaza| |2014-05-18T17:47:56.0000000Z
+accionnoencontrada| |entregarTaza| |2014-05-18T17:48:18.0000000Z
+accionrealizada|f0t1|entregarTaza|entregarTaza|2014-05-18T17:50:26.0000000Z
+dependenciabloq|f0t6|sentarse|f0t5|2014-05-18T17:58:18.0000000Z
+accionrealizada|f0t1|entregarTaza|entregarTaza|2014-05-18T17:58:54.0000000Z
+accionrealizada|f0t7|tomarCafe|tomarCafe|2014-05-18T17:59:38.0000000Z
+accionrealizada|f0t6|sentarse|sentarse|2014-05-18T18:06:34.0000000Z
+accionrealizada|f0t6|sentarse|sentarse|2014-05-18T18:28:25.0000000Z

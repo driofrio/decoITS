@@ -1,0 +1,52 @@
+accionrealizada|f0t1|entregarbata|entregarbata|2013-05-09T15:41:12.0000000Z
+accionrealizada|f0t2|bloquearpoyata|bloquearpoyata|2013-05-09T15:47:38.0000000Z
+dependenciabloq|f0t8|entregarguantes|f0t7|2013-05-09T15:51:02.0000000Z
+accionrealizada|f0t7|lavarsemanos|lavarsemanos|2013-05-09T15:52:34.0000000Z
+accionnoencontrada| |entregarpipetaamarilla| |2013-05-09T16:03:54.0000000Z
+accionrealizada|f1t11|encenderagitador|encenderagitador|2013-05-09T16:08:54.0000000Z
+dependenciasnobloq|f1t20|apagaragitador| f1t14-f1t16-ord_f1t20|2013-05-09T16:09:42.0000000Z
+dependenciasnobloq|f1t35|soltarbandeja|f1t31|2013-05-09T16:22:47.0000000Z
+dependenciabloq|f1t36|llenarbotes|f1t32|2013-05-09T16:22:55.0000000Z
+dependenciabloq|f1t36|llenarbotes|f1t32|2013-05-09T16:23:02.0000000Z
+dependenciabloq|f1t36|llenarbotes|f1t32|2013-05-09T16:24:24.0000000Z
+dependenciabloq|f1t36|llenarbotes|f1t32|2013-05-09T16:24:35.0000000Z
+dependenciabloq|f1t36|llenarbotes|f1t32|2013-05-09T16:24:37.0000000Z
+dependenciabloq|f1t36|llenarbotes|f1t32|2013-05-09T16:24:39.0000000Z
+dependenciabloq|f1t36|llenarbotes|f1t32|2013-05-09T16:24:41.0000000Z
+dependenciabloq|f1t36|llenarbotes|f1t32|2013-05-09T16:25:16.0000000Z
+accionrealizada|f1t30|encendercabina|encendercabina|2013-05-09T16:25:40.0000000Z
+dependenciabloq|f1t36|llenarbotes|f1t32|2013-05-09T16:25:45.0000000Z
+dependenciabloq|f1t36|llenarbotes|f1t32|2013-05-09T16:25:47.0000000Z
+dependenciabloq|f1t36|llenarbotes|f1t32|2013-05-09T16:25:49.0000000Z
+dependenciabloq|f1t36|llenarbotes|f1t32|2013-05-09T16:26:38.0000000Z
+dependenciabloq|f1t36|llenarbotes|f1t32|2013-05-09T16:26:40.0000000Z
+dependenciabloq|f1t36|llenarbotes|f1t32|2013-05-09T16:26:42.0000000Z
+dependenciabloq|f1t36|llenarbotes|f1t32|2013-05-09T16:26:44.0000000Z
+dependenciabloq|f1t36|llenarbotes|f1t32|2013-05-09T16:26:46.0000000Z
+dependenciabloq|f1t36|llenarbotes|f1t32|2013-05-09T16:26:48.0000000Z
+dependenciabloq|f1t36|llenarbotes|f1t32|2013-05-09T16:26:51.0000000Z
+dependenciabloq|f1t36|llenarbotes|f1t32|2013-05-09T16:26:56.0000000Z
+dependenciabloq|f1t36|llenarbotes|f1t32|2013-05-09T16:27:00.0000000Z
+dependenciabloq|f1t36|llenarbotes|f1t32|2013-05-09T16:27:02.0000000Z
+dependenciabloq|f1t36|llenarbotes|f1t32|2013-05-09T16:27:04.0000000Z
+dependenciabloq|f1t36|llenarbotes|f1t32|2013-05-09T16:27:06.0000000Z
+dependenciabloq|f1t36|llenarbotes|f1t32|2013-05-09T16:27:41.0000000Z
+dependenciabloq|f1t36|llenarbotes|f1t32|2013-05-09T16:31:31.0000000Z
+dependenciabloq|f1t36|llenarbotes|f1t32|2013-05-09T16:32:09.0000000Z
+accionrealizada|f1t21|entregarbotella|entregarbotella|2013-05-09T16:35:56.0000000Z
+accionnoencontrada| |entregarboteeppendorf| |2013-05-09T16:37:44.0000000Z
+accionnoencontrada| |tomaraguadestilada| |2013-05-09T16:47:39.0000000Z
+accionnoencontrada| |tomartampote| |2013-05-09T16:51:14.0000000Z
+accionnoencontrada| |tomaraguadestilada| |2013-05-09T16:51:51.0000000Z
+accionrealizada|f1t34|entregarbandeja|entregarbandeja|2013-05-09T16:52:02.0000000Z
+accionrealizada|f1t34|entregarbandeja|entregarbandeja|2013-05-09T16:52:22.0000000Z
+dependenciabloq|f2t22|tomartampote|f2t6|2013-05-09T17:09:16.0000000Z
+accionrealizada|f2t5|entregarbandejahielo|entregarbandejahielo|2013-05-09T17:13:40.0000000Z
+accionrealizada|f2t5|entregarbandejahielo|entregarbandejahielo|2013-05-09T17:13:43.0000000Z
+accionrealizada|f2t12|tomardntp|tomardntp|2013-05-09T17:20:09.0000000Z
+dependenciabloq|f2t32|cargarpuntaamarilla|f2t31|2013-05-09T17:22:44.0000000Z
+dependenciabloq|f2t32|cargarpuntaamarilla|f2t31|2013-05-09T17:22:57.0000000Z
+accionrealizada|f2t38|agregarmgcl|agregarmgcl|2013-05-09T17:23:50.0000000Z
+dependenciasnobloq|f2t52|finmezcla|f2t41|2013-05-09T17:24:08.0000000Z
+dependenciasnobloq|f3t52|finmezcla|f3t36|2013-05-09T17:31:00.0000000Z
+accionnoencontrada| |encenderpcr| |2013-05-09T17:31:56.0000000Z

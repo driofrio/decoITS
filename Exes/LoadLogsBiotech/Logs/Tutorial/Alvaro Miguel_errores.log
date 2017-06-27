@@ -1,0 +1,53 @@
+accionnoencontrada| |agregarcafe| |2014-05-13T21:31:15.0000000Z
+accionnoencontrada| |agregarleche| |2014-05-13T21:31:18.0000000Z
+accionnoencontrada| |agregarazucar| |2014-05-13T21:31:21.0000000Z
+accionnoencontrada| |agregarcafe| |2014-05-13T21:31:30.0000000Z
+accionnoencontrada| |entregarTaza| |2014-05-13T21:33:25.0000000Z
+accionnoencontrada| |entregarTaza| |2014-05-13T21:33:31.0000000Z
+accionnoencontrada| |entregarTaza| |2014-05-13T21:33:36.0000000Z
+accionnoencontrada| |entregarTaza| |2014-05-13T21:33:51.0000000Z
+accionnoencontrada| |entregarTaza| |2014-05-13T21:33:56.0000000Z
+accionnoencontrada| |sentarse| |2014-05-13T21:34:17.0000000Z
+accionnoencontrada| |entregarTaza| |2014-05-13T21:34:41.0000000Z
+accionnoencontrada| |entregarTaza| |2014-05-13T21:34:53.0000000Z
+accionnoencontrada| |entregarTaza| |2014-05-13T21:35:18.0000000Z
+accionnoencontrada| |entregarTaza| |2014-05-13T21:35:36.0000000Z
+accionnoencontrada| |agregarcafe| |2014-05-13T21:35:48.0000000Z
+accionnoencontrada| |entregarTaza| |2014-05-13T21:36:30.0000000Z
+accionnoencontrada| |entregarTaza| |2014-05-13T21:36:34.0000000Z
+accionnoencontrada| |entregarTaza| |2014-05-13T21:45:04.0000000Z
+accionnoencontrada| |entregarTaza| |2014-05-13T21:45:12.0000000Z
+accionnoencontrada| |entregarTaza| |2014-05-13T21:45:17.0000000Z
+accionnoencontrada| |entregarTaza| |2014-05-13T21:52:10.0000000Z
+accionnoencontrada| |entregarTaza| |2014-05-13T21:52:42.0000000Z
+accionnoencontrada| |entregarTaza| |2014-05-13T21:55:27.0000000Z
+accionnoencontrada| |entregarTaza| |2014-05-13T21:59:08.0000000Z
+accionnoencontrada| |entregarTaza| |2014-05-13T21:59:20.0000000Z
+accionnoencontrada| |agregarcafe| |2014-05-13T21:59:28.0000000Z
+dependenciabloq|f0t2|agregarcafe|f0t1|2014-05-14T14:10:27.0000000Z
+dependenciabloq|f0t3|agregarleche|f0t1|2014-05-14T14:10:36.0000000Z
+dependenciabloq|f0t4|agregarazucar|f0t1|2014-05-14T14:10:38.0000000Z
+dependenciabloq|f0t6|sentarse|f0t5|2014-05-14T14:19:58.0000000Z
+dependenciabloq|f0t6|sentarse|f0t5|2014-05-14T14:20:18.0000000Z
+dependenciabloq|f0t6|sentarse|f0t5|2014-05-14T14:20:36.0000000Z
+accionrealizada|f0t7|tomarCafe|tomarCafe|2014-05-14T14:21:19.0000000Z
+accionrealizada|f0t7|tomarCafe|tomarCafe|2014-05-14T14:21:22.0000000Z
+accionrealizada|f0t7|tomarCafe|tomarCafe|2014-05-14T14:21:24.0000000Z
+accionrealizada|f0t7|tomarCafe|tomarCafe|2014-05-14T14:21:27.0000000Z
+accionrealizada|f0t1|entregarTaza|entregarTaza|2014-05-14T14:21:41.0000000Z
+accionrealizada|f0t1|entregarTaza|entregarTaza|2014-05-14T14:21:43.0000000Z
+accionrealizada|f0t1|entregarTaza|entregarTaza|2014-05-14T14:21:50.0000000Z
+accionrealizada|f0t1|entregarTaza|entregarTaza|2014-05-14T14:22:00.0000000Z
+accionrealizada|f0t1|entregarTaza|entregarTaza|2014-05-14T14:22:17.0000000Z
+accionrealizada|f0t1|entregarTaza|entregarTaza|2014-05-14T14:22:21.0000000Z
+accionrealizada|f0t1|entregarTaza|entregarTaza|2014-05-14T14:22:31.0000000Z
+accionrealizada|f0t1|entregarTaza|entregarTaza|2014-05-14T14:23:01.0000000Z
+accionrealizada|f0t1|entregarTaza|entregarTaza|2014-05-14T14:23:10.0000000Z
+accionrealizada|f0t1|entregarTaza|entregarTaza|2014-05-14T14:23:12.0000000Z
+accionrealizada|f0t1|entregarTaza|entregarTaza|2014-05-14T14:23:20.0000000Z
+accionrealizada|f0t1|entregarTaza|entregarTaza|2014-05-14T14:23:23.0000000Z
+accionrealizada|f0t2|agregarcafe|agregarcafe|2014-05-14T14:25:35.0000000Z
+accionrealizada|f0t7|tomarCafe|tomarCafe|2014-05-14T14:26:03.0000000Z
+accionrealizada|f0t6|sentarse|sentarse|2014-05-14T14:27:07.0000000Z
+accionrealizada|f0t7|tomarCafe|tomarCafe|2014-05-14T21:27:51.0000000Z
+accionrealizada|f0t7|tomarCafe|tomarCafe|2014-05-14T21:27:53.0000000Z

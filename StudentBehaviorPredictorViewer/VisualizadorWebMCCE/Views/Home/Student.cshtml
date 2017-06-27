@@ -1,0 +1,99 @@
+﻿@{
+    ViewBag.Title = "Student";
+}
+<body id="body" onload="init(0)" onresize="init(1)">
+    <div class="container big">
+        <div class="row">
+            <div class="col-md-4" id="selector">
+                <div class="panel panel-default">
+                    <h1 id="titulo">Student View</h1>
+                    <div class="panel-body">
+                        <label>Please select a domain, cluster and student!</label><br />
+                        <select id="mode" name="mode" onchange="resetSelector(1)">
+                            <option selected></option>
+                            <option>Errors</option>
+                            <option>ErrorsAndTime</option>
+                            <option>EventsByZone</option>
+                            <option>NoClusters</option>
+                        </select>
+                        <select id="phase" name="phase" onchange="selectCluster(1)">
+                        </select>
+                        <select id="cluster" name="cluster" onchange="selectStudent()"></select>
+                        <select id="student" name="student"></select>
+                        <button class="btn-info" onclick="loadStudentMap()">loadMap</button>
+                    </div>
+                </div>
+            </div>
+            <div id="loader"></div>
+            <div class="col-md-4 " id="currentNodeContainer">
+                <dl class="dl-horizontal" id="currentNode"></dl>
+            </div>
+            <div class="col-md-4" id="currentArrowContainer">
+                <dl class="dl-horizontal" id="currentArrow"></dl>
+            </div>
+        </div>
+    </div>
+    <div class="container cbig" id="cbig">
+        <div class="row searchBar" id="searchBar">
+            <input id="moveUp" type="image" src="~/Content/Imgs/arrowUp.svg" width="32" onclick="move(2)" />
+            <div class="input-group col-md-4 pull-right">
+                <input id="searchNode" type="text" class="form-control" placeholder="Search" list="nodeList" onkeydown="if (event.keyCode == 13) document.getElementById('btnSearch').click()">
+                <datalist id="nodeList"></datalist>
+                <span class="input-group-btn">
+                    <button class="btn btn-default" id="btnSearch" type="button" onclick="goToNode()">Go</button>
+                </span>
+            </div><!-- /input-group -->
+        </div>
+        <div class="row extra">
+            <div class="selec">
+                <div class="nodesBar">
+                    <text>Nodes:</text>
+                    <input type="number" id="nodes1" min="0" max="100" value="0" onchange="changeRange(this.value)" onkeydown="if(event.keyCode==13) changeNodes(value)">
+                    <input type="range" id="nodes" min="0" max="100" value="0" orient="vertical" oninput="changeNumber(this.value)" onmouseup="changeNodes(value)">
+                </div>
+                <div class="eventsBar">
+                    <text>Events:</text>
+                    <input type="number" id="events1" min="0" max="100" value="0" onchange="changeRange1(this.value)" onkeydown="if(event.keyCode==13) changeEvents(value)">
+                    <input type="range" id="events" min="0" max="100" value="0" orient="vertical" oninput="changeNumber1(this.value)" onmouseup="changeEvents(value)">
+                </div>
+            </div>
+        </div>
+        <div class="row management">
+                <input id="zoomIn" type="image" src="~/Content/Imgs/zoomIn.svg" width="32" onclick="zoom(-1)" />
+                <br />
+                <input id="zoomOut" type="image" src="~/Content/Imgs/zoomOut.svg" width="32" onclick="zoom(1)" />
+                <br />
+                <input id="moveLeft" type="image" src="~/Content/Imgs/arrowLeft.svg" width="32" onclick="move(-1)" />
+        </div>
+        <div class="row svg" id="svg">
+            <div class="panel panel-default" id="panelPrincipal">
+                <div class="panel-body" id="panelBody">
+                    <div id="svgContainer" class="col-md-12">
+                        <svg id="svgid" width="100%" viewBox="0 0 100 100">
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <div id="moveDownDiv">
+                <input id="moveDown" type="image" src="~/Content/Imgs/arrowDown.svg" width="32" onclick="move(1)" />
+            </div>
+        </div>
+        <div id="moveRightDiv">
+            <input id="moveRight" type="image" src="~/Content/Imgs/arrowRight.svg" width="32" onclick="move(-2)" />
+        </div>
+    </div>
+</body>
+<link rel="stylesheet" href="~/Content/Site.css">
+<link rel="stylesheet" href="~/Content/bootstrap.css">
+<link rel="stylesheet" href="~/Content/bootstrap-theme.css">
+<link rel="stylesheet" href="~/Content/animate.css">
+<link rel="stylesheet" href="~/Content/stream-item.css">
+<link rel="stylesheet" href="~/Content/canvas.css">
+<link rel="stylesheet" href="~/Content/SVGstyle.css">
+<script type="text/javascript" src="~/Scripts/jquery-2.1.3.min.js"></script>
+<script type="text/javascript" src="~/Scripts/bootstrap.js"></script>
+<script type="text/javascript" src="~/Scripts/bootstrap.min.js"></script>
+<script type="text/javascript" src="~/Scripts/svgController.js"></script>
+<script type="text/javascript" src="~/Scripts/svg.js"></script>
+<script type="text/javascript" src="~/Scripts/svg.min.js"></script>
+<script type="text/javascript" src="~/Scripts/SVGstyle.js"></script>

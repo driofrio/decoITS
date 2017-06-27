@@ -1,0 +1,53 @@
+dependenciabloq|f1t1|entregarvaso|f0t7|2016-05-30T15:00:16.0000000Z
+dependenciabloq|f0t7|lavarsemanos|f0t4|2016-05-30T15:01:09.0000000Z
+dependenciabloq|f0t4|leerprotocolo|f0t3|2016-05-30T15:01:42.0000000Z
+accionrealizada|f0t3|leerfundamentos|leerfundamentos|2016-05-30T15:02:02.0000000Z
+accionrealizada|f0t3|leerfundamentos|leerfundamentos|2016-05-30T15:02:04.0000000Z
+dependenciasnobloq|f1t14|ajustarph| f1t12-f1t13|2016-05-30T15:05:39.0000000Z
+dependenciasnobloq|f1t16|agregaragar| f1t12-f1t13-ord_f1t16|2016-05-30T15:06:03.0000000Z
+dependenciasnobloq|f1t20|apagaragitador| f1t12-f1t13|2016-05-30T15:06:18.0000000Z
+accionrealizada|f1t23|movermezclaabotella|movermezclaabotella|2016-05-30T15:07:22.0000000Z
+accionrealizada|f1t31|contartiempocabina|contartiempocabina|2016-05-30T15:14:37.0000000Z
+accionnoencontrada| |BandejaBotes| |2016-05-30T15:23:21.0000000Z
+dependenciabloq|f2t55|abrirpcr|f2t4|2016-05-30T15:29:05.0000000Z
+accionrealizada|f2t13|tomarpolimerasa|tomarpolimerasa|2016-05-30T15:31:51.0000000Z
+accionrealizada|f2t13|tomarpolimerasa|tomarpolimerasa|2016-05-30T15:32:15.0000000Z
+accionrealizada|f2t6|adjuntarbandejahielo|adjuntarbandejahielo|2016-05-30T15:33:10.0000000Z
+accionrealizada|f2t10|tomartamponpolimerasa|tomartamponpolimerasa|2016-05-30T15:34:59.0000000Z
+dependenciabloq|f2t57|cerrarpcr|f2t56|2016-05-30T15:35:22.0000000Z
+dependenciabloq|f3t1|encendertermobloque|f2t60|2016-05-30T15:35:29.0000000Z
+accionrealizada|f2t9|tomaroligonucleicoder|tomaroligonucleicoder|2016-05-30T15:36:34.0000000Z
+accionrealizada|f2t14|tomaraguadestilada|tomaraguadestilada|2016-05-30T15:37:58.0000000Z
+accionrealizada|f2t13|tomarpolimerasa|tomarpolimerasa|2016-05-30T15:38:07.0000000Z
+accionrealizada|f2t9|tomaroligonucleicoder|tomaroligonucleicoder|2016-05-30T15:38:18.0000000Z
+accionrealizada|f2t12|tomardntp|tomardntp|2016-05-30T15:38:38.0000000Z
+accionrealizada|f2t11|tomarmgcl|tomarmgcl|2016-05-30T15:38:50.0000000Z
+accionrealizada|f2t10|tomartamponpolimerasa|tomartamponpolimerasa|2016-05-30T15:39:05.0000000Z
+accionrealizada|f2t6|adjuntarbandejahielo|adjuntarbandejahielo|2016-05-30T15:40:26.0000000Z
+dependenciabloq|f2t57|cerrarpcr|f2t56|2016-05-30T15:44:23.0000000Z
+dependenciabloq|f3t1|encendertermobloque|f2t60|2016-05-30T15:44:27.0000000Z
+dependenciabloq|f2t32|cargarpuntaamarilla|f2t31|2016-05-30T15:54:08.0000000Z
+dependenciabloq|f2t32|cargarpuntaamarilla|f2t31|2016-05-30T15:54:15.0000000Z
+accionrealizada|f2t31|adjuntarpipetaamarilla|adjuntarpipetaamarilla|2016-05-30T15:54:58.0000000Z
+accionrealizada|f2t8|tomaroligonucleicoizq|tomaroligonucleicoizq|2016-05-30T15:57:21.0000000Z
+accionrealizada|f2t8|tomaroligonucleicoizq|tomaroligonucleicoizq|2016-05-30T15:57:28.0000000Z
+dependenciabloq|f2t54|entregartubomezcla|f2t53|2016-05-30T15:58:50.0000000Z
+accionrealizada|f2t53|soltarpipetaamarilla|soltarpipetaamarilla|2016-05-30T15:59:10.0000000Z
+accionrealizada|f2t53|soltarpipetaamarilla|soltarpipetaamarilla|2016-05-30T15:59:13.0000000Z
+accionrealizada|f2t54|entregartubomezcla|entregartubomezcla|2016-05-30T15:59:34.0000000Z
+accionrealizada|f2t54|entregartubomezcla|entregartubomezcla|2016-05-30T15:59:37.0000000Z
+accionrealizada|f2t54|entregartubomezcla|entregartubomezcla|2016-05-30T15:59:40.0000000Z
+dependenciabloq|f2t57|cerrarpcr|f2t56|2016-05-30T16:00:01.0000000Z
+dependenciabloq|f3t1|encendertermobloque|f2t60|2016-05-30T16:00:13.0000000Z
+accionrealizada|f2t57|cerrarpcr|cerrarpcr|2016-05-30T16:00:37.0000000Z
+accionrealizada|f2t57|cerrarpcr|cerrarpcr|2016-05-30T16:00:43.0000000Z
+accionrealizada|f2t58|amplificarfragmento|amplificarfragmento|2016-05-30T16:00:57.0000000Z
+accionrealizada|f2t59|entregarmezclapcr|entregarmezclapcr|2016-05-30T16:01:31.0000000Z
+accionnoencontrada| |encendertermobloque| |2016-05-30T16:03:03.0000000Z
+dependenciabloq|f3t11|tomaraguadestilada|f3t6|2016-05-30T16:24:20.0000000Z
+dependenciabloq|f3t7|tomaradnplasmidico|f3t6|2016-05-30T16:25:19.0000000Z
+dependenciabloq|f3t7|tomaradnplasmidico|f3t6|2016-05-30T16:25:47.0000000Z
+dependenciabloq|f3t7|tomaradnplasmidico|f3t6|2016-05-30T16:26:14.0000000Z
+dependenciabloq|f3t32|iniciarmezcla|f3t28|2016-05-30T16:28:26.0000000Z
+accionrealizada|f3t29|entregarpipetaamarilla|entregarpipetaamarilla|2016-05-30T16:29:12.0000000Z
+accionrealizada|f3t31|cargarpuntaamarilla|cargarpuntaamarilla|2016-05-30T16:29:34.0000000Z

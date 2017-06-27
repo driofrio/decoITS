@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+    <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base="">
+        <uri id="Automatically generated entry, Timestamp=1468839297949" name="http://www.owl-ontologies.com/knowledge_object.owl" uri="knowledge_object.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1468839297949" name="http://www.owl-ontologies.com/knowledge_object.owl/other_error.owl" uri="other_error.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1468839297949" name="http://www.owl-ontologies.com/learning_objective.owl" uri="learning_objective.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1468839297949" name="http://www.owl-ontologies.com/student_information" uri="student_information.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1468839297949" name="http://www.owl-ontologies.com/student_monitoring.owl" uri="student_monitoring.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1468839297949" name="http://www.owl-ontologies.com/student_profile.owl" uri="student_profile.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1468839297949" name="http://www.owl-ontologies.com/student_state.owl" uri="student_state.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1468839297949" name="http://www.owl-ontologies.com/student_trace.owl" uri="student_trace.owl"/>
+    </group>
+</catalog>

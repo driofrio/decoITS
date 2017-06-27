@@ -1,0 +1,78 @@
+accionrealizada|f0t1|entregarbata|entregarbata|2015-06-17T09:09:25.0000000Z
+dependenciabloq|f0t4|leerprotocolo|f0t3|2015-06-17T09:14:23.0000000Z
+accionnoencontrada| |agregaragarosa| |2015-06-17T09:38:07.0000000Z
+dependenciasnobloq|f1t20|apagaragitador| f1t14-f1t16|2015-06-17T09:38:39.0000000Z
+accionrealizada|f1t34|entregarbandeja|entregarbandeja|2015-06-17T09:41:10.0000000Z
+accionrealizada|f1t34|entregarbandeja|entregarbandeja|2015-06-17T09:50:35.0000000Z
+accionrealizada|f1t34|entregarbandeja|entregarbandeja|2015-06-17T09:50:37.0000000Z
+accionrealizada|f1t27|autoclavar|autoclavar|2015-06-17T09:52:51.0000000Z
+accionrealizada|f1t27|autoclavar|autoclavar|2015-06-17T09:52:53.0000000Z
+accionrealizada|f1t28|entregarbotellaautoclavada|entregarbotellaautoclavada|2015-06-17T09:54:06.0000000Z
+accionrealizada|f1t28|entregarbotellaautoclavada|entregarbotellaautoclavada|2015-06-17T09:54:08.0000000Z
+accionrealizada|f1t28|entregarbotellaautoclavada|entregarbotellaautoclavada|2015-06-17T09:54:11.0000000Z
+accionrealizada|f1t28|entregarbotellaautoclavada|entregarbotellaautoclavada|2015-06-17T09:54:14.0000000Z
+accionrealizada|f1t28|entregarbotellaautoclavada|entregarbotellaautoclavada|2015-06-17T09:54:16.0000000Z
+accionrealizada|f1t28|entregarbotellaautoclavada|entregarbotellaautoclavada|2015-06-17T09:54:26.0000000Z
+accionrealizada|f1t28|entregarbotellaautoclavada|entregarbotellaautoclavada|2015-06-17T09:54:29.0000000Z
+accionrealizada|f1t28|entregarbotellaautoclavada|entregarbotellaautoclavada|2015-06-17T09:54:32.0000000Z
+accionrealizada|f1t28|entregarbotellaautoclavada|entregarbotellaautoclavada|2015-06-17T09:54:36.0000000Z
+accionrealizada|f1t28|entregarbotellaautoclavada|entregarbotellaautoclavada|2015-06-17T09:54:44.0000000Z
+accionrealizada|f1t30|encendercabina|encendercabina|2015-06-17T09:59:21.0000000Z
+accionrealizada|f1t30|encendercabina|encendercabina|2015-06-17T09:59:38.0000000Z
+accionrealizada|f1t30|encendercabina|encendercabina|2015-06-17T09:59:44.0000000Z
+accionrealizada|f1t30|encendercabina|encendercabina|2015-06-17T09:59:47.0000000Z
+accionrealizada|f1t30|encendercabina|encendercabina|2015-06-17T09:59:49.0000000Z
+accionrealizada|f1t30|encendercabina|encendercabina|2015-06-17T09:59:52.0000000Z
+accionrealizada|f1t30|encendercabina|encendercabina|2015-06-17T10:00:01.0000000Z
+accionrealizada|f1t30|encendercabina|encendercabina|2015-06-17T10:00:04.0000000Z
+accionrealizada|f1t31|contartiempocabina|contartiempocabina|2015-06-17T10:00:24.0000000Z
+dependenciasnobloq|f1t32|soltarbotellacabina|f1t31|2015-06-17T10:00:28.0000000Z
+dependenciabloq|f1t40|cortarplanta|f1t39|2015-06-17T10:02:56.0000000Z
+accionrealizada|f1t37|esterilizar|esterilizar|2015-06-17T10:03:27.0000000Z
+accionnoencontrada| |tomaragrobacterium| |2015-06-17T10:11:50.0000000Z
+accionnoencontrada| |tomaragrobacterium| |2015-06-17T10:15:08.0000000Z
+dependenciabloq|f2t22|tomartampote|f2t6|2015-06-17T10:16:03.0000000Z
+dependenciabloq|f2t7|tomaradn|f2t6|2015-06-17T10:17:46.0000000Z
+dependenciabloq|f2t9|tomaroligonucleicoder|f2t6|2015-06-17T10:18:10.0000000Z
+dependenciabloq|f2t9|tomaroligonucleicoder|f2t6|2015-06-17T10:18:44.0000000Z
+accionnoencontrada| |entregarbandeja| |2015-06-17T10:19:11.0000000Z
+accionnoencontrada| |entregarbandeja| |2015-06-17T10:19:20.0000000Z
+accionnoencontrada| |tomaradnplasmidico| |2015-06-17T10:24:21.0000000Z
+accionrealizada|f2t14|tomaraguadestilada|tomaraguadestilada|2015-06-17T10:25:11.0000000Z
+dependenciabloq|f2t57|cerrarpcr|f2t56|2015-06-17T10:31:01.0000000Z
+dependenciabloq|f2t57|cerrarpcr|f2t56|2015-06-17T10:31:10.0000000Z
+dependenciabloq|f2t57|cerrarpcr|f2t56|2015-06-17T10:31:22.0000000Z
+dependenciabloq|f2t57|cerrarpcr|f2t56|2015-06-17T10:31:39.0000000Z
+accionrealizada|f2t58|amplificarfragmento|amplificarfragmento|2015-06-17T10:32:25.0000000Z
+accionrealizada|f2t58|amplificarfragmento|amplificarfragmento|2015-06-17T10:32:28.0000000Z
+accionrealizada|f2t58|amplificarfragmento|amplificarfragmento|2015-06-17T10:32:31.0000000Z
+dependenciabloq|f2t59|entregarmezclapcr|f2t58|2015-06-17T10:32:39.0000000Z
+accionrealizada|f2t59|entregarmezclapcr|entregarmezclapcr|2015-06-17T10:33:14.0000000Z
+accionrealizada|f2t59|entregarmezclapcr|entregarmezclapcr|2015-06-17T10:33:25.0000000Z
+dependenciabloq|f3t7|tomaradnplasmidico|f3t6|2015-06-17T10:39:47.0000000Z
+accionrealizada|f3t27|soltarbandejapoyata|soltarbandejapoyata|2015-06-17T10:42:04.0000000Z
+dependenciabloq|f3t32|iniciarmezcla|f3t28|2015-06-17T10:42:23.0000000Z
+dependenciabloq|f3t32|iniciarmezcla|f3t28|2015-06-17T10:42:33.0000000Z
+dependenciabloq|f3t32|iniciarmezcla|f3t28|2015-06-17T10:42:42.0000000Z
+dependenciabloq|f3t32|iniciarmezcla|f3t28|2015-06-17T10:42:48.0000000Z
+dependenciabloq|f3t32|iniciarmezcla|f3t28|2015-06-17T10:42:53.0000000Z
+dependenciabloq|f3t32|iniciarmezcla|f3t28|2015-06-17T10:42:59.0000000Z
+dependenciabloq|f3t32|iniciarmezcla|f3t28|2015-06-17T10:43:05.0000000Z
+dependenciabloq|f3t32|iniciarmezcla|f3t28|2015-06-17T10:43:10.0000000Z
+dependenciabloq|f3t32|iniciarmezcla|f3t28|2015-06-17T10:43:22.0000000Z
+dependenciabloq|f3t32|iniciarmezcla|f3t28|2015-06-17T10:43:28.0000000Z
+dependenciabloq|f3t32|iniciarmezcla|f3t28|2015-06-17T10:43:34.0000000Z
+dependenciabloq|f3t32|iniciarmezcla|f3t28|2015-06-17T10:43:39.0000000Z
+dependenciabloq|f3t32|iniciarmezcla|f3t28|2015-06-17T10:43:45.0000000Z
+dependenciabloq|f3t32|iniciarmezcla|f3t28|2015-06-17T10:43:57.0000000Z
+accionrealizada|f3t55|abrirtermobloque|abrirtermobloque|2015-06-17T10:44:12.0000000Z
+accionrealizada|f3t28|sacartuboligacion|sacartuboligacion|2015-06-17T10:44:22.0000000Z
+accionrealizada|f3t28|sacartuboligacion|sacartuboligacion|2015-06-17T10:44:26.0000000Z
+dependenciabloq|f3t32|iniciarmezcla|f3t30|2015-06-17T10:44:32.0000000Z
+dependenciabloq|f3t32|iniciarmezcla|f3t31|2015-06-17T10:44:59.0000000Z
+dependenciabloq|f3t32|iniciarmezcla|f3t31|2015-06-17T10:45:06.0000000Z
+accionrealizada|f3t31|cargarpuntaamarilla|cargarpuntaamarilla|2015-06-17T10:45:24.0000000Z
+dependenciasnobloq|f3t52|finmezcla|f3t34|2015-06-17T10:46:28.0000000Z
+dependenciabloq|f3t57|cerrartermobloque|f3t56|2015-06-17T10:47:45.0000000Z
+dependenciabloq|f3t57|cerrartermobloque|f3t56|2015-06-17T10:48:00.0000000Z
+accionnoencontrada| |entregarchopocrecido| |2015-06-17T10:58:45.0000000Z

@@ -1,0 +1,9 @@
+accionrealizada|f0t1|entregarTaza|entregarTaza|2014-05-13T14:16:04.0000000Z
+accionrealizada|f0t2|agregarcafe|agregarcafe|2014-05-13T14:19:22.0000000Z
+dependenciabloq|f0t2|agregarcafe|f0t1|2014-05-13T14:20:06.0000000Z
+dependenciabloq|f0t3|agregarleche|f0t1|2014-05-13T14:20:10.0000000Z
+dependenciabloq|f0t2|agregarcafe|f0t1|2014-05-13T14:21:01.0000000Z
+dependenciabloq|f0t6|sentarse|f0t5|2014-05-13T14:24:06.0000000Z
+accionrealizada|f0t4|agregarazucar|agregarazucar|2014-05-14T14:44:59.0000000Z
+accionrealizada|f0t3|agregarleche|agregarleche|2014-05-14T14:45:04.0000000Z
+accionrealizada|f0t2|agregarcafe|agregarcafe|2014-05-14T14:45:08.0000000Z

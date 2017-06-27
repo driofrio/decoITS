@@ -1,0 +1,70 @@
+dependenciabloq|f0t8|entregarguantes|f0t7|2016-05-30T14:33:47.0000000Z
+accionrealizada|f0t8|entregarguantes|entregarguantes|2016-05-30T14:35:02.0000000Z
+accionrealizada|f0t8|entregarguantes|entregarguantes|2016-05-30T14:35:45.0000000Z
+dependenciasnobloq|f1t14|ajustarph| f1t12-f1t13|2016-05-30T14:40:13.0000000Z
+dependenciasnobloq|f1t16|agregaragar| f1t12-f1t13-ord_f1t16|2016-05-30T14:40:51.0000000Z
+accionrealizada|f1t16|agregaragar|agregaragar|2016-05-30T14:41:25.0000000Z
+accionrealizada|f1t16|agregaragar|agregaragar|2016-05-30T14:41:32.0000000Z
+dependenciasnobloq|f1t20|apagaragitador| f1t12-f1t13|2016-05-30T14:41:50.0000000Z
+accionrealizada|f1t20|apagaragitador|apagaragitador|2016-05-30T14:41:58.0000000Z
+dependenciabloq|f1t28|entregarbotellaautoclavada|f1t27|2016-05-30T14:44:36.0000000Z
+dependenciabloq|f1t28|entregarbotellaautoclavada|f1t27|2016-05-30T14:44:44.0000000Z
+dependenciasnobloq|f1t32|soltarbotellacabina|f1t31|2016-05-30T14:49:12.0000000Z
+accionrealizada|f1t33|agregariaa|agregariaa|2016-05-30T14:52:14.0000000Z
+dependenciabloq|f1t40|cortarplanta|f1t39|2016-05-30T14:55:34.0000000Z
+dependenciabloq|f1t40|cortarplanta|f1t39|2016-05-30T14:55:46.0000000Z
+dependenciabloq|f1t40|cortarplanta|f1t39|2016-05-30T14:55:49.0000000Z
+dependenciabloq|f1t40|cortarplanta|f1t39|2016-05-30T14:55:52.0000000Z
+dependenciabloq|f1t40|cortarplanta|f1t39|2016-05-30T14:56:23.0000000Z
+dependenciabloq|f1t40|cortarplanta|f1t39|2016-05-30T14:56:26.0000000Z
+dependenciabloq|f1t40|cortarplanta|f1t39|2016-05-30T14:56:28.0000000Z
+dependenciabloq|f1t40|cortarplanta|f1t39|2016-05-30T14:56:31.0000000Z
+accionrealizada|f1t37|esterilizar|esterilizar|2016-05-30T14:57:35.0000000Z
+dependenciabloq|f2t60|guardarpcr|f2t59|2016-05-30T15:12:22.0000000Z
+dependenciabloq|f2t60|guardarpcr|f2t59|2016-05-30T15:12:30.0000000Z
+accionrealizada|f2t13|tomarpolimerasa|tomarpolimerasa|2016-05-30T15:20:25.0000000Z
+dependenciabloq|f2t33|iniciarmezcla|f2t29|2016-05-30T15:26:37.0000000Z
+dependenciabloq|f2t32|cargarpuntaamarilla|f2t31|2016-05-30T15:27:15.0000000Z
+dependenciabloq|f2t32|cargarpuntaamarilla|f2t31|2016-05-30T15:27:20.0000000Z
+dependenciabloq|f2t32|cargarpuntaamarilla|f2t31|2016-05-30T15:27:25.0000000Z
+dependenciabloq|f2t32|cargarpuntaamarilla|f2t31|2016-05-30T15:27:28.0000000Z
+accionrealizada|f2t30|entregarpipetaamarilla|entregarpipetaamarilla|2016-05-30T15:27:50.0000000Z
+dependenciabloq|f2t33|iniciarmezcla|f2t32|2016-05-30T15:28:25.0000000Z
+accionnoencontrada| |sacartuboligacion| |2016-05-30T15:28:30.0000000Z
+dependenciasnobloq|f2t52|finmezcla|f2t34-f2t35-f2t36-f2t37-f2t38-f2t39-f2t40-f2t41|2016-05-30T15:28:59.0000000Z
+accionrealizada|f2t33|iniciarmezcla|iniciarmezcla|2016-05-30T15:29:43.0000000Z
+accionrealizada|f2t33|iniciarmezcla|iniciarmezcla|2016-05-30T15:29:46.0000000Z
+accionrealizada|f2t52|finmezcla|finmezcla|2016-05-30T15:31:27.0000000Z
+accionrealizada|f2t32|cargarpuntaamarilla|cargarpuntaamarilla|2016-05-30T15:31:44.0000000Z
+accionrealizada|f2t32|cargarpuntaamarilla|cargarpuntaamarilla|2016-05-30T15:31:47.0000000Z
+accionnoencontrada| |sacartuboligacion| |2016-05-30T15:31:59.0000000Z
+accionrealizada|f2t32|cargarpuntaamarilla|cargarpuntaamarilla|2016-05-30T15:32:22.0000000Z
+dependenciasnobloq|f2t52|finmezcla|f2t35|2016-05-30T15:47:05.0000000Z
+dependenciabloq|f2t54|entregartubomezcla|f2t53|2016-05-30T15:49:59.0000000Z
+dependenciabloq|f2t54|entregartubomezcla|f2t53|2016-05-30T15:50:06.0000000Z
+dependenciabloq|f2t54|entregartubomezcla|f2t53|2016-05-30T15:51:21.0000000Z
+accionrealizada|f2t57|cerrarpcr|cerrarpcr|2016-05-30T15:53:17.0000000Z
+dependenciabloq|f2t59|entregarmezclapcr|f2t58|2016-05-30T15:53:38.0000000Z
+dependenciabloq|f3t32|iniciarmezcla|f3t31|2016-05-30T16:02:51.0000000Z
+accionrealizada|f3t31|cargarpuntaamarilla|cargarpuntaamarilla|2016-05-30T16:03:15.0000000Z
+accionrealizada|f3t31|cargarpuntaamarilla|cargarpuntaamarilla|2016-05-30T16:03:18.0000000Z
+accionrealizada|f3t31|cargarpuntaamarilla|cargarpuntaamarilla|2016-05-30T16:03:21.0000000Z
+accionrealizada|f3t31|cargarpuntaamarilla|cargarpuntaamarilla|2016-05-30T16:03:24.0000000Z
+accionrealizada|f3t31|cargarpuntaamarilla|cargarpuntaamarilla|2016-05-30T16:03:27.0000000Z
+accionrealizada|f3t31|cargarpuntaamarilla|cargarpuntaamarilla|2016-05-30T16:03:30.0000000Z
+accionrealizada|f3t31|cargarpuntaamarilla|cargarpuntaamarilla|2016-05-30T16:03:33.0000000Z
+accionrealizada|f3t31|cargarpuntaamarilla|cargarpuntaamarilla|2016-05-30T16:03:36.0000000Z
+accionrealizada|f3t31|cargarpuntaamarilla|cargarpuntaamarilla|2016-05-30T16:03:40.0000000Z
+accionrealizada|f3t31|cargarpuntaamarilla|cargarpuntaamarilla|2016-05-30T16:03:43.0000000Z
+accionrealizada|f3t32|iniciarmezcla|iniciarmezcla|2016-05-30T16:03:53.0000000Z
+accionrealizada|f3t32|iniciarmezcla|iniciarmezcla|2016-05-30T16:03:56.0000000Z
+accionrealizada|f3t32|iniciarmezcla|iniciarmezcla|2016-05-30T16:04:00.0000000Z
+accionrealizada|f3t32|iniciarmezcla|iniciarmezcla|2016-05-30T16:04:03.0000000Z
+accionrealizada|f3t32|iniciarmezcla|iniciarmezcla|2016-05-30T16:04:06.0000000Z
+accionrealizada|f3t32|iniciarmezcla|iniciarmezcla|2016-05-30T16:04:09.0000000Z
+accionrealizada|f3t32|iniciarmezcla|iniciarmezcla|2016-05-30T16:04:12.0000000Z
+accionrealizada|f3t32|iniciarmezcla|iniciarmezcla|2016-05-30T16:04:15.0000000Z
+accionrealizada|f3t32|iniciarmezcla|iniciarmezcla|2016-05-30T16:04:24.0000000Z
+accionrealizada|f3t32|iniciarmezcla|iniciarmezcla|2016-05-30T16:04:28.0000000Z
+accionrealizada|f3t37|agregaraguadestilada|agregaraguadestilada|2016-05-30T16:05:01.0000000Z
+accionnoencontrada| |guardarpcr| |2016-05-30T16:07:57.0000000Z

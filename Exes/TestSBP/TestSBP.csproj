@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{43243ACD-CE82-4C80-9281-78D94F24997D}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>TestSBP</RootNamespace>
+    <AssemblyName>TestSBP</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ExternalConsole>true</ExternalConsole>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ExternalConsole>true</ExternalConsole>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="DocumentFormat.OpenXml">
+      <HintPath>..\..\packages\DocumentFormat.OpenXml.2.5\lib\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>..\..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Excel">
+      <HintPath>..\..\packages\ExcelDataReader.2.1.2.3\lib\net45\Excel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AnalysisServices.AdomdClient">
+      <HintPath>..\..\packages\Microsoft.AnalysisServices.AdomdClient.12.0.2000.8\lib\net40\Microsoft.AnalysisServices.AdomdClient.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="System.Configuration" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="default.xlsx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestSBP.exe.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\ExpertModule\Its.ExpertModule\Its.ExpertModule.csproj">
+      <Project>{053D479C-7695-452A-ABFF-237300DB84AE}</Project>
+      <Name>Its.ExpertModule</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ExpertModule\Its.ExpertModule.ObjectModel\Its.ExpertModule.OM.csproj">
+      <Project>{8B928308-3D38-4CF5-8352-162A23F9A5EA}</Project>
+      <Name>Its.ExpertModule.OM</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\TutoringModule\StudentBehaviorPredictor\Its.TutoringModule.StudentBehaviorPredictor\Its.TutoringModule.SBP.csproj">
+      <Project>{1DCD1835-3CDF-4792-BFED-0F29DDD673D3}</Project>
+      <Name>Its.TutoringModule.SBP</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\StudentModule\Its.StudentModule\Its.StudentModule.csproj">
+      <Project>{C407248F-9674-45D8-B58F-72A2684555AB}</Project>
+      <Name>Its.StudentModule</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\StudentModule\Its.StudentModule.ObjectModel\Its.StudentModule.OM.csproj">
+      <Project>{EEED4FBB-9FCA-46C9-927A-765F7BC05666}</Project>
+      <Name>Its.StudentModule.OM</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\TutoringModule\StudentBehaviorPredictor\Its.TutoringModule.StudentBehaviorPredictor.ObjectModel\Its.TutoringModule.SBP.OM.csproj">
+      <Project>{4291FE15-F73C-4C84-9518-6E41FD722163}</Project>
+      <Name>Its.TutoringModule.SBP.OM</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Utils\Its.Utils.Math\Its.Utils.Math.csproj">
+      <Project>{39C82212-9961-42EE-8030-686514AB7B92}</Project>
+      <Name>Its.Utils.Math</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\WorldModule\Its.WorldModule\Its.WorldModule.csproj">
+      <Project>{44A3A108-F052-4126-A905-4ADEC242E7E9}</Project>
+      <Name>Its.WorldModule</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\TutoringModule\TutoringCoordinator\ReactiveTutor\Its.TutoringModule.TutoringCoordinator.ReactiveTutor.ObjectModel\Its.TutoringModule.TC.RTutor.OM.csproj">
+      <Project>{BE49666E-929B-4CF9-9F37-DDB4E4D6C762}</Project>
+      <Name>Its.TutoringModule.TC.RTutor.OM</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:knowledge_object="http://www.owl-ontologies.com/knowledge_object.owl#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xml:base="http://www.owl-ontologies.com/knowledge_object.owl/other_error.owl">
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl"/>
+  </owl:Ontology>
+  <knowledge_object:Condition_On_State rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#action_not_found">
+    <knowledge_object:idObject rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >actionnotfound</knowledge_object:idObject>
+    <knowledge_object:descriptorObject rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Error: Acción no encontrada, ésta puede pertenecer a una fase diferente o a otro protocolo de trabajo.</knowledge_object:descriptorObject>
+  </knowledge_object:Condition_On_State>
+  <knowledge_object:Condition_On_State rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#action_already_performed">
+    <knowledge_object:idObject rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >actionalreadyperformed</knowledge_object:idObject>
+    <knowledge_object:descriptorObject rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Error: La acción ya ha sido realizada.</knowledge_object:descriptorObject>
+  </knowledge_object:Condition_On_State>
+</rdf:RDF>
+
+<!-- Created with TopBraid -->

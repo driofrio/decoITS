@@ -1,0 +1,8 @@
+biotech|sillaCafe|Walk_Near_Available_Object|<124,76,23>|<123,76,24>
+biotech|sillaCafe|Walk_Near_Available_Object|<124,75,23>|<124,75,24>
+biotech|sillaCafe|Walk_Near_Available_Object|<123,75,23>|<123,75,24>
+biotech|sillaCafe|Walk_Near_Available_Object|<123,76,23>|<123,76,24>
+biotech|sillaCafe|Walk_Near_Available_Object|<124,73,23>|<123,73,24>
+biotech|sillaCafe|Walk_Near_Available_Object|<124,71,23>|<124,72,24>
+biotech|sillaCafe|Walk_Near_Available_Object|<123,72,23>|<123,72,24>
+biotech|sillaCafe|Walk_Near_Available_Object|<122,73,23>|<123,73,24>

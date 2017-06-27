@@ -1,0 +1,19 @@
+﻿<Properties StartupConfiguration="{D8D5CC73-1667-4735-A746-54E5F9E09DB4}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="VisualizadorWebMCCE/Web.config">
+    <Files>
+      <File FileName="VisualizadorWebMCCE/Views/Shared/_Layout.cshtml" Line="7" Column="36" />
+      <File FileName="VisualizadorWebMCCE/packages.config" Line="1" Column="1" />
+      <File FileName="WebApplication1/packages.config" Line="1" Column="1" />
+      <File FileName="WebApplication1/Web.config" Line="77" Column="57" />
+      <File FileName="VisualizadorWebMCCE/Web.config" Line="77" Column="85" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.WebApplication1 PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.ItemProperties.VisualizadorWebMCCE PreferredExecutionTarget="MonoDevelop.Default" />
+</Properties>

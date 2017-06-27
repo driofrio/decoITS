@@ -1,0 +1,26 @@
+accionrealizada|f0t1|entregarbata|entregarbata|2013-05-09T15:15:08.0000000Z
+accionrealizada|f0t2|bloquearpoyata|bloquearpoyata|2013-05-09T15:27:44.0000000Z
+accionrealizada|f0t2|bloquearpoyata|bloquearpoyata|2013-05-09T15:27:51.0000000Z
+dependenciasnobloq|f1t1|entregarvaso| f0t7-f0t8|2013-05-09T15:31:48.0000000Z
+dependenciasnobloq|f1t20|apagaragitador| f1t14-f1t16|2013-05-09T15:37:58.0000000Z
+dependenciasnobloq|f1t21|entregarbotella|f0t8|2013-05-09T15:38:32.0000000Z
+dependenciasnobloq|f1t32|soltarbotellacabina|f1t31|2013-05-09T15:46:58.0000000Z
+accionnoencontrada| |entregarchopocrecido| |2013-05-09T15:54:03.0000000Z
+accionnoencontrada| |entregarguantes| |2013-05-09T15:58:30.0000000Z
+accionnoencontrada| |entregarguantes| |2013-05-09T15:58:35.0000000Z
+dependenciabloq|f2t32|cargarpuntaamarilla|f2t31|2013-05-09T16:00:35.0000000Z
+dependenciabloq|f2t33|iniciarmezcla|f2t31|2013-05-09T16:00:39.0000000Z
+dependenciasnobloq|f2t52|finmezcla|f2t34-f2t35-f2t36-f2t37-f2t38-f2t39-f2t40-f2t41|2013-05-09T16:01:34.0000000Z
+dependenciabloq|f2t54|entregartubomezcla|f2t53|2013-05-09T16:01:56.0000000Z
+accionrealizada|f2t57|cerrarpcr|cerrarpcr|2013-05-09T16:05:34.0000000Z
+accionrealizada|f2t57|cerrarpcr|cerrarpcr|2013-05-09T16:05:36.0000000Z
+dependenciabloq|f2t59|entregarmezclapcr|f2t58|2013-05-09T16:05:38.0000000Z
+dependenciabloq|f2t59|entregarmezclapcr|f2t58|2013-05-09T16:05:40.0000000Z
+dependenciabloq|f2t59|entregarmezclapcr|f2t58|2013-05-09T16:05:42.0000000Z
+dependenciabloq|f2t59|entregarmezclapcr|f2t58|2013-05-09T16:05:44.0000000Z
+dependenciabloq|f2t59|entregarmezclapcr|f2t58|2013-05-09T16:05:52.0000000Z
+accionrealizada|f3t5|entregarbandejahielo|entregarbandejahielo|2013-05-09T16:13:13.0000000Z
+dependenciabloq|f3t53|soltarpipetaamarilla|f3t52|2013-05-09T16:16:28.0000000Z
+dependenciabloq|f3t53|soltarpipetaamarilla|f3t52|2013-05-09T16:16:30.0000000Z
+dependenciabloq|f3t58|amplificarfragmento|f3t57|2013-05-09T16:18:15.0000000Z
+accionrealizada|f3t59|entregarmezclaligacion|entregarmezclaligacion|2013-05-09T16:18:38.0000000Z

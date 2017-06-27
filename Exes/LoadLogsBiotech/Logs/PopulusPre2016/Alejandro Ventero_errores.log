@@ -1,0 +1,19 @@
+accionnoencontrada| |encenderpcr| |2014-05-29T17:26:04.0000000Z
+accionnoencontrada| |lavarsemanos| |2014-05-29T17:34:10.0000000Z
+accionnoencontrada| |lavarsemanos| |2014-05-29T17:34:15.0000000Z
+accionnoencontrada| |lavarsemanos| |2014-05-29T17:34:22.0000000Z
+accionnoencontrada| |lavarsemanos| |2014-05-29T17:34:26.0000000Z
+dependenciasnobloq|f1t16|agregaragar| f1t12-f1t13-f1t14|2014-05-29T17:38:21.0000000Z
+accionnoencontrada| |agregaragarosa| |2014-05-29T17:38:28.0000000Z
+accionnoencontrada| |agregaragarosa| |2014-05-29T17:38:37.0000000Z
+accionnoencontrada| |agregaragarosa| |2014-05-29T17:39:12.0000000Z
+dependenciasnobloq|f1t20|apagaragitador| f1t14-ord_f1t20|2014-05-29T17:39:26.0000000Z
+incompatibilidadnobloq|f1t20|apagaragitador|f1t17-f1t18-f1t19|2014-05-29T17:39:26.0000000Z
+dependenciasnobloq|f1t32|soltarbotellacabina|f1t31|2014-05-29T18:02:31.0000000Z
+accionrealizada|f1t36|llenarbotes|llenarbotes|2014-05-29T18:06:10.0000000Z
+accionrealizada|f1t38|entregarchopo|entregarchopo|2014-05-29T18:12:30.0000000Z
+accionrealizada|f2t5|entregarbandejahielo|entregarbandejahielo|2014-05-29T18:14:57.0000000Z
+accionrealizada|f2t32|cargarpuntaamarilla|cargarpuntaamarilla|2014-05-29T18:20:13.0000000Z
+dependenciasnobloq|f2t52|finmezcla|f2t34-f2t35-f2t36-f2t37-f2t38-f2t39-f2t40-f2t41|2014-05-29T18:20:53.0000000Z
+accionnoencontrada| |encenderpcr| |2014-05-29T18:36:52.0000000Z
+dependenciabloq|f3t57|cerrartermobloque|f3t56|2014-05-29T18:37:56.0000000Z

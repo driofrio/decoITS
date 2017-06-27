@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F61F36FF-7AB3-4027-BD01-74F3528ED088}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Its.Factories</RootNamespace>
+    <AssemblyName>Its.Factories</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DomainActionsFactory.cs" />
+    <Compile Include="StudentFactory.cs" />
+    <Compile Include="WorldObjectFactory.cs" />
+    <Compile Include="ErrorFactory.cs" />
+    <Compile Include="DomainLogFactory.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\..\ExpertModule\Its.ExpertModule.Common\Its.ExpertModule.Common.csproj">
+      <Project>{90EC71AE-5D04-4B54-8896-6473288FAED2}</Project>
+      <Name>Its.ExpertModule.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Its.Factories.Common\Its.Factories.Common.csproj">
+      <Project>{766D89B3-D51B-4C4C-8EAA-2C2F67BDE656}</Project>
+      <Name>Its.Factories.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\TutoringModule\TutoringCoordinator\ReactiveTutor\Its.TutoringModule.TutoringCoordinator.ReactiveTutor.ObjectModel\Its.TutoringModule.TC.RTutor.OM.csproj">
+      <Project>{BE49666E-929B-4CF9-9F37-DDB4E4D6C762}</Project>
+      <Name>Its.TutoringModule.TC.RTutor.OM</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\StudentModule\Its.StudentModule.ObjectModel\Its.StudentModule.OM.csproj">
+      <Project>{EEED4FBB-9FCA-46C9-927A-765F7BC05666}</Project>
+      <Name>Its.StudentModule.OM</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ExpertModule\Its.ExpertModule.ObjectModel\Its.ExpertModule.OM.csproj">
+      <Project>{8B928308-3D38-4CF5-8352-162A23F9A5EA}</Project>
+      <Name>Its.ExpertModule.OM</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\WorldModule\Its.WorldModule.ObjectModel\Its.WorldModule.OM.csproj">
+      <Project>{44633A11-BD1B-4200-8EA5-F7803F05DBFD}</Project>
+      <Name>Its.WorldModule.OM</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\WorldModule\Its.WorldModule.DataAccess\Its.WorldModule.DA.csproj">
+      <Project>{3F387D19-6C0A-4A35-9D5B-34C710D19D5F}</Project>
+      <Name>Its.WorldModule.DA</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\StudentModule\Its.StudentModule.DataAccess\Its.StudentModule.DA.csproj">
+      <Project>{B16D75E5-FEC4-4F6E-BBAC-4F004F0581C4}</Project>
+      <Name>Its.StudentModule.DA</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ExpertModule\Its.ExpertModule.DataAccess\Its.ExpertModule.DA.csproj">
+      <Project>{71BC8EB6-FCB3-45A2-B1A2-1FEC565C19E5}</Project>
+      <Name>Its.ExpertModule.DA</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,27 @@
+accionrealizada|f0t2|bloquearpoyata|bloquearpoyata|2013-05-23T15:53:10.0000000Z
+accionrealizada|f0t2|bloquearpoyata|bloquearpoyata|2013-05-23T15:53:20.0000000Z
+accionrealizada|f0t2|bloquearpoyata|bloquearpoyata|2013-05-23T15:53:44.0000000Z
+accionnoencontrada| |entregarbandejahielo| |2013-05-23T16:16:59.0000000Z
+accionrealizada|f1t13|agregarsacarosa|agregarsacarosa|2013-05-23T16:18:02.0000000Z
+dependenciasnobloq|f1t20|apagaragitador| f1t14-f1t16|2013-05-23T16:20:36.0000000Z
+accionrealizada|f1t28|entregarbotellaautoclavada|entregarbotellaautoclavada|2013-05-23T16:26:07.0000000Z
+accionrealizada|f1t28|entregarbotellaautoclavada|entregarbotellaautoclavada|2013-05-23T16:26:09.0000000Z
+accionrealizada|f1t28|entregarbotellaautoclavada|entregarbotellaautoclavada|2013-05-23T16:26:19.0000000Z
+accionrealizada|f1t28|entregarbotellaautoclavada|entregarbotellaautoclavada|2013-05-23T16:26:34.0000000Z
+dependenciasnobloq|f1t32|soltarbotellacabina|f1t31|2013-05-23T16:33:13.0000000Z
+dependenciasnobloq|f1t37|esterilizar|f1t31|2013-05-23T16:34:07.0000000Z
+accionrealizada|f1t37|esterilizar|esterilizar|2013-05-23T16:34:14.0000000Z
+dependenciabloq|f1t40|cortarplanta|f1t39|2013-05-23T16:39:13.0000000Z
+dependenciabloq|f1t40|cortarplanta|f1t39|2013-05-23T16:39:53.0000000Z
+accionrealizada|f1t37|esterilizar|esterilizar|2013-05-23T16:40:29.0000000Z
+accionrealizada|f1t37|esterilizar|esterilizar|2013-05-23T16:40:31.0000000Z
+accionrealizada|f1t42|apagarcabina|apagarcabina|2013-05-23T16:42:52.0000000Z
+accionnoencontrada| |entregarbandejahielo| |2013-05-23T16:48:28.0000000Z
+accionnoencontrada| |entregarbandejahielo| |2013-05-23T16:48:32.0000000Z
+accionrealizada|f2t5|entregarbandejahielo|entregarbandejahielo|2013-05-23T16:49:52.0000000Z
+dependenciabloq|f2t33|iniciarmezcla|f2t31|2013-05-23T17:06:07.0000000Z
+accionrealizada|f2t33|iniciarmezcla|iniciarmezcla|2013-05-23T17:07:19.0000000Z
+dependenciasnobloq|f2t52|finmezcla|f2t34-f2t35-f2t36-f2t37-f2t38-f2t39-f2t40-f2t41|2013-05-23T17:07:51.0000000Z
+dependenciabloq|f3t57|cerrartermobloque|f3t56|2013-05-23T17:19:23.0000000Z
+dependenciabloq|f3t58|amplificarfragmento|f3t57|2013-05-23T17:20:01.0000000Z
+accionrealizada|f3t58|amplificarfragmento|amplificarfragmento|2013-05-23T17:20:21.0000000Z

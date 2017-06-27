@@ -1,0 +1,47 @@
+accionrealizada|f0t1|entregarbata|entregarbata|2015-06-16T10:19:02.0000000Z
+accionrealizada|f0t1|entregarbata|entregarbata|2015-06-16T10:19:11.0000000Z
+dependenciabloq|f0t4|leerprotocolo|f0t3|2015-06-16T10:35:11.0000000Z
+accionrealizada|f0t2|bloquearpoyata|bloquearpoyata|2015-06-16T10:36:59.0000000Z
+accionrealizada|f0t2|bloquearpoyata|bloquearpoyata|2015-06-16T10:37:04.0000000Z
+accionrealizada|f0t2|bloquearpoyata|bloquearpoyata|2015-06-16T10:37:10.0000000Z
+accionrealizada|f0t2|bloquearpoyata|bloquearpoyata|2015-06-16T10:37:25.0000000Z
+accionrealizada|f0t2|bloquearpoyata|bloquearpoyata|2015-06-16T10:40:24.0000000Z
+accionnoencontrada| |lavarsemanos| |2015-06-16T10:59:10.0000000Z
+accionnoencontrada| |entregarvaso| |2015-06-16T11:25:26.0000000Z
+accionrealizada|f1t6|llenarvasoconagua|llenarvasoconagua|2015-06-16T11:26:05.0000000Z
+dependenciabloq|f1t14|ajustarph|f1t11|2015-06-16T11:51:14.0000000Z
+dependenciabloq|f1t14|ajustarph|f1t11|2015-06-16T11:51:45.0000000Z
+dependenciabloq|f1t14|ajustarph|f1t11|2015-06-16T11:51:47.0000000Z
+dependenciabloq|f1t14|ajustarph|f1t11|2015-06-16T11:51:50.0000000Z
+accionrealizada|f1t11|encenderagitador|encenderagitador|2015-06-16T11:52:00.0000000Z
+dependenciasnobloq|f1t14|ajustarph| f1t12-f1t13|2015-06-16T11:52:01.0000000Z
+accionrealizada|f1t14|ajustarph|ajustarph|2015-06-16T11:52:05.0000000Z
+dependenciasnobloq|f1t20|apagaragitador| f1t12-f1t13-f1t16|2015-06-16T11:52:36.0000000Z
+accionrealizada|f1t11|encenderagitador|encenderagitador|2015-06-16T11:52:57.0000000Z
+accionnoencontrada| |entregarchopocrecido| |2015-06-16T12:15:34.0000000Z
+dependenciabloq|f2t55|abrirpcr|f2t4|2015-06-16T12:17:31.0000000Z
+accionnoencontrada| |bloquearpoyata| |2015-06-16T12:19:01.0000000Z
+dependenciabloq|f2t32|cargarpuntaamarilla|f2t31|2015-06-16T12:21:11.0000000Z
+dependenciabloq|f2t32|cargarpuntaamarilla|f2t31|2015-06-16T12:21:28.0000000Z
+accionrealizada|f2t30|entregarpipetaamarilla|entregarpipetaamarilla|2015-06-16T12:21:36.0000000Z
+accionnoencontrada| |sacartuboligacion| |2015-06-16T12:22:09.0000000Z
+dependenciasnobloq|f2t52|finmezcla|f2t34-f2t35-f2t36-f2t37-f2t38-f2t39-f2t40-f2t41|2015-06-16T12:24:44.0000000Z
+accionnoencontrada| |sacartuboligacion| |2015-06-16T12:27:01.0000000Z
+accionnoencontrada| |encenderpcr| |2015-06-16T12:27:31.0000000Z
+accionnoencontrada| |encenderpcr| |2015-06-16T12:27:39.0000000Z
+accionnoencontrada| |encenderpcr| |2015-06-16T12:28:01.0000000Z
+accionnoencontrada| |encenderpcr| |2015-06-16T12:28:10.0000000Z
+dependenciabloq|f2t57|cerrarpcr|f2t56|2015-06-16T12:28:15.0000000Z
+dependenciabloq|f2t57|cerrarpcr|f2t56|2015-06-16T12:28:21.0000000Z
+dependenciabloq|f2t57|cerrarpcr|f2t56|2015-06-16T12:28:31.0000000Z
+dependenciabloq|f3t1|encendertermobloque|f2t60|2015-06-16T12:28:34.0000000Z
+dependenciabloq|f3t1|encendertermobloque|f2t60|2015-06-16T12:28:42.0000000Z
+accionrealizada|f2t57|cerrarpcr|cerrarpcr|2015-06-16T12:30:48.0000000Z
+dependenciabloq|f2t24|agregariaa|f2t6|2015-06-16T12:31:55.0000000Z
+accionnoencontrada| |guardarligacion| |2015-06-16T12:32:16.0000000Z
+dependenciabloq|f3t19|tomarplasmidomirna|f3t6|2015-06-16T12:37:21.0000000Z
+dependenciabloq|f3t9|tomartamponligasa|f3t6|2015-06-16T12:37:41.0000000Z
+dependenciabloq|f3t31|cargarpuntaamarilla|f3t30|2015-06-16T12:40:41.0000000Z
+dependenciasnobloq|f3t52|finmezcla|f3t33-f3t34-f3t37|2015-06-16T12:42:01.0000000Z
+incompatibilidadnobloq|f3t52|finmezcla|f3t44|2015-06-16T12:42:06.0000000Z
+dependenciabloq|f3t57|cerrartermobloque|f3t56|2015-06-16T12:43:05.0000000Z

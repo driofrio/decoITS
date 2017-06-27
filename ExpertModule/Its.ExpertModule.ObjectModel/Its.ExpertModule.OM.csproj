@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8B928308-3D38-4CF5-8352-162A23F9A5EA}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Its.ExpertModule.OM</RootNamespace>
+    <AssemblyName>Its.ExpertModule.OM</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ComplexDependence.cs" />
+    <Compile Include="SimpleDependence.cs" />
+    <Compile Include="DomainActions.cs" />
+    <Compile Include="Incompatibility.cs" />
+    <Compile Include="ActionAplication.cs" />
+    <Compile Include="Dependence.cs" />
+    <Compile Include="SeqComplexDependence.cs" />
+    <Compile Include="OptComplexDependence.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\..\TutoringModule\TutoringCoordinator\ReactiveTutor\Its.TutoringModule.TutoringCoordinator.ReactiveTutor.ObjectModel\Its.TutoringModule.TC.RTutor.OM.csproj">
+      <Project>{BE49666E-929B-4CF9-9F37-DDB4E4D6C762}</Project>
+      <Name>Its.TutoringModule.TC.RTutor.OM</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

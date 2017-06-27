@@ -1,0 +1,41 @@
+accionnoencontrada| |entregarbata| |2014-05-21T16:29:08.0000000Z
+accionrealizada|f0t1|entregarbata|entregarbata|2014-05-21T16:34:33.0000000Z
+accionnoencontrada| |agregaragarosa| |2014-05-21T17:04:15.0000000Z
+accionnoencontrada| |agregaragarosa| |2014-05-21T17:04:46.0000000Z
+dependenciasnobloq|f1t20|apagaragitador| f1t16|2014-05-21T17:05:09.0000000Z
+accionnoencontrada| |tomartampote| |2014-05-21T17:13:12.0000000Z
+accionnoencontrada| |tomaraguadestilada| |2014-05-21T17:13:28.0000000Z
+accionnoencontrada| |tomartampote| |2014-05-21T17:13:53.0000000Z
+accionnoencontrada| |tomartampote| |2014-05-21T17:16:32.0000000Z
+accionnoencontrada| |tomaraguadestilada| |2014-05-21T17:16:44.0000000Z
+accionrealizada|f1t38|entregarchopo|entregarchopo|2014-05-21T17:18:57.0000000Z
+accionnoencontrada| |entregarboteeppendorf| |2014-05-21T17:21:08.0000000Z
+accionrealizada|f1t37|esterilizar|esterilizar|2014-05-21T17:22:12.0000000Z
+accionrealizada|f1t37|esterilizar|esterilizar|2014-05-21T17:22:20.0000000Z
+dependenciabloq|f2t22|tomartampote|f2t6|2014-05-21T17:33:36.0000000Z
+accionrealizada|f2t22|tomartampote|tomartampote|2014-05-21T17:38:42.0000000Z
+accionnoencontrada| |sacartuboligacion| |2014-05-21T17:40:58.0000000Z
+dependenciasnobloq|f2t52|finmezcla|f2t34-f2t35-f2t36-f2t37-f2t38-f2t39-f2t40|2014-05-21T17:41:11.0000000Z
+incompatibilidadnobloq|f2t52|finmezcla|f2t49|2014-05-21T17:41:14.0000000Z
+accionrealizada|f2t30|entregarpipetaamarilla|entregarpipetaamarilla|2014-05-21T17:44:26.0000000Z
+dependenciabloq|f2t59|entregarmezclapcr|f2t58|2014-05-21T17:47:43.0000000Z
+accionrealizada|f3t55|abrirtermobloque|abrirtermobloque|2014-05-21T17:56:17.0000000Z
+dependenciabloq|f3t25|tomarmezclaligacion|f3t6|2014-05-21T17:57:40.0000000Z
+dependenciabloq|f3t57|cerrartermobloque|f3t56|2014-05-21T17:58:09.0000000Z
+dependenciabloq|f3t32|iniciarmezcla|f3t31|2014-05-21T18:06:02.0000000Z
+accionrealizada|f3t31|cargarpuntaamarilla|cargarpuntaamarilla|2014-05-21T18:06:44.0000000Z
+accionrealizada|f3t32|iniciarmezcla|iniciarmezcla|2014-05-21T18:07:06.0000000Z
+accionrealizada|f3t27|soltarbandejapoyata|soltarbandejapoyata|2014-05-21T18:08:44.0000000Z
+dependenciabloq|f3t32|iniciarmezcla|f3t30|2014-05-21T18:08:53.0000000Z
+accionrealizada|f3t32|iniciarmezcla|iniciarmezcla|2014-05-21T18:09:27.0000000Z
+accionrealizada|f3t32|iniciarmezcla|iniciarmezcla|2014-05-21T18:09:31.0000000Z
+accionrealizada|f3t33|agregaradnplasmidico|agregaradnplasmidico|2014-05-21T18:10:02.0000000Z
+accionrealizada|f3t37|agregaraguadestilada|agregaraguadestilada|2014-05-21T18:10:25.0000000Z
+dependenciasnobloq|f3t52|finmezcla|f3t35|2014-05-21T18:10:44.0000000Z
+incompatibilidadnobloq|f3t52|finmezcla|f3t48|2014-05-21T18:10:53.0000000Z
+accionrealizada|f3t52|finmezcla|finmezcla|2014-05-21T18:11:01.0000000Z
+accionrealizada|f3t52|finmezcla|finmezcla|2014-05-21T18:11:14.0000000Z
+accionnoencontrada| |encenderpcr| |2014-05-21T18:12:17.0000000Z
+accionnoencontrada| |encenderpcr| |2014-05-21T18:12:21.0000000Z
+dependenciabloq|f3t57|cerrartermobloque|f3t56|2014-05-21T18:13:07.0000000Z
+accionnoencontrada| |encenderpcr| |2014-05-21T18:13:29.0000000Z

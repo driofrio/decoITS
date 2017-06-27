@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{17D5BDC5-93B7-4B54-BB7D-8041942658A3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Its.TutoringModule.TC.RTutor</RootNamespace>
+    <AssemblyName>Its.TutoringModule.TC.RTutor</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tutor.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\ExpertModule\Its.ExpertModule\Its.ExpertModule.csproj">
+      <Project>{053D479C-7695-452A-ABFF-237300DB84AE}</Project>
+      <Name>Its.ExpertModule</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\StudentModule\Its.StudentModule\Its.StudentModule.csproj">
+      <Project>{C407248F-9674-45D8-B58F-72A2684555AB}</Project>
+      <Name>Its.StudentModule</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\WorldModule\Its.WorldModule\Its.WorldModule.csproj">
+      <Project>{44A3A108-F052-4126-A905-4ADEC242E7E9}</Project>
+      <Name>Its.WorldModule</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Its.TutoringModule.TutoringCoordinator.ReactiveTutor.ObjectModel\Its.TutoringModule.TC.RTutor.OM.csproj">
+      <Project>{BE49666E-929B-4CF9-9F37-DDB4E4D6C762}</Project>
+      <Name>Its.TutoringModule.TC.RTutor.OM</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\StudentModule\Its.StudentModule.ObjectModel\Its.StudentModule.OM.csproj">
+      <Project>{EEED4FBB-9FCA-46C9-927A-765F7BC05666}</Project>
+      <Name>Its.StudentModule.OM</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\ExpertModule\Its.ExpertModule.ObjectModel\Its.ExpertModule.OM.csproj">
+      <Project>{8B928308-3D38-4CF5-8352-162A23F9A5EA}</Project>
+      <Name>Its.ExpertModule.OM</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

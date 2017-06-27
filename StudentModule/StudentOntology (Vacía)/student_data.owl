@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:student_state="http://www.owl-ontologies.com/student_state.owl#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:knowledge_object="http://www.owl-ontologies.com/knowledge_object.owl#"
+    xmlns:student_profile="http://www.owl-ontologies.com/student_profile.owl#"
+    xmlns="http://www.owl-ontologies.com/student_data.owl"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:student_trace="http://www.owl-ontologies.com/student_trace.owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:student_information="http://www.owl-ontologies.com/student_information#"
+  xml:base="http://www.owl-ontologies.com/student_data.owl">
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.owl-ontologies.com/student_information"/>
+  </owl:Ontology>
+  <owl:Ontology rdf:about="file:C:\Users\DiegoDotor\Desktop\FI_UPM\TFG\TutorInteligente\Student\StudentOntology\student_data.owl">
+    <owl:imports rdf:resource="http://www.owl-ontologies.com/student_information"/>
+  </owl:Ontology>
+</rdf:RDF>
+
+<!-- Created with TopBraid -->

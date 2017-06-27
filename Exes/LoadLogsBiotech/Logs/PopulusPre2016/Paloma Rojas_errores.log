@@ -1,0 +1,32 @@
+accionrealizada|f0t1|entregarbata|entregarbata|2013-05-23T15:30:12.0000000Z
+dependenciabloq|f0t8|entregarguantes|f0t7|2013-05-23T15:39:50.0000000Z
+dependenciasnobloq|f1t20|apagaragitador| f1t14-f1t16|2013-05-23T15:47:17.0000000Z
+accionrealizada|f1t11|encenderagitador|encenderagitador|2013-05-23T15:48:21.0000000Z
+accionrealizada|f1t11|encenderagitador|encenderagitador|2013-05-23T15:48:33.0000000Z
+dependenciabloq|f1t36|llenarbotes|f1t32|2013-05-23T16:13:52.0000000Z
+dependenciabloq|f1t36|llenarbotes|f1t32|2013-05-23T16:14:09.0000000Z
+dependenciabloq|f1t40|cortarplanta|f1t39|2013-05-23T16:16:10.0000000Z
+dependenciasnobloq|f1t40|cortarplanta|f1t37|2013-05-23T16:21:26.0000000Z
+accionnoencontrada| |entregarchopocrecido| |2013-05-23T16:24:48.0000000Z
+accionnoencontrada| |entregarchopocrecido| |2013-05-23T16:24:59.0000000Z
+accionrealizada|f2t5|entregarbandejahielo|entregarbandejahielo|2013-05-23T16:28:46.0000000Z
+accionrealizada|f2t5|entregarbandejahielo|entregarbandejahielo|2013-05-23T16:29:03.0000000Z
+accionrealizada|f2t5|entregarbandejahielo|entregarbandejahielo|2013-05-23T16:32:40.0000000Z
+dependenciabloq|f2t7|tomaradn|f2t6|2013-05-23T16:33:09.0000000Z
+dependenciabloq|f2t9|tomaroligonucleicoder|f2t6|2013-05-23T16:33:17.0000000Z
+accionnoencontrada| |tomaradnplasmidico| |2013-05-23T16:34:44.0000000Z
+accionnoencontrada| |entregarvaso| |2013-05-23T16:35:25.0000000Z
+dependenciabloq|f2t33|iniciarmezcla|f2t29|2013-05-23T16:37:01.0000000Z
+dependenciabloq|f2t33|iniciarmezcla|f2t31|2013-05-23T16:37:33.0000000Z
+dependenciabloq|f2t32|cargarpuntaamarilla|f2t31|2013-05-23T16:37:47.0000000Z
+dependenciabloq|f2t33|iniciarmezcla|f2t31|2013-05-23T16:39:41.0000000Z
+accionrealizada|f2t30|entregarpipetaamarilla|entregarpipetaamarilla|2013-05-23T16:39:49.0000000Z
+accionrealizada|f2t32|cargarpuntaamarilla|cargarpuntaamarilla|2013-05-23T16:39:51.0000000Z
+dependenciabloq|f2t33|iniciarmezcla|f2t31|2013-05-23T16:39:52.0000000Z
+accionrealizada|f2t30|entregarpipetaamarilla|entregarpipetaamarilla|2013-05-23T16:40:00.0000000Z
+accionrealizada|f2t34|agregaradn|agregaradn|2013-05-23T16:40:12.0000000Z
+accionrealizada|f2t36|agregaroligonucleicoder|agregaroligonucleicoder|2013-05-23T16:40:15.0000000Z
+accionrealizada|f2t38|agregarmgcl|agregarmgcl|2013-05-23T16:40:20.0000000Z
+accionrealizada|f2t39|agregardntp|agregardntp|2013-05-23T16:40:24.0000000Z
+dependenciasnobloq|f2t52|finmezcla|f2t35-f2t37-f2t40-f2t41|2013-05-23T16:40:25.0000000Z
+dependenciabloq|f2t59|entregarmezclapcr|f2t58|2013-05-23T16:48:41.0000000Z

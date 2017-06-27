@@ -1,0 +1,29 @@
+accionrealizada|f0t1|entregarbata|entregarbata|2013-05-09T15:04:33.0000000Z
+accionrealizada|f0t1|entregarbata|entregarbata|2013-05-09T15:04:39.0000000Z
+accionrealizada|f0t1|entregarbata|entregarbata|2013-05-09T15:04:46.0000000Z
+accionrealizada|f0t1|entregarbata|entregarbata|2013-05-09T15:04:59.0000000Z
+accionrealizada|f0t1|entregarbata|entregarbata|2013-05-09T15:05:16.0000000Z
+accionrealizada|f0t2|bloquearpoyata|bloquearpoyata|2013-05-09T15:07:00.0000000Z
+dependenciabloq|f0t4|leerprotocolo|f0t3|2013-05-09T15:07:41.0000000Z
+dependenciabloq|f0t4|leerprotocolo|f0t3|2013-05-09T15:07:44.0000000Z
+dependenciabloq|f0t4|leerprotocolo|f0t3|2013-05-09T15:07:46.0000000Z
+accionrealizada|f0t8|entregarguantes|entregarguantes|2013-05-09T15:14:02.0000000Z
+accionrealizada|f1t6|llenarvasoconagua|llenarvasoconagua|2013-05-09T15:18:29.0000000Z
+accionrealizada|f1t6|llenarvasoconagua|llenarvasoconagua|2013-05-09T15:18:31.0000000Z
+dependenciasnobloq|f1t20|apagaragitador| f1t12-f1t14-f1t16|2013-05-09T15:23:17.0000000Z
+accionrealizada|f1t20|apagaragitador|apagaragitador|2013-05-09T15:23:25.0000000Z
+dependenciasnobloq|f1t14|ajustarph| f1t12|2013-05-09T15:24:44.0000000Z
+dependenciabloq|f1t28|entregarbotellaautoclavada|f1t27|2013-05-09T15:31:30.0000000Z
+dependenciabloq|f1t28|entregarbotellaautoclavada|f1t27|2013-05-09T15:31:41.0000000Z
+accionrealizada|f1t37|esterilizar|esterilizar|2013-05-09T15:37:39.0000000Z
+accionrealizada|f1t37|esterilizar|esterilizar|2013-05-09T15:37:41.0000000Z
+accionrealizada|f1t37|esterilizar|esterilizar|2013-05-09T15:37:57.0000000Z
+dependenciabloq|f1t40|cortarplanta|f1t39|2013-05-09T15:38:05.0000000Z
+accionrealizada|f2t5|entregarbandejahielo|entregarbandejahielo|2013-05-09T15:47:07.0000000Z
+accionrealizada|f2t5|entregarbandejahielo|entregarbandejahielo|2013-05-09T15:47:12.0000000Z
+dependenciabloq|f2t7|tomaradn|f2t6|2013-05-09T15:48:55.0000000Z
+dependenciabloq|f2t8|tomaroligonucleicoizq|f2t6|2013-05-09T15:49:21.0000000Z
+accionrealizada|f2t27|entregarboteeppendorf|entregarboteeppendorf|2013-05-09T15:54:45.0000000Z
+dependenciabloq|f2t32|cargarpuntaamarilla|f2t31|2013-05-09T15:55:56.0000000Z
+dependenciasnobloq|f2t52|finmezcla|f2t37-f2t40|2013-05-09T15:57:47.0000000Z
+accionrealizada|f3t58|amplificarfragmento|amplificarfragmento|2013-05-09T16:10:09.0000000Z

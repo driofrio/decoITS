@@ -1,0 +1,76 @@
+accionrealizada|f0t1|entregarbata|entregarbata|2014-05-23T16:55:38.0000000Z
+dependenciabloq|f0t4|leerprotocolo|f0t3|2014-05-23T16:59:01.0000000Z
+accionnoencontrada| |entregarvaso| |2014-05-23T17:11:45.0000000Z
+accionnoencontrada| |entregarvaso| |2014-05-23T17:12:08.0000000Z
+accionnoencontrada| |entregarvaso| |2014-05-23T17:12:47.0000000Z
+accionnoencontrada| |entregarvaso| |2014-05-23T17:17:25.0000000Z
+accionnoencontrada| |bloquearpoyata| |2014-05-23T17:17:46.0000000Z
+accionnoencontrada| |entregarvaso| |2014-05-23T17:18:44.0000000Z
+accionnoencontrada| |entregarvaso| |2014-05-23T17:18:51.0000000Z
+accionnoencontrada| |entregarvaso| |2014-05-23T17:19:03.0000000Z
+accionnoencontrada| |entregarvaso| |2014-05-23T17:20:07.0000000Z
+accionnoencontrada| |entregarvaso| |2014-05-23T17:20:25.0000000Z
+dependenciabloq|f0t4|leerprotocolo|f0t3|2014-05-23T17:24:39.0000000Z
+dependenciasnobloq|f1t1|entregarvaso| f0t7-f0t8|2014-05-23T17:27:23.0000000Z
+accionrealizada|f1t7|desbloquearfregadero|desbloquearfregadero|2014-05-23T17:28:47.0000000Z
+accionrealizada|f1t11|encenderagitador|encenderagitador|2014-05-23T17:29:30.0000000Z
+accionrealizada|f1t11|encenderagitador|encenderagitador|2014-05-23T17:29:35.0000000Z
+dependenciasnobloq|f1t16|agregaragar| f1t12-f1t13-f1t14|2014-05-23T17:30:42.0000000Z
+accionnoencontrada| |agregaragarosa| |2014-05-23T17:30:51.0000000Z
+accionrealizada|f1t17|agregarbisacrilamida|agregarbisacrilamida|2014-05-23T17:31:09.0000000Z
+dependenciasnobloq|f1t20|apagaragitador| f1t14-ord_f1t20|2014-05-23T17:32:19.0000000Z
+incompatibilidadnobloq|f1t20|apagaragitador|f1t17-f1t18-f1t19|2014-05-23T17:32:20.0000000Z
+dependenciasnobloq|f1t21|entregarbotella|f0t8|2014-05-23T17:32:47.0000000Z
+accionnoencontrada| |entregarbandejahielo| |2014-05-23T17:50:58.0000000Z
+accionnoencontrada| |tomartampote| |2014-05-23T17:57:18.0000000Z
+accionnoencontrada| |tomaraguadestilada| |2014-05-23T17:57:22.0000000Z
+accionnoencontrada| |tomartampote| |2014-05-23T17:58:04.0000000Z
+accionrealizada|f1t34|entregarbandeja|entregarbandeja|2014-05-23T17:58:56.0000000Z
+accionrealizada|f1t34|entregarbandeja|entregarbandeja|2014-05-23T17:58:59.0000000Z
+dependenciasnobloq|f1t36|llenarbotes|f1t29|2014-05-23T18:00:03.0000000Z
+dependenciabloq|f2t60|guardarpcr|f2t59|2014-05-23T18:06:13.0000000Z
+dependenciabloq|f2t60|guardarpcr|f2t59|2014-05-23T18:06:26.0000000Z
+dependenciabloq|f2t60|guardarpcr|f2t59|2014-05-23T18:09:41.0000000Z
+dependenciabloq|f2t60|guardarpcr|f2t59|2014-05-23T18:09:55.0000000Z
+dependenciabloq|f2t60|guardarpcr|f2t59|2014-05-23T18:13:33.0000000Z
+dependenciabloq|f2t60|guardarpcr|f2t59|2014-05-23T18:14:35.0000000Z
+accionrealizada|f2t15|tomarenzimaligasa|tomarenzimaligasa|2014-05-23T18:14:48.0000000Z
+accionrealizada|f2t13|tomarpolimerasa|tomarpolimerasa|2014-05-23T18:14:53.0000000Z
+accionrealizada|f2t16|tomartamponligasa|tomartamponligasa|2014-05-23T18:14:59.0000000Z
+accionnoencontrada| |tomaradnplasmidico| |2014-05-23T18:17:26.0000000Z
+accionnoencontrada| |tomarmezclaligacion| |2014-05-23T18:17:46.0000000Z
+dependenciabloq|f2t33|iniciarmezcla|f2t29|2014-05-23T18:18:57.0000000Z
+dependenciabloq|f2t33|iniciarmezcla|f2t29|2014-05-23T18:19:01.0000000Z
+accionrealizada|f2t29|sacartuboeppendorf|sacartuboeppendorf|2014-05-23T18:22:56.0000000Z
+dependenciabloq|f2t32|cargarpuntaamarilla|f2t31|2014-05-23T18:23:04.0000000Z
+dependenciabloq|f2t32|cargarpuntaamarilla|f2t31|2014-05-23T18:23:30.0000000Z
+accionrealizada|f2t30|entregarpipetaamarilla|entregarpipetaamarilla|2014-05-23T18:23:40.0000000Z
+accionrealizada|f2t32|cargarpuntaamarilla|cargarpuntaamarilla|2014-05-23T18:24:10.0000000Z
+accionrealizada|f2t32|cargarpuntaamarilla|cargarpuntaamarilla|2014-05-23T18:24:21.0000000Z
+accionrealizada|f2t33|iniciarmezcla|iniciarmezcla|2014-05-23T18:24:52.0000000Z
+accionrealizada|f2t33|iniciarmezcla|iniciarmezcla|2014-05-23T18:24:55.0000000Z
+accionrealizada|f2t33|iniciarmezcla|iniciarmezcla|2014-05-23T18:25:09.0000000Z
+dependenciasnobloq|f2t52|finmezcla|f2t34-f2t35-f2t36-f2t37-f2t38-f2t39|2014-05-23T18:26:00.0000000Z
+incompatibilidadnobloq|f2t52|finmezcla|f2t42-f2t43-f2t49-f2t51|2014-05-23T18:26:05.0000000Z
+accionrealizada|f2t30|entregarpipetaamarilla|entregarpipetaamarilla|2014-05-23T18:26:56.0000000Z
+accionnoencontrada| |leerprotocolo| |2014-05-23T18:32:21.0000000Z
+accionrealizada|f3t10|tomarenzimaligasa|tomarenzimaligasa|2014-05-23T18:36:17.0000000Z
+accionrealizada|f3t32|iniciarmezcla|iniciarmezcla|2014-05-23T18:38:32.0000000Z
+accionrealizada|f3t32|iniciarmezcla|iniciarmezcla|2014-05-23T18:38:36.0000000Z
+accionrealizada|f3t32|iniciarmezcla|iniciarmezcla|2014-05-23T18:38:40.0000000Z
+dependenciasnobloq|f3t52|finmezcla|f3t33-f3t34-f3t35-f3t37|2014-05-23T18:39:02.0000000Z
+accionrealizada|f3t58|amplificarfragmento|amplificarfragmento|2014-05-23T18:40:59.0000000Z
+accionrealizada|f3t60|guardarligacion|guardarligacion|2014-05-23T18:43:24.0000000Z
+accionrealizada|f3t60|guardarligacion|guardarligacion|2014-05-23T18:44:00.0000000Z
+accionrealizada|f3t60|guardarligacion|guardarligacion|2014-05-23T18:44:38.0000000Z
+accionrealizada|f3t60|guardarligacion|guardarligacion|2014-05-23T18:44:56.0000000Z
+accionrealizada|f3t60|guardarligacion|guardarligacion|2014-05-23T18:46:11.0000000Z
+accionrealizada|f3t60|guardarligacion|guardarligacion|2014-05-23T18:46:40.0000000Z
+accionrealizada|f3t60|guardarligacion|guardarligacion|2014-05-23T18:47:38.0000000Z
+accionrealizada|f3t60|guardarligacion|guardarligacion|2014-05-23T18:48:31.0000000Z
+accionrealizada|f3t60|guardarligacion|guardarligacion|2014-05-23T18:48:56.0000000Z
+accionrealizada|f3t60|guardarligacion|guardarligacion|2014-05-23T18:50:29.0000000Z
+accionrealizada|f3t60|guardarligacion|guardarligacion|2014-05-23T18:54:31.0000000Z
+accionrealizada|f3t60|guardarligacion|guardarligacion|2014-05-23T18:55:07.0000000Z
+accionrealizada|f3t60|guardarligacion|guardarligacion|2014-05-23T18:56:17.0000000Z
+accionrealizada|f3t60|guardarligacion|guardarligacion|2014-05-23T18:58:00.0000000Z

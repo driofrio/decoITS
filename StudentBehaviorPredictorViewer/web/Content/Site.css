@@ -1,0 +1,180 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    overflow:auto;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+div .big{
+    width: 100%;
+    margin-top:60px;
+    height: 30%;
+}
+
+div .cbig{
+    width:95%;
+    height: 70%;
+}
+
+body .container{
+    max-width:100%;
+}
+
+div .searchBar{
+    width:70%;
+    float:right;
+}
+
+div .management{
+    clear:right;
+    float:left;
+    width:2%;
+}
+
+div .extra{
+    clear: right;
+    float: left;
+    width: 3%
+}
+
+div .svg{
+    float:left;
+    width:93%;
+    height:100%;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 250px;
+}
+
+.zoom,.move{
+    margin:0 0 20px 0;
+}
+
+.selec{
+    margin-top: 100px;
+    margin-right:20px;
+    margin-left:-20px;
+    margin-bottom: 100px;
+}
+
+#zoomIn, #zoomOut {
+    float:right;
+    clear:right;
+    margin-bottom:10px;
+}
+
+#moveRight{
+    float:right;
+    width: 2%;
+}
+
+text{
+    font-weight: bold;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+input[type=range][orient=vertical]{
+    margin-top: 5px;
+    writing-mode: bt-lr;
+    -webkit-appearance: slider-vertical;
+    width: 25%;
+}
+
+#moveLeft{
+    float:right;
+}
+
+div .row{
+    margin-right:0px;
+    margin-left:0px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+.nodesBar, .eventsBar{
+    width: 10%;
+}
+
+#nodes1, #events1{
+    max-width:50px;
+}
+
+.nodesBar{
+    margin-left: 5%;
+}
+
+#panelPrincipal{
+    margin-bottom:3px;
+}
+
+#panelBody, #svgContainer{
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+}
+
+#moveUp{
+    margin:0 auto;
+    width:3%;
+}
+
+#moveDown{
+    width:2.5%;
+}
+
+#barHome,#barStudent,#barDate{
+    margin-left:5%;
+}
+
+#titulo{
+   font-size: 200%;
+}
+
+#panelPrincipal,
+#panelBody,
+#svgContainer,
+#svgid{
+    height:100%;
+    width:100%;
+}
+
+#currentNodeContainer,
+#currentArrowContainer {
+    max-height: 150px;
+    overflow: auto;
+    margin-right: -50px;
+    max-width: 33%;
+}
+
+#currentArrowContainer .dl-horizontal dt {
+    width: 100px;
+}
+
+#nodes, #events {
+    margin-left: 20px;
+}

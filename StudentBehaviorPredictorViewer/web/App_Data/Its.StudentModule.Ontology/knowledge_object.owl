@@ -1,0 +1,2715 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
+    xmlns:Knowledge_Object="http://www.owl-ontologies.com/knowledge_object.owl#"
+    xmlns:xsp="http://www.owl-ontologies.com/2005/08/07/xsp.owl#"
+    xmlns:p1="http://www.owl-ontologies.com/assert.owl#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:owl2xml="http://www.w3.org/2006/12/owl2-xml#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+    xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:unnamed="http://www.owl-ontologies.com/unnamed.owl#"
+  xml:base="http://www.owl-ontologies.com/knowledge_object.owl">
+  <owl:Ontology rdf:about="">
+    <owl:versionIRI rdf:resource=""/>
+  </owl:Ontology>
+  <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#time"/>
+  <owl:Class rdf:ID="Aggregation">
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Selection"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Requires_Precond"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Used_For"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Is_Applicable_To"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Is_Son_Of"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Is_Father_Of"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Exist"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Navigate_To"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Subclass_Of"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Part_Of"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Relation"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Is_Of_Class"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Are_Related"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:ID="Absolute_Position">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Punto</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Object_Relative_Position"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Area_Position"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Variable"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Position"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Knowledge_Object"/>
+  <owl:Class rdf:ID="Menu">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Menú de una barra de menus (Menu_Bar) -tendrá objetos de tipo Menu_Item y Separator (separadores entre estos últimos)</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Radio_Button_Menu_Item"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Menu_Item"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Conjecture">
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Theorem"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Lemma"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Formal_Fact"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Corollary"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Proposition_Exact_Sciences"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Button">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Botón de pulsación</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Toggle_Button"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Menu_Item"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Abstract_Button"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Text_Area">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Es una caja de texto multilínea (para editar varias líneas de texto normal)</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Text_Field"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Text_Component"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Text_Pane">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Widget que permite editar texto con formato e incluir imágenes</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Editor_Pane"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Punctual_Action_Element">
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Way"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Trajectory"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Stretch"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Rule"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Procedural_Knowledge"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Sequence_Block">
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Unordered_Block"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Compound_Action"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Modifies_Student_Position">
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Verbal"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Not_Verbal"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Not_Modifies_Object_Position"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Movement_In_Position"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Move_3D_Object"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Not_Interaction_With_Object"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Modifies_Position"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Individual"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Menu_Item">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Elemento de un menú -básicamente es como un botón en una lista</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Toggle_Button"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Abstract_Button"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Concept">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >idea que concibe o forma el entendimiento, que puede ser generalizada a todos los objetos, fenómenos, ... de la misma categoría.</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Relation"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Proposition"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Property"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Process"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Structural_Knowledge"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Collaborative">
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Communication"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Collective"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Proposition">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Expresion de un juicio entre dos términos que afirma o niega éste de áquel, o incluye o excluye el primero respecto del segundo.</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Relation"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Structural_Knowledge"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Throw_Object">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Object_Inside_Other"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Unordered_Block">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Compound_Action"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Axiom">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Theorem"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Lemma"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Formal_Fact"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Corollary"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Conjecture"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Proposition_Exact_Sciences"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Gesture">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Not_Verbal"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Is_Father_Of">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Used_For"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Is_Son_Of"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Requires_Precond"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Part_Of"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Navigate_To"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Relation"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Is_Of_Class"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Subclass_Of"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Selection"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:ID="Informal_Definition">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Definition"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Formal_Fact">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >hecho: asunto o materia que se trata, acción u obra.</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Theorem"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Lemma"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Proposition_Exact_Sciences"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Virtual_Reality_Object">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Object"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Menu_Bar">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Text_Component"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="View_Port"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Tool_Tip"/>
+    </owl:disjointWith>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Barra de menús (tendrá objetos Menú formando parte de él y al seleccionar uno de éstos, se visualizará el objeto Popup_Menu asociado mostrando los elementos que de él se pueden seleccionar -objetos Menu_Item)</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Panel"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Scroll_Pane"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Component"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Scroll_Bar"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Popup_Menu"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Separator"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Tool_Bar"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:ID="Get_Out_Object_Of_Other">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Object_Inside_Other"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Modifies_Relation_Among_Objects"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Radio_Button_Menu_Item">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Elemento de un menú perteneciente a un grupo de elementos de los que se puede seleccionar sólo uno de éstos.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Menu_Item"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Modifies_Relation_Among_Objects">
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Modifies_Relation_Student_Object"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Modifies_Relation_With_Object"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Requires_Precond">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Una acción requiere una precondición</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Used_For"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Subclass_Of"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Selection"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >1:1</owl:hasValue>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:ID="cardinality"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom>
+          <owl:Class rdf:ID="Precondition"/>
+        </owl:allValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="range"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom>
+          <owl:Class rdf:ID="Punctual_Action"/>
+        </owl:allValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="domain"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Relation"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Object_Inside_Other">
+    <rdfs:subClassOf rdf:resource="#Modifies_Relation_Among_Objects"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Structural_Knowledge">
+    <rdfs:subClassOf rdf:resource="#Knowledge_Object"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Drop_Object">
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Pickup_Object"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Modifies_Relation_Student_Object"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Toggle_Button">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Botón que puede tener dos estados -seleccionado o no seleccionado</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Abstract_Button"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Position">
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Sensory_Stimulus"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="#Concept"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Look_For_Objects">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Procedure"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Movement_In_Position">
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Without_Effect_On_Object"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Verbal"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Not_Verbal"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Not_Modifies_Object_Position"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Not_Interaction_With_Object"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Individual"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Action_With_Total_Level_Fulfilment"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Is_Of_Class">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Navigate_To"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >1:1</owl:hasValue>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#cardinality"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Part_Of"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Used_For"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Subclass_Of"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Is_Son_Of"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Relation"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Selection"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Requires_Precond"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Point_At">
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Wave_To"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Gesture_With_Hands"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Communication">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Without_Effect_On_Object"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Not_Modifies_Object_Position"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Movement_In_Position"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Modifies_Relation_With_Object"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Collective"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Action_With_Total_Level_Fulfilment"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Pickup_Object">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Modifies_Relation_Student_Object"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Modifies_Relation_With_Object">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Without_Effect_On_Object"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Not_Modifies_Object_Position"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Movement_In_Position"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Interaction_With_Object"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Action_With_Total_Level_Fulfilment"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Text_Field">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Caja de texto monolínea (para editar una única línea de texto normal)</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Text_Component"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Corollary">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >proposición que no necesita prueba particular sino que se deduce fácilmente de lo demostrado antes</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Theorem"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Lemma"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Formal_Fact"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Proposition_Exact_Sciences"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Subclass_Of">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Used_For"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#Knowledge_Object"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#domain"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Relation"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Gesture_Facial">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Gesture_With_Hands"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="#Gesture"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Scenario">
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Subscenario"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="#Virtual_Reality_Object"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Confirm_With_Hand">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Wave_To"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Point_At"/>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Deny_With_Hand"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Gesture_With_Hands"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Simple_Object">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Geometric_Object"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Selection">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Used_For"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Subclass_Of"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Relation"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Component">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Componentes de una interfaz gráfica</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Container_Window"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Container"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Plan">
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Plan_Element"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Stretch"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Punctual_Action"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Procedural_Knowledge"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Way"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Trajectory"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Punctual_Action_Element"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Procedure"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Rule"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#Proposition_Exact_Sciences">
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Theory"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Proposition_Natural_Sciences"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="#Proposition"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Gesture_With_Hands">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Verbal"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="#Gesture"/>
+    <rdfs:subClassOf rdf:resource="#Communication"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Move_2D_object">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Move_3D_Object"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Modifies_Object_Position"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Window">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Ventana sin barra de título y sin botones para su manipulación que se puede visualizar en cualquier sitio del escritorio</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Container_Window"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Not_Modifies_Object_Position">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Without_Effect_On_Object"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Modifies_Object_State"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Action_With_Total_Level_Fulfilment"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Class_3">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Move_Mouse"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Plan_Element">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Way"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Trajectory"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Stretch"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Rule"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Punctual_Action_Element"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Punctual_Action"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Procedure"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Procedural_Knowledge"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Property_Name">
+    <owl:disjointWith>
+      <owl:Class rdf:ID="To_Be_In_Position"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Property_Value"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Condition_On_State"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Wave_To">
+    <rdfs:subClassOf rdf:resource="#Gesture_With_Hands"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Proposition_Natural_Sciences">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Theory"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="#Proposition"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Show_Rage">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Show_Emotion"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="According_To_Communication_Type">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Without_Effect_On_Object"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Not_Modifies_Object_Position"/>
+    <owl:disjointWith rdf:resource="#Movement_In_Position"/>
+    <owl:disjointWith rdf:resource="#Modifies_Relation_With_Object"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Punctual_Action"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Abstract_Button">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Tool_Bar"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Combo_Box"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Panel"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Scroll_Bar"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Color_Chooser"/>
+    </owl:disjointWith>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Clase que define el comportamiento de botones y elementos de un menú</rdfs:comment>
+    <owl:disjointWith rdf:resource="#Menu_Bar"/>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Label"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Separator"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Popup_Menu"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="#Component"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#View_Port"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Scroll_Pane"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Tool_Tip"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="File_Chooser"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Text_Component"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="List"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:ID="According_To_Fulfilment_Level">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Punctual_Action"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Tool_Bar">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Barra de herramientas (generalmente, sus botones son una alternativa rápida de ejecución de las órdenes más usadas de los menús de una barra de menús)</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#View_Port"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Tool_Tip"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="#Component"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Object">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Sensory_Stimulus"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Position"/>
+    <rdfs:subClassOf rdf:resource="#Concept"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Not_Selected">
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Selected"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="#Selection"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Process">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >conjunto de las fases sucesivas de un fenómeno natural o de una operación artificial</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Relation"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Proposition"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Property"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="#Structural_Knowledge"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Is_Executed_With">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Relation"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Heuristic">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Rule"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Frame">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Ventana con barra de título y con botones para su manipulación que puede visualizarse en cualquier sitio del escritorio</rdfs:comment>
+    <owl:disjointWith rdf:resource="#Window"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Container_Window"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Radio_Button">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Botón de opción que presenta gráficamente si está seleccionado o no</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Toggle_Button"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Action_Application">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Compound_Action"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="#Plan_Element"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Condition_On_State">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Way"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Stretch"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Plan"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Trajectory"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Punctual_Action"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Punctual_Action_Element"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Procedural_Knowledge"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Rule"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Plan_Element"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Procedure"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:ID="Ask">
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Order"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Verbal"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Duck">
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Stand_Up"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Jump"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="#Movement_In_Position"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Object_Relative_Position">
+    <rdfs:subClassOf rdf:resource="#Position"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Directory">
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Widget"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="File"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Computer_Interface_Object"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Inhibited">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Activation"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Refuse">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Show_Emotion"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="#Gesture_Facial"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Check_Box">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Casilla de verificación que gráficamente presenta si ha sido seleccionada o no</rdfs:comment>
+    <owl:disjointWith rdf:resource="#Radio_Button"/>
+    <rdfs:subClassOf rdf:resource="#Toggle_Button"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Move">
+    <rdfs:subClassOf rdf:resource="#Modifies_Student_Position"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Separator">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Separador entre dos elementos de un menú</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#View_Port"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Tool_Tip"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Tool_Bar"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Text_Component"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="#Component"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Theorem">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >proposición demostrable lógicamente partiendo de axiomas o de otros teoremas ya demostrados, mediante reglas de inferencias aceptadas.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Proposition_Exact_Sciences"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Definition">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >proposición que expone con exactitud los caracteres diferenciales y genéricos de una cosa material o inmaterial</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Theory"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Proposition_Natural_Sciences"/>
+    <owl:disjointWith rdf:resource="#Proposition_Exact_Sciences"/>
+    <rdfs:subClassOf rdf:resource="#Proposition"/>
+  </owl:Class>
+  <owl:Class rdf:ID="To_Be_In_Object_Relative_Position">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#Object_Relative_Position"/>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:ID="position"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#To_Be_In_Position"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Precondition">
+    <rdfs:subClassOf rdf:resource="#Punctual_Action_Element"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Activated">
+    <owl:disjointWith rdf:resource="#Inhibited"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Activation"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Individual">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="According_To_Involved_Characters"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Relation">
+    <rdfs:subClassOf rdf:resource="#Structural_Knowledge"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Tool_Tip">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Widget usado para visualizar mensajes breves asociados con otros widgets</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#View_Port"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="#Component"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Password_Field">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Caja de texto usada para introducir una contraseña (los caracteres escritos se reemplazan por otro, normalmente *)</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Text_Field"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Drag_Object">
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Push_Object"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="#Move_2D_object"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Are_Related">
+    <owl:disjointWith rdf:resource="#Requires_Precond"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Is_Son_Of"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="#Relation"/>
+    <owl:disjointWith rdf:resource="#Is_Of_Class"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Used_For"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Selection"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Is_Applicable_To"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >2</owl:cardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#domain"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#Is_Father_Of"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Navigate_To"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Exist"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Part_Of"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Subclass_Of"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Exist_Entity">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#To_Be_In_Position"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Property_Value"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Property_Name"/>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Is_Of_Type"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Exist_Instances_Of_Class"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="#Condition_On_State"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Lemma">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >proposición que es preciso demostrar antes de establecer un teorema</rdfs:comment>
+    <owl:disjointWith rdf:resource="#Theorem"/>
+    <rdfs:subClassOf rdf:resource="#Proposition_Exact_Sciences"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Answer">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Order"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Ask"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Verbal"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Rule">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Way"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Trajectory"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Stretch"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Procedural_Knowledge"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Part_Of">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Used_For"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Subclass_Of"/>
+    <owl:disjointWith rdf:resource="#Selection"/>
+    <owl:disjointWith rdf:resource="#Requires_Precond"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#domain"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#Object"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#range"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#Relation"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Without_Effect_On_Object">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Interaction_With_Object"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Action_With_Total_Level_Fulfilment"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#To_Be_In_Position">
+    <rdfs:subClassOf rdf:resource="#Condition_On_State"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Procedural_Knowledge">
+    <owl:disjointWith rdf:resource="#Structural_Knowledge"/>
+    <rdfs:subClassOf rdf:resource="#Knowledge_Object"/>
+  </owl:Class>
+  <owl:Class rdf:about="#According_To_Involved_Characters">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Punctual_Action"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Close">
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Press"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Open"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="#Not_Modifies_Object_Position"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Press_2D_Button">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Press"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Add">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >añadir o modificar una propiedad o una relación.</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Delete"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Postcondition"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Is_Dangerous">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >boolean</owl:hasValue>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:ID="valueType"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Related_To_Puntual_Action"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Widget">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Clase cuya jerarquía a partir de ella está basada en JSwing</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Computer_Interface_Object"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Subscenario">
+    <rdfs:subClassOf rdf:resource="#Virtual_Reality_Object"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Stand_Up">
+    <rdfs:subClassOf rdf:resource="#Movement_In_Position"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Area_Position">
+    <owl:disjointWith rdf:resource="#Object_Relative_Position"/>
+    <rdfs:subClassOf rdf:resource="#Position"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Push_Object">
+    <rdfs:subClassOf rdf:resource="#Move_2D_object"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Group_Objects">
+    <owl:disjointWith rdf:resource="#Look_For_Objects"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Procedure"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Open">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Press"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="#Not_Modifies_Object_Position"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Verbal">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Not_Interaction_With_Object"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#Communication"/>
+    <rdfs:subClassOf rdf:resource="#According_To_Communication_Type"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Property_Value">
+    <owl:disjointWith rdf:resource="#To_Be_In_Position"/>
+    <rdfs:subClassOf rdf:resource="#Condition_On_State"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Exist">
+    <owl:disjointWith rdf:resource="#Selection"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Is_Son_Of"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Is_Applicable_To"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Is_Of_Class"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Navigate_To"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Requires_Precond"/>
+    <owl:disjointWith rdf:resource="#Is_Father_Of"/>
+    <rdfs:subClassOf rdf:resource="#Relation"/>
+    <owl:disjointWith rdf:resource="#Subclass_Of"/>
+    <owl:disjointWith rdf:resource="#Part_Of"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Used_For"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#Order">
+    <rdfs:subClassOf rdf:resource="#Verbal"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Modifies_Object_Position">
+    <owl:disjointWith rdf:resource="#Not_Modifies_Object_Position"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Modifies_Position"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Modifies_Object_State"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="According_To_Interaction_With_Object">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Punctual_Action"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Give_Object_To_Other">
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Transport_Object_Among_Several"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Collaborative_Modifies_Object_Position"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Action_With_Total_Level_Fulfilment">
+    <rdfs:subClassOf rdf:resource="#According_To_Fulfilment_Level"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Is_Applicable_To">
+    <rdfs:subClassOf rdf:resource="#Relation"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Navigate_To"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Part_Of"/>
+    <owl:disjointWith rdf:resource="#Requires_Precond"/>
+    <owl:disjointWith rdf:resource="#Is_Of_Class"/>
+    <owl:disjointWith rdf:resource="#Is_Father_Of"/>
+    <owl:disjointWith rdf:resource="#Subclass_Of"/>
+    <owl:disjointWith rdf:resource="#Selection"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Is_Son_Of"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >1:1</owl:hasValue>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#cardinality"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#Object"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#range"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#Punctual_Action"/>
+        </owl:allValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#domain"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Used_For"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#Used_For">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#Punctual_Action"/>
+        </owl:allValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#domain"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#Postcondition"/>
+        </owl:allValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#range"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >1:1</owl:hasValue>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#cardinality"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#Relation"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Exist_Instances_Of_Class">
+    <owl:disjointWith rdf:resource="#To_Be_In_Position"/>
+    <owl:disjointWith rdf:resource="#Property_Value"/>
+    <owl:disjointWith rdf:resource="#Property_Name"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Is_Of_Type"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="#Condition_On_State"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Modifies_Relation_Student_Object">
+    <rdfs:subClassOf rdf:resource="#Modifies_Relation_With_Object"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Theory">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >serie de leyes que sirven para relacionar determinado orden de fenómenos.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Proposition"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Move_Mouse">
+    <rdfs:subClassOf rdf:resource="#Move_2D_object"/>
+  </owl:Class>
+  <owl:Class rdf:about="#File">
+    <owl:disjointWith rdf:resource="#Widget"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Computer_Interface_Object"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Sensory_Stimulus">
+    <rdfs:subClassOf rdf:resource="#Concept"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Panel">
+    <owl:disjointWith rdf:resource="#Tool_Bar"/>
+    <owl:disjointWith rdf:resource="#Tool_Tip"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Text_Component"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Separator"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Popup_Menu"/>
+    </owl:disjointWith>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Contenedor genérico</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Scroll_Bar"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="#Component"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#View_Port"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Scroll_Pane"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:ID="Drag_Oneself">
+    <owl:disjointWith rdf:resource="#Move"/>
+    <rdfs:subClassOf rdf:resource="#Modifies_Student_Position"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Formal_Definition">
+    <owl:disjointWith rdf:resource="#Informal_Definition"/>
+    <rdfs:subClassOf rdf:resource="#Definition"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Geometric_Object">
+    <owl:disjointWith rdf:resource="#Subscenario"/>
+    <owl:disjointWith rdf:resource="#Scenario"/>
+    <rdfs:subClassOf rdf:resource="#Virtual_Reality_Object"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Instance_Of">
+    <rdfs:subClassOf rdf:resource="#Relation"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Show_Emotion">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Acción que puede ser individual o colaborativa.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Gesture_Facial"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Variable">
+    <rdfs:subClassOf rdf:resource="#Structural_Knowledge"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Popup_Menu">
+    <owl:disjointWith rdf:resource="#Tool_Tip"/>
+    <rdfs:subClassOf rdf:resource="#Component"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#View_Port"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Tool_Bar"/>
+    <owl:disjointWith rdf:resource="#Separator"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Menu visualizado cuando el usuario selecciona un elemento de una barra de menús (objeto Menu_Bar)</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Scroll_Bar"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Scroll_Pane"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Text_Component"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:ID="Locating_In_Mental_Map">
+    <owl:disjointWith rdf:resource="#Sensory_Stimulus"/>
+    <owl:disjointWith rdf:resource="#Position"/>
+    <owl:disjointWith rdf:resource="#Object"/>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Map"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="#Concept"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Is_Relevant_Arg_Order">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >boolean</owl:hasValue>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#valueType"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Related_To_Puntual_Action"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Compound_Object">
+    <owl:disjointWith rdf:resource="#Simple_Object"/>
+    <rdfs:subClassOf rdf:resource="#Geometric_Object"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Press">
+    <rdfs:subClassOf rdf:resource="#Not_Modifies_Object_Position"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Hypothesis">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >suposición de una cosa posible o imposible para sacar de ella una consecuencia</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Principle"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Law"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="#Proposition_Natural_Sciences"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Container_Window">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Contenedores de alto nivel</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Container"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="To_Be_In_Absolute_Position">
+    <owl:disjointWith rdf:resource="#To_Be_In_Object_Relative_Position"/>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="To_Be_In_Area"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#Absolute_Position"/>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#position"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#To_Be_In_Position"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Delete">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >eliminar una propiedad, relación o instancia</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Postcondition"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Assert">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Acción que se considera individual o colaborativa. Un estudiante puede asentir para mostrar que está de acuerdo con algo.</rdfs:comment>
+    <owl:disjointWith rdf:resource="#Show_Emotion"/>
+    <owl:disjointWith rdf:resource="#Refuse"/>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Look"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="#Gesture_Facial"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Not_Interaction_With_Object">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Acciones que implican la NO interacción del estudiante con objetos (puede haber objetos implicados en la acción pero SIN interacción. Incluye acciones gesticulares que pueden ser individuales o colaborativas por lo que no se puede considerar a este nivel acción individual.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#According_To_Interaction_With_Object"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Show_Fear">
+    <owl:disjointWith rdf:resource="#Show_Rage"/>
+    <rdfs:subClassOf rdf:resource="#Show_Emotion"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Interaction_With_Object">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Acciones que implican interacción de UN estudiante con UN objeto.</rdfs:comment>
+    <owl:disjointWith rdf:resource="#Not_Interaction_With_Object"/>
+    <owl:disjointWith rdf:resource="#Movement_In_Position"/>
+    <owl:disjointWith rdf:resource="#Modifies_Student_Position"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Look"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="#Individual"/>
+    <rdfs:subClassOf rdf:resource="#According_To_Interaction_With_Object"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Law">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >regla  y norma constante e invariable de las cosas, nacida de la causa primera o de las cualidades y condiciones de las mismas. En Física, cada una de las relaciones existentes entre las diversas magnitudes que intervienen en un fenómeno</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Principle"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="#Proposition_Natural_Sciences"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Text_Component">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Componente gráfica de texto</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#View_Port"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Tool_Tip"/>
+    <owl:disjointWith rdf:resource="#Tool_Bar"/>
+    <rdfs:subClassOf rdf:resource="#Component"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Check_Box_Menu_Item">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Elemento de un menú que, cuando es seleccionado, aparece una marca junto a él</rdfs:comment>
+    <owl:disjointWith rdf:resource="#Radio_Button_Menu_Item"/>
+    <owl:disjointWith rdf:resource="#Menu"/>
+    <rdfs:subClassOf rdf:resource="#Menu_Item"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Procedure">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >método de ejecutar algunas cosas</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Way"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Trajectory"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Stretch"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Rule"/>
+    <owl:disjointWith rdf:resource="#Punctual_Action_Element"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Punctual_Action"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="#Procedural_Knowledge"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Label">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Scroll_Pane"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#View_Port"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Separator"/>
+    <owl:disjointWith rdf:resource="#Popup_Menu"/>
+    <owl:disjointWith rdf:resource="#Menu_Bar"/>
+    <owl:disjointWith rdf:resource="#Tool_Tip"/>
+    <owl:disjointWith rdf:resource="#Panel"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Scroll_Bar"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#List"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="#Component"/>
+    <owl:disjointWith rdf:resource="#Tool_Bar"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Etiqueta: cadena de texto que no se puede modificar o una imagen o ambas</rdfs:comment>
+    <owl:disjointWith rdf:resource="#Text_Component"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Is_Of_Type">
+    <owl:disjointWith rdf:resource="#To_Be_In_Position"/>
+    <owl:disjointWith rdf:resource="#Property_Value"/>
+    <owl:disjointWith rdf:resource="#Property_Name"/>
+    <rdfs:subClassOf rdf:resource="#Condition_On_State"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Modifies_Position">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Action_With_Partial_Level_Fulfilment"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Principle">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >causa u origen de algo. Norma o idea fundamental que rige elpensameinto. Cualquiera de las primeras proposiciones o verdades fundamentales por donde se empiezan a estudiar las ciencias o las artes</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Proposition_Natural_Sciences"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Selected">
+    <rdfs:subClassOf rdf:resource="#Selection"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Navigate_To">
+    <owl:disjointWith rdf:resource="#Used_For"/>
+    <owl:disjointWith rdf:resource="#Subclass_Of"/>
+    <owl:disjointWith rdf:resource="#Selection"/>
+    <owl:disjointWith rdf:resource="#Requires_Precond"/>
+    <owl:disjointWith rdf:resource="#Part_Of"/>
+    <rdfs:subClassOf rdf:resource="#Relation"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Collaborative_Modifies_Object_Position">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Move_3D_Object"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Move_2D_object"/>
+    <rdfs:subClassOf rdf:resource="#Collaborative"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Map">
+    <owl:disjointWith rdf:resource="#Sensory_Stimulus"/>
+    <owl:disjointWith rdf:resource="#Position"/>
+    <owl:disjointWith rdf:resource="#Object"/>
+    <rdfs:subClassOf rdf:resource="#Concept"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Trajectory">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Way"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="#Procedural_Knowledge"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Related_To_Puntual_Action">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#Punctual_Action"/>
+        </owl:allValuesFrom>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:ID="belongsTo"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Property"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Activation">
+    <owl:disjointWith rdf:resource="#Requires_Precond"/>
+    <owl:disjointWith rdf:resource="#Is_Father_Of"/>
+    <owl:disjointWith rdf:resource="#Part_Of"/>
+    <owl:disjointWith rdf:resource="#Navigate_To"/>
+    <owl:disjointWith rdf:resource="#Are_Related"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Is_Son_Of"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Exist"/>
+    <owl:disjointWith rdf:resource="#Subclass_Of"/>
+    <owl:disjointWith rdf:resource="#Used_For"/>
+    <owl:disjointWith rdf:resource="#Selection"/>
+    <owl:disjointWith rdf:resource="#Is_Applicable_To"/>
+    <owl:disjointWith rdf:resource="#Aggregation"/>
+    <rdfs:subClassOf rdf:resource="#Relation"/>
+    <owl:disjointWith rdf:resource="#Is_Of_Class"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Eyesight">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Las propiedades aún no están perfiladas. A revisar...</rdfs:comment>
+    <owl:disjointWith rdf:resource="#Sensory_Stimulus"/>
+    <owl:disjointWith rdf:resource="#Position"/>
+    <owl:disjointWith rdf:resource="#Object"/>
+    <owl:disjointWith rdf:resource="#Map"/>
+    <owl:disjointWith rdf:resource="#Locating_In_Mental_Map"/>
+    <rdfs:subClassOf rdf:resource="#Concept"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Modifies_Object_State">
+    <owl:disjointWith rdf:resource="#Without_Effect_On_Object"/>
+    <owl:disjointWith rdf:resource="#Modifies_Relation_With_Object"/>
+    <rdfs:subClassOf rdf:resource="#Interaction_With_Object"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Collective">
+    <owl:disjointWith rdf:resource="#Individual"/>
+    <rdfs:subClassOf rdf:resource="#According_To_Involved_Characters"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Combo_Box">
+    <owl:disjointWith rdf:resource="#Panel"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Widge que combina caja de texto y lista desplegable de la que el usuario puede seleccionar uno de sus valores</rdfs:comment>
+    <owl:disjointWith rdf:resource="#Tool_Tip"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Scroll_Bar"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Scroll_Pane"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Label"/>
+    <owl:disjointWith rdf:resource="#Popup_Menu"/>
+    <owl:disjointWith rdf:resource="#Menu_Bar"/>
+    <owl:disjointWith rdf:resource="#Separator"/>
+    <owl:disjointWith rdf:resource="#Text_Component"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#View_Port"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Tool_Bar"/>
+    <rdfs:subClassOf rdf:resource="#Component"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#List"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#File_Chooser"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#Scroll_Bar">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Barra de desplazamiento</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#View_Port"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Tool_Tip"/>
+    <owl:disjointWith rdf:resource="#Tool_Bar"/>
+    <owl:disjointWith rdf:resource="#Text_Component"/>
+    <owl:disjointWith rdf:resource="#Separator"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Scroll_Pane"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="#Component"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Container">
+    <rdfs:subClassOf rdf:resource="#Widget"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Scroll_Pane">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Muestra un área de trabajo con barras de desplazamiento (horizontal y vertical) y una fila y columna que hacen de cabeceras (opcionalmente)</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#View_Port"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Tool_Tip"/>
+    <owl:disjointWith rdf:resource="#Tool_Bar"/>
+    <owl:disjointWith rdf:resource="#Text_Component"/>
+    <owl:disjointWith rdf:resource="#Separator"/>
+    <rdfs:subClassOf rdf:resource="#Component"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Requires_Object">
+    <rdfs:subClassOf rdf:resource="#Relation"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Editor_Pane">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Widget que permite editar diversos tipos de contenidos, por ejemplo: texto normal, HTML, RTF, ...</rdfs:comment>
+    <owl:disjointWith rdf:resource="#Text_Field"/>
+    <owl:disjointWith rdf:resource="#Text_Area"/>
+    <rdfs:subClassOf rdf:resource="#Text_Component"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.w3.org/2002/07/owl#Thing"/>
+  <owl:Class rdf:ID="Arrange_Objects">
+    <owl:disjointWith rdf:resource="#Look_For_Objects"/>
+    <owl:disjointWith rdf:resource="#Group_Objects"/>
+    <rdfs:subClassOf rdf:resource="#Procedure"/>
+  </owl:Class>
+  <owl:Class rdf:about="#List">
+    <owl:disjointWith rdf:resource="#Text_Component"/>
+    <owl:disjointWith rdf:resource="#Scroll_Pane"/>
+    <owl:disjointWith rdf:resource="#Scroll_Bar"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#View_Port"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Separator"/>
+    <owl:disjointWith rdf:resource="#Panel"/>
+    <owl:disjointWith rdf:resource="#Tool_Tip"/>
+    <owl:disjointWith rdf:resource="#Tool_Bar"/>
+    <owl:disjointWith rdf:resource="#Menu_Bar"/>
+    <owl:disjointWith rdf:resource="#Popup_Menu"/>
+    <rdfs:subClassOf rdf:resource="#Component"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Lista desplegable de la que el usuario puede seleccionar uno de sus valores</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Put_In">
+    <owl:disjointWith rdf:resource="#Throw_Object"/>
+    <rdfs:subClassOf rdf:resource="#Object_Inside_Other"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Postcondition">
+    <owl:disjointWith rdf:resource="#Precondition"/>
+    <rdfs:subClassOf rdf:resource="#Punctual_Action_Element"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Stretch">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Way"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Trajectory"/>
+    <rdfs:subClassOf rdf:resource="#Procedural_Knowledge"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Computer_Interface_Object">
+    <owl:disjointWith rdf:resource="#Virtual_Reality_Object"/>
+    <rdfs:subClassOf rdf:resource="#Object"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Color_Chooser">
+    <owl:disjointWith rdf:resource="#Label"/>
+    <owl:disjointWith rdf:resource="#Tool_Tip"/>
+    <owl:disjointWith rdf:resource="#Panel"/>
+    <owl:disjointWith rdf:resource="#List"/>
+    <owl:disjointWith rdf:resource="#Tool_Bar"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Diálogo para que el usuario seleccione un color</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#File_Chooser"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Scroll_Bar"/>
+    <owl:disjointWith rdf:resource="#Text_Component"/>
+    <owl:disjointWith rdf:resource="#Menu_Bar"/>
+    <owl:disjointWith rdf:resource="#Combo_Box"/>
+    <owl:disjointWith rdf:resource="#Scroll_Pane"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#View_Port"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Separator"/>
+    <owl:disjointWith rdf:resource="#Popup_Menu"/>
+    <rdfs:subClassOf rdf:resource="#Component"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Not_Verbal">
+    <owl:disjointWith rdf:resource="#Verbal"/>
+    <rdfs:subClassOf rdf:resource="#Not_Interaction_With_Object"/>
+    <rdfs:subClassOf rdf:resource="#According_To_Communication_Type"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Is_Son_Of">
+    <owl:disjointWith rdf:resource="#Used_For"/>
+    <owl:disjointWith rdf:resource="#Subclass_Of"/>
+    <owl:disjointWith rdf:resource="#Selection"/>
+    <owl:disjointWith rdf:resource="#Requires_Precond"/>
+    <owl:disjointWith rdf:resource="#Part_Of"/>
+    <owl:disjointWith rdf:resource="#Navigate_To"/>
+    <rdfs:subClassOf rdf:resource="#Relation"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Way">
+    <rdfs:subClassOf rdf:resource="#Procedural_Knowledge"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Move_3D_Object">
+    <owl:disjointWith rdf:resource="#Not_Modifies_Object_Position"/>
+    <owl:disjointWith rdf:resource="#Movement_In_Position"/>
+    <rdfs:subClassOf rdf:resource="#Modifies_Object_Position"/>
+    <rdfs:subClassOf rdf:resource="#Individual"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Property">
+    <owl:disjointWith rdf:resource="#Relation"/>
+    <owl:disjointWith rdf:resource="#Proposition"/>
+    <rdfs:subClassOf rdf:resource="#Structural_Knowledge"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Crash_Into_Object">
+    <rdfs:subClassOf rdf:resource="#Without_Effect_On_Object"/>
+  </owl:Class>
+  <owl:Class rdf:about="#To_Be_In_Area">
+    <owl:disjointWith rdf:resource="#To_Be_In_Object_Relative_Position"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#Area_Position"/>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#position"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#To_Be_In_Position"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Empirical_Fact">
+    <owl:disjointWith rdf:resource="#Principle"/>
+    <owl:disjointWith rdf:resource="#Law"/>
+    <owl:disjointWith rdf:resource="#Hypothesis"/>
+    <rdfs:subClassOf rdf:resource="#Proposition_Natural_Sciences"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Action_With_Partial_Level_Fulfilment">
+    <owl:disjointWith rdf:resource="#Action_With_Total_Level_Fulfilment"/>
+    <rdfs:subClassOf rdf:resource="#According_To_Fulfilment_Level"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Transport_Object_Among_Several">
+    <rdfs:subClassOf rdf:resource="#Collaborative_Modifies_Object_Position"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Punctual_Action">
+    <owl:disjointWith rdf:resource="#Way"/>
+    <owl:disjointWith rdf:resource="#Trajectory"/>
+    <owl:disjointWith rdf:resource="#Stretch"/>
+    <owl:disjointWith rdf:resource="#Rule"/>
+    <owl:disjointWith rdf:resource="#Punctual_Action_Element"/>
+    <rdfs:subClassOf rdf:resource="#Procedural_Knowledge"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Dialog">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Permite visualizar una caja de diálogo</rdfs:comment>
+    <owl:disjointWith rdf:resource="#Window"/>
+    <owl:disjointWith rdf:resource="#Frame"/>
+    <rdfs:subClassOf rdf:resource="#Container_Window"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Look">
+    <owl:disjointWith rdf:resource="#Show_Emotion"/>
+    <owl:disjointWith rdf:resource="#Refuse"/>
+    <owl:disjointWith rdf:resource="#Not_Modifies_Object_Position"/>
+    <owl:disjointWith rdf:resource="#Movement_In_Position"/>
+    <owl:disjointWith rdf:resource="#Move_3D_Object"/>
+    <owl:disjointWith rdf:resource="#Modifies_Student_Position"/>
+    <rdfs:subClassOf rdf:resource="#Individual"/>
+    <rdfs:subClassOf rdf:resource="#Gesture_Facial"/>
+  </owl:Class>
+  <owl:Class rdf:about="#View_Port">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Vista de datos, objeto que se mueve cuando se usa una barra de desplazamiento para desplazar una información</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Component"/>
+  </owl:Class>
+  <owl:Class rdf:about="#File_Chooser">
+    <owl:disjointWith rdf:resource="#View_Port"/>
+    <owl:disjointWith rdf:resource="#Popup_Menu"/>
+    <owl:disjointWith rdf:resource="#Text_Component"/>
+    <owl:disjointWith rdf:resource="#Separator"/>
+    <rdfs:subClassOf rdf:resource="#Component"/>
+    <owl:disjointWith rdf:resource="#Label"/>
+    <owl:disjointWith rdf:resource="#Tool_Bar"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Diálogo para que el usuario seleccione fácilmente un archivo</rdfs:comment>
+    <owl:disjointWith rdf:resource="#Panel"/>
+    <owl:disjointWith rdf:resource="#Scroll_Bar"/>
+    <owl:disjointWith rdf:resource="#List"/>
+    <owl:disjointWith rdf:resource="#Tool_Tip"/>
+    <owl:disjointWith rdf:resource="#Menu_Bar"/>
+    <owl:disjointWith rdf:resource="#Scroll_Pane"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Jump">
+    <owl:disjointWith rdf:resource="#Stand_Up"/>
+    <rdfs:subClassOf rdf:resource="#Movement_In_Position"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Compound_Action">
+    <rdfs:subClassOf rdf:resource="#Plan_Element"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Deny_With_Hand">
+    <owl:disjointWith rdf:resource="#Wave_To"/>
+    <owl:disjointWith rdf:resource="#Point_At"/>
+    <rdfs:subClassOf rdf:resource="#Gesture_With_Hands"/>
+  </owl:Class>
+  <owl:ObjectProperty rdf:ID="consistsOfSubscenarios">
+    <rdfs:domain rdf:resource="#Trajectory"/>
+    <rdfs:range rdf:resource="#Subscenario"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="consistsOfBlocks">
+    <rdfs:range rdf:resource="#Plan_Element"/>
+    <rdfs:domain rdf:resource="#Plan"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="isComposedOfObjects">
+    <rdfs:range rdf:resource="#Simple_Object"/>
+    <rdfs:domain rdf:resource="#Compound_Object"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="achievedGoals">
+    <rdfs:domain rdf:resource="#Punctual_Action"/>
+    <rdfs:range rdf:resource="#Condition_On_State"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#range">
+    <rdfs:domain rdf:resource="#Relation"/>
+    <rdfs:range rdf:resource="#Knowledge_Object"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="orderObjects">
+    <rdfs:domain rdf:resource="#Order"/>
+    <rdfs:range rdf:resource="#Knowledge_Object"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="listMenuItem">
+    <rdfs:domain rdf:resource="#Popup_Menu"/>
+    <rdfs:range rdf:resource="#Menu_Item"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="isConnectedToScenarios">
+    <rdfs:range rdf:resource="#Scenario"/>
+    <rdfs:domain rdf:resource="#Scenario"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Se pueden conectar también Scenarios?</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="listButton">
+    <rdfs:domain rdf:resource="#Tool_Bar"/>
+    <rdfs:range rdf:resource="#Button"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >lista de sus botones</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="preconditions">
+    <rdfs:domain rdf:resource="#Punctual_Action"/>
+    <rdfs:range rdf:resource="#Precondition"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="isComposedOfSubscenarios">
+    <rdfs:range rdf:resource="#Subscenario"/>
+    <rdfs:domain rdf:resource="#Scenario"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="consistsOfElementPlan">
+    <rdfs:range rdf:resource="#Plan_Element"/>
+    <rdfs:domain rdf:resource="#Compound_Action"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="consistsOf">
+    <rdfs:range rdf:resource="#Rule"/>
+    <rdfs:domain rdf:resource="#Law"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="questionObjects">
+    <rdfs:range rdf:resource="#Knowledge_Object"/>
+    <rdfs:domain rdf:resource="#Ask"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="consistsOfScenarios">
+    <rdfs:range rdf:resource="#Scenario"/>
+    <rdfs:domain rdf:resource="#Map"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="isDemonstratedFrom">
+    <rdfs:range>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Axiom"/>
+          <owl:Class rdf:about="#Theorem"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:range>
+    <rdfs:domain rdf:resource="#Theorem"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="includesSequenceOfActions">
+    <rdfs:domain rdf:resource="#Procedure"/>
+    <rdfs:range rdf:resource="#Action_Application"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="isConnectedToSubscenarios">
+    <rdfs:range rdf:resource="#Subscenario"/>
+    <rdfs:domain rdf:resource="#Subscenario"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#domain">
+    <rdfs:domain rdf:resource="#Relation"/>
+    <rdfs:range rdf:resource="#Knowledge_Object"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="usesObjectsAsTool">
+    <rdfs:domain rdf:resource="#Punctual_Action"/>
+    <rdfs:range rdf:resource="#Object"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="isDemonstratedByMeansOf">
+    <rdfs:domain rdf:resource="#Theorem"/>
+    <rdfs:range rdf:resource="#Rule"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="objPropertyValue"/>
+  <owl:ObjectProperty rdf:ID="composedOf">
+    <rdfs:domain rdf:resource="#Theory"/>
+    <rdfs:range rdf:resource="#Law"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/unnamed.owl#containsStretches">
+    <rdfs:domain rdf:resource="#Trajectory"/>
+    <rdfs:range rdf:resource="#Stretch"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="consequences">
+    <rdfs:domain rdf:resource="#Punctual_Action"/>
+    <rdfs:range rdf:resource="#Postcondition"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="containsObjects">
+    <rdfs:domain rdf:resource="#Subscenario"/>
+    <rdfs:range rdf:resource="#Geometric_Object"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="isAppliedToObjects">
+    <rdfs:range rdf:resource="#Object"/>
+    <rdfs:domain rdf:resource="#Interaction_With_Object"/>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:ID="entity">
+    <rdfs:domain rdf:resource="#Condition_On_State"/>
+    <rdfs:range rdf:resource="#Concept"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="coordinatey">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdfs:domain rdf:resource="#Absolute_Position"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="listData">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#token"/>
+    <rdfs:domain rdf:resource="#List"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >lista de items a aparecer en la lista simple</rdfs:comment>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="valueByDefault">
+    <rdfs:domain rdf:resource="#Property"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="choosebleFileFilter">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#File_Chooser"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >lista de filtros a elegir</rdfs:comment>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="rouge">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:subPropertyOf>
+      <owl:FunctionalProperty rdf:ID="color"/>
+    </rdfs:subPropertyOf>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="conditionType">
+    <rdfs:domain rdf:resource="#Is_Of_Type"/>
+    <rdfs:range rdf:resource="#Concept"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="selectionInterval">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="#List"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >primer y último índice de items seleccionados</rdfs:comment>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="isInverseFunctional">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdfs:domain rdf:resource="#Property"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="green">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:subPropertyOf>
+      <owl:FunctionalProperty rdf:about="#color"/>
+    </rdfs:subPropertyOf>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="lead_indice">
+    <rdfs:subPropertyOf rdf:resource="#selectionInterval"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >último índice de item seleccionado</rdfs:comment>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="role">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Punctual_Action"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="anchor_indice">
+    <rdfs:subPropertyOf rdf:resource="#selectionInterval"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >indice primero del intervalo seleccionado</rdfs:comment>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="answer">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Answer"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="propertyValue">
+    <rdfs:domain rdf:resource="#Property_Value"/>
+    <rdfs:range rdf:resource="#Concept"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="blue">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:subPropertyOf>
+      <owl:FunctionalProperty rdf:about="#color"/>
+    </rdfs:subPropertyOf>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="value">
+    <rdfs:domain rdf:resource="#Property"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="selectedFiles">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#File_Chooser"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >se pueden haber seleccionado un archivo o múltiples de acuerdo al valor de multiSelectionEnabled</rdfs:comment>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="representedConcept">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Variable"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Sólo puede ser un identificador de clase de cualquier conocimiento estructural</rdfs:comment>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="coordinatez">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdfs:domain rdf:resource="#Absolute_Position"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="coordinatex">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdfs:domain rdf:resource="#Absolute_Position"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="conditionStateType">
+    <rdfs:domain rdf:resource="#Condition_On_State"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:FunctionalProperty rdf:ID="belongsToSubscenario">
+    <rdfs:range rdf:resource="#Subscenario"/>
+    <rdfs:domain rdf:resource="#Geometric_Object"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="transitive">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdfs:domain rdf:resource="#Relation"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="variableValue">
+    <rdfs:domain rdf:resource="#Variable"/>
+    <rdfs:range rdf:resource="#Structural_Knowledge"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="operatorName">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Punctual_Action"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="propName">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Property"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#position">
+    <rdfs:domain rdf:resource="#To_Be_In_Position"/>
+    <rdfs:range rdf:resource="#Position"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="orientationMenuBar">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="#Tool_Bar"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="isManipulable">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdfs:domain rdf:resource="#Geometric_Object"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="dialogType">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="#File_Chooser"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >tipo de diálogo: CUSTOM_DIALOG, SAVE_DIALOG OR OPEN_DIALOG</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="order">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Order"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >orden o pista proporcionada al estudiante</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="idObject">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Knowledge_Object"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="fileFilter">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#File_Chooser"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Filtro actual</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#cardinality">
+    <rdfs:range>
+      <rdfs:Datatype>
+        <owl:oneOf>
+          <rdf:List>
+            <rdf:rest>
+              <rdf:List>
+                <rdf:rest>
+                  <rdf:List>
+                    <rdf:rest>
+                      <rdf:List>
+                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                        >n:n</rdf:first>
+                      </rdf:List>
+                    </rdf:rest>
+                    <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                    >n:1</rdf:first>
+                  </rdf:List>
+                </rdf:rest>
+                <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                >1:n</rdf:first>
+              </rdf:List>
+            </rdf:rest>
+            <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >1:1</rdf:first>
+          </rdf:List>
+        </owl:oneOf>
+      </rdfs:Datatype>
+    </rdfs:range>
+    <rdfs:domain rdf:resource="#Relation"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="textButton">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Abstract_Button"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="locatingDestination">
+    <rdfs:range rdf:resource="#Position"/>
+    <rdfs:domain rdf:resource="#Locating_In_Mental_Map"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="componentPopupMenu">
+    <rdfs:range rdf:resource="#Popup_Menu"/>
+    <rdfs:domain rdf:resource="#Component"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="isFunctional">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdfs:domain rdf:resource="#Property"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="objectPosition">
+    <rdfs:range rdf:resource="#Position"/>
+    <rdfs:domain rdf:resource="#Object"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="acceptAllFileFilter">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdfs:domain rdf:resource="#File_Chooser"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >si el filtro "todos los archivos" se incluye en la lista "Archivos de tipo:"</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="layoutOrientation">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="#List"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >los elementos de la lista simple pueden ser visualizados en una sola columna o múltiples columnas</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="ruleName">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Rule"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="relativePosicionInPlan">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="#Plan_Element"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="startOfTrajectory">
+    <rdfs:domain rdf:resource="#Trajectory"/>
+    <rdfs:range rdf:resource="#Position"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="orientationScrollBar">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="#Scroll_Bar"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="propertyId">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Property_Name"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="destinationPos">
+    <rdfs:range rdf:resource="#Position"/>
+    <rdfs:domain rdf:resource="#Modifies_Position"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="endOfTrajectory">
+    <rdfs:domain rdf:resource="#Trajectory"/>
+    <rdfs:range rdf:resource="#Position"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="endOfWay">
+    <rdfs:domain rdf:resource="#Way"/>
+    <rdfs:range rdf:resource="#Position"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="maximumRowCount">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="#Combo_Box"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >número de elemos máximo que muestra la lista emergente</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="visibleAmount">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="#Scroll_Bar"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Cantidad visible de la barra de desplazamiento</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="unitIncrement">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="#Scroll_Bar"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Valor de desplazamiento del cuadrado al hacer click en los botones de los extremos de la barra</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#belongsTo">
+    <rdfs:domain rdf:resource="#Property"/>
+    <rdfs:range rdf:resource="#Knowledge_Object"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="invoker">
+    <rdfs:domain rdf:resource="#Popup_Menu"/>
+    <rdfs:range rdf:resource="#Component"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Componente que lo invoca</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="fileSelectionMode">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="#File_Chooser"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >si el diálogo durante la selección busca archivos, directorios o ambos (3 valores enteros)</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="isBorderPainted">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdfs:domain rdf:resource="#Menu_Bar"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >true si el borde de la barra de menús debe pintarse</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="isPreviousTo">
+    <rdfs:range rdf:resource="#Theorem"/>
+    <rdfs:domain rdf:resource="#Lemma"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="blockIncrement">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="#Scroll_Bar"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >valor que se desplazará el cuadrado de la barra de desplazamiento al hacer click en la barra</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="selectedValue">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#token"/>
+    <rdfs:domain rdf:resource="#List"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Valor seleccionado de la lista</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="condOnState">
+    <rdfs:domain rdf:resource="#Punctual_Action_Element"/>
+    <rdfs:range rdf:resource="#Condition_On_State"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="reflexive">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdfs:domain rdf:resource="#Relation"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="alignmentY">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdfs:domain rdf:resource="#Component"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >alineación horizontal</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="startOfWay">
+    <rdfs:domain rdf:resource="#Way"/>
+    <rdfs:range rdf:resource="#Position"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="distance">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdfs:domain rdf:resource="#Trajectory"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="isSymmetrical">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdfs:domain rdf:resource="#Property"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="locatingOrigin">
+    <rdfs:range rdf:resource="#Position"/>
+    <rdfs:domain rdf:resource="#Locating_In_Mental_Map"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="isSelected">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdfs:domain rdf:resource="#Menu_Bar"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Si la barra de menús tiene un componente seleccionado</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="initialTime">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#time"/>
+    <rdfs:domain rdf:resource="#Action_Application"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="relationName">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Relation"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="associatedAction">
+    <rdfs:range rdf:resource="#Punctual_Action"/>
+    <rdfs:domain rdf:resource="#Action_Application"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="question">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Ask"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="costOfPlan">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdfs:domain rdf:resource="#Plan"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="maximum">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="#Scroll_Bar"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >máximo valor del scroll bar</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="minimum">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="#Scroll_Bar"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >mínimo valor del scroll bar</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="labelFor">
+    <rdfs:domain rdf:resource="#Label"/>
+    <rdfs:range rdf:resource="#Component"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="executionWay">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Punctual_Action"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >opcional</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#color">
+    <rdfs:domain rdf:resource="#Color_Chooser"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="width">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="#Container_Window"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="locationByPlatform">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdfs:domain rdf:resource="#Container_Window"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >especificar si la ventana debería aparecer en la localización por defecto del sistema de ventanas nativo o en la localización actual la siguiente vez que la Ventana sea visible</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="colorForeground">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    <rdfs:domain rdf:resource="#Component"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="finalTime">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#time"/>
+    <rdfs:domain rdf:resource="#Action_Application"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="propertyName">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Property_Value"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="actionPos">
+    <rdfs:range rdf:resource="#Position"/>
+    <rdfs:domain rdf:resource="#Modifies_Relation_Student_Object"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#valueType">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Property"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="multiSelectionEnabled">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdfs:domain rdf:resource="#File_Chooser"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="text">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Label"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="yCoordinate">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="#Container_Window"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="qualityFunction">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Punctual_Action"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >función de calidad asociada a la acción</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="positionArea">
+    <rdfs:range rdf:resource="#Subscenario"/>
+    <rdfs:domain rdf:resource="#Area_Position"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="alignmentX">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdfs:domain rdf:resource="#Component"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >alineación vertical</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="height">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="#Container_Window"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="font">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="#Component"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="pointStrechBeginning">
+    <rdfs:domain rdf:resource="#Stretch"/>
+    <rdfs:range rdf:resource="#Position"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="colorBackground">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    <rdfs:domain rdf:resource="#Component"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="positionObject">
+    <rdfs:domain rdf:resource="#Object_Relative_Position"/>
+    <rdfs:range rdf:resource="#Geometric_Object"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="symmetrical">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdfs:domain rdf:resource="#Relation"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="speed">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdfs:domain rdf:resource="#Trajectory"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="descriptorObject">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Knowledge_Object"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="originPos">
+    <rdfs:range rdf:resource="#Position"/>
+    <rdfs:domain rdf:resource="#Modifies_Position"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="pointStrechEnd">
+    <rdfs:domain rdf:resource="#Stretch"/>
+    <rdfs:range rdf:resource="#Position"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="xCoordinate">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="#Container_Window"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="selectionMode">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="#List"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >si se permite seleccionar un item de la lista o múltiples items</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="isEditable">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdfs:domain rdf:resource="#Combo_Box"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >lista desplegable editable (el usuario puede escribir información en la caja de texto de la misma o seleccionar uno de sus elementos) o estática (sólo seleccionar)</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="currentDirectory">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#File_Chooser"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="displayedMnemonic">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#positiveInteger"/>
+    <rdfs:domain rdf:resource="#Label"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >mnemónico como carácter</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+</rdf:RDF>
+
+<!-- Created with TopBraid -->
