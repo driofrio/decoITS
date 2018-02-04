@@ -1,4 +1,4 @@
-﻿namespace Its.Util.Config
+﻿namespace Its.Utils.Config
 {
     public interface ITutorConfig
     {

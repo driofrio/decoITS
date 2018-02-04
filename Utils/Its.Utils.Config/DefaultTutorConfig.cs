@@ -1,6 +1,6 @@
 ﻿using System.Configuration;
 
-namespace Its.Util.Config
+namespace Its.Utils.Config
 {
     public class DefaultTutorConfig : ITutorConfig
     {
