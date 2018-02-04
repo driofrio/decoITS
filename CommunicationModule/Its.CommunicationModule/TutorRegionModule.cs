@@ -1,5 +1,6 @@
 ﻿using System;
 using Its.TutoringModule.TutoringCoordinator.ReactiveTutor;
+using Its.Utils.Config;
 
 using System.Reflection;
 using log4net;
@@ -25,7 +26,7 @@ namespace Its.CommunicationModule
 	[Extension(Path = "/OpenSim/RegionModules", NodeName = "RegionModule", Id = "TutorRegionModule")]
 	public class TutorRegionModule:INonSharedRegionModule
 	{
-		private Tutor tutor = new Tutor();
+		private Tutor tutor = null;
 		private IConfig m_config = null;
 		private bool m_enabled = true;
 		private Scene m_scene = null;
@@ -38,6 +39,7 @@ namespace Its.CommunicationModule
 
 		public void Initialise(IConfigSource config)
 		{
+			tutor = new Tutor(new DefaultTutorConfig());
 			m_log.WarnFormat("[TutorRegionModule] start configuration");
 			try 
 			{

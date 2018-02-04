@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -76,6 +76,10 @@
     <ProjectReference Include="..\..\TutoringModule\TutoringCoordinator\Its.TutoringModule.TutoringCoordinator\Its.TutoringModule.TC.csproj">
       <Project>{7FE32128-C2F9-481E-8D73-79A1875E15DB}</Project>
       <Name>Its.TutoringModule.TC</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Utils\Its.Utils.Config\Its.Utils.Config.csproj">
+      <Project>{b7413821-72a0-4104-b19f-44e0c8fd18a2}</Project>
+      <Name>Its.Utils.Config</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>
