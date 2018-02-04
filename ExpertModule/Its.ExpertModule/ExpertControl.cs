@@ -30,10 +30,10 @@ namespace Its.ExpertModule
 		/// Gets the instance.
 		/// </summary>
 		/// <value>The instance.</value>
-		public static ExpertControl Instance (string ontologyPath, string logsPath, string expertConfPath){
+		public static ExpertControl Instance (string ontologyPath, string logsPath, string expertConfPath, int initialCol, int initialRow){
 			//get {
 			if (_instance == null)
-				_instance = new ExpertControl (ontologyPath, logsPath, expertConfPath);
+				_instance = new ExpertControl (ontologyPath, logsPath, expertConfPath, initialCol, initialRow);
 
 			return _instance;
 			//}
@@ -67,10 +67,10 @@ namespace Its.ExpertModule
 		/// <summary>
 		/// Initializes a new instance of the <see cref="Its.ExpertModule.ExpertControl"/> class.
 		/// </summary>
-		private ExpertControl (string ontologyPath, string logsPath, string expertConfPath)
+		private ExpertControl (string ontologyPath, string logsPath, string expertConfPath, int initialCol, int initialRow)
 		{
 			_instanceStudentControl = StudentControl.Instance (ontologyPath, logsPath);
-			_instanceDomainActionsFactory = Factories.DomainActionsFactory.Instance (ontologyPath, logsPath, expertConfPath);
+			_instanceDomainActionsFactory = Factories.DomainActionsFactory.Instance (ontologyPath, logsPath, expertConfPath, initialCol, initialRow);
 			_domainActionsList = new Dictionary<string, DomainActions> ();
 			//Gets OtherErrors.
 			List<Error> otherErrors = Factories.ErrorFactory.Instance(ontologyPath, logsPath).CreateOtherErrors();

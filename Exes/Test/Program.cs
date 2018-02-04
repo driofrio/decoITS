@@ -8,6 +8,7 @@ using Its.TutoringModule.TutoringCoordinator.ReactiveTutor.ObjectModel;
 using Its.StudentModule.DataAccess;
 using Its.StudentModule.ObjectModel;
 using Its.Factories;
+using Its.Utils.Config;
 
 namespace Its.Test
 {
@@ -15,9 +16,12 @@ namespace Its.Test
 	class MainClass
 	{
 		private static OntologyAccess ontology;
-		private static string ontologyPath = ConfigurationManager.AppSettings ["ontologyPath"].ToString ().Replace ('\\', Path.DirectorySeparatorChar);
-		private static string logsPath = ConfigurationManager.AppSettings ["logsPath"].ToString ().Replace ('\\', Path.DirectorySeparatorChar);
-		private static string expertConfPath = ConfigurationManager.AppSettings ["domainConfigurationPath"].Replace ('\\', Path.DirectorySeparatorChar);
+		private static ITutorConfig config = new DefaultTutorConfig();
+		private static string ontologyPath = config.OntologyPath.Replace ('\\', Path.DirectorySeparatorChar);
+		private static string logsPath = config.LogsPath.Replace ('\\', Path.DirectorySeparatorChar);
+		private static string expertConfPath = config.DomainConfigurationPath.Replace ('\\', Path.DirectorySeparatorChar);
+		private static int initialCol = config.InitialColumn;
+		private static int initialRow = config.InitialRow;
 
 		public static void pruebaNoCorrectiveActionLog ()
 		{
@@ -266,7 +270,7 @@ namespace Its.Test
 		public static void pruebaActionAccess ()
 		{
 			Console.WriteLine ("Iniciando prueba...");
-			ActionAccess access = ActionAccess.Instance(expertConfPath);
+			ActionAccess access = ActionAccess.Instance(expertConfPath, initialCol, initialRow);
 
 			List<object[]> lObj = access.GetActions ("Tutorial");
 
@@ -421,7 +425,7 @@ namespace Its.Test
 
 			Console.WriteLine ("\nSe procede a ejecutar la prueba.");
 			Console.WriteLine ("Creando factoria...");
-			DomainActionsFactory factory = DomainActionsFactory.Instance(ontologyPath, logsPath, expertConfPath);
+			DomainActionsFactory factory = DomainActionsFactory.Instance(ontologyPath, logsPath, expertConfPath, initialCol, initialRow);
 			Console.WriteLine ("Creando el dominio...");
 			DomainActions domain = factory.CreateDomain (file);
 
@@ -523,7 +527,7 @@ namespace Its.Test
 			Console.WriteLine ("Iniciando prueba...");
 			//Creates the DomainAction.
 			Console.WriteLine ("Creando dominio de Tutorial...");
-			DomainActions domain = DomainActionsFactory.Instance(ontologyPath, logsPath, expertConfPath).CreateDomain ("Tutorial");
+			DomainActions domain = DomainActionsFactory.Instance(ontologyPath, logsPath, expertConfPath, initialCol, initialRow).CreateDomain ("Tutorial");
 			//Dictionary<string, DomainActions> domains = new Dictionary<string, DomainActions> ();
 			//domains.Add (domain.Key, domain);
 			//Creates the students.

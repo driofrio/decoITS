@@ -13,11 +13,13 @@ using System.Data;
 using Its.ExpertModule;
 using Its.WorldModule;
 using Its.StudentModule;
+using Its.Utils.Config;
 
 namespace LoadLogsBiotech
 {
 	class MainClass
 	{
+		private static ITutorConfig config = new DefaultTutorConfig();
 
 		public static void Main (string[] args)
 		{
@@ -42,9 +44,11 @@ namespace LoadLogsBiotech
 			string tempmult = Console.ReadLine ();
 			mult = tempmult.Trim ().Length == 0 || tempmult.Trim ()=="0" ? 1 : int.Parse (tempmult);*/
 
-			string ontologyPath = ConfigurationManager.AppSettings ["ontologyPath"].ToString ().Replace ('\\', Path.DirectorySeparatorChar);
-			string logsPath = ConfigurationManager.AppSettings ["logsPath"].ToString ().Replace ('\\', Path.DirectorySeparatorChar);
-			string expertConfPath = ConfigurationManager.AppSettings ["domainConfigurationPath"].Replace ('\\', Path.DirectorySeparatorChar);
+			string ontologyPath = config.OntologyPath.Replace ('\\', Path.DirectorySeparatorChar);
+			string logsPath = config.LogsPath.Replace ('\\', Path.DirectorySeparatorChar);
+			string expertConfPath = config.DomainConfigurationPath.Replace ('\\', Path.DirectorySeparatorChar);
+			int initialCol = config.InitialColumn;
+			int initialRow = config.InitialRow;
 
 			/*if (iteration != "0") {
 				string ontologyPathvacia = ontologyPath;
@@ -61,7 +65,7 @@ namespace LoadLogsBiotech
 
 			DomainActions domain = null;
 			DomainActions domainVal = null;
-			DomainActionsFactory temp = DomainActionsFactory.Instance (ontologyPath, logsPath, expertConfPath);
+			DomainActionsFactory temp = DomainActionsFactory.Instance (ontologyPath, logsPath, expertConfPath, initialCol, initialRow);
 			domain = temp.CreateDomain (strDomainName);
 
 			/*Console.WriteLine ("Create Validation (y/n): ");

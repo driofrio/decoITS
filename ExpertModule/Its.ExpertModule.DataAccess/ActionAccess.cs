@@ -24,10 +24,10 @@ namespace Its.ExpertModule.DataAccess
 		/// Gets the instance.
 		/// </summary>
 		/// <value>The instance.</value>
-		public static ActionAccess Instance (string confPath){
+		public static ActionAccess Instance (string confPath, int initialCol, int initialRow){
 			//get {
 			if (_instance == null)
-				_instance = new ActionAccess (confPath);
+				_instance = new ActionAccess (confPath, initialCol, initialRow);
 
 			return _instance;
 			//}
@@ -48,11 +48,11 @@ namespace Its.ExpertModule.DataAccess
 		/// <summary>
 		/// Initializes a new instance of the <see cref="Its.Expert.DataAccess.ActionAccess"/> class.
 		/// </summary>
-		public ActionAccess (string confPath)
+		public ActionAccess (string confPath, int initialCol, int initialRow)
 		{
 			//Obtains the research parameters from AppSettings.
-			_initialColumn = int.Parse (ConfigurationManager.AppSettings ["initialColumn"]);
-			_initialRow = int.Parse (ConfigurationManager.AppSettings ["initialRow"]);
+			_initialColumn = initialCol;
+			_initialRow = initialRow;
 			//Obtains the configuration path from AppSettings.
 			_confPath = confPath;//ConfigurationManager.AppSettings ["domainConfigurationPath"].ToString();
 			//_confPath = _confPath.Replace ('\\', Path.DirectorySeparatorChar);

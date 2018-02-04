@@ -278,7 +278,9 @@ namespace TestSBP
 			string ontologyPath = config.OntologyPath.Replace('\\', Path.DirectorySeparatorChar);
 			string logsPath = config.LogsPath.Replace('\\', Path.DirectorySeparatorChar);
 			string expertConfPath = config.DomainConfigurationPath.Replace('\\', Path.DirectorySeparatorChar);
-			ExpertControl expert = ExpertControl.Instance(ontologyPath, logsPath, expertConfPath);
+			int initialCol = config.InitialColumn;
+			int intialRow = config.InitialRow;
+			ExpertControl expert = ExpertControl.Instance(ontologyPath, logsPath, expertConfPath, initialCol, intialRow);
 			DomainActions domain = expert.GetDomainActions(strDomainName);
 			if (domain == null)
 				domain = expert.CreateDomain(strDomainName);
@@ -1444,7 +1446,9 @@ namespace TestSBP
 			string ontologyPath = config.OntologyPath.Replace ('\\', Path.DirectorySeparatorChar);
 			string logsPath = config.LogsPath.Replace ('\\', Path.DirectorySeparatorChar);
 			string expertConfPath = config.DomainConfigurationPath.Replace ('\\', Path.DirectorySeparatorChar);
-			ExpertControl expert = ExpertControl.Instance (ontologyPath, logsPath, expertConfPath);
+			int initialCol = config.InitialColumn;
+			int intialRow = config.InitialRow;
+			ExpertControl expert = ExpertControl.Instance(ontologyPath, logsPath, expertConfPath, initialCol, intialRow);
 			DomainActions domain = expert.CreateDomain (strDomainName);
 			WorldControl world = WorldControl.Instance (ontologyPath, logsPath);
 			DomainLog logs = StudentControl.Instance (ontologyPath, logsPath).GetDomainLogsFromOntology (domain, expert.OtherErrors, world.WorldErrors);
@@ -1552,7 +1556,9 @@ namespace TestSBP
 			string ontologyPath = config.OntologyPath.Replace ('\\', Path.DirectorySeparatorChar);
 			string logsPath = config.LogsPath.Replace ('\\', Path.DirectorySeparatorChar);
 			string expertConfPath = config.DomainConfigurationPath.Replace ('\\', Path.DirectorySeparatorChar);
-			ExpertControl expert = ExpertControl.Instance (ontologyPath, logsPath, expertConfPath);
+			int initialCol = config.InitialColumn;
+			int intialRow = config.InitialRow;
+			ExpertControl expert = ExpertControl.Instance(ontologyPath, logsPath, expertConfPath, initialCol, intialRow);
 			DomainActions domain = expert.CreateDomain (strDomainName);
 			WorldControl world = WorldControl.Instance (ontologyPath, logsPath);
 			DomainLog logs = StudentControl.Instance (ontologyPath, logsPath).GetDomainLogsFromOntology (domain, expert.OtherErrors, world.WorldErrors);
@@ -1564,7 +1570,9 @@ namespace TestSBP
 			string ontologyPath = config.OntologyPath.Replace('\\', Path.DirectorySeparatorChar);
 			string logsPath = config.LogsPath.Replace('\\', Path.DirectorySeparatorChar);
 			string expertConfPath = config.DomainConfigurationPath.Replace('\\', Path.DirectorySeparatorChar);
-			ExpertControl expert = ExpertControl.Instance(ontologyPath, logsPath, expertConfPath);
+			int initialCol = config.InitialColumn;
+			int intialRow = config.InitialRow;
+			ExpertControl expert = ExpertControl.Instance(ontologyPath, logsPath, expertConfPath, initialCol, intialRow);
 			DomainActions domain = expert.GetDomainActions(strDomainName);
 			if (domain == null)
 				domain = expert.CreateDomain(strDomainName);
@@ -1580,7 +1588,9 @@ namespace TestSBP
 			string ontologyPath = config.OntologyPath.Replace ('\\', Path.DirectorySeparatorChar);
 			string logsPath = config.LogsPath.Replace ('\\', Path.DirectorySeparatorChar);
 			string expertConfPath = config.DomainConfigurationPath.Replace ('\\', Path.DirectorySeparatorChar);
-			ExpertControl expert = ExpertControl.Instance (ontologyPath, logsPath, expertConfPath);
+			int initialCol = config.InitialColumn;
+			int intialRow = config.InitialRow;
+			ExpertControl expert = ExpertControl.Instance(ontologyPath, logsPath, expertConfPath, initialCol, intialRow);
 			DomainActions domain = expert.CreateDomain (strDomainName);
 			WorldControl world = WorldControl.Instance (ontologyPath, logsPath);
 			DomainLog logs = StudentControl.Instance (ontologyPath, logsPath).GetDomainLogsFromOntology (domain, expert.OtherErrors, world.WorldErrors);

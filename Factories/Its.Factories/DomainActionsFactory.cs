@@ -34,10 +34,10 @@ namespace Its.Factories
 		/// Gets the instance.
 		/// </summary>
 		/// <value>The instance.</value>
-		public static DomainActionsFactory Instance (string ontologyPath, string logsPath, string expertConfPath){
+		public static DomainActionsFactory Instance (string ontologyPath, string logsPath, string expertConfPath, int initialCol, int initialRow){
 			//get {
 			if (_instance == null)
-				_instance = new DomainActionsFactory (ontologyPath, logsPath, expertConfPath);
+				_instance = new DomainActionsFactory (ontologyPath, logsPath, expertConfPath, initialCol, initialRow);
 
 			return _instance;
 			//}
@@ -58,10 +58,10 @@ namespace Its.Factories
 		/// <summary>
 		/// Initializes a new instance of the <see cref="Its.Factories.DomainActionsFactory"/> class.
 		/// </summary>
-		private DomainActionsFactory (string ontologyPath, string logsPath, string expertConfPath) 
+		private DomainActionsFactory (string ontologyPath, string logsPath, string expertConfPath, int initialCol, int initialRow) 
 		{
 			ONTOLOGY = OntologyAccess.Instance (ontologyPath, logsPath);
-			ACTION_ACCESS = ActionAccess.Instance (expertConfPath);
+			ACTION_ACCESS = ActionAccess.Instance (expertConfPath, initialCol, initialRow);
 		}
 
 		/// <summary>

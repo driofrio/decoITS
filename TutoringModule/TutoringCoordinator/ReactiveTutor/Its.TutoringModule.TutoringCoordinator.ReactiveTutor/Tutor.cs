@@ -57,7 +57,8 @@ namespace Its.TutoringModule.TutoringCoordinator.ReactiveTutor
 			//Initializes the dictionary.
 			_worldControl = new Dictionary<string, WorldControl> ();
 			//Gets the ExpertControl instance.
-			_expertControl = ExpertControl.Instance(_ontologyPath, _logsPath, _expertConfPath);
+			_expertControl = ExpertControl.Instance(_ontologyPath, _logsPath, _expertConfPath, 
+													config.InitialColumn, config.InitialRow);
 		}
 
 		/// <summary>
