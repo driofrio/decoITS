@@ -321,3 +321,6 @@ ASALocalRun/
 
 # MSBuild Binary and Structured Log
 *.binlog
+
+# MacOS filesystem
+.DS_Store
