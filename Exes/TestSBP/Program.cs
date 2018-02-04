@@ -285,7 +285,7 @@ namespace TestSBP
 			if (domain == null)
 				domain = expert.CreateDomain(strDomainName);
 			WorldControl world = WorldControl.Instance(ontologyPath, logsPath);
-			StudentControl studentcont = StudentControl.Instance(ontologyPath, logsPath);
+			StudentControl studentcont = StudentControl.Instance(ontologyPath, logsPath, expertConfPath);
 			DomainLog logs = studentcont.GetDomainLogsFromOntology(domain, expert.OtherErrors, world.WorldErrors);
 			List<Student> students = logs.GetStudents();
 			foreach (Student stu in students)
@@ -1451,7 +1451,7 @@ namespace TestSBP
 			ExpertControl expert = ExpertControl.Instance(ontologyPath, logsPath, expertConfPath, initialCol, intialRow);
 			DomainActions domain = expert.CreateDomain (strDomainName);
 			WorldControl world = WorldControl.Instance (ontologyPath, logsPath);
-			DomainLog logs = StudentControl.Instance (ontologyPath, logsPath).GetDomainLogsFromOntology (domain, expert.OtherErrors, world.WorldErrors);
+			DomainLog logs = StudentControl.Instance (ontologyPath, logsPath, expertConfPath).GetDomainLogsFromOntology (domain, expert.OtherErrors, world.WorldErrors);
 			string sql = "";
 			string sql2 = "";
 			int temp = 0;
@@ -1561,7 +1561,7 @@ namespace TestSBP
 			ExpertControl expert = ExpertControl.Instance(ontologyPath, logsPath, expertConfPath, initialCol, intialRow);
 			DomainActions domain = expert.CreateDomain (strDomainName);
 			WorldControl world = WorldControl.Instance (ontologyPath, logsPath);
-			DomainLog logs = StudentControl.Instance (ontologyPath, logsPath).GetDomainLogsFromOntology (domain, expert.OtherErrors, world.WorldErrors);
+			DomainLog logs = StudentControl.Instance (ontologyPath, logsPath, expertConfPath).GetDomainLogsFromOntology (domain, expert.OtherErrors, world.WorldErrors);
 			StudentBehaviorPredictorControl.Instance(config).GetModelFromDate (logs, new DateTime (2010, 1, 1),false);
 		}
 
@@ -1577,7 +1577,7 @@ namespace TestSBP
 			if (domain == null)
 				domain = expert.CreateDomain(strDomainName);
 			WorldControl world = WorldControl.Instance(ontologyPath, logsPath);
-			DomainLog logs = StudentControl.Instance(ontologyPath, logsPath).GetDomainLogsFromOntology(domain, expert.OtherErrors, world.WorldErrors);
+			DomainLog logs = StudentControl.Instance(ontologyPath, logsPath, expertConfPath).GetDomainLogsFromOntology(domain, expert.OtherErrors, world.WorldErrors);
 			StudentBehaviorPredictorControl.Instance(config).AddModel(logs, cluMet, includeNoPlanActions, inPhases);
 			PredictiveStudentModel model = StudentBehaviorPredictorControl.Instance(config).GetModel(domain.Key, cluMet);
 			return model;
@@ -1593,7 +1593,7 @@ namespace TestSBP
 			ExpertControl expert = ExpertControl.Instance(ontologyPath, logsPath, expertConfPath, initialCol, intialRow);
 			DomainActions domain = expert.CreateDomain (strDomainName);
 			WorldControl world = WorldControl.Instance (ontologyPath, logsPath);
-			DomainLog logs = StudentControl.Instance (ontologyPath, logsPath).GetDomainLogsFromOntology (domain, expert.OtherErrors, world.WorldErrors);
+			DomainLog logs = StudentControl.Instance (ontologyPath, logsPath, expertConfPath).GetDomainLogsFromOntology (domain, expert.OtherErrors, world.WorldErrors);
 			List<Student> students = logs.GetStudents ();
 			int numberStudents = students.Count;
 			Dictionary<string, string> orStudentsVsNew = new Dictionary<string, string> ();

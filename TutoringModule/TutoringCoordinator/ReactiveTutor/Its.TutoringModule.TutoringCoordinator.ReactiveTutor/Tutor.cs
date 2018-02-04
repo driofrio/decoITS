@@ -143,7 +143,7 @@ namespace Its.TutoringModule.TutoringCoordinator.ReactiveTutor
 		public void LoadStudents ()
 		{
 			//Gets the StudentControl instance.
-			_studentControl = StudentControl.Instance(_ontologyPath, _logsPath);
+			_studentControl = StudentControl.Instance(_ontologyPath, _logsPath, _expertConfPath);
 		}
 
 		/// <summary>

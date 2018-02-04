@@ -533,7 +533,7 @@ namespace Its.Test
 			//Creates the students.
 			Console.WriteLine ("Creando estudiantes...");
 			Dictionary<string, Student> students = new Dictionary<string, Student> ();
-			for (int i = 1; i <= Directory.GetFiles(ConfigurationManager.AppSettings ["logsPath"] +
+			for (int i = 1; i <= Directory.GetFiles(config.LogsPath +
 				Path.DirectorySeparatorChar + "Tutorial" + Path.DirectorySeparatorChar).Length; i++)
 				students.Add (i.ToString (), new Student (i.ToString (), i.ToString () + "a", i.ToString () + "b"));
 			//Creates the Error list.

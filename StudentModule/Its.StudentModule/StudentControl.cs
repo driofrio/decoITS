@@ -35,10 +35,10 @@ namespace Its.StudentModule
 		/// Gets the instance.
 		/// </summary>
 		/// <value>The instance.</value>
-		public static StudentControl Instance (string ontologyPath, string logsPath){
+		public static StudentControl Instance (string ontologyPath, string logsPath, string domainPath){
 			//get {
 				if (_instance == null)
-					_instance = new StudentControl (ontologyPath, logsPath);
+					_instance = new StudentControl (ontologyPath, logsPath, domainPath);
 
 				return _instance;
 			//}
@@ -51,10 +51,11 @@ namespace Its.StudentModule
 		/// The domain logs.
 		/// </summary>
 		private Dictionary<string, DomainLog> _domainLogs;
+		private string _domainPath;
 		/// <summary>
 		/// Initializes a new instance of the <see cref="Its.StudentModule.StudentControl"/> class.
 		/// </summary>
-		private StudentControl (string ontologyPath, string logsPath)
+		private StudentControl (string ontologyPath, string logsPath, string domainPath)
 		{
 			_instanceDomainLogFactory = Factories.DomainLogFactory.Instance (ontologyPath, logsPath);
 
@@ -63,6 +64,7 @@ namespace Its.StudentModule
 			this._domainLogs = new Dictionary<string, DomainLog> ();
 			//Creates all students from the ontology.
 			_students = StudentFactory.Instance(ontologyPath, logsPath).CreateStudents ();
+			_domainPath = domainPath;
 		}
 
 		public static void DisposeInstance() {
@@ -98,7 +100,7 @@ namespace Its.StudentModule
 			ONTOLOGY.AddLogIntoOnto (log, student, domain);
 
 			//Creates a path.
-			string path = ConfigurationManager.AppSettings ["domainConfigurationPath"].Replace ('\\', Path.DirectorySeparatorChar) + "Logs" + Path.DirectorySeparatorChar
+			string path = _domainPath.Replace ('\\', Path.DirectorySeparatorChar) + "Logs" + Path.DirectorySeparatorChar
 				+ domain.Key + Path.DirectorySeparatorChar;
 			//Determine whether the directory exists. If the directory does not exist, it will be created.
 			if (!Directory.Exists(path)) {
@@ -153,7 +155,7 @@ namespace Its.StudentModule
 			ONTOLOGY.AddLogIntoOnto (log, student, domain);
 
 			//Creates a path.
-			string path = ConfigurationManager.AppSettings ["domainConfigurationPath"].Replace ('\\', Path.DirectorySeparatorChar) + "Logs" + Path.DirectorySeparatorChar
+			string path = _domainPath.Replace ('\\', Path.DirectorySeparatorChar) + "Logs" + Path.DirectorySeparatorChar
 				+ domain.Key + Path.DirectorySeparatorChar;
 			//Determine whether the directory exists. If the directory does not exist, it will be created.
 			if (!Directory.Exists(path)) {
@@ -195,7 +197,7 @@ namespace Its.StudentModule
 
 
 			//Creates a path.
-			string path = ConfigurationManager.AppSettings ["domainConfigurationPath"].Replace ('\\', Path.DirectorySeparatorChar) + "Logs" + Path.DirectorySeparatorChar
+			string path = _domainPath.Replace ('\\', Path.DirectorySeparatorChar) + "Logs" + Path.DirectorySeparatorChar
 				+ domain.Key + Path.DirectorySeparatorChar;
 			//Determine whether the directory exists. If the directory does not exist, it will be created.
 			if (!Directory.Exists(path)) {
@@ -236,7 +238,7 @@ namespace Its.StudentModule
 			ONTOLOGY.AddLogIntoOnto (log, student, domain);
 
 			//Creates a path.
-			string path = ConfigurationManager.AppSettings ["domainConfigurationPath"].Replace ('\\', Path.DirectorySeparatorChar) + "Logs" + Path.DirectorySeparatorChar
+			string path = _domainPath.Replace ('\\', Path.DirectorySeparatorChar) + "Logs" + Path.DirectorySeparatorChar
 				+ domain.Key + Path.DirectorySeparatorChar;
 			//Determine whether the directory exists. If the directory does not exist, it will be created.
 			if (!Directory.Exists(path)) {
@@ -276,7 +278,7 @@ namespace Its.StudentModule
 			ONTOLOGY.AddLogIntoOnto (log, student, domain);
 
 			//Creates a path.
-			string path = ConfigurationManager.AppSettings ["domainConfigurationPath"].Replace ('\\', Path.DirectorySeparatorChar) + "Logs" + Path.DirectorySeparatorChar
+			string path = _domainPath.Replace ('\\', Path.DirectorySeparatorChar) + "Logs" + Path.DirectorySeparatorChar
 			              + domain.Key + Path.DirectorySeparatorChar;
 			//Determine whether the directory exists. If the directory does not exist, it will be created.
 			if (!Directory.Exists(path)) {
@@ -317,7 +319,7 @@ namespace Its.StudentModule
 			ONTOLOGY.AddLogIntoOnto (log, student, domain);
 
 			//Creates a path.
-			string path = ConfigurationManager.AppSettings ["domainConfigurationPath"].Replace ('\\', Path.DirectorySeparatorChar) + "Logs" + Path.DirectorySeparatorChar
+			string path = _domainPath.Replace ('\\', Path.DirectorySeparatorChar) + "Logs" + Path.DirectorySeparatorChar
 				+ domain.Key + Path.DirectorySeparatorChar;
 			//Determine whether the directory exists. If the directory does not exist, it will be created.
 			if (!Directory.Exists(path)) {
@@ -363,7 +365,7 @@ namespace Its.StudentModule
 			ONTOLOGY.AddLogIntoOnto (log, student, domain);
 
 			//Creates a path.
-			string path = ConfigurationManager.AppSettings ["domainConfigurationPath"].Replace ('\\', Path.DirectorySeparatorChar) + "Logs" + Path.DirectorySeparatorChar
+			string path = _domainPath.Replace ('\\', Path.DirectorySeparatorChar) + "Logs" + Path.DirectorySeparatorChar
 				+ domain.Key + Path.DirectorySeparatorChar;
 			//Determine whether the directory exists. If the directory does not exist, it will be created.
 			if (!Directory.Exists(path)) {
@@ -404,7 +406,7 @@ namespace Its.StudentModule
 			ONTOLOGY.AddLogIntoOnto (log, student, domain);
 
 			//Creates a path.
-			string path = ConfigurationManager.AppSettings ["domainConfigurationPath"].Replace ('\\', Path.DirectorySeparatorChar) + "Logs" + Path.DirectorySeparatorChar
+			string path = _domainPath.Replace ('\\', Path.DirectorySeparatorChar) + "Logs" + Path.DirectorySeparatorChar
 				+ domain.Key + Path.DirectorySeparatorChar;
 			//Determine whether the directory exists. If the directory does not exist, it will be created.
 			if (!Directory.Exists(path)) {

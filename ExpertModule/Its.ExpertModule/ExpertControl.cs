@@ -69,7 +69,7 @@ namespace Its.ExpertModule
 		/// </summary>
 		private ExpertControl (string ontologyPath, string logsPath, string expertConfPath, int initialCol, int initialRow)
 		{
-			_instanceStudentControl = StudentControl.Instance (ontologyPath, logsPath);
+			_instanceStudentControl = StudentControl.Instance (ontologyPath, logsPath, expertConfPath);
 			_instanceDomainActionsFactory = Factories.DomainActionsFactory.Instance (ontologyPath, logsPath, expertConfPath, initialCol, initialRow);
 			_domainActionsList = new Dictionary<string, DomainActions> ();
 			//Gets OtherErrors.
