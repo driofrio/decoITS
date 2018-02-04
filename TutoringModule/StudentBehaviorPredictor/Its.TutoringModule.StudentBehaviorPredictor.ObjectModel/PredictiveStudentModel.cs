@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using Its.ExpertModule.ObjectModel;
 using Its.StudentModule.ObjectModel;
-using System.Configuration;
 using System.Linq;
 using weka.core;
 using weka.clusterers;
@@ -14,6 +13,7 @@ using System.Data;
 using System.Globalization;
 using Its.TutoringModule.TutoringCoordinator.ReactiveTutor.ObjectModel;
 using System.Data.SqlClient;
+using Its.Utils.Config;
 
 namespace Its.TutoringModule.StudentBehaviorPredictor.ObjectModel
 {
@@ -49,6 +49,11 @@ namespace Its.TutoringModule.StudentBehaviorPredictor.ObjectModel
 		private StudentsCluster _defaultCluster;
 
 		public string _clusteredData = "";
+		
+		/// <summary>
+		/// ITutorConfig instance
+		/// </summary>
+		private ITutorConfig _config;
 
 		/// <summary>
 		/// Initializes a new instance of the
@@ -56,11 +61,12 @@ namespace Its.TutoringModule.StudentBehaviorPredictor.ObjectModel
 		/// </summary>
 		/// <param name="key">Key.</param>
 		/// <param name="domain">Domain.</param>
-		public PredictiveStudentModel(DomainActions domain){
+		public PredictiveStudentModel(DomainActions domain, ITutorConfig config){
 			this._key = domain.Key;
 			this._domain = domain;
 			this._clusters = new Dictionary<int, StudentsCluster> ();
 			this._incompatibilities = new Dictionary<string, ActionAplication> ();
+			this._config = config;
 			FillIncompatibilities ();
 		}
 
@@ -70,12 +76,13 @@ namespace Its.TutoringModule.StudentBehaviorPredictor.ObjectModel
 		/// </summary>
 		/// <param name="key">Key.</param>
 		/// <param name="domainLog">Domain log.</param>
-		public PredictiveStudentModel(DomainLog domainLog, ClusterMethod cluMet, bool includeNoPlanActions, bool inPhases)
+		public PredictiveStudentModel(DomainLog domainLog, ClusterMethod cluMet, bool includeNoPlanActions, bool inPhases, ITutorConfig config)
         {
 			this._key = domainLog.Domain.Key;
 			this._domain = domainLog.Domain;
 			this._clusters = new Dictionary<int, StudentsCluster> ();
 			this._incompatibilities = new Dictionary<string, ActionAplication> ();
+	        this._config = config;
 			FillIncompatibilities ();
 			BuildModel (domainLog, cluMet, includeNoPlanActions, inPhases);
 		}
@@ -87,11 +94,12 @@ namespace Its.TutoringModule.StudentBehaviorPredictor.ObjectModel
 		/// <param name="key">Key.</param>
 		/// <param name="domainLog">Domain log.</param>
 		/// <param name="fromDate">From date.</param>
-		public PredictiveStudentModel(DomainLog domainLog, DateTime fromDate, bool includeNoPlanActions){
+		public PredictiveStudentModel(DomainLog domainLog, DateTime fromDate, bool includeNoPlanActions, ITutorConfig config){
 			this._key = domainLog.Domain.Key;
 			this._domain = domainLog.Domain;
 			this._clusters = new Dictionary<int, StudentsCluster> ();
 			this._incompatibilities = new Dictionary<string, ActionAplication> ();
+			this._config = config;
 			FillIncompatibilities ();
 			BuildModel (domainLog, fromDate, includeNoPlanActions);
 		}
@@ -103,11 +111,12 @@ namespace Its.TutoringModule.StudentBehaviorPredictor.ObjectModel
 		/// <param name="key">Key.</param>
 		/// <param name="logs">Logs.</param>
 		/// <param name="domain">Domain.</param>
-		public PredictiveStudentModel(List<StudentLog> logs, DomainActions domain, ClusterMethod cluMet, bool includeNoPlanActions){
+		public PredictiveStudentModel(List<StudentLog> logs, DomainActions domain, ClusterMethod cluMet, bool includeNoPlanActions, ITutorConfig config){
 			this._key = domain.Key;
 			this._domain = domain;
 			this._clusters = new Dictionary<int, StudentsCluster> ();
 			this._incompatibilities = new Dictionary<string, ActionAplication> ();
+			this._config = config;
 			FillIncompatibilities ();
 			BuildModel (logs, cluMet, includeNoPlanActions);
 		}
@@ -279,7 +288,7 @@ namespace Its.TutoringModule.StudentBehaviorPredictor.ObjectModel
 		private Dictionary<ClusterStudentDataRow, int> ClusterBySequences (DomainLog domainLog, bool includeNoPlanActions, bool inPhases, out List<int> numbersOfClusters)
 		{
 			SaveSequencesBDD (domainLog, includeNoPlanActions, inPhases);
-            AdomdConnection con = new AdomdConnection(ConfigurationManager.AppSettings["ASSConString"].ToString());
+            AdomdConnection con = new AdomdConnection(_config.ASSConString);
             con.Open();
             AdomdCommand command = new AdomdCommand();
             AdomdDataAdapter da = new AdomdDataAdapter();
@@ -385,7 +394,7 @@ namespace Its.TutoringModule.StudentBehaviorPredictor.ObjectModel
 				sql2 = sql2 + "insert into "+table2+" (id) values('"
 					+ stu.Key +"') ";
 			}
-			using (SqlConnection con = new SqlConnection (ConfigurationManager.AppSettings ["BDDConString"].ToString ())) {
+			using (SqlConnection con = new SqlConnection (_config.BDDConString)) {
 				con.Open ();
                 SqlCommand cmd = new SqlCommand("delete from Logs; delete from LogsPhase0; delete from LogsPhase1; delete from LogsPhase2; delete from LogsPhase3; delete from Students;", con);
                 cmd.ExecuteNonQuery ();
@@ -705,18 +714,18 @@ namespace Its.TutoringModule.StudentBehaviorPredictor.ObjectModel
 								if (log.GetType () == typeof(WorldErrorLog))
 									numErrors++;
 								else
-									numErrors += int.Parse (ConfigurationManager.AppSettings ["TutoringBlockErrorPenalization"]);
+									numErrors += _config.TutoringBlockErrorPenalization;
 							} else {
 								if (log.GetType () == typeof(WorldErrorLog))
-									numErrors += int.Parse (ConfigurationManager.AppSettings ["NoTutoringNoBlockErrorPenalization"]);
+									numErrors += _config.NoTutoringNoBlockErrorPenalization;
 								else
-									numErrors += int.Parse (ConfigurationManager.AppSettings ["TutoringNoBlockErrorPenalization"]);
+									numErrors += _config.TutoringNoBlockErrorPenalization;
 							}
 						}
 					}
 				}
 				if (sudentLogs.Logs [sudentLogs.Logs.Count - 1].Action != lastAction && totalTime == 0)
-					totalTime = totalTime + (_domain.EstimatedTime * 60 * 60) * int.Parse (ConfigurationManager.AppSettings ["TimePenalization"]);
+					totalTime = totalTime + (_domain.EstimatedTime * 60 * 60) * _config.TimePenalization;
 				Instance instance = new Instance(3);
 				instance.setValue((weka.core.Attribute)fvWekaAttributes.elementAt(0), student.Key);
 				instance.setValue((weka.core.Attribute)fvWekaAttributes.elementAt(1), numErrors);
@@ -749,12 +758,12 @@ namespace Its.TutoringModule.StudentBehaviorPredictor.ObjectModel
 								if (log.GetType () == typeof(WorldErrorLog))
 									numErrors++;
 								else
-									numErrors += int.Parse (ConfigurationManager.AppSettings ["TutoringBlockErrorPenalization"]);
+									numErrors += _config.TutoringBlockErrorPenalization;
 							} else {
 								if (log.GetType () == typeof(WorldErrorLog))
-									numErrors += int.Parse (ConfigurationManager.AppSettings ["NoTutoringNoBlockErrorPenalization"]);
+									numErrors += _config.NoTutoringNoBlockErrorPenalization;
 								else
-									numErrors += int.Parse (ConfigurationManager.AppSettings ["TutoringNoBlockErrorPenalization"]);
+									numErrors += _config.TutoringNoBlockErrorPenalization;
 							}
 						}
 					}
@@ -851,18 +860,18 @@ namespace Its.TutoringModule.StudentBehaviorPredictor.ObjectModel
 									if (log.GetType () == typeof(WorldErrorLog))
 										numErrors++;
 									else
-										numErrors += int.Parse (ConfigurationManager.AppSettings ["TutoringBlockErrorPenalization"]);
+										numErrors += _config.TutoringBlockErrorPenalization;
 								} else {
 									if (log.GetType () == typeof(WorldErrorLog))
-										numErrors += int.Parse (ConfigurationManager.AppSettings ["NoTutoringNoBlockErrorPenalization"]);
+										numErrors += _config.NoTutoringNoBlockErrorPenalization;
 									else
-										numErrors += int.Parse (ConfigurationManager.AppSettings ["TutoringNoBlockErrorPenalization"]);
+										numErrors += _config.TutoringNoBlockErrorPenalization;
 								}
 							}
 						}
 					}
 					if (sudentLogs.Logs [sudentLogs.Logs.Count - 1].Action != lastAction && totalTime == 0)
-						totalTime = totalTime + (_domain.EstimatedTime * 60 * 60) * int.Parse (ConfigurationManager.AppSettings ["TimePenalization"]);
+						totalTime = totalTime + (_domain.EstimatedTime * 60 * 60) * _config.TimePenalization;
 					Instance instance = new Instance (3);
 					instance.setValue ((weka.core.Attribute)fvWekaAttributes.elementAt (0), student.Key);
 					instance.setValue ((weka.core.Attribute)fvWekaAttributes.elementAt (1), numErrors);
@@ -1049,12 +1058,12 @@ namespace Its.TutoringModule.StudentBehaviorPredictor.ObjectModel
 						if (log.GetType () == typeof(WorldErrorLog))
 							numErrors++;
 						else
-							numErrors += int.Parse (ConfigurationManager.AppSettings ["TutoringBlockErrorPenalization"]);
+							numErrors += _config.TutoringBlockErrorPenalization;
 					} else {
 						if (log.GetType () == typeof(WorldErrorLog))
-							numErrors += int.Parse (ConfigurationManager.AppSettings ["NoTutoringNoBlockErrorPenalization"]);
+							numErrors += _config.NoTutoringNoBlockErrorPenalization;
 						else
-							numErrors += int.Parse (ConfigurationManager.AppSettings ["TutoringNoBlockErrorPenalization"]);
+							numErrors += _config.TutoringNoBlockErrorPenalization;
 					}
 				}
 			}
@@ -1082,12 +1091,12 @@ namespace Its.TutoringModule.StudentBehaviorPredictor.ObjectModel
 						if (log.GetType () == typeof(WorldErrorLog))
 							numErrors++;
 						else
-							numErrors += int.Parse (ConfigurationManager.AppSettings ["TutoringBlockErrorPenalization"]);
+							numErrors += _config.TutoringBlockErrorPenalization;
 					} else {
 						if (log.GetType () == typeof(WorldErrorLog))
-							numErrors += int.Parse (ConfigurationManager.AppSettings ["NoTutoringNoBlockErrorPenalization"]);
+							numErrors += _config.NoTutoringNoBlockErrorPenalization;
 						else
-							numErrors += int.Parse (ConfigurationManager.AppSettings ["TutoringNoBlockErrorPenalization"]);
+							numErrors += _config.TutoringNoBlockErrorPenalization;
 					}
 				}
 			}
@@ -1107,7 +1116,7 @@ namespace Its.TutoringModule.StudentBehaviorPredictor.ObjectModel
 
 		private StudentsCluster MatchClusterBySequences(string studentKey, bool inPhases, string domainKey)
         {
-			AdomdConnection con = new AdomdConnection (ConfigurationManager.AppSettings ["ASSConString"].ToString ());
+			AdomdConnection con = new AdomdConnection (_config.ASSConString);
 			con.Open ();
             AdomdDataAdapter da = new AdomdDataAdapter();
             if (!inPhases)

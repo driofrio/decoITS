@@ -66,6 +66,10 @@
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Utils\Its.Utils.Config\Its.Utils.Config.csproj">
+      <Project>{b7413821-72a0-4104-b19f-44e0c8fd18a2}</Project>
+      <Name>Its.Utils.Config</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\Utils\Its.Utils.Math\Its.Utils.Math.csproj">
       <Project>{39C82212-9961-42EE-8030-686514AB7B92}</Project>
       <Name>Its.Utils.Math</Name>
