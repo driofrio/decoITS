@@ -6,6 +6,7 @@ using Its.StudentModule.ObjectModel;
 using Its.TutoringModule.StudentBehaviorPredictor.Exceptions;
 using Its.Utils.Math;
 using Its.ExpertModule.ObjectModel;
+using Its.Utils.Config;
 
 namespace Its.TutoringModule.StudentBehaviorPredictor
 {
@@ -17,25 +18,26 @@ namespace Its.TutoringModule.StudentBehaviorPredictor
 		/// </summary>
 		private static StudentBehaviorPredictorControl _instance = null;
 
+		private ITutorConfig _config;
+
 		/// <summary>
 		/// Gets the instance.
 		/// </summary>
 		/// <value>The instance.</value>
-		public static StudentBehaviorPredictorControl Instance {
-			get {
-				if (_instance == null)
-					_instance = new StudentBehaviorPredictorControl ();
+		public static StudentBehaviorPredictorControl Instance (ITutorConfig config) {
+			if (_instance == null)
+				_instance = new StudentBehaviorPredictorControl (config);
 
-				return _instance;
-			}
+			return _instance;
 		}
 
 		/// <summary>
 		/// Initializes a new instance of the
 		/// <see cref="Its.TutoringModule.StudentBehaviorPredictor.StudentBehaviorPredictor"/> class.
 		/// </summary>
-		private StudentBehaviorPredictorControl ()
+		private StudentBehaviorPredictorControl (ITutorConfig config)
 		{
+			this._config = config;
 		}
 
 		public static void DisposeInstance() {
@@ -62,7 +64,7 @@ namespace Its.TutoringModule.StudentBehaviorPredictor
 		/// <param name="domainLog">Domain log.</param>
 		public void AddModel(DomainLog domainLog, ClusterMethod cluMet, bool includeNoPlanActions, bool inPhases)
         {
-			PredictiveStudentModel model = new PredictiveStudentModel (domainLog, cluMet, includeNoPlanActions, inPhases);
+			PredictiveStudentModel model = new PredictiveStudentModel (domainLog, cluMet, includeNoPlanActions, inPhases, _config);
 			_models.Add (model.Key+"_"+cluMet.ToString(), model);
 		}
 
@@ -73,7 +75,7 @@ namespace Its.TutoringModule.StudentBehaviorPredictor
 		/// <param name="domainLog">Domain log.</param>
 		/// <param name="fromDate">From date.</param>
 		public PredictiveStudentModel GetModelFromDate(DomainLog domainLog, DateTime fromDate, bool includeNoPlanActions){
-			PredictiveStudentModel model = new PredictiveStudentModel (domainLog, fromDate, includeNoPlanActions);
+			PredictiveStudentModel model = new PredictiveStudentModel (domainLog, fromDate, includeNoPlanActions, _config);
 			return model;
 		}
 
@@ -84,7 +86,7 @@ namespace Its.TutoringModule.StudentBehaviorPredictor
 		/// <param name="logs">Logs.</param>
 		/// <param name="domain">Domain.</param>
 		public PredictiveStudentModel GetAutomataForValidation(List<StudentLog> logs, DomainActions domain, ClusterMethod cluMet, bool includeNoPlanActions){
-			PredictiveStudentModel model = new PredictiveStudentModel (logs, domain, cluMet, includeNoPlanActions);
+			PredictiveStudentModel model = new PredictiveStudentModel (logs, domain, cluMet, includeNoPlanActions, _config);
 			return model;
 		}
 
