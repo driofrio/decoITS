@@ -1,5 +1,0 @@
-/Users/Diego/Documents/workspace/ITS/WorldModule/Its.WorldModule.DataAccess/obj/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
-/Users/Diego/Documents/workspace/ITS/WorldModule/Its.WorldModule.DataAccess/bin/Debug/Its.WorldModule.DA.dll.mdb
-/Users/Diego/Documents/workspace/ITS/WorldModule/Its.WorldModule.DataAccess/bin/Debug/Its.WorldModule.DA.dll
-/Users/Diego/Documents/workspace/ITS/WorldModule/Its.WorldModule.DataAccess/obj/Debug/Its.WorldModule.DA.dll
-/Users/Diego/Documents/workspace/ITS/WorldModule/Its.WorldModule.DataAccess/obj/Debug/Its.WorldModule.DA.dll.mdb

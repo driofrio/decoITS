@@ -1,5 +1,0 @@
-/Users/Diego/Documents/workspace/ITS/Utils/Its.Utils.Math/obj/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
-/Users/Diego/Documents/workspace/ITS/Utils/Its.Utils.Math/bin/Debug/Its.Utils.Math.dll.mdb
-/Users/Diego/Documents/workspace/ITS/Utils/Its.Utils.Math/bin/Debug/Its.Utils.Math.dll
-/Users/Diego/Documents/workspace/ITS/Utils/Its.Utils.Math/obj/Debug/Its.Utils.Math.dll
-/Users/Diego/Documents/workspace/ITS/Utils/Its.Utils.Math/obj/Debug/Its.Utils.Math.dll.mdb
