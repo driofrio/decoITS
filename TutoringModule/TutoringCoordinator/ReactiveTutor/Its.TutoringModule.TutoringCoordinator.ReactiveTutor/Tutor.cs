@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Configuration;
 using System.IO;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,6 +8,7 @@ using Its.StudentModule;
 using Its.StudentModule.ObjectModel;
 using Its.TutoringModule.TutoringCoordinator.ReactiveTutor.ObjectModel;
 using Its.WorldModule;
+using Its.Utils.Config;
 
 namespace Its.TutoringModule.TutoringCoordinator.ReactiveTutor
 {
@@ -46,13 +46,13 @@ namespace Its.TutoringModule.TutoringCoordinator.ReactiveTutor
 		/// <summary>
 		/// Initializes a new instance of the <see cref="Its.TutoringModule.TutoringCoordinator.ReactiveTutor.ReactiveTutor"/> class.
 		/// </summary>
-		public Tutor ()
+		public Tutor (ITutorConfig config)
 		{
 			//Gets the configuration settings.
-			_ontologyPath = ConfigurationManager.AppSettings ["ontologyPath"].ToString ().Replace ('\\', Path.DirectorySeparatorChar);
-			_logsPath = ConfigurationManager.AppSettings ["logsPath"].ToString ().Replace ('\\', Path.DirectorySeparatorChar);
-			_expertConfPath = ConfigurationManager.AppSettings ["domainConfigurationPath"].Replace ('\\', Path.DirectorySeparatorChar);
-			_worldConfPath = ConfigurationManager.AppSettings ["worldConfigurationPath"].Replace ('\\', Path.DirectorySeparatorChar);
+			_ontologyPath = config.OntologyPath.Replace ('\\', Path.DirectorySeparatorChar);
+			_logsPath = config.LogsPath.Replace ('\\', Path.DirectorySeparatorChar);
+			_expertConfPath = config.DomainConfigurationPath.Replace ('\\', Path.DirectorySeparatorChar);
+			_worldConfPath = config.WorldConfigurationPath.Replace ('\\', Path.DirectorySeparatorChar);
 
 			//Initializes the dictionary.
 			_worldControl = new Dictionary<string, WorldControl> ();

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -46,6 +46,10 @@
     <ProjectReference Include="..\..\..\..\StudentModule\Its.StudentModule\Its.StudentModule.csproj">
       <Project>{C407248F-9674-45D8-B58F-72A2684555AB}</Project>
       <Name>Its.StudentModule</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\Utils\Its.Utils.Config\Its.Utils.Config.csproj">
+      <Project>{b7413821-72a0-4104-b19f-44e0c8fd18a2}</Project>
+      <Name>Its.Utils.Config</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\..\WorldModule\Its.WorldModule\Its.WorldModule.csproj">
       <Project>{44A3A108-F052-4126-A905-4ADEC242E7E9}</Project>
