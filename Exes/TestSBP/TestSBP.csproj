@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -46,7 +46,6 @@
     </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="WindowsBase" />
-    <Reference Include="System.Configuration" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />
@@ -85,6 +84,10 @@
     <ProjectReference Include="..\..\TutoringModule\StudentBehaviorPredictor\Its.TutoringModule.StudentBehaviorPredictor.ObjectModel\Its.TutoringModule.SBP.OM.csproj">
       <Project>{4291FE15-F73C-4C84-9518-6E41FD722163}</Project>
       <Name>Its.TutoringModule.SBP.OM</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Utils\Its.Utils.Config\Its.Utils.Config.csproj">
+      <Project>{b7413821-72a0-4104-b19f-44e0c8fd18a2}</Project>
+      <Name>Its.Utils.Config</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Utils\Its.Utils.Math\Its.Utils.Math.csproj">
       <Project>{39C82212-9961-42EE-8030-686514AB7B92}</Project>

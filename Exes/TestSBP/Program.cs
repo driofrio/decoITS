@@ -11,7 +11,6 @@ using Its.StudentModule.ObjectModel;
 using System.Data;
 using Its.TutoringModule.StudentBehaviorPredictor.ObjectModel;
 using Its.Utils.Math;
-using System.Configuration;
 using Its.WorldModule;
 using System.Globalization;
 using System.Data.SqlClient;
@@ -23,6 +22,7 @@ using System.Text;
 using DocumentFormat.OpenXml.Spreadsheet;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml;
+using Its.Utils.Config;
 
 namespace TestSBP
 {
@@ -30,6 +30,7 @@ namespace TestSBP
 	{
 		private static Dictionary<string, Dictionary<int,PredictiveStudentModel>> validationModels=new Dictionary<string, Dictionary<int, PredictiveStudentModel>>();
 		private static Dictionary<string, Dictionary<int,List<StudentLog>>> validationLogs=new Dictionary<string, Dictionary<int, List<StudentLog>>>();
+		private static ITutorConfig config = new DefaultTutorConfig();
 
 		public static void Main (string[] args)
 		{
@@ -274,9 +275,9 @@ namespace TestSBP
 
 		public static void TimeBetweenActions(string strDomainName, string act1, string act2)
 		{
-			string ontologyPath = ConfigurationManager.AppSettings["ontologyPath"].ToString().Replace('\\', Path.DirectorySeparatorChar);
-			string logsPath = ConfigurationManager.AppSettings["logsPath"].ToString().Replace('\\', Path.DirectorySeparatorChar);
-			string expertConfPath = ConfigurationManager.AppSettings["domainConfigurationPath"].Replace('\\', Path.DirectorySeparatorChar);
+			string ontologyPath = config.OntologyPath.Replace('\\', Path.DirectorySeparatorChar);
+			string logsPath = config.LogsPath.Replace('\\', Path.DirectorySeparatorChar);
+			string expertConfPath = config.DomainConfigurationPath.Replace('\\', Path.DirectorySeparatorChar);
 			ExpertControl expert = ExpertControl.Instance(ontologyPath, logsPath, expertConfPath);
 			DomainActions domain = expert.GetDomainActions(strDomainName);
 			if (domain == null)
@@ -501,7 +502,7 @@ namespace TestSBP
 		public static void StudentsByCluster(string strDomainName, ClusterMethod clumet){
 			CreateModel (strDomainName, clumet, 1, 0, true, false, false);
 			Console.WriteLine ("Cluster Method: "+clumet.ToString());
-			PredictiveStudentModel model = StudentBehaviorPredictorControl.Instance.GetModel (strDomainName+"0", clumet);
+			PredictiveStudentModel model = StudentBehaviorPredictorControl.Instance(config).GetModel (strDomainName+"0", clumet);
 			foreach (StudentsCluster clu in model.Clusters.Values) {
 				Console.WriteLine ("Cluster Number: " + clu.Number);
 				Console.WriteLine ("Number Students: " + clu.NumberOfStudents);
@@ -527,7 +528,7 @@ namespace TestSBP
 
 		public static void TotalModelData(string strDomainName){
 			CreateModel (strDomainName, ClusterMethod.NoClusters, 1, 0, true, false, false);
-			PredictiveStudentModel model = StudentBehaviorPredictorControl.Instance.GetModel (strDomainName+"0", ClusterMethod.NoClusters);
+			PredictiveStudentModel model = StudentBehaviorPredictorControl.Instance(config).GetModel (strDomainName+"0", ClusterMethod.NoClusters);
 			Console.WriteLine ("Total Number of students: "+model.DefaultCluster.NumberOfStudents);
 			Console.WriteLine ("Total Number of states: "+model.DefaultCluster.StudentActionsModel.NumberOfStates);
 			Console.WriteLine ("Total Number of events: "+model.DefaultCluster.StudentActionsModel.NumberOfEvents);
@@ -623,7 +624,7 @@ namespace TestSBP
 
 		private static void SaveStudentsByCluster(string strDomainName, ClusterMethod cluMet){
 			CreateModel (strDomainName, cluMet, 1, 0, true, false, false);
-			PredictiveStudentModel model = StudentBehaviorPredictorControl.Instance.GetModel (strDomainName+"0", cluMet);
+			PredictiveStudentModel model = StudentBehaviorPredictorControl.Instance(config).GetModel (strDomainName+"0", cluMet);
 			string path = "DataFor"+cluMet + ".csv";
 			if (File.Exists (path))
 				File.Delete (path);
@@ -1440,9 +1441,9 @@ namespace TestSBP
 
 
 		private static void SaveLogsSql(string strDomainName, bool includeNoPlanActions, bool inPhases){
-			string ontologyPath = ConfigurationManager.AppSettings ["ontologyPath"].ToString ().Replace ('\\', Path.DirectorySeparatorChar);
-			string logsPath = ConfigurationManager.AppSettings ["logsPath"].ToString ().Replace ('\\', Path.DirectorySeparatorChar);
-			string expertConfPath = ConfigurationManager.AppSettings ["domainConfigurationPath"].Replace ('\\', Path.DirectorySeparatorChar);
+			string ontologyPath = config.OntologyPath.Replace ('\\', Path.DirectorySeparatorChar);
+			string logsPath = config.LogsPath.Replace ('\\', Path.DirectorySeparatorChar);
+			string expertConfPath = config.DomainConfigurationPath.Replace ('\\', Path.DirectorySeparatorChar);
 			ExpertControl expert = ExpertControl.Instance (ontologyPath, logsPath, expertConfPath);
 			DomainActions domain = expert.CreateDomain (strDomainName);
 			WorldControl world = WorldControl.Instance (ontologyPath, logsPath);
@@ -1519,7 +1520,7 @@ namespace TestSBP
 					+ stu.Key +"') ";
 				temp++;
 			}
-			SqlConnection con = new SqlConnection (ConfigurationManager.AppSettings["BDDConString"].ToString());
+			SqlConnection con = new SqlConnection (config.BDDConString);
 			SqlCommand cmd = new SqlCommand ("delete from Logs; delete from LogsPhase0; delete from LogsPhase1; delete from LogsPhase2; delete from LogsPhase3; delete from Students;", con);
             con.Open ();
 			cmd.ExecuteNonQuery ();
@@ -1548,37 +1549,37 @@ namespace TestSBP
 		}
 
 		private static void TestModelDate(string strDomainName, ClusterMethod cluMet){
-			string ontologyPath = ConfigurationManager.AppSettings ["ontologyPath"].ToString ().Replace ('\\', Path.DirectorySeparatorChar);
-			string logsPath = ConfigurationManager.AppSettings ["logsPath"].ToString ().Replace ('\\', Path.DirectorySeparatorChar);
-			string expertConfPath = ConfigurationManager.AppSettings ["domainConfigurationPath"].Replace ('\\', Path.DirectorySeparatorChar);
+			string ontologyPath = config.OntologyPath.Replace ('\\', Path.DirectorySeparatorChar);
+			string logsPath = config.LogsPath.Replace ('\\', Path.DirectorySeparatorChar);
+			string expertConfPath = config.DomainConfigurationPath.Replace ('\\', Path.DirectorySeparatorChar);
 			ExpertControl expert = ExpertControl.Instance (ontologyPath, logsPath, expertConfPath);
 			DomainActions domain = expert.CreateDomain (strDomainName);
 			WorldControl world = WorldControl.Instance (ontologyPath, logsPath);
 			DomainLog logs = StudentControl.Instance (ontologyPath, logsPath).GetDomainLogsFromOntology (domain, expert.OtherErrors, world.WorldErrors);
-			StudentBehaviorPredictorControl.Instance.GetModelFromDate (logs, new DateTime (2010, 1, 1),false);
+			StudentBehaviorPredictorControl.Instance(config).GetModelFromDate (logs, new DateTime (2010, 1, 1),false);
 		}
 
 		private static PredictiveStudentModel CreateModel(string strDomainName, ClusterMethod cluMet, bool includeNoPlanActions, bool inPhases)
 		{
-			string ontologyPath = ConfigurationManager.AppSettings["ontologyPath"].ToString().Replace('\\', Path.DirectorySeparatorChar);
-			string logsPath = ConfigurationManager.AppSettings["logsPath"].ToString().Replace('\\', Path.DirectorySeparatorChar);
-			string expertConfPath = ConfigurationManager.AppSettings["domainConfigurationPath"].Replace('\\', Path.DirectorySeparatorChar);
+			string ontologyPath = config.OntologyPath.Replace('\\', Path.DirectorySeparatorChar);
+			string logsPath = config.LogsPath.Replace('\\', Path.DirectorySeparatorChar);
+			string expertConfPath = config.DomainConfigurationPath.Replace('\\', Path.DirectorySeparatorChar);
 			ExpertControl expert = ExpertControl.Instance(ontologyPath, logsPath, expertConfPath);
 			DomainActions domain = expert.GetDomainActions(strDomainName);
 			if (domain == null)
 				domain = expert.CreateDomain(strDomainName);
 			WorldControl world = WorldControl.Instance(ontologyPath, logsPath);
 			DomainLog logs = StudentControl.Instance(ontologyPath, logsPath).GetDomainLogsFromOntology(domain, expert.OtherErrors, world.WorldErrors);
-			StudentBehaviorPredictorControl.Instance.AddModel(logs, cluMet, includeNoPlanActions, inPhases);
-			PredictiveStudentModel model = StudentBehaviorPredictorControl.Instance.GetModel(domain.Key, cluMet);
+			StudentBehaviorPredictorControl.Instance(config).AddModel(logs, cluMet, includeNoPlanActions, inPhases);
+			PredictiveStudentModel model = StudentBehaviorPredictorControl.Instance(config).GetModel(domain.Key, cluMet);
 			return model;
 		}
 
 		private static int CreateModel (string strDomainName, ClusterMethod cluMet, int iterations, int perValidation, bool logByLog, bool includeNoPlanActions, bool inPhases)
 		{
-			string ontologyPath = ConfigurationManager.AppSettings ["ontologyPath"].ToString ().Replace ('\\', Path.DirectorySeparatorChar);
-			string logsPath = ConfigurationManager.AppSettings ["logsPath"].ToString ().Replace ('\\', Path.DirectorySeparatorChar);
-			string expertConfPath = ConfigurationManager.AppSettings ["domainConfigurationPath"].Replace ('\\', Path.DirectorySeparatorChar);
+			string ontologyPath = config.OntologyPath.Replace ('\\', Path.DirectorySeparatorChar);
+			string logsPath = config.LogsPath.Replace ('\\', Path.DirectorySeparatorChar);
+			string expertConfPath = config.DomainConfigurationPath.Replace ('\\', Path.DirectorySeparatorChar);
 			ExpertControl expert = ExpertControl.Instance (ontologyPath, logsPath, expertConfPath);
 			DomainActions domain = expert.CreateDomain (strDomainName);
 			WorldControl world = WorldControl.Instance (ontologyPath, logsPath);
@@ -1722,10 +1723,10 @@ namespace TestSBP
 						DomainActions newDomainVal = new DomainActions(ph+"_" +strDomainName + it + "Val", domain.Description, phaseActs, domain.EstimatedTime);
 						DomainLog newLogsVal = new DomainLog(newDomainVal, phaseLogsVal[ph]);
 
-						StudentBehaviorPredictorControl.Instance.AddModel(newLogs, cluMet, includeNoPlanActions, inPhases);
+						StudentBehaviorPredictorControl.Instance(config).AddModel(newLogs, cluMet, includeNoPlanActions, inPhases);
 						if (perValidation > 0)
 						{
-							PredictiveStudentModel model = StudentBehaviorPredictorControl.Instance.GetModel(newDomain.Key, cluMet);
+							PredictiveStudentModel model = StudentBehaviorPredictorControl.Instance(config).GetModel(newDomain.Key, cluMet);
 							if (!logByLog)
 							{
 								validationModels.Add(newDomainVal.Key, CreateModelVal(newDomainVal, newLogsVal, model, cluMet, logByLog, includeNoPlanActions, inPhases));
@@ -1762,10 +1763,10 @@ namespace TestSBP
 					DomainActions newDomainVal = new DomainActions(strDomainName + it + "Val", domain.Description, domain.Actions, domain.EstimatedTime);
 					DomainLog newLogsVal = new DomainLog(newDomainVal, studentLogsVal);
 
-					StudentBehaviorPredictorControl.Instance.AddModel(newLogs, cluMet, includeNoPlanActions, inPhases);
+					StudentBehaviorPredictorControl.Instance(config).AddModel(newLogs, cluMet, includeNoPlanActions, inPhases);
 					if (perValidation > 0)
 					{
-						PredictiveStudentModel model = StudentBehaviorPredictorControl.Instance.GetModel(newDomain.Key, cluMet);
+						PredictiveStudentModel model = StudentBehaviorPredictorControl.Instance(config).GetModel(newDomain.Key, cluMet);
 						if (!logByLog)
 						{
 							validationModels.Add(newDomainVal.Key, CreateModelVal(newDomainVal, newLogsVal, model, cluMet, logByLog, includeNoPlanActions, inPhases));
@@ -1801,8 +1802,8 @@ namespace TestSBP
 			DomainActions newDomainVal = new DomainActions (domain.Key + "Val", domain.Description, domain.Actions, domain.EstimatedTime);
 			DomainLog newLogsVal = new DomainLog (newDomainVal, studentLogsVal);
 
-			StudentBehaviorPredictorControl.Instance.AddModel (newLogs, cluMet, includeNoPlanActions, inPhases);
-			PredictiveStudentModel model = StudentBehaviorPredictorControl.Instance.GetModel (newDomain.Key, cluMet);
+			StudentBehaviorPredictorControl.Instance(config).AddModel (newLogs, cluMet, includeNoPlanActions, inPhases);
+			PredictiveStudentModel model = StudentBehaviorPredictorControl.Instance(config).GetModel (newDomain.Key, cluMet);
 			validationLogs.Add (newDomainVal.Key, CreateLogsVal (newDomainVal, newLogsVal, model, cluMet, false, includeNoPlanActions, false));
 		}
 
@@ -3101,7 +3102,7 @@ private static Dictionary<int,PredictiveStudentModel> CreateModelVal (DomainActi
 				}
 				break;
 			case ClusterMethod.Sequences:
-				AdomdConnection con = new AdomdConnection (ConfigurationManager.AppSettings ["ASSConString"].ToString ());
+				AdomdConnection con = new AdomdConnection (config.ASSConString);
 				con.Open ();
 				AdomdDataAdapter da = new AdomdDataAdapter ("SELECT Cluster(),t.[id] From [EntireLab] PREDICTION JOIN  SHAPE { OPENQUERY([Lab Biotecnologia], 'SELECT [id] FROM [dbo].[StudentsVal] ORDER BY [id]')} APPEND ({OPENQUERY([Lab Biotecnologia], 'SELECT [actionkey], [sequence], [studentid] FROM [dbo].[LogsVal] ORDER BY [studentid]')} RELATE [id] TO [studentid]) AS [LogsVal] AS t ON [EntireLab].[Logs].[Actionkey] = t.[LogsVal].[actionkey] AND [EntireLab].[Logs].[Sequence] = t.[LogsVal].[sequence]", con);
 				DataTable dtlogstemp = new DataTable ();
@@ -3125,7 +3126,7 @@ private static Dictionary<int,PredictiveStudentModel> CreateModelVal (DomainActi
 			if (!logByLog) {
 				//por cada logsByCluster crear autómata sin clusterizar y agregar a modelsValByCluster
 				foreach (int cluNum in logsbyCluster.Keys) {
-					modelsValByCluster [cluNum] = StudentBehaviorPredictorControl.Instance.GetAutomataForValidation (logsbyCluster [cluNum], domainVal, cluMet,false);
+					modelsValByCluster [cluNum] = StudentBehaviorPredictorControl.Instance(config).GetAutomataForValidation (logsbyCluster [cluNum], domainVal, cluMet,false);
 				}
 			}
 
@@ -3157,7 +3158,7 @@ private static Dictionary<int,PredictiveStudentModel> CreateModelVal (DomainActi
                 case ClusterMethod.Sequences:
                     if (!logByLog)
                     {
-                        AdomdConnection con = new AdomdConnection(ConfigurationManager.AppSettings["ASSConString"]);
+                        AdomdConnection con = new AdomdConnection(config.ASSConString);
                         con.Open();
                         AdomdDataAdapter da = new AdomdDataAdapter();
                         DataTable dtlogstemp = new DataTable();
@@ -3184,7 +3185,7 @@ private static Dictionary<int,PredictiveStudentModel> CreateModelVal (DomainActi
                     }
                     else
                     {
-                        SqlConnection con = new SqlConnection(ConfigurationManager.AppSettings["BDDConString"]);
+                        SqlConnection con = new SqlConnection(config.BDDConString);
                         con.Open();
                         string sql = "delete from LogsVal; delete from LogsValPhase0; delete from LogsValPhase1; delete from LogsValPhase2; delete from LogsValPhase3; delete from StudentsVal ";
                         SqlCommand cmd = new SqlCommand(sql, con);
@@ -3276,7 +3277,7 @@ private static Dictionary<int,PredictiveStudentModel> CreateModelVal (DomainActi
 			{
 				//modelo predictivo
 				Dictionary<int, PredictiveStudentModel> models = new Dictionary<int, PredictiveStudentModel>();
-				models.Add(0, StudentBehaviorPredictorControl.Instance.GetModel(strDomainName + it, cluMet));
+				models.Add(0, StudentBehaviorPredictorControl.Instance(config).GetModel(strDomainName + it, cluMet));
 
 
 
@@ -3463,11 +3464,11 @@ private static Dictionary<int,PredictiveStudentModel> CreateModelVal (DomainActi
 				{
 					for (int i = 0; i <= phases; i++)
 					{
-						models.Add(i, StudentBehaviorPredictorControl.Instance.GetModel(i +"_"+ strDomainName + it, cluMet));
+						models.Add(i, StudentBehaviorPredictorControl.Instance(config).GetModel(i +"_"+ strDomainName + it, cluMet));
 					}
 				}
 				else
-					models.Add(0,StudentBehaviorPredictorControl.Instance.GetModel(strDomainName + it, cluMet));
+					models.Add(0,StudentBehaviorPredictorControl.Instance(config).GetModel(strDomainName + it, cluMet));
 						
 				
 
@@ -3537,7 +3538,7 @@ private static Dictionary<int,PredictiveStudentModel> CreateModelVal (DomainActi
 			foreach (Student stu in students) {
 				CreateModel (domain, logs, stu, cluMet, year, includeNoPlanActions);
 				//modelo predictivo
-				PredictiveStudentModel model = StudentBehaviorPredictorControl.Instance.GetModel (strDomainName, cluMet);
+				PredictiveStudentModel model = StudentBehaviorPredictorControl.Instance(config).GetModel (strDomainName, cluMet);
 
 				string filepath = cluMet + "_valStu"+stu.Key+".xlsx";
 				if (File.Exists (filepath))
@@ -3596,7 +3597,7 @@ private static Dictionary<int,PredictiveStudentModel> CreateModelVal (DomainActi
 
 			for (int it = 0; it < iterations; it++) {
 				//modelo predictivo
-				PredictiveStudentModel model = StudentBehaviorPredictorControl.Instance.GetModel (strDomainName + it);
+				PredictiveStudentModel model = StudentBehaviorPredictorControl.Instance(config).GetModel (strDomainName + it);
 				StringBuilder strExcelXml = new StringBuilder ();
 				// Excel header
 				#region Header
