@@ -48,7 +48,7 @@ namespace Its.ExpertModule.ObjectModel
 		}
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="SeqComplexDependence"/> class.
+		/// Initializes a new instance of the <see cref="Its.Expert.ObjectModel.SeqComplexDependence"/> class.
 		/// </summary>
 		/// <param name="key">Key.</param>
 		/// <param name="dependenciesList">List dependence.</param>

@@ -60,7 +60,7 @@ namespace Its.ExpertModule.ObjectModel
 		}
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="SimpleDependence"/> class.
+		/// Initializes a new instance of the <see cref="Its.Expert.ObjectModel.SimpleDependence"/> class.
 		/// </summary>
 		/// <param name="key">Key.</param>
 		/// <param name="action">Action.</param>

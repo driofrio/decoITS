@@ -83,7 +83,7 @@ namespace Its.ExpertModule.ObjectModel
 		/// </summary>
 		private bool _lockObj;
 		/// <summary>
-		/// Gets a value indicating whether this <see cref="ActionAplication"/> lock object.
+		/// Gets a value indicating whether this <see cref="Its.Expert.ObjectModel.ActionAplication"/> lock object.
 		/// </summary>
 		/// <value><c>true</c> if lock object; otherwise, <c>false</c>.</value>
 		public bool LockObj {
@@ -96,7 +96,7 @@ namespace Its.ExpertModule.ObjectModel
 		/// </summary>
 		private bool _unlockObj;
 		/// <summary>
-		/// Gets a value indicating whether this <see cref="ActionAplication"/> unlock object.
+		/// Gets a value indicating whether this <see cref="Its.Expert.ObjectModel.ActionAplication"/> unlock object.
 		/// </summary>
 		/// <value><c>true</c> if unlock object; otherwise, <c>false</c>.</value>
 		public bool UnlockObj {
@@ -174,7 +174,7 @@ namespace Its.ExpertModule.ObjectModel
 		/// </summary>
 		private bool _initPhase;
 		/// <summary>
-		/// Gets a value indicating whether this <see cref="ActionAplication"/> init phase.
+		/// Gets a value indicating whether this <see cref="Its.Expert.ObjectModel.ActionAplication"/> init phase.
 		/// </summary>
 		/// <value><c>true</c> if init phase; otherwise, <c>false</c>.</value>
 		public bool InitPhase {
@@ -187,7 +187,7 @@ namespace Its.ExpertModule.ObjectModel
 		/// </summary>
 		private bool _validatePhaseErrors;
 		/// <summary>
-		/// Gets a value indicating whether this <see cref="ActionAplication"/> validate errors.
+		/// Gets a value indicating whether this <see cref="Its.Expert.ObjectModel.ActionAplication"/> validate errors.
 		/// </summary>
 		/// <value><c>true</c> if validate errors; otherwise, <c>false</c>.</value>
 		public bool ValidateErrors {
@@ -230,7 +230,7 @@ namespace Its.ExpertModule.ObjectModel
 		/// </summary>
 		private bool _correctiveAction;
 		/// <summary>
-		/// Gets a value indicating whether this <see cref="ActionAplication"/> corrective action.
+		/// Gets a value indicating whether this <see cref="Its.Expert.ObjectModel.ActionAplication"/> corrective action.
 		/// </summary>
 		/// <value><c>true</c> if corrective action; otherwise, <c>false</c>.</value>
 		public bool CorrectiveAction {
@@ -243,7 +243,7 @@ namespace Its.ExpertModule.ObjectModel
 		/// </summary>
 		private bool _noPlanAction;
 		/// <summary>
-		/// Gets a value indicating whether this <see cref="ActionAplication"/> is not part of the plan but is allowed in it.
+		/// Gets a value indicating whether this <see cref="Its.Expert.ObjectModel.ActionAplication"/> is not part of the plan but is allowed in it.
 		/// </summary>
 		/// <value><c>true</c> if is not in the plan; otherwise, <c>false</c>.</value>
 		public bool NoPlanAction {
@@ -282,7 +282,7 @@ namespace Its.ExpertModule.ObjectModel
 		/// </summary>
 		private bool _showOkMessage;
 		/// <summary>
-		/// Gets a value indicating whether this <see cref="ActionAplication"/> show ok message.
+		/// Gets a value indicating whether this <see cref="Its.Expert.ObjectModel.ActionAplication"/> show ok message.
 		/// </summary>
 		/// <value><c>true</c> if show ok message; otherwise, <c>false</c>.</value>
 		public bool ShowOkMessage {
@@ -322,7 +322,7 @@ namespace Its.ExpertModule.ObjectModel
 		 
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="ActionAplication"/> class.
+		/// Initializes a new instance of the <see cref="Its.Expert.ObjectModel.ActionAplication"/> class.
 		/// </summary>
 		/// <param name="key">Key.</param>
 		/// <param name="phase">Phase.</param>
@@ -401,7 +401,7 @@ namespace Its.ExpertModule.ObjectModel
 		}
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="ActionAplication"/> class.
+		/// Initializes a new instance of the <see cref="Its.Expert.ObjectModel.ActionAplication"/> class.
 		/// </summary>
 		/// <param name="key">Key.</param>
 		/// <param name="phase">Phase.</param>

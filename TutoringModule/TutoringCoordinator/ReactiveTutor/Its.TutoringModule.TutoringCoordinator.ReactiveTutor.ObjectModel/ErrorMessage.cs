@@ -60,7 +60,7 @@ namespace Its.TutoringModule.TutoringCoordinator.ReactiveTutor.ObjectModel
 		}*/
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="ErrorMessage"/> class.
+		/// Initializes a new instance of the <see cref="Its.ReactiveTutor.ObjectModel.ErrorMessage"/> class.
 		/// </summary>
 		/// <param name="key">Key.</param>
 		/// <param name="message">Message.</param>

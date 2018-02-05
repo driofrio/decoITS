@@ -55,7 +55,7 @@ namespace Its.ExpertModule.ObjectModel
 		}
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="Incompatibility"/> class.
+		/// Initializes a new instance of the <see cref="Its.Expert.ObjectModel.Incompatibility"/> class.
 		/// </summary>
 		/// <param name="key">Key.</param>
 		/// <param name="incompatibilityAction">Incompatibility action.</param>

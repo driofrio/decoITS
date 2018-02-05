@@ -71,7 +71,7 @@ namespace Its.ExpertModule.ObjectModel
 		}
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="DomainActions"/> class.
+		/// Initializes a new instance of the <see cref="Its.Expert.ObjectModel.DomainActions"/> class.
 		/// </summary>
 		/// <param name="key">Key.</param>
 		/// <param name="description">Description.</param>
