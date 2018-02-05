@@ -1,5 +1,6 @@
 ﻿using System;
 using Its.TutoringModule.TutoringCoordinator.ReactiveTutor.ObjectModel;
+using Its.Utils.StringUtils;
 
 namespace Its.ExpertModule.ObjectModel
 {
@@ -54,7 +55,7 @@ namespace Its.ExpertModule.ObjectModel
 		}
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="Its.Expert.ObjectModel.Incompatibility"/> class.
+		/// Initializes a new instance of the <see cref="Incompatibility"/> class.
 		/// </summary>
 		/// <param name="key">Key.</param>
 		/// <param name="incompatibilityAction">Incompatibility action.</param>
@@ -65,7 +66,7 @@ namespace Its.ExpertModule.ObjectModel
 		public Incompatibility (string key, ActionAplication incompatibilityAction, Error incompatibilityError)
 		{
 			//If the key parameter is null or empty or his contained is a blank, a exception is thrown.
-			if (String.IsNullOrWhiteSpace (key)) {  
+			if (StringUtils.IsNullOrWhiteSpace (key)) {  
 				//This argument exception says that the key param is not correct.
 				ArgumentException argEx = new System.ArgumentException ("The key parameter is not correct, " +
 				                          "it can neither be null or empty string nor his contained be blank.", "key");

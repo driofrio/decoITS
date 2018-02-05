@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -37,6 +37,12 @@
     <Compile Include="Error.cs" />
     <Compile Include="ErrorMessage.cs" />
     <Compile Include="TutorMessage.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Utils\Its.Utils.StringUtils\Its.Utils.StringUtils.csproj">
+      <Project>{0C029A6D-A272-4FE0-99C6-A70F1842942F}</Project>
+      <Name>Its.Utils.StringUtils</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

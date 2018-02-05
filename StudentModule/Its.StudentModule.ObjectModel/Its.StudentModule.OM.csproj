@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -60,6 +60,10 @@
     <ProjectReference Include="..\..\ExpertModule\Its.ExpertModule.ObjectModel\Its.ExpertModule.OM.csproj">
       <Project>{8B928308-3D38-4CF5-8352-162A23F9A5EA}</Project>
       <Name>Its.ExpertModule.OM</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Utils\Its.Utils.StringUtils\Its.Utils.StringUtils.csproj">
+      <Project>{0C029A6D-A272-4FE0-99C6-A70F1842942F}</Project>
+      <Name>Its.Utils.StringUtils</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

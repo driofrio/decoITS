@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -46,6 +46,10 @@
     <ProjectReference Include="..\..\TutoringModule\TutoringCoordinator\ReactiveTutor\Its.TutoringModule.TutoringCoordinator.ReactiveTutor.ObjectModel\Its.TutoringModule.TC.RTutor.OM.csproj">
       <Project>{BE49666E-929B-4CF9-9F37-DDB4E4D6C762}</Project>
       <Name>Its.TutoringModule.TC.RTutor.OM</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Utils\Its.Utils.StringUtils\Its.Utils.StringUtils.csproj">
+      <Project>{0c029a6d-a272-4fe0-99c6-a70f1842942f}</Project>
+      <Name>Its.Utils.StringUtils</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>

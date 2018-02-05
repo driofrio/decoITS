@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Its.Utils.StringUtils;
 
 namespace Its.ExpertModule.ObjectModel
 {
@@ -70,7 +71,7 @@ namespace Its.ExpertModule.ObjectModel
 		}
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="Its.Expert.ObjectModel.DomainActions"/> class.
+		/// Initializes a new instance of the <see cref="DomainActions"/> class.
 		/// </summary>
 		/// <param name="key">Key.</param>
 		/// <param name="description">Description.</param>
@@ -82,7 +83,7 @@ namespace Its.ExpertModule.ObjectModel
 		public DomainActions (string key, string description, List<ActionAplication> actions, int estimatedTime)
 		{
 			//If the key parameter is null or empty or his contained is a blank, a exception is thrown.
-			if (String.IsNullOrWhiteSpace (key)) {  
+			if (StringUtils.IsNullOrWhiteSpace (key)) {  
 				//This argument exception says that the key param is not correct.
 				ArgumentException argEx = new System.ArgumentException ("The key parameter is not correct, " +
 				                          "it can neither be null or empty string nor his contained be blank.", "key");
