@@ -9,7 +9,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>Its.TutoringModule.SBP.Exceptions</RootNamespace>
     <AssemblyName>Its.TutoringModule.SBP.Exceptions</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
