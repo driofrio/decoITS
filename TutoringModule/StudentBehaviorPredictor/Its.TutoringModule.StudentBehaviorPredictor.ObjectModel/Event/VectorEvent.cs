@@ -61,7 +61,8 @@ namespace Its.TutoringModule.StudentBehaviorPredictor.ObjectModel
 		/// </summary>
 		/// <returns>A <see cref="System.String"/> that represents the current <see cref="Its.TutoringModule.PredictionModel.ObjectModel.VectorEvent"/>.</returns>
 		public override string ToString(){
-			return "VectorEvent - ActionExecuted: " + base.ActionExecuted.Name + " Frecuency: [" + String.Join(", ",_frequency.ToArray())+"]";
+			String[] frequencyStrings = new List<long>(_frequency).ConvertAll(i => i.ToString()).ToArray(); 
+			return "VectorEvent - ActionExecuted: " + base.ActionExecuted.Name + " Frecuency: [" + String.Join(", ", frequencyStrings)+"]";
 		}
 	}
 }
