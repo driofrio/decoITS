@@ -238,7 +238,7 @@ namespace Its.StudentModule.DataAccess
 				//Loads all owl files from subdirectories.
 				foreach (string p in directories) {
 					//Gets the files in the directory p.
-					string[] files = System.IO.Directory.GetFiles(p);
+					string[] files = System.IO.Directory.GetFiles(p, "*.owl");
 					//Obtains the Domain key.
 					string domainKey = p.Replace(_logsPath, "");
 					domainKey = domainKey.Replace(Path.DirectorySeparatorChar.ToString(), "");
