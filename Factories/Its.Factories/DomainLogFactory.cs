@@ -115,13 +115,6 @@ namespace Its.Factories
 					//Adds into the StudentLog.
 					studentLog.AddLog (noCorrectiveActionLog);
 					break;
-				case "noplan":
-					//Creates the log.
-					NoPlanAllowedActionLog noPlanActionLog = new NoPlanAllowedActionLog (action, (bool)o [3],
-						(DateTime)o [4]);
-					//Adds into the StudentLog.
-					studentLog.AddLog (noPlanActionLog);
-					break;
 				case "dependence":
 					//Creates a Dependence.
 					Dependence dependence;

@@ -238,19 +238,6 @@ namespace Its.ExpertModule.ObjectModel
 			}
 		}
 		/// <summary>
-		/// Boolean that denotes if this action is not part of the plan but is allowed in it.
-		/// </summary>
-		private bool _noPlanAction;
-		/// <summary>
-		/// Gets a value indicating whether this <see cref="Its.Expert.ObjectModel.ActionAplication"/> is not part of the plan but is allowed in it.
-		/// </summary>
-		/// <value><c>true</c> if is not in the plan; otherwise, <c>false</c>.</value>
-		public bool NoPlanAction {
-			get {
-				return _noPlanAction;
-			}
-		}
-		/// <summary>
 		/// List in which is contained the errors that the action correct if the action is corrective.
 		/// </summary>
 		private List<Error> _errorsToCorrect;
@@ -352,7 +339,7 @@ namespace Its.ExpertModule.ObjectModel
 		/// </exception>
 		public ActionAplication (string key, int phase, string name, string description, List<string> objectName, bool lockObj, 
 			bool unlockObj, bool isRepetitive, bool initPhase, bool validatePhaseErrors, ComplexDependence dependence, 
-			List<Incompatibility> incompatibilities, bool correctiveAction, bool noPlanAction, List<Error> errorsToCorrect,
+			List<Incompatibility> incompatibilities, bool correctiveAction, List<Error> errorsToCorrect,
 			string okMessage, bool showOkMessage, List<ActionAplication> possibleNextActions, TutorMessage tutorMessage)
 		{
 			//If the key parameter is null or empty or his contained is a blank, a exception is thrown.
@@ -390,7 +377,6 @@ namespace Its.ExpertModule.ObjectModel
 				this._dependence = dependence;
 				this._incompatibilities = incompatibilities;
 				this._correctiveAction = correctiveAction;
-				this._noPlanAction = noPlanAction;
 				this._errorsToCorrect = errorsToCorrect;
 				this._okMessage = okMessage;
 				this._showOkMessage = showOkMessage;
@@ -438,7 +424,7 @@ namespace Its.ExpertModule.ObjectModel
 		/// </exception>
 		public ActionAplication (string key, int phase, string name, string description, List<string> objectName, bool lockObj, 
 			bool unlockObj, bool isRepetitive, bool initPhase, bool validatePhaseErrors,
-			ComplexDependence dependence, List<Incompatibility> incompatibilities, bool correctiveAction, bool noPlanAction,
+			ComplexDependence dependence, List<Incompatibility> incompatibilities, bool correctiveAction, 
 			List<Error> errorsToCorrect, string okMessage, bool showOkMessage, List<ActionAplication> possibleNextActions,
 			TutorMessage tutorMessage, int minTime, Error minTimeError, int maxTime = 0, Error maxTimeError = null)
 		{
@@ -473,7 +459,6 @@ namespace Its.ExpertModule.ObjectModel
 				this._dependence = dependence;
 				this._incompatibilities = incompatibilities;
 				this._correctiveAction = correctiveAction;
-				this._noPlanAction = noPlanAction;
 				this._errorsToCorrect = errorsToCorrect;
 				this._okMessage = okMessage;
 				this._showOkMessage = showOkMessage;

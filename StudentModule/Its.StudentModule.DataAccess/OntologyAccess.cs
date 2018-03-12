@@ -184,11 +184,11 @@ namespace Its.StudentModule.DataAccess
 			java.io.InputStream fe;
 
 			try{
-			if (System.IO.File.Exists (_ontologyPath + "other_error.owl")) {
-				fe = new java.io.FileInputStream (_ontologyPath + "other_error.owl");
-				_otherDataModel.read (new java.io.InputStreamReader (fe, "UTF-8"), "");
-				fe.close ();
-			}
+				if (System.IO.File.Exists (_ontologyPath + "other_error.owl")) {
+					fe = new java.io.FileInputStream (_ontologyPath + "other_error.owl");
+					_otherDataModel.read (new java.io.InputStreamReader (fe, "UTF-8"), "");
+					fe.close ();
+				}
 			}catch(System.Security.Cryptography.CryptographicException e){}
 
 			if (System.IO.File.Exists (_ontologyPath + "world_error.owl")) {
@@ -318,7 +318,7 @@ namespace Its.StudentModule.DataAccess
 			//Creates a new Action_Trace resource.
 			Resource actionTrace = ontM.createResource (STUDENT_TRACE_URI + "Log" + domain.Key
 			                       + student.Key + log.Action.Key
-			                       + log.DateLog.ToString ("dd/MM/yyyy HH:mm:ss.fff").Replace (" ", null));
+			                       + log.DateLog.ToString ().Replace (" ", null));
 			//Creates a new statement.
 			Statement stmt = ontM.createStatement (actionTrace, p, r);
 			//Adds the statement into the ontologyModel.
@@ -328,7 +328,7 @@ namespace Its.StudentModule.DataAccess
 			//Creates a new Action_Execution_State resource.
 			Resource actionExeState = ontM.createResource (KNOWLEDGE_OBJECT_URI + "ActionExecutionState" + domain.Key
 			                          + student.Key + log.Action.Key
-			                          + log.DateLog.ToString ("dd/MM/yyyy HH:mm:ss.fff").Replace (" ", null));
+			                          + log.DateLog.ToString ().Replace (" ", null));
 			//Creates a new statement.
 			stmt = ontM.createStatement (actionExeState, p, r);
 			//Adds the statement into the ontologyModel.
@@ -380,7 +380,6 @@ namespace Its.StudentModule.DataAccess
 			p = ontM.getProperty (STUDENT_TRACE_URI + "initialTime");
 			java.util.Calendar date = new java.util.GregorianCalendar ();
 			date.set (log.DateLog.Year, log.DateLog.Month-1, log.DateLog.Day, log.DateLog.Hour, log.DateLog.Minute, log.DateLog.Second);
-			date.set (java.util.Calendar.MILLISECOND, log.DateLog.Millisecond);
 			XSDDateTime t = new XSDDateTime (date);
 			actionTrace.addLiteral (p, t);
 
@@ -429,7 +428,7 @@ namespace Its.StudentModule.DataAccess
 			//Creates a new Action_Trace resource.
 			Resource actionTrace = ontM.createResource (STUDENT_TRACE_URI + "Log" + domain.Key
 			                       + student.Key + log.Action.Key
-			                       + log.DateLog.ToString ("dd/MM/yyyy HH:mm:ss.fff").Replace (" ", null));
+			                       + log.DateLog.ToString ().Replace (" ", null));
 			//Creates a new statement.
 			Statement stmt = ontM.createStatement (actionTrace, p, r);
 			//Adds the statement into the ontologyModel.
@@ -439,7 +438,7 @@ namespace Its.StudentModule.DataAccess
 			//Creates a new Action_Execution_State resource.
 			Resource actionExeState = ontM.createResource (KNOWLEDGE_OBJECT_URI + "ActionExecutionState" + domain.Key
 			                          + student.Key + log.Action.Key
-			                          + log.DateLog.ToString ("dd/MM/yyyy HH:mm:ss.fff").Replace (" ", null));
+			                          + log.DateLog.ToString ().Replace (" ", null));
 			//Creates a new statement.
 			stmt = ontM.createStatement (actionExeState, p, r);
 			//Adds the statement into the ontologyModel.
@@ -449,7 +448,7 @@ namespace Its.StudentModule.DataAccess
 			//Creates a new Punctual_Action_Element resource.
 			Resource punctualActionElement = ontM.createResource (KNOWLEDGE_OBJECT_URI + "PunctualActionElement"
 			                                 + domain.Key + student.Key + log.Action.Key
-			                                 + log.DateLog.ToString ("dd/MM/yyyy HH:mm:ss.fff").Replace (" ", null));
+			                                 + log.DateLog.ToString ().Replace (" ", null));
 			//Creates a new statement.
 			stmt = ontM.createStatement (punctualActionElement, p, r);
 			//Adds the statement into the ontologyModel.
@@ -459,7 +458,7 @@ namespace Its.StudentModule.DataAccess
 			//Creates a new Postcondition_State resource.
 			Resource postCondState = ontM.createResource (STUDENT_STATE_URI + "PostconditionState"
 			                         + domain.Key + student.Key + log.Action.Key
-			                         + log.DateLog.ToString ("dd/MM/yyyy HH:mm:ss.fff").Replace (" ", null));
+			                         + log.DateLog.ToString ().Replace (" ", null));
 			//Creates a new statement.
 			stmt = ontM.createStatement (postCondState, p, r);
 			//Adds the statement into the ontologyModel.
@@ -527,154 +526,6 @@ namespace Its.StudentModule.DataAccess
 			p = ontM.getProperty (STUDENT_TRACE_URI + "initialTime");
 			java.util.Calendar date = new java.util.GregorianCalendar ();
 			date.set (log.DateLog.Year, log.DateLog.Month-1, log.DateLog.Day, log.DateLog.Hour, log.DateLog.Minute, log.DateLog.Second);
-			date.set (java.util.Calendar.MILLISECOND, log.DateLog.Millisecond);
-			XSDDateTime t = new XSDDateTime (date);
-			actionTrace.addLiteral (p, t);
-
-			//Saves into disk.
-			string path = _logsPath + domain.Key + Path.DirectorySeparatorChar;
-			//Determine whether the directory exists. If the directory does not exist, it will be created.
-			if (!Directory.Exists(path)) {
-				Directory.CreateDirectory(path);
-			}
-			//Specifies the file path.
-			string file = path + student.Key + ".owl";
-			//Saves the logs into files.
-			using (BufferedWriter bw = new BufferedWriter (new OutputStreamWriter(new FileOutputStream(file), "UTF-8"))) {
-				string b = "file:" + file;
-				//using (OntModel ontTmp = ModelFactory.createOntologyModel (OntModelSpec.OWL_DL_MEM, null)) {
-				//ontTmp = _ontologyModel;
-				ontM.write (bw, "RDF/XML-ABBREV", b);
-				//}
-				bw.close ();
-			}
-		}
-
-		/// <summary>
-		/// Adds the log into onto.
-		/// </summary>
-		/// <param name="log">Log.</param>
-		public void AddLogIntoOnto (NoPlanAllowedActionLog log, Student student, DomainActions domain) 
-		{
-			//Creates a auxiliar variable.
-			OntModel ontM;
-			//Selects the ontology model with the specific domain and student
-			var oQuery = 
-				from o in _logModels
-					where o.Key == (domain.Key + "-" + student.Key)
-				select o.Value;
-			//Checks if the OntModel exists. If it does not exist, create a new OntModel.
-			if (oQuery.ToList ().Count == 0)
-				ontM = CreateOntModel (domain.Key, student.Key);
-			else
-				ontM = oQuery.First ();
-			//Add directly the log into the ontology, without any kind of test.
-			//Gets the resource Action_Trace.
-			Resource r = ontM.getResource (STUDENT_TRACE_URI + "Action_Trace");
-			//Gets the type property  of Thing.
-			Property p = ontM.getProperty("http://www.w3.org/1999/02/22-rdf-syntax-ns#type");
-			//Creates a new Action_Trace resource.
-			Resource actionTrace = ontM.createResource (STUDENT_TRACE_URI + "Log" + domain.Key
-				+ student.Key + log.Action.Key
-				+ log.DateLog.ToString ("dd/MM/yyyy HH:mm:ss.fff").Replace (" ", null));
-			//Creates a new statement.
-			Statement stmt = ontM.createStatement (actionTrace, p, r);
-			//Adds the statement into the ontologyModel.
-			ontM.add (stmt);
-			//Gets the resource Action_Execution_State.
-			r = ontM.getResource (STUDENT_STATE_URI + "Action_Execution_State");
-			//Creates a new Action_Execution_State resource.
-			Resource actionExeState = ontM.createResource (KNOWLEDGE_OBJECT_URI + "ActionExecutionState" + domain.Key
-				+ student.Key + log.Action.Key
-				+ log.DateLog.ToString ("dd/MM/yyyy HH:mm:ss.fff").Replace (" ", null));
-			//Creates a new statement.
-			stmt = ontM.createStatement (actionExeState, p, r);
-			//Adds the statement into the ontologyModel.
-			ontM.add (stmt);
-			//Gets the resource Punctual_Action_Element.
-			r = ontM.getResource (KNOWLEDGE_OBJECT_URI + "Punctual_Action_Element");
-			//Creates a new Punctual_Action_Element resource.
-			Resource punctualActionElement = ontM.createResource (KNOWLEDGE_OBJECT_URI + "PunctualActionElement"
-				+ domain.Key + student.Key + log.Action.Key
-				+ log.DateLog.ToString ("dd/MM/yyyy HH:mm:ss.fff").Replace (" ", null));
-			//Creates a new statement.
-			stmt = ontM.createStatement (punctualActionElement, p, r);
-			//Adds the statement into the ontologyModel.
-			ontM.add (stmt);
-			//Gets the resource Postcondition_State.
-			r = ontM.getResource (STUDENT_STATE_URI + "Postcondition_State");
-			//Creates a new Postcondition_State resource.
-			Resource postCondState = ontM.createResource (STUDENT_STATE_URI + "PostconditionState"
-				+ domain.Key + student.Key + log.Action.Key
-				+ log.DateLog.ToString ("dd/MM/yyyy HH:mm:ss.fff").Replace (" ", null));
-			//Creates a new statement.
-			stmt = ontM.createStatement (postCondState, p, r);
-			//Adds the statement into the ontologyModel.
-			ontM.add (stmt);
-			//Gets the descriptorObject property and adds the value.
-			//The value is x property .
-			p = ontM.getProperty (KNOWLEDGE_OBJECT_URI + "descriptorObject");
-			punctualActionElement.addLiteral (p, "noplan");
-			//Gets the refersToCondition property of Postcondition_State resource and adds the value.
-			p = ontM.getProperty (STUDENT_STATE_URI + "refersToCondition");
-			//Creates a new statement.
-			stmt = ontM.createStatement (postCondState, p, punctualActionElement);
-			//Adds the statement into the ontologyModel.
-			ontM.add (stmt);
-			//Gets the consistsOfConseqState property of Action_Execution_State resource and adds the value.
-			p = ontM.getProperty (STUDENT_STATE_URI + "consistsOfConseqState");
-			//Creates a new statement.
-			stmt = ontM.createStatement (actionExeState, p, postCondState);
-			//Adds the statement into the ontologyModel.
-			ontM.add (stmt);
-			//Gets the wasApplied property of Action_Execution_State resource and adds the value.
-			p = ontM.getProperty (STUDENT_STATE_URI + "wasApplied");
-			actionExeState.addLiteral (p, log.WasApplied);
-			//Sets the associatedActionState property of Action_Trace.
-			p = ontM.getProperty (STUDENT_TRACE_URI + "associatedActionState");
-			//Creates a new statement.
-			stmt = ontM.createStatement (actionTrace, p, actionExeState);
-			//Adds the statement into the ontologyModel.
-			ontM.add (stmt);
-			//Gets the Punctual_Action whose key is equals to the ActionAplication.
-			p = ontM.getProperty (KNOWLEDGE_OBJECT_URI + "idObject");
-			StmtIterator stmtItr = _domainDataModel.listStatements (null, p, log.Action.Key + "_" + domain.Key);
-			//Gets the statement. It is assumed that there is a only statement.
-			stmt = stmtItr.nextStatement ();
-			//Gets the statement subject, which is the PunctualAction with the key.
-			r = stmt.getSubject ();
-			//Sets the associatedSpecificAction property of Action_Trace resource.
-			p = ontM.getProperty (STUDENT_TRACE_URI + "associatedSpecificAction");
-			//Creates a new statement.
-			stmt = ontM.createStatement (actionTrace, p, r);
-			//Adds the statement into the ontologyModel.
-			ontM.add (stmt);
-			//Gets the Student_Profile whose key is equals to the Student.
-			p = ontM.getProperty (STUDENT_PROFILE_URI + "idStudent");
-			stmtItr = _studentDataModel.listStatements (null, p, student.Key);
-			//Gets the statement. It is assumed that there is a only statement.
-			stmt = stmtItr.nextStatement ();
-			//Gets the statement subject, which is the Student_Profile with the key.
-			Resource rAux = stmt.getSubject ();
-			//Sets the Student_Information which has the previous Student_Profile.
-			p = ontM.getProperty (STUDENT_INFORMATION_URI + "hasProfile");
-			stmtItr = _studentDataModel.listStatements (null, p, rAux);
-			//Gets the statement. It is assumed that there is a only statement.
-			stmt = stmtItr.nextStatement ();
-			//Gets the statement subject, which is the Student_Information with the key.
-			r = stmt.getSubject ();
-			//Sets the belongsToStudent property of Action_Trace resource and adds the value.
-			//The belongsToStudent value is the previous obtained Student_Information resource.
-			p = ontM.getProperty (STUDENT_TRACE_URI + "belongsToStudent");
-			//Creates a new statement.
-			stmt = ontM.createStatement (actionTrace, p, r);
-			//Adds the statement into the ontologyModel.
-			ontM.add (stmt);
-			//Sets the initialTime property of Action_Trace resource and adds the value.
-			p = ontM.getProperty (STUDENT_TRACE_URI + "initialTime");
-			java.util.Calendar date = new java.util.GregorianCalendar ();
-			date.set (log.DateLog.Year, log.DateLog.Month-1, log.DateLog.Day, log.DateLog.Hour, log.DateLog.Minute, log.DateLog.Second);
-			date.set (java.util.Calendar.MILLISECOND, log.DateLog.Millisecond);
 			XSDDateTime t = new XSDDateTime (date);
 			actionTrace.addLiteral (p, t);
 
@@ -723,7 +574,7 @@ namespace Its.StudentModule.DataAccess
 			//Creates a new Action_Trace resource.
 			Resource actionTrace = ontM.createResource (STUDENT_TRACE_URI + "Log" + domain.Key
 			                       + student.Key + log.Action.Key + log.FailedDependence.Key
-			                       + log.DateLog.ToString ("dd/MM/yyyy HH:mm:ss.fff").Replace (" ", null));
+			                       + log.DateLog.ToString ().Replace (" ", null));
 			//Creates a new statement.
 			Statement stmt = ontM.createStatement (actionTrace, p, r);
 			//Adds the statement into the ontologyModel.
@@ -733,7 +584,7 @@ namespace Its.StudentModule.DataAccess
 			//Creates a new Action_Execution_State resource.
 			Resource actionExeState = ontM.createResource (KNOWLEDGE_OBJECT_URI + "ActionExecutionState" + domain.Key
 			                          + student.Key + log.Action.Key + log.FailedDependence.Key
-			                          + log.DateLog.ToString ("dd/MM/yyyy HH:mm:ss.fff").Replace (" ", null));
+			                          + log.DateLog.ToString ().Replace (" ", null));
 			//Creates a new statement.
 			stmt = ontM.createStatement (actionExeState, p, r);
 			//Adds the statement into the ontologyModel.
@@ -743,7 +594,7 @@ namespace Its.StudentModule.DataAccess
 			//Creates a new Punctual_Action_Element resource.
 			Resource punctualActionElement = ontM.createResource (KNOWLEDGE_OBJECT_URI + "PunctualActionElement"
 			                                 + domain.Key + student.Key + log.Action.Key + log.FailedDependence.Key
-			                                 + log.DateLog.ToString ("dd/MM/yyyy HH:mm:ss.fff").Replace (" ", null));
+			                                 + log.DateLog.ToString ().Replace (" ", null));
 			//Creates a new statement.
 			stmt = ontM.createStatement (punctualActionElement, p, r);
 			//Adds the statement into the ontologyModel.
@@ -753,7 +604,7 @@ namespace Its.StudentModule.DataAccess
 			//Creates a new Precondition_State resource.
 			Resource preCondState = ontM.createResource (STUDENT_STATE_URI + "PreconditionState"
 			                        + domain.Key + student.Key + log.Action.Key + log.FailedDependence.Key
-			                        + log.DateLog.ToString ("dd/MM/yyyy HH:mm:ss.fff").Replace (" ", null));
+			                        + log.DateLog.ToString ().Replace (" ", null));
 			//Creates a new statement.
 			stmt = ontM.createStatement (preCondState, p, r);
 			//Adds the statement into the ontologyModel.
@@ -763,7 +614,7 @@ namespace Its.StudentModule.DataAccess
 			//Creates a new Condition_On_State resource.
 			Resource condOnState = ontM.createResource (KNOWLEDGE_OBJECT_URI + "ConditionOnState"
 			                       + domain.Key + student.Key + log.Action.Key + log.FailedDependence.Key
-			                       + log.DateLog.ToString ("dd/MM/yyyy HH:mm:ss.fff").Replace (" ", null));
+			                       + log.DateLog.ToString ().Replace (" ", null));
 			//Creates a new statement.
 			stmt = ontM.createStatement (condOnState, p, r);
 			//Adds the statement into the ontologyModel.
@@ -856,7 +707,6 @@ namespace Its.StudentModule.DataAccess
 			p = ontM.getProperty (STUDENT_TRACE_URI + "initialTime");
 			java.util.Calendar date = new java.util.GregorianCalendar ();
 			date.set (log.DateLog.Year, log.DateLog.Month-1, log.DateLog.Day, log.DateLog.Hour, log.DateLog.Minute, log.DateLog.Second);
-			date.set (java.util.Calendar.MILLISECOND, log.DateLog.Millisecond);
 			XSDDateTime t = new XSDDateTime (date);
 			actionTrace.addLiteral (p, t);
 
@@ -905,7 +755,7 @@ namespace Its.StudentModule.DataAccess
 			//Creates a new Action_Trace resource.
 			Resource actionTrace = ontM.createResource (STUDENT_TRACE_URI + "Log" + domain.Key
 			                       + student.Key + log.Action.Key + log.FailedIncompatibility.Key
-			                       + log.DateLog.ToString ("dd/MM/yyyy HH:mm:ss.fff").Replace (" ", null));
+			                       + log.DateLog.ToString ().Replace (" ", null));
 			//Creates a new statement.
 			Statement stmt = ontM.createStatement (actionTrace, p, r);
 			//Adds the statement into the ontologyModel.
@@ -915,7 +765,7 @@ namespace Its.StudentModule.DataAccess
 			//Creates a new Action_Execution_State resource.
 			Resource actionExeState = ontM.createResource (KNOWLEDGE_OBJECT_URI + "ActionExecutionState" + domain.Key
 			                          + student.Key + log.Action.Key + log.FailedIncompatibility.Key
-			                          + log.DateLog.ToString ("dd/MM/yyyy HH:mm:ss.fff").Replace (" ", null));
+			                          + log.DateLog.ToString ().Replace (" ", null));
 			//Creates a new statement.
 			stmt = ontM.createStatement (actionExeState, p, r);
 			//Adds the statement into the ontologyModel.
@@ -925,7 +775,7 @@ namespace Its.StudentModule.DataAccess
 			//Creates a new Punctual_Action_Element resource.
 			Resource punctualActionElement = ontM.createResource (KNOWLEDGE_OBJECT_URI + "PunctualActionElement"
 			                                 + domain.Key + student.Key + log.Action.Key + log.FailedIncompatibility.Key
-			                                 + log.DateLog.ToString ("dd/MM/yyyy HH:mm:ss.fff").Replace (" ", null));
+			                                 + log.DateLog.ToString ().Replace (" ", null));
 			//Creates a new statement.
 			stmt = ontM.createStatement (punctualActionElement, p, r);
 			//Adds the statement into the ontologyModel.
@@ -935,7 +785,7 @@ namespace Its.StudentModule.DataAccess
 			//Creates a new Precondition_State resource.
 			Resource preCondState = ontM.createResource (STUDENT_STATE_URI + "PreconditionState"
 			                        + domain.Key + student.Key + log.Action.Key + log.FailedIncompatibility.Key
-									+ log.DateLog.ToString ("dd/MM/yyyy HH:mm:ss.fff").Replace (" ", null));
+			                        + log.DateLog.ToString ().Replace (" ", null));
 			//Creates a new statement.
 			stmt = ontM.createStatement (preCondState, p, r);
 			//Adds the statement into the ontologyModel.
@@ -945,7 +795,7 @@ namespace Its.StudentModule.DataAccess
 			//Creates a new Condition_On_State resource.
 			Resource condOnState = ontM.createResource (KNOWLEDGE_OBJECT_URI + "ConditionOnState"
 			                       + domain.Key + student.Key + log.Action.Key + log.FailedIncompatibility.Key
-			                       + log.DateLog.ToString ("dd/MM/yyyy HH:mm:ss.fff").Replace (" ", null));
+			                       + log.DateLog.ToString ().Replace (" ", null));
 			//Creates a new statement.
 			stmt = ontM.createStatement (condOnState, p, r);
 			//Adds the statement into the ontologyModel.
@@ -1034,7 +884,6 @@ namespace Its.StudentModule.DataAccess
 			p = ontM.getProperty (STUDENT_TRACE_URI + "initialTime");
 			java.util.Calendar date = new java.util.GregorianCalendar ();
 			date.set (log.DateLog.Year, log.DateLog.Month-1, log.DateLog.Day, log.DateLog.Hour, log.DateLog.Minute, log.DateLog.Second);
-			date.set (java.util.Calendar.MILLISECOND, log.DateLog.Millisecond);
 			XSDDateTime t = new XSDDateTime (date);
 			actionTrace.addLiteral (p, t);
 
@@ -1083,7 +932,7 @@ namespace Its.StudentModule.DataAccess
 			//Creates a new Action_Trace resource.
 			Resource actionTrace = ontM.createResource (STUDENT_TRACE_URI + "Log" + domain.Key
 			                       + student.Key + log.Action.Key
-			                       + log.DateLog.ToString ("dd/MM/yyyy HH:mm:ss.fff").Replace (" ", null));
+			                       + log.DateLog.ToString ().Replace (" ", null));
 			//Creates a new statement.
 			Statement stmt = ontM.createStatement (actionTrace, p, r);
 			//Adds the statement into the ontologyModel.
@@ -1093,7 +942,7 @@ namespace Its.StudentModule.DataAccess
 			//Creates a new Action_Execution_State resource.
 			Resource actionExeState = ontM.createResource (KNOWLEDGE_OBJECT_URI + "ActionExecutionState" + domain.Key
 			                          + student.Key + log.Action.Key
-			                          + log.DateLog.ToString ("dd/MM/yyyy HH:mm:ss.fff").Replace (" ", null));
+			                          + log.DateLog.ToString ().Replace (" ", null));
 			//Creates a new statement.
 			stmt = ontM.createStatement (actionExeState, p, r);
 			//Adds the statement into the ontologyModel.
@@ -1103,7 +952,7 @@ namespace Its.StudentModule.DataAccess
 			//Creates a new Punctual_Action_Element resource.
 			Resource punctualActionElement = ontM.createResource (KNOWLEDGE_OBJECT_URI + "PunctualActionElement"
 			                                 + domain.Key + student.Key + log.Action.Key
-			                                 + log.DateLog.ToString ("dd/MM/yyyy HH:mm:ss.fff").Replace (" ", null));
+			                                 + log.DateLog.ToString ().Replace (" ", null));
 			//Creates a new statement.
 			stmt = ontM.createStatement (punctualActionElement, p, r);
 			//Adds the statement into the ontologyModel.
@@ -1113,7 +962,7 @@ namespace Its.StudentModule.DataAccess
 			//Creates a new Precondition_State resource.
 			Resource preCondState = ontM.createResource (STUDENT_STATE_URI + "PreconditionState"
 			                        + domain.Key + student.Key + log.Action.Key
-			                        + log.DateLog.ToString ("dd/MM/yyyy HH:mm:ss.fff").Replace (" ", null));
+			                        + log.DateLog.ToString ().Replace (" ", null));
 			//Creates a new statement.
 			stmt = ontM.createStatement (preCondState, p, r);
 			//Adds the statement into the ontologyModel.
@@ -1123,7 +972,7 @@ namespace Its.StudentModule.DataAccess
 			//Creates a new Condition_On_State resource.
 			Resource condOnState = ontM.createResource (KNOWLEDGE_OBJECT_URI + "ConditionOnState"
 			                       + domain.Key + student.Key + log.Action.Key
-			                       + log.DateLog.ToString ("dd/MM/yyyy HH:mm:ss.fff").Replace (" ", null));
+			                       + log.DateLog.ToString ().Replace (" ", null));
 			//Creates a new statement.
 			stmt = ontM.createStatement (condOnState, p, r);
 			//Adds the statement into the ontologyModel.
@@ -1212,7 +1061,6 @@ namespace Its.StudentModule.DataAccess
 			p = ontM.getProperty (STUDENT_TRACE_URI + "initialTime");
 			java.util.Calendar date = new java.util.GregorianCalendar ();
 			date.set (log.DateLog.Year, log.DateLog.Month-1, log.DateLog.Day, log.DateLog.Hour, log.DateLog.Minute, log.DateLog.Second);
-			date.set (java.util.Calendar.MILLISECOND, log.DateLog.Millisecond);
 			XSDDateTime t = new XSDDateTime (date);
 			actionTrace.addLiteral (p, t);
 
@@ -1261,7 +1109,7 @@ namespace Its.StudentModule.DataAccess
 			//Creates a new Action_Trace resource.
 			Resource actionTrace = ontM.createResource (STUDENT_TRACE_URI + "Log" + domain.Key
 			                       + student.Key + log.Action.Key
-			                       + log.DateLog.ToString ("dd/MM/yyyy HH:mm:ss.fff").Replace (" ", null));
+			                       + log.DateLog.ToString ().Replace (" ", null));
 			//Creates a new statement.
 			Statement stmt = ontM.createStatement (actionTrace, p, r);
 			//Adds the statement into the ontologyModel.
@@ -1271,7 +1119,7 @@ namespace Its.StudentModule.DataAccess
 			//Creates a new Action_Execution_State resource.
 			Resource actionExeState = ontM.createResource (KNOWLEDGE_OBJECT_URI + "ActionExecutionState" + domain.Key
 			                          + student.Key + log.Action.Key
-			                          + log.DateLog.ToString ("dd/MM/yyyy HH:mm:ss.fff").Replace (" ", null));
+			                          + log.DateLog.ToString ().Replace (" ", null));
 			//Creates a new statement.
 			stmt = ontM.createStatement (actionExeState, p, r);
 			//Adds the statement into the ontologyModel.
@@ -1281,7 +1129,7 @@ namespace Its.StudentModule.DataAccess
 			//Creates a new Punctual_Action_Element resource.
 			Resource punctualActionElement = ontM.createResource (KNOWLEDGE_OBJECT_URI + "PunctualActionElement"
 			                                 + domain.Key + student.Key + log.Action.Key
-			                                 + log.DateLog.ToString ("dd/MM/yyyy HH:mm:ss.fff").Replace (" ", null));
+			                                 + log.DateLog.ToString ().Replace (" ", null));
 			//Creates a new statement.
 			stmt = ontM.createStatement (punctualActionElement, p, r);
 			//Adds the statement into the ontologyModel.
@@ -1291,7 +1139,7 @@ namespace Its.StudentModule.DataAccess
 			//Creates a new Precondition_State resource.
 			Resource preCondState = ontM.createResource (STUDENT_STATE_URI + "PreconditionState"
 			                        + domain.Key + student.Key + log.Action.Key
-			                        + log.DateLog.ToString ("dd/MM/yyyy HH:mm:ss.fff").Replace (" ", null));
+			                        + log.DateLog.ToString ().Replace (" ", null));
 			//Creates a new statement.
 			stmt = ontM.createStatement (preCondState, p, r);
 			//Adds the statement into the ontologyModel.
@@ -1301,7 +1149,7 @@ namespace Its.StudentModule.DataAccess
 			//Creates a new Condition_On_State resource.
 			Resource condOnState = ontM.createResource (KNOWLEDGE_OBJECT_URI + "ConditionOnState"
 			                       + domain.Key + student.Key + log.Action.Key
-			                       + log.DateLog.ToString ("dd/MM/yyyy HH:mm:ss.fff").Replace (" ", null));
+			                       + log.DateLog.ToString ().Replace (" ", null));
 			//Creates a new statement.
 			stmt = ontM.createStatement (condOnState, p, r);
 			//Adds the statement into the ontologyModel.
@@ -1390,7 +1238,6 @@ namespace Its.StudentModule.DataAccess
 			p = ontM.getProperty (STUDENT_TRACE_URI + "initialTime");
 			java.util.Calendar date = new java.util.GregorianCalendar ();
 			date.set (log.DateLog.Year, log.DateLog.Month-1, log.DateLog.Day, log.DateLog.Hour, log.DateLog.Minute, log.DateLog.Second);
-			date.set (java.util.Calendar.MILLISECOND, log.DateLog.Millisecond);
 			XSDDateTime t = new XSDDateTime (date);
 			actionTrace.addLiteral (p, t);
 
@@ -1439,7 +1286,7 @@ namespace Its.StudentModule.DataAccess
 			//Creates a new Action_Trace resource.
 			Resource actionTrace = ontM.createResource (STUDENT_TRACE_URI + "Log" + domain.Key
 			                       + student.Key + log.Action.Key
-			                       + log.DateLog.ToString ("dd/MM/yyyy HH:mm:ss.fff").Replace (" ", null));
+			                       + log.DateLog.ToString ().Replace (" ", null));
 			//Creates a new statement.
 			Statement stmt = ontM.createStatement (actionTrace, p, r);
 			//Adds the statement into the ontologyModel.
@@ -1449,7 +1296,7 @@ namespace Its.StudentModule.DataAccess
 			//Creates a new Action_Execution_State resource.
 			Resource actionExeState = ontM.createResource (KNOWLEDGE_OBJECT_URI + "ActionExecutionState" + domain.Key
 			                          + student.Key + log.Action.Key
-			                          + log.DateLog.ToString ("dd/MM/yyyy HH:mm:ss.fff").Replace (" ", null));
+			                          + log.DateLog.ToString ().Replace (" ", null));
 			//Creates a new statement.
 			stmt = ontM.createStatement (actionExeState, p, r);
 			//Adds the statement into the ontologyModel.
@@ -1459,7 +1306,7 @@ namespace Its.StudentModule.DataAccess
 			//Creates a new Punctual_Action_Element resource.
 			Resource punctualActionElement = ontM.createResource (KNOWLEDGE_OBJECT_URI + "PunctualActionElement"
 			                                 + domain.Key + student.Key + log.Action.Key
-			                                 + log.DateLog.ToString ("dd/MM/yyyy HH:mm:ss.fff").Replace (" ", null));
+			                                 + log.DateLog.ToString ().Replace (" ", null));
 			//Creates a new statement.
 			stmt = ontM.createStatement (punctualActionElement, p, r);
 			//Adds the statement into the ontologyModel.
@@ -1469,7 +1316,7 @@ namespace Its.StudentModule.DataAccess
 			//Creates a new Precondition_State resource.
 			Resource preCondState = ontM.createResource (STUDENT_STATE_URI + "PreconditionState"
 			                        + domain.Key + student.Key + log.Action.Key
-			                        + log.DateLog.ToString ("dd/MM/yyyy HH:mm:ss.fff").Replace (" ", null));
+			                        + log.DateLog.ToString ().Replace (" ", null));
 			//Creates a new statement.
 			stmt = ontM.createStatement (preCondState, p, r);
 			//Adds the statement into the ontologyModel.
@@ -1584,7 +1431,6 @@ namespace Its.StudentModule.DataAccess
 			p = ontM.getProperty (STUDENT_TRACE_URI + "initialTime");
 			java.util.Calendar date = new java.util.GregorianCalendar ();
 			date.set (log.DateLog.Year, log.DateLog.Month-1, log.DateLog.Day, log.DateLog.Hour, log.DateLog.Minute, log.DateLog.Second);
-			date.set (java.util.Calendar.MILLISECOND, log.DateLog.Millisecond);
 			XSDDateTime t = new XSDDateTime (date);
 			actionTrace.addLiteral (p, t);
 
@@ -1642,8 +1488,8 @@ namespace Its.StudentModule.DataAccess
 			Property p = ontM.getProperty("http://www.w3.org/1999/02/22-rdf-syntax-ns#type");
 			//Creates a new Action_Trace resource.
 			Resource actionTrace = ontM.createResource (STUDENT_TRACE_URI + "Log" + domain.Key
-			                       + student.Key + log.Action.Key
-			                       + log.DateLog.ToString ("dd/MM/yyyy HH:mm:ss.fff").Replace (" ", null));
+			                       + student.Key + log.ErrorAssociated.Key
+			                       + log.DateLog.ToString ().Replace (" ", null));
 			//Creates a new statement.
 			Statement stmt = ontM.createStatement (actionTrace, p, r);
 			//Adds the statement into the ontologyModel.
@@ -1652,8 +1498,8 @@ namespace Its.StudentModule.DataAccess
 			r = ontM.getResource (STUDENT_STATE_URI + "Action_Execution_State");
 			//Creates a new Action_Execution_State resource.
 			Resource actionExeState = ontM.createResource (KNOWLEDGE_OBJECT_URI + "ActionExecutionState" + domain.Key
-			                          + student.Key + log.Action.Key
-			                          + log.DateLog.ToString ("dd/MM/yyyy HH:mm:ss.fff").Replace (" ", null));
+			                          + student.Key + log.ErrorAssociated.Key
+			                          + log.DateLog.ToString ().Replace (" ", null));
 			//Creates a new statement.
 			stmt = ontM.createStatement (actionExeState, p, r);
 			//Adds the statement into the ontologyModel.
@@ -1662,8 +1508,8 @@ namespace Its.StudentModule.DataAccess
 			r = ontM.getResource (KNOWLEDGE_OBJECT_URI + "Punctual_Action_Element");
 			//Creates a new Punctual_Action_Element resource.
 			Resource punctualActionElement = ontM.createResource (KNOWLEDGE_OBJECT_URI + "PunctualActionElement"
-			                                 + domain.Key + student.Key + log.Action.Key
-			                                 + log.DateLog.ToString ("dd/MM/yyyy HH:mm:ss.fff").Replace (" ", null));
+			                                 + domain.Key + student.Key + log.ErrorAssociated.Key
+			                                 + log.DateLog.ToString ().Replace (" ", null));
 			//Creates a new statement.
 			stmt = ontM.createStatement (punctualActionElement, p, r);
 			//Adds the statement into the ontologyModel.
@@ -1672,8 +1518,8 @@ namespace Its.StudentModule.DataAccess
 			r = ontM.getResource (STUDENT_STATE_URI + "Precondition_State");
 			//Creates a new Precondition_State resource.
 			Resource preCondState = ontM.createResource (STUDENT_STATE_URI + "PreconditionState"
-			                        + domain.Key + student.Key + log.Action.Key
-			                        + log.DateLog.ToString ("dd/MM/yyyy HH:mm:ss.fff").Replace (" ", null));
+			                        + domain.Key + student.Key + log.ErrorAssociated.Key
+			                        + log.DateLog.ToString ().Replace (" ", null));
 			//Creates a new statement.
 			stmt = ontM.createStatement (preCondState, p, r);
 			//Adds the statement into the ontologyModel.
@@ -1761,7 +1607,6 @@ namespace Its.StudentModule.DataAccess
 			p = ontM.getProperty (STUDENT_TRACE_URI + "initialTime");
 			java.util.Calendar date = new java.util.GregorianCalendar ();
 			date.set (log.DateLog.Year, log.DateLog.Month-1, log.DateLog.Day, log.DateLog.Hour, log.DateLog.Minute, log.DateLog.Second);
-			date.set (java.util.Calendar.MILLISECOND, log.DateLog.Millisecond);
 			XSDDateTime t = new XSDDateTime (date);
 			actionTrace.addLiteral (p, t);
 
@@ -2040,15 +1885,15 @@ namespace Its.StudentModule.DataAccess
 		public string GetGenericErrorMessage(string key)
 		{
 			//Gets the idObject property of knowledge_object.
-			Property p = _ontModel.getProperty (KNOWLEDGE_OBJECT_URI + "idObject");
+			Property p = _worldDataModel.getProperty (KNOWLEDGE_OBJECT_URI + "idObject");
 			//Lists all statements whose property idObject is the parameter key. 
-			StmtIterator stmtItr = _ontModel.listStatements (null, p, key);
+			StmtIterator stmtItr = _worldDataModel.listStatements (null, p, key);
 			//Gets the statement. It is assumed that there is a only statement.
 			Statement stmt = stmtItr.nextStatement ();
 			//Gets the statement subject, which is the Condition_On_State with the key.
 			Resource r = stmt.getSubject ();
 			//Gets the statement with the property descriptorObject of the previous resource.
-			p = _ontModel.getProperty (KNOWLEDGE_OBJECT_URI + "descriptorObject");
+			p = _worldDataModel.getProperty (KNOWLEDGE_OBJECT_URI + "descriptorObject");
 			stmt = r.getProperty (p);
 			//Gets the error message from the previous statement.
 			string message = stmt.getString();
@@ -2274,7 +2119,8 @@ namespace Its.StudentModule.DataAccess
 					string isOrderError = "";
 					//Checks if the resource exists.
 					if (r != null) {
-						
+						//Adds a value to type.
+						type = "corrective";
 						//Gets the refersToCondition property.
 						p = o.getProperty (STUDENT_STATE_URI + "refersToCondition");
 						//Gets the value of the property.
@@ -2286,13 +2132,8 @@ namespace Its.StudentModule.DataAccess
 						//Gets the object.
 						str = stmtAux.getString ();
 						//Checks the string value.
-						if (str == "corrected") {
+						if (str == "corrected")
 							errorFixed = true;
-							//Adds a value to type.
-							type = "corrective";
-						} else {
-							type = str;
-						}
 					} else {
 						//Gets the consistsOfPrecondState property.
 						p = o.getProperty (STUDENT_STATE_URI + "consistsOfPrecondState");

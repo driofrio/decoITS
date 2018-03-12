@@ -107,8 +107,7 @@ namespace Its.ExpertModule.DataAccess
 						record [17] == null ? "" : record [17].ToString (), //IsRepetitive. 16
 						record [18] == null ? "" : record [18].ToString (), //Validate errors. 17
 						record [19] == null ? "" : record [19].ToString (), //Init phase. 18
-						record [20] == null ? "" : record [20].ToString (), //Object name. 19
-						record [21] == null ? "" : record [21].ToString () //In Phase. 20
+						record [20] == null ? "" : record [20].ToString () //Object name. 19
 					};
 
 					//Adds the action information into the list which will be returned.

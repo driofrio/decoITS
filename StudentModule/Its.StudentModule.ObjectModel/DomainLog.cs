@@ -54,13 +54,6 @@ namespace Its.StudentModule.ObjectModel
 			this._studentLogs = new Dictionary<string, StudentLog> ();
 		}
 
-		public DomainLog (DomainActions domain, Dictionary<string, StudentLog> studentLogs)
-		{
-			this._key = domain.Key;
-			this._domain = domain;
-			this._studentLogs = studentLogs;
-		}
-
 		/// <summary>
 		/// Creates the student log.
 		/// </summary>
@@ -72,12 +65,6 @@ namespace Its.StudentModule.ObjectModel
 			//Adds into the dictionary.
 			this._studentLogs.Add (student.Key, stdLog);
 		}
-
-		/*public void AddStudentLog (Student student, StudentLog stdLog)
-		{
-			//Adds into the dictionary.
-			this._studentLogs.Add (student.Key, stdLog);
-		}*/
 
 		/// <summary>
 		/// Gets the student log.

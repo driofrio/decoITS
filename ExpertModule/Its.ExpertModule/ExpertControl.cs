@@ -83,12 +83,6 @@ namespace Its.ExpertModule
 			_maxTimerController = new Dictionary<string, Dictionary<string, Thread>> ();
 		}
 
-		public static void DisposeInstance() {
-			if (_instance != null) {
-				_instance = null;
-			}
-		}
-
 		/// <summary>
 		/// Creates the domain.
 		/// </summary>
@@ -138,7 +132,8 @@ namespace Its.ExpertModule
 					okMessage = oQuery.First ().OkMessage;
 					tutorMessages = new List<TutorMessage> ();
 					foreach (ActionAplication act in oQuery.First().PossibleNextActions)
-						tutorMessages.Add (act.TutorMsg); 
+                        if (act.TutorMsg != null)
+						    tutorMessages.Add (act.TutorMsg); 
 				}
 			}
 		}
@@ -215,7 +210,7 @@ namespace Its.ExpertModule
 			//Checks whether the action has already done.
 			var oQuery = 
 				from o in studentLog.Logs
-					where o.Action.Equals(action)
+					where o.Action.Equals(action) && o.Error == null
 				select o.Action;
 			//Whether the action with the given name has just done previously.
 			if (oQuery.ToList().Count != 0) {
@@ -705,6 +700,19 @@ namespace Its.ExpertModule
 									//The result will be -1.
 									result = -1;
 								}
+							} else {
+								//Checks if the dependence blocks or not.
+								if (d.DependenceError.IsBlock) {
+									//The result will be zero.
+									result = 0;
+									//Adds the dependence into the list.
+									errors.Add (d);
+									//Breacks the loop.
+									break;
+								} else {
+									//The result will be -1.
+									result = -1;
+								}
 							}
 						} else {
 							//Checks if the dependence blocks or not.
@@ -833,6 +841,19 @@ namespace Its.ExpertModule
 									result = 0;
 									//Adds the dependence into the list.
 									errors.Add (dep);
+									//Breacks the loop.
+									break;
+								} else {
+									//The result will be -1.
+									result = -1;
+								}
+							} else {
+								//Checks if the dependence blocks or not.
+								if (d.DependenceError.IsBlock) {
+									//The result will be zero.
+									result = 0;
+									//Adds the dependence into the list.
+									errors.Add (d);
 									//Breacks the loop.
 									break;
 								} else {
@@ -1030,9 +1051,7 @@ namespace Its.ExpertModule
 		public DomainActions GetDomainActions (string domainKey)
 		{
 			//Returns the result.
-			DomainActions value = null;
-			_domainActionsList.TryGetValue(domainKey, out value);
-			return value;
+			return _domainActionsList[domainKey];
 		}
 	}
 }

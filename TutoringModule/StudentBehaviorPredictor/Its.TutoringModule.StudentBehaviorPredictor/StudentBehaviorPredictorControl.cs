@@ -38,21 +38,15 @@ namespace Its.TutoringModule.StudentBehaviorPredictor
 		{
 		}
 
-		public static void DisposeInstance() {
-			if (_instance != null) {
-				_instance = null;
-			}
-		}
-
 		/// <summary>
 		/// Gets a predictive student model.
 		/// </summary>
 		/// <returns>The model.</returns>
 		/// <param name="domainKey">Domain key.</param>
-		public PredictiveStudentModel GetModel(string domainKey, ClusterMethod cluMet){
+		public PredictiveStudentModel GetModel(string domainKey){
 			PredictiveStudentModel model = null;
-			if (!_models.TryGetValue (domainKey+"_"+cluMet.ToString(), out model))
-				throw new PredictiveStudentModelNotFoundException (domainKey+"_"+cluMet.ToString());
+			if (!_models.TryGetValue (domainKey, out model))
+				throw new PredictiveStudentModelNotFoundException (domainKey);
 			return model;
 		}
 
@@ -60,10 +54,9 @@ namespace Its.TutoringModule.StudentBehaviorPredictor
 		/// Adds a new model for a domain.
 		/// </summary>
 		/// <param name="domainLog">Domain log.</param>
-		public void AddModel(DomainLog domainLog, ClusterMethod cluMet, bool includeNoPlanActions, bool inPhases)
-        {
-			PredictiveStudentModel model = new PredictiveStudentModel (domainLog, cluMet, includeNoPlanActions, inPhases);
-			_models.Add (model.Key+"_"+cluMet.ToString(), model);
+		public void AddModel(DomainLog domainLog, ClusterMethod cluMet){
+			PredictiveStudentModel model = new PredictiveStudentModel (domainLog.Domain.Key, domainLog, cluMet);
+			_models.Add (model.Key, model);
 		}
 
 		/// <summary>
@@ -72,8 +65,8 @@ namespace Its.TutoringModule.StudentBehaviorPredictor
 		/// <returns>The model from date.</returns>
 		/// <param name="domainLog">Domain log.</param>
 		/// <param name="fromDate">From date.</param>
-		public PredictiveStudentModel GetModelFromDate(DomainLog domainLog, DateTime fromDate, bool includeNoPlanActions){
-			PredictiveStudentModel model = new PredictiveStudentModel (domainLog, fromDate, includeNoPlanActions);
+		public PredictiveStudentModel GetModelFromDate(DomainLog domainLog, DateTime fromDate){
+			PredictiveStudentModel model = new PredictiveStudentModel (domainLog.Domain.Key, domainLog, fromDate);
 			return model;
 		}
 
@@ -83,12 +76,12 @@ namespace Its.TutoringModule.StudentBehaviorPredictor
 		/// <returns>The automata for validation.</returns>
 		/// <param name="logs">Logs.</param>
 		/// <param name="domain">Domain.</param>
-		public PredictiveStudentModel GetAutomataForValidation(List<StudentLog> logs, DomainActions domain, ClusterMethod cluMet, bool includeNoPlanActions){
-			PredictiveStudentModel model = new PredictiveStudentModel (logs, domain, cluMet, includeNoPlanActions);
+		public PredictiveStudentModel GetAutomataForValidation(List<StudentLog> logs, DomainActions domain){
+			PredictiveStudentModel model = new PredictiveStudentModel (domain.Key, logs, domain);
 			return model;
 		}
 
-		/*/// <summary>
+		/// <summary>
 		/// Updates the model for a domain.
 		/// </summary>
 		/// <param name="domianKey">Domain key.</param>
@@ -97,8 +90,8 @@ namespace Its.TutoringModule.StudentBehaviorPredictor
 		public void UpdateModel(string domainKey, string studentKey, LogEntry log){
 			PredictiveStudentModel model = _models [domainKey];
 			if (!model.ContainsStudent (studentKey)) {
-				model.DefaultCluster.AddStudent (studentKey, log);
-				//model.DefaultCluster.UpdateAutomaton (studentKey, log);
+				model.DefaultCluster.AddStudent (studentKey);
+				model.DefaultCluster.UpdateAutomaton (studentKey, log);
 			} else
 				model.UpdateModel (studentKey, log);
 		}
@@ -112,7 +105,7 @@ namespace Its.TutoringModule.StudentBehaviorPredictor
 		/// <param name="studentLogs">Student logs.</param>
 		public void UpdateModel(string domainKey, string studentKey, LogEntry log, StudentLog studentLogs){
 			_models[domainKey].UpdateModel(studentKey, log, studentLogs);
-		}*/
+		}
 
 		/// <summary>
 		/// Gets the next most probable event.
@@ -121,20 +114,20 @@ namespace Its.TutoringModule.StudentBehaviorPredictor
 		/// <param name="domainKey">Domain key.</param>
 		/// <param name="studentKey">Student key.</param>
 		/// <param name="lastLog">Last log.</param>
-		public Arc<State,Event> GetNextProbableEvent(PredictiveStudentModel model, string studentKey){
-			return model.GetNextProbableEvent (studentKey);
+		public Arc<State,Event> GetNextProbableEvent(string domainKey, string studentKey, LogEntry lastLog){
+			return _models [domainKey].GetNextProbableEvent (studentKey, lastLog);
 		}
 
 		/// <summary>
 		/// Returns a <see cref="System.String"/> that represents the current <see cref="Its.TutoringModule.StudentBehaviorPredictor.StudentBehaviorPredictor"/>.
 		/// </summary>
 		/// <returns>A <see cref="System.String"/> that represents the current <see cref="Its.TutoringModule.StudentBehaviorPredictor.StudentBehaviorPredictor"/>.</returns>
-		/*public override string ToString(){
+		public override string ToString(){
 			string temp = "Models: " + Environment.NewLine;
 			foreach (PredictiveStudentModel model in _models.Values)
 				temp += model.ToString () + Environment.NewLine;
 			return temp;
-		}*/
+		}
 	}
 }
 

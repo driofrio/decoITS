@@ -41,7 +41,7 @@ namespace Its.TutoringModule.StudentBehaviorPredictor.ObjectModel
 		/// <param name="action">Action.</param>
 		/// <param name="isCorrective">If set to <c>true</c> is corrective.</param>
 		/// <param name="frequency">Frequency.</param>
-		public CorrectState (Area area, ActionAplication action, bool isCorrective, int evtFreq, int stuFreq) : base(area, evtFreq, stuFreq)
+		public CorrectState (Area area, ActionAplication action, bool isCorrective, int frequency) : base(area, frequency)
 		{
 			this._action = action;
 			this._isCorrective = isCorrective;

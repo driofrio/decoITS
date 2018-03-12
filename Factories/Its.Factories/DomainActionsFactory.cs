@@ -779,13 +779,24 @@ namespace Its.Factories
 				string okMessage = "";
 				bool showOkMessage = false;
 				int i = 0;
+				//Checks if the string is empty.
 				if (s != "") {
-					ss = s.Split (new char[] { '-' });
-					okMessage = ss [1];
-					//Obtains the showOkMessage value.
-					i = int.Parse (ss [0]);;
-					if (i == 1)
-						showOkMessage = true;
+                    if (s[0] == '*')
+                    {
+                        okMessage = string.Empty;
+                        showOkMessage = false;
+                    }
+                    else
+                    {
+                        ss = s.Split(new char[] { '-' }, 2);
+                        okMessage = ss[1];
+                        //Obtains the showOkMessage value.
+                        i = int.Parse(ss[0]);
+                        if (i == 1)
+                            showOkMessage = true;
+                    }
+				} else {
+					throw new ArgumentException ("En la columna MensajeOk del fichero de configuracion para la accion " + key + " se encuentra vacia.");
 				}
 				//Obtains the possible next actions.
 				s = o [4].ToString ();
@@ -818,10 +829,22 @@ namespace Its.Factories
 					string[] ssDeps = s.Split (new char[] { '-', '[', ']', '(', ')' });
 					//Obtains the dependence errors.
 					s = o [7].ToString ();
-					string[] ssErr = s.Split (new char[] { '\\' });
+					string[] ssErr = new string[]{};
+					//Checks if the string is empty.
+					if (s != "") {
+						ssErr = s.Split (new char[] { '\\' });
+					} else {
+						throw new ArgumentException ("En la columna MensajesErrorDependencias del fichero de configuracion para la accion " + key + " se encuentra vacia.");
+					}
 					//Obtains the order dependence errors.
 					s = o [8].ToString ();
-					string[] sOrdErr = s.Split (new char[] { '\\' });
+					string[] sOrdErr = new string[]{ };
+					//Checks if the string is empty.
+					if (s == "" && ssDepSt[0][0] == '(') {
+						throw new ArgumentException ("En la columna MensajesErrorOrdenDepend del fichero de configuracion para la accion " + key + " se encuentra vacia.");
+					} else {
+						sOrdErr = s.Split (new char[] { '\\' });
+					}
 					//Creates the multiple LinkedList which will be passed as parameters.
 					LinkedList<string> structure = new LinkedList<string> (ssDepSt);
 					LinkedList<string> dependencies = new LinkedList<string> ();
@@ -913,7 +936,7 @@ namespace Its.Factories
 						//Increase the generator.
 						_genErrorKey++;
 					} else {
-						maxTimeError = null;
+						throw new ArgumentException ("En la columna MsgErrorTiempoMax del fichero de configuracion para la accion " + key + " se encuentra vacia.");
 					}
 				}
 				//Creates an Error.
@@ -955,7 +978,7 @@ namespace Its.Factories
 						//Increase the generator.
 						_genErrorKey++;
 					} else {
-						minTimeError = null;
+						throw new ArgumentException ("En la columna MsgErrorTiempoMin del fichero de configuracion para la accion " + key + " se encuentra vacia.");
 					}
 				}
 				//Creates isRepetitive boolean.
@@ -978,17 +1001,15 @@ namespace Its.Factories
 				if (s != "")
 					initPhase = true;
 				//Creates the list in which will be saved the objects names.
-				List<string> objectName;
+				List<string> objectName = null;
 				//Obtains the object names list.
 				s = o [19].ToString ();
-				ss = s.Split (new char[] { '-' });
-				objectName = new List<string> (ss);
-
-				//Obtains in plan booblean.
-				s = o [20].ToString ();
-				bool isInPlan = true;
-				if (s == "0")
-					isInPlan = false;
+				if (s == "" && (lockObj == true || unlockObj == true)) {
+					throw new ArgumentException ("La columna del nombre del objeto no puede permanecer vacia si la acción " + key + " bloquea o desbloquea un objeto");
+				} else {
+					ss = s.Split (new char[] { '-' });
+					objectName = new List<string> (ss);
+				}
 
 				//Creates the ActionAplication.
 				ActionAplication action;
@@ -996,16 +1017,16 @@ namespace Its.Factories
 				if (minTime > 0) {
 					action = new ActionAplication (key, phase, name, description, objectName,
 						lockObj, unlockObj, isRepetitive, initPhase, validatePhaseErrors, dependence, incompatibilities, 
-						false, isInPlan, null, okMessage, showOkMessage, null, tutorMsg, minTime, minTimeError, maxTime, maxTimeError);
+						false, null, okMessage, showOkMessage, null, tutorMsg, minTime, minTimeError, maxTime, maxTimeError);
 
 				} else if (maxTime > 0) {
 					action = new ActionAplication (key, phase, name, description, objectName,
 						lockObj, unlockObj, isRepetitive, initPhase, validatePhaseErrors, dependence, incompatibilities, 
-						false, isInPlan, null, okMessage, showOkMessage, null, tutorMsg, minTime, minTimeError, maxTime, maxTimeError);
+						false, null, okMessage, showOkMessage, null, tutorMsg, minTime, minTimeError, maxTime, maxTimeError);
 				}else {
 					action = new ActionAplication (key, phase, name, description, objectName,
 						lockObj, unlockObj, isRepetitive, initPhase, validatePhaseErrors, dependence, incompatibilities,
-						false, isInPlan, null, okMessage, showOkMessage, null,  tutorMsg);
+						false, null, okMessage, showOkMessage, null,  tutorMsg);
 				}
 				//Adds into the list.
 				actions.Add (action);

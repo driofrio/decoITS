@@ -65,12 +65,6 @@ namespace Its.StudentModule
 			_students = StudentFactory.Instance(ontologyPath, logsPath).CreateStudents ();
 		}
 
-		public static void DisposeInstance() {
-			if (_instance != null) {
-				_instance = null;
-			}
-		}
-
 		/// <summary>
 		/// Creates the corrective action log.
 		/// </summary>
@@ -110,21 +104,6 @@ namespace Its.StudentModule
 				sw.WriteLine (text);
 			}
 		}
-
-		/*public void MultiplyLogs(int mult, DomainActions domain){
-			int countStudents = _instance._students.Count;
-			int maxStudent = countStudents * mult;
-			DomainLog domTemp = _domainLogs [domain.Key];
-			int j = 1;
-			for (int i = _instance._students.Count; i < maxStudent; i++) {
-				Student stdTemp = _students [j.ToString ()];
-				_domainLogs [domain.Key].AddStudentLog (stdTemp, domTemp.GetStudentLog (stdTemp.Key));
-				if (j <= countStudents)
-					j++;
-				else
-					j = 1;
-			}
-		}*/
 
 		/// <summary>
 		/// Creates the no corrective action log.
@@ -479,7 +458,14 @@ namespace Its.StudentModule
 				student = new Student (key, name, middleName, surname, lastName);
 			}
 			//Adds the Student into the dictionary.
-			_students.Add (key, student);
+            try
+            {
+                _students.Add(key, student);
+            }
+			 catch (Exception e)
+            {
+                throw new Exception();
+            }
 			//Saves the student into the ontology.
 			ONTOLOGY.AddStudentIntoOnto(student);
 		}

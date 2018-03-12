@@ -51,9 +51,6 @@ namespace Its.StudentModule.ObjectModel
 			get {
 				return this._dateLog;
 			}
-			set{
-				_dateLog = value;
-			}
 		}
 
 		/// <summary>

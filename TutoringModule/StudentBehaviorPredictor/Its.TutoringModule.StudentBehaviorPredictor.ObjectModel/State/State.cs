@@ -11,8 +11,7 @@ namespace Its.TutoringModule.StudentBehaviorPredictor.ObjectModel
 	/// </summary>
 	public class State
 	{
-		private long _eventFrequency = 0;
-		private long _studentFrequency = 0;
+		private long _frequency = 0;
 		private Area _area;
 
 		/// <summary>
@@ -30,8 +29,7 @@ namespace Its.TutoringModule.StudentBehaviorPredictor.ObjectModel
 		/// </summary>
 		/// <param name="area">Area.</param>
 		protected State(Area area){
-			this._eventFrequency = 0;
-			this._studentFrequency = 0;
+			this._frequency = 1;
 			this._area = area;
 		}
 
@@ -40,9 +38,8 @@ namespace Its.TutoringModule.StudentBehaviorPredictor.ObjectModel
 		/// </summary>
 		/// <param name="area">Area.</param>
 		/// <param name="frequency">Frequency.</param>
-		protected State(Area area, int eventFrequency, int studentFrequency){
-			this._eventFrequency = eventFrequency;
-			this._studentFrequency = studentFrequency;
+		protected State(Area area, int frequency){
+			this._frequency = frequency;
 			this._area = area;
 		}
 
@@ -50,15 +47,9 @@ namespace Its.TutoringModule.StudentBehaviorPredictor.ObjectModel
 		/// Gets the total frequency (number of times that this state has occurred).
 		/// </summary>
 		/// <value>The total frequency.</value>
-		public long EventFrequency{
+		public long Frequency{
 			get{
-				return _eventFrequency;
-			}
-		}
-
-		public long StudentFrequency{
-			get{
-				return _studentFrequency;
+				return _frequency;
 			}
 		}
 
@@ -75,33 +66,17 @@ namespace Its.TutoringModule.StudentBehaviorPredictor.ObjectModel
 		/// <summary>
 		/// Increments the frequency by one.
 		/// </summary>
-		public void IncrementEvtFrequency(){
-			_eventFrequency++;
+		public void IncrementFrequency(){
+			_frequency++;
 		}
 
 		/// <summary>
 		/// Decrements the frequency.
 		/// </summary>
 		/// <returns><c>true</c>, if frequency goes to zero, <c>false</c> otherwise.</returns>
-		public bool DecrementEvtFrequency(){
-			_eventFrequency--;
-			return _eventFrequency <= 0;
-		}
-
-		/// <summary>
-		/// Increments the frequency by one.
-		/// </summary>
-		public void IncrementStuFrequency(){
-			_studentFrequency++;
-		}
-
-		/// <summary>
-		/// Decrements the frequency.
-		/// </summary>
-		/// <returns><c>true</c>, if frequency goes to zero, <c>false</c> otherwise.</returns>
-		public bool DecrementStuFrequency(){
-			_studentFrequency--;
-			return _studentFrequency <= 0;
+		public bool DecrementFrequency(){
+			_frequency--;
+			return _frequency <= 0;
 		}
 
 		/// <summary>
@@ -109,7 +84,7 @@ namespace Its.TutoringModule.StudentBehaviorPredictor.ObjectModel
 		/// </summary>
 		/// <returns>A <see cref="System.String"/> that represents the current <see cref="Its.PredictionModel.ObjectModel.State"/>.</returns>
 		public override string ToString(){
-			return " Frecuency: "+_eventFrequency+" Area: "+_area;
+			return " Frecuency: "+_frequency+" Area: "+_area;
 		}
 	}
 }

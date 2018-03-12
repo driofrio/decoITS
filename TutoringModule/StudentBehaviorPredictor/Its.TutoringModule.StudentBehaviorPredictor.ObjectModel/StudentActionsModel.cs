@@ -6,7 +6,6 @@ using Its.ExpertModule.ObjectModel;
 using Its.TutoringModule.TutoringCoordinator.ReactiveTutor.ObjectModel;
 using System.Collections.Generic;
 using Its.Utils.Math.Exceptions;
-using System.Linq;
 
 namespace Its.TutoringModule.StudentBehaviorPredictor.ObjectModel
 {
@@ -16,41 +15,10 @@ namespace Its.TutoringModule.StudentBehaviorPredictor.ObjectModel
 		/// The init state of the automaton.
 		/// </summary>
 		private Node<State,Event> _initState;
-		private long _logEntries=0;
-
-		public int NumberOfStates{
-			get{
-				return this.Nodes.Values.Count;
-			}
-		}
-
-		public int NumberOfEvents{
-			get{
-				return this.Arcs.Values.Count;
-			}
-		}
-
-		public int NumberOfNormalEvents{
-			get{
-				return this.Arcs.Values.Where(x => x.Specification.GetType() == typeof(NormalEvent)).Count();
-			}
-		}
-
-		public int NumberOfVectorEvents{
-			get{
-				return this.Arcs.Values.Where(x => x.Specification.GetType() == typeof(VectorEvent)).Count();
-			}
-		}
-
-		public long LogEntriesNumber{
-			get{
-				return _logEntries;
-			}
-		}
 
 		public StudentActionsModel (int numberOfStudents):base()
 		{
-			_initState = new Node<State, Event> ("initState", "", new CorrectState (Area.CorrectFlow, null, false, numberOfStudents, numberOfStudents));
+			_initState = new Node<State, Event> ("initState", "", new CorrectState (Area.CorrectFlow, null, false, numberOfStudents));
 			this.AddNode (_initState);
 		}
 
@@ -70,42 +38,41 @@ namespace Its.TutoringModule.StudentBehaviorPredictor.ObjectModel
 		/// <returns>The new state or increment state.</returns>
 		/// <param name="log">Log.</param>
 		/// <param name="area">Area.</param>
-
 		private Node<State,Event> AddState(LogEntry log, Area area){
 			State state=null;
 			Node<State,Event> newState = null;
 
 			if (log.GetType ().BaseType == typeof(ActionLog)) {
 				state = new CorrectState (area, log.Action, log.GetType () == typeof(CorrectiveActionLog));
-				newState = new Node<State,Event> (log.Action.Key+"_"+area.ToString(), log.Action.Description, state);
+				newState = new Node<State,Event> (log.Action.Key, log.Action.Description, state);
 			} else if (log.GetType () == typeof(DepErrorLog)) {
 				Dependence fail = ((DepErrorLog)log).FailedDependence;
 				state = new DependenceErrorState (area, fail);
-				newState = new Node<State,Event> (log.Action.Key + "_" + fail.Key+"_"+area.ToString(), log.Action.Description, state);
+				newState = new Node<State,Event> (log.Action.Key + "_" + fail.Key, log.Action.Description, state);
 			} else if (log.GetType () == typeof(IncompErrorLog)) {
 				Incompatibility fail = ((IncompErrorLog)log).FailedIncompatibility;
 				state = new IncompatibilityErrorState (area, fail);
-				newState = new Node<State,Event> (log.Action.Key + "_" + fail.Key+"_"+area.ToString(), log.Action.Description, state);
+				newState = new Node<State,Event> (log.Action.Key + "_" + fail.Key, log.Action.Description, state);
 			} else if (log.GetType ().BaseType == typeof(TimeErrorLog)) {
 				Error fail = (log.GetType () == typeof(MinTimeErrorLog)) ? log.Action.MinTimeError : log.Action.MaxTimeError;
 				state = new TimeErrorState (area, ((TimeErrorLog)log).Time, fail);
-				newState = new Node<State,Event> (log.Action.Key + "_" + fail.Key+"_"+area.ToString(), log.Action.Description, state);
+				newState = new Node<State,Event> (log.Action.Key + "_" + fail.Key, log.Action.Description, state);
 			} else if (log.GetType () == typeof(WorldErrorLog)) {
 				Error fail = ((WorldErrorLog)log).ErrorAssociated;
 				state = new WorldErrorState (area, fail, ((WorldErrorLog)log).Type);
-				newState = new Node<State,Event> (log.Action.Key + "_" + fail.Key+"_"+area.ToString(), log.Action.Description, state);
+				newState = new Node<State,Event> (log.Action.Key + "_" + fail.Key, log.Action.Description, state);
 			} else if (log.GetType () == typeof(OtherErrorLog)) {
 				Error fail = ((OtherErrorLog)log).ErrorAssociated;
 				state = new OtherErrorState (area, fail);
-				newState = new Node<State,Event> (log.Action.Key + "_" + fail.Key+"_"+area.ToString(), log.Action.Description, state);
+				newState = new Node<State,Event> (log.Action.Key + "_" + fail.Key, log.Action.Description, state);
 			}
 				
 			Node<State,Event> tempState = null;
 			if (this.TryGetNode (newState.Key, out tempState)) {
+				tempState.Specification.IncrementFrequency ();
 				newState = tempState;
-			} else {
+			}else
 				this.AddNode (newState);
-			}
 			return newState;
 		}
 
@@ -115,12 +82,16 @@ namespace Its.TutoringModule.StudentBehaviorPredictor.ObjectModel
 		/// <returns>The state.</returns>
 		/// <param name="log">Log.</param>
 		/// <param name="area">Area.</param>
-		private void RemoveState(Node<State,Event> state){
-			if (this.ContainsState (state)) {
-				if (state.Specification.DecrementEvtFrequency ())
-					this.RemoveNode (state.Key);
+		private Node<State,Event> RemoveState(LogEntry log, Area area){
+			string stateKey = GetStateKey (log);
+
+			Node<State,Event> tempState = null;
+			if (this.TryGetNode (stateKey, out tempState)) {
+				if (tempState.Specification.DecrementFrequency ())
+					this.RemoveNode (stateKey);
 			} else
-				throw new StateNotFoundException (state.Key);
+				throw new StateNotFoundException (stateKey);
+			return tempState;
 		}
 
 		/// <summary>
@@ -128,8 +99,8 @@ namespace Its.TutoringModule.StudentBehaviorPredictor.ObjectModel
 		/// </summary>
 		/// <returns><c>true</c>, if the state exists, <c>false</c> otherwise.</returns>
 		/// <param name="stateKey">State key.</param>
-		public bool ContainsState(Node<State,Event> state){
-			return this.Nodes.ContainsValue (state);
+		public bool ContainsState(string stateKey){
+			return this.Nodes.ContainsKey (stateKey);
 		}
 
 		/// <summary>
@@ -137,12 +108,9 @@ namespace Its.TutoringModule.StudentBehaviorPredictor.ObjectModel
 		/// </summary>
 		/// <returns>The state.</returns>
 		/// <param name="log">Log.</param>
-		public Node<State,Event> FindState(LogEntry log, Node<State,Event> previousState, List<Node<State,Event>> pastNodes){
+		public Node<State,Event> FindState(LogEntry log){
 			Node<State,Event> state = null;
-			Area area=previousState.Specification.Area;
-			GetArea (log, previousState, pastNodes, ref area);
-
-			string stateKey = GetStateKey (log, area);
+			string stateKey = GetStateKey (log);
 			this.Nodes.TryGetValue (stateKey, out state);
 			return state;
 		}
@@ -152,26 +120,26 @@ namespace Its.TutoringModule.StudentBehaviorPredictor.ObjectModel
 		/// </summary>
 		/// <returns>The state key.</returns>
 		/// <param name="log">Log.</param>
-		private string GetStateKey (LogEntry log, Area area)
+		private string GetStateKey (LogEntry log)
 		{
 			string stateKey = "";
 			if (log.GetType ().BaseType == typeof(ActionLog)) {
-				stateKey = log.Action.Key+"_"+area.ToString();
+				stateKey = log.Action.Key;
 			} else if (log.GetType () == typeof(DepErrorLog)) {
 				Dependence fail = ((DepErrorLog)log).FailedDependence;
-				stateKey = log.Action.Key + "_" + fail.Key+"_"+area.ToString();
+				stateKey = log.Action.Key + "_" + fail.Key;
 			} else if (log.GetType () == typeof(IncompErrorLog)) {
 				Incompatibility fail = ((IncompErrorLog)log).FailedIncompatibility;
-				stateKey = log.Action.Key + "_" + fail.Key+"_"+area.ToString();
+				stateKey = log.Action.Key + "_" + fail.Key;
 			} else if (log.GetType ().BaseType == typeof(TimeErrorLog)) {
 				Error fail = (log.GetType () == typeof(MinTimeErrorLog)) ? log.Action.MinTimeError : log.Action.MaxTimeError;
-				stateKey = log.Action.Key + "_" + fail.Key+"_"+area.ToString();
+				stateKey = log.Action.Key + "_" + fail.Key;
 			} else if (log.GetType () == typeof(WorldErrorLog)) {
 				Error fail = ((WorldErrorLog)log).ErrorAssociated;
-				stateKey = log.Action.Key + "_" + fail.Key+"_"+area.ToString();
+				stateKey = log.Action.Key + "_" + fail.Key;
 			} else if (log.GetType () == typeof(OtherErrorLog)) {
 				Error fail = ((OtherErrorLog)log).ErrorAssociated;
-				stateKey = log.Action.Key + "_" + fail.Key+"_"+area.ToString();
+				stateKey = log.Action.Key + "_" + fail.Key;
 			}
 			return stateKey;
 		}
@@ -204,7 +172,7 @@ namespace Its.TutoringModule.StudentBehaviorPredictor.ObjectModel
 		/// <param name="stateOut">State out.</param>
 		/// <param name="stateIn">State in.</param>
 		/// <param name="actionExecuted">Action executed.</param>
-		private void RemoveNormalEvent(Node<State,Event> stateOut, Node<State,Event> stateIn){
+		private void RemoveNormalEvent(Node<State,Event> stateOut, Node<State,Event> stateIn, ActionAplication actionExecuted){
 			Arc<State,Event> newArc = null;
 			if (this.TryGetEvent (stateOut.Key, stateIn.Key, out newArc)) {
 				if (((NormalEvent)newArc.Specification).DecrementFrequency ())
@@ -246,7 +214,7 @@ namespace Its.TutoringModule.StudentBehaviorPredictor.ObjectModel
 		/// <param name="stateIn">State in.</param>
 		/// <param name="iterationNumber">Iteration number.</param>
 		/// <param name="actionExecuted">Action executed.</param>
-		private void RemoveVectorEvent(Node<State,Event> stateOut, Node<State,Event> stateIn, int iterationNumber){
+		private void RemoveVectorEvent(Node<State,Event> stateOut, Node<State,Event> stateIn, int iterationNumber, ActionAplication actionExecuted){
 			Arc<State,Event> newArc = null;
 			if (this.TryGetEvent (stateOut.Key, stateIn.Key, out newArc)) {
 				if (((VectorEvent)newArc.Specification).DecrementFrequency (iterationNumber))
@@ -342,110 +310,36 @@ namespace Its.TutoringModule.StudentBehaviorPredictor.ObjectModel
 		}
 
 		/// <summary>
-		/// Searchs if any of the dependences in the list is an state in the relevant errors zone
-		/// </summary>
-		/// <returns><c>true</c> if this instance is dependece relevant error the specified dependences; otherwise, <c>false</c>.</returns>
-		/// <param name="dependences">Dependences.</param>
-		private bool IsDependeceRelevantError (List<Dependence> dependences, List<Node<State,Event>> pastNodes)
-		{
-			bool isRelevantError = false;
-			List<Node<State,Event>> tempPasNodes = pastNodes.Where (x => x.Specification.GetType () == typeof(CorrectState) && x != _initState).ToList();
-			foreach (Dependence dep in dependences) {
-				if (dep.GetType () == typeof(SimpleDependence)) {
-					if (tempPasNodes.Count (x => ((CorrectState)x.Specification).Action.Key == ((SimpleDependence)dep).ActionDependence.Key) > 0) {
-						if (tempPasNodes.Single (y => ((CorrectState)y.Specification).Action.Key == ((SimpleDependence)dep).ActionDependence.Key).Specification.Area == Area.RelevantErrors) {
-							isRelevantError = true;
-							break;
-						}
-					}
-				} else {
-					isRelevantError = IsDependeceRelevantError (((ComplexDependence)dep).DependenciesList, pastNodes);
-					if (isRelevantError)
-						break;
-				}
-			}
-			return isRelevantError;
-		}
-
-		/// <summary>
-		/// Determines whether this instance has a past node in relevant error zone the specified pastNodes.
-		/// </summary>
-		/// <returns><c>true</c> if this instance has pas node relevant error the specified pastNodes; otherwise, <c>false</c>.</returns>
-		/// <param name="pastNodes">Past nodes.</param>
-		private bool HasPastNodeRelevantError (List<Node<State,Event>> pastNodes)
-		{
-			bool isRelevantError = false;
-			for (int i = pastNodes.Count - 1; i >= 0 ; i--) {
-				if (pastNodes [i].Specification.Area == Area.RelevantErrors) {
-					isRelevantError = true;
-					break;
-				}
-			}
-			return isRelevantError;
-		}
-
-		private void GetArea (LogEntry log, Node<State, Event> previousState, List<Node<State, Event>> pastNodes, ref Area area)
-		{
-			if (log.GetType ().BaseType == typeof(ActionLog)) {
-				if (area == Area.CorrectFlow || area == Area.IrrelevantErrors) {
-					//Buscar si una de las dependencias está en la de errores relevantes
-					if ((((ActionLog)log).Action.Dependence != null)) {
-						if (IsDependeceRelevantError (((ActionLog)log).Action.Dependence.DependenciesList, pastNodes) || HasPastNodeRelevantError (pastNodes))
-							area = Area.RelevantErrors;
-						else
-							area = Area.CorrectFlow;
-					}
-					else if (HasPastNodeRelevantError (pastNodes))
-						area = Area.RelevantErrors;
-					else
-						area = Area.CorrectFlow;
-				}
-				else {
-					if (previousState.Specification.GetType () == typeof(CorrectState)) {
-						if (((CorrectState)previousState.Specification).IsCorrective)
-							area = Area.CorrectFlow;
-						else
-							area = Area.RelevantErrors;
-					}
-					else
-						area = Area.RelevantErrors;
-				}
-			}
-			else if (log.GetType ().BaseType == typeof(ErrorLog)) {
-				if (log.Error.IsBlock)
-					area = Area.IrrelevantErrors;
-				else
-					area = Area.RelevantErrors;
-			}
-		}
-
-		/// <summary>
 		/// Expands the automaton.
 		/// </summary>
 		/// <returns>The automaton.</returns>
 		/// <param name="log">Log.</param>
 		/// <param name="lastState">Last state.</param>
 		/// <param name="iterationNumber">Iteration number (in case of an repetitive event).</param>
-		public Node<State,Event> ExpandAutomaton(LogEntry log, Node<State,Event> previousState, List<Node<State,Event>> pastNodes, bool isPastRepetitive, Dictionary<string,ActionAplication> incompatibilities, int iterationNumber=0){
+		public Node<State,Event> ExpandAutomaton(LogEntry log, Node<State,Event> previousState, int iterationNumber=0){
 			Node<State,Event> newState=null;
-			_logEntries++;
 			Area area=previousState.Specification.Area;
-			GetArea (log, previousState, pastNodes, ref area);
+			if (log.GetType ().BaseType == typeof(ActionLog)) {
+				if (area == Area.CorrectFlow || area == Area.IrrelevantErrors) {
+					area = Area.CorrectFlow;
+				} else {
+					if (previousState.Specification.GetType() == typeof(CorrectState)) {
+						if (((CorrectState)previousState.Specification).IsCorrective)
+							area = Area.CorrectFlow;
+						else
+							area = Area.RelevantErrors;
+					}else
+						area = Area.RelevantErrors;
+				}
 
-			if (area == Area.IrrelevantErrors) {
-				int x = 0;
+			}else if (log.GetType ().BaseType == typeof(ErrorLog)) {
+				if (log.Error.IsBlock)
+					area = Area.IrrelevantErrors;
+				else
+					area = Area.RelevantErrors;
 			}
-
-			if (isPastRepetitive) {
-				newState = this.FindState (log, previousState, pastNodes);
-				newState.Specification.IncrementEvtFrequency ();
-			} else {
-				newState = this.AddState (log, area);
-				if(!pastNodes.Contains(newState))
-					newState.Specification.IncrementStuFrequency ();
-				newState.Specification.IncrementEvtFrequency ();
-			}
-			if (previousState.Specification.Area != Area.IrrelevantErrors && newState != previousState)
+			newState = this.AddState (log, area);
+			if (previousState.Specification.Area != Area.IrrelevantErrors)
 				this.AddNormalEvent (previousState, newState, log.Action);
 			else {
 				if (newState != previousState) {
@@ -463,16 +357,38 @@ namespace Its.TutoringModule.StudentBehaviorPredictor.ObjectModel
 		/// <param name="log">Log.</param>
 		/// <param name="previousState">Previous state.</param>
 		/// <param name="iterationNumber">Iteration number.</param>
-		public void ReduceAutomaton(Node<State,Event> previousState, Node<State,Event> state, int iterationNumber=0){
-			this.RemoveState (state);
+		public Node<State,Event> ReduceAutomaton(LogEntry log, Node<State,Event> previousState, int iterationNumber=0){
+			Node<State,Event> stateRemoved=null;
+			Area area=previousState.Specification.Area;
+			if (log.GetType ().BaseType == typeof(ActionLog)) {
+				if (area == Area.CorrectFlow || area == Area.IrrelevantErrors) {
+					area = Area.CorrectFlow;
+				} else {
+					if (previousState.Specification.GetType() == typeof(CorrectState)) {
+						if (((CorrectState)previousState.Specification).IsCorrective)
+							area = Area.CorrectFlow;
+						else
+							area = Area.RelevantErrors;
+					}else
+						area = Area.RelevantErrors;
+				}
+			}else if (log.GetType ().BaseType == typeof(ErrorLog)) {
+				if (log.Error.IsBlock)
+					area = Area.IrrelevantErrors;
+				else
+					area = Area.RelevantErrors;
+			}
+			stateRemoved = this.RemoveState (log, area);
 
 			if (previousState.Specification.Area != Area.IrrelevantErrors)
-				this.RemoveNormalEvent (previousState, state);
+				this.RemoveNormalEvent (previousState, stateRemoved, log.Action);
 			else {
-				if (state != previousState) {
-					this.RemoveVectorEvent (previousState, state, iterationNumber);
+				if (stateRemoved != previousState) {
+					this.RemoveVectorEvent (previousState, stateRemoved, iterationNumber, log.Action);
 				}
 			}
+
+			return stateRemoved;
 		}
 
 		/// <summary>
@@ -480,7 +396,8 @@ namespace Its.TutoringModule.StudentBehaviorPredictor.ObjectModel
 		/// </summary>
 		/// <returns>The next most probable event.</returns>
 		/// <param name="lastLog">Last log.</param>
-		public Arc<State,Event> GetNextProbableEvent(Node<State,Event> lastState){
+		public Arc<State,Event> GetNextProbableEvent(LogEntry lastLog){
+			Node<State,Event> lastState = FindState (lastLog);
 			long maxFrequency = 0;
 			Arc<State,Event> mostFrequentEvent = null;
 			foreach (Arc<State,Event> evt in lastState.OutArcs.Values) {
@@ -501,42 +418,6 @@ namespace Its.TutoringModule.StudentBehaviorPredictor.ObjectModel
 				}
 			}
 			return mostFrequentEvent;
-		}
-
-		public List<Node<State, Event>> GetStatesByArea(Area area){
-			return Nodes.Values.Where (x => x.Specification.Area == area).ToList ();
-		}
-
-		public List<Node<State, Event>> GetListStates()
-		{
-			return Nodes.Values.ToList();
-		}
-
-		public List<Arc<State, Event>> GetListEvents()
-		{
-			return Arcs.Values.ToList();
-		}
-
-		public Dictionary<string,Node<State, Event>> GetDicStates()
-		{
-			return Nodes;
-		}
-
-		public List<Arc<State, Event>> GetEventsConf(double conf){
-			List<Arc<State, Event>> events = new List<Arc<State, Event>>();
-			List<Arc<State, Event>> eventsNorm = Arcs.Values.Where(x => x.Specification.GetType() == typeof(NormalEvent)).ToList();
-			List<Arc<State, Event>> eventsVect = Arcs.Values.Where(x => x.Specification.GetType() == typeof(VectorEvent)).ToList();
-			foreach (Arc<State, Event> arc in eventsNorm)
-			{
-				if(((double)((NormalEvent)arc.Specification).Frequency / arc.NodeOut.Specification.EventFrequency) > conf)
-					events.Add(arc);
-			}
-			foreach (Arc<State, Event> arc in eventsVect)
-			{
-				if (((double)((VectorEvent)arc.Specification).Frequency.Sum() / arc.NodeOut.Specification.EventFrequency) > conf)
-					events.Add(arc);
-			}
-			return events;
 		}
 	}
 }
