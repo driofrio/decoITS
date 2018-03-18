@@ -43,10 +43,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\TutoringModule\TutoringCoordinator\Its.TutoringModule.TutoringCoordinator\Its.TutoringModule.TC.csproj">
-      <Project>{7fe32128-c2f9-481e-8d73-79a1875e15db}</Project>
-      <Name>Its.TutoringModule.TC</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\TutoringModule\TutoringCoordinator\ReactiveTutor\Its.TutoringModule.TutoringCoordinator.ReactiveTutor\Its.TutoringModule.TC.RTutor.csproj">
       <Project>{17d5bdc5-93b7-4b54-bb7d-8041942658a3}</Project>
       <Name>Its.TutoringModule.TC.RTutor</Name>
