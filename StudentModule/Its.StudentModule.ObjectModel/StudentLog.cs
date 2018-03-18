@@ -113,13 +113,15 @@ namespace Its.StudentModule.ObjectModel
 			//Searchs into the log list until the action1 will be found before the action2.
 			foreach (LogEntry log in _logs) {
 				//Checks if the log action key is equal to action2.
-				//If they are equal, then the action1 was done after the action2.
-				if (log.Action.Key == action2) {
-					checkValue = false;
-					break;
-				} else if (log.Action.Key == action1) {
-					checkValue = true;
-					break;
+				if (log.Error == null) {
+					//If they are equal, then the action1 was done after the action2.
+					if (log.Action.Key == action2) {
+						checkValue = false;
+						break;
+					} else if (log.Action.Key == action1) {
+						checkValue = true;
+						break;
+					}
 				}
 			}
 
@@ -171,7 +173,7 @@ namespace Its.StudentModule.ObjectModel
 			//Finds the last index.
 			int index = _logs.FindLastIndex (FindAction);
 			//Calculates the number of elements to erase.
-			int count = _logs.Count - index + 1;
+			int count = _logs.Count - index;
 			//Removes the elements.
 			_logs.RemoveRange(index, count);
 		}
