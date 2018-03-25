@@ -2,8 +2,8 @@
 using Its.ExpertModule;
 using Its.TutoringModule.Common;
 using Its.TutoringModule.ReactiveTutor.ObjectModel;
-using Its.WorldModule;
 using Its.Utils.Config;
+using Its.WorldModule;
 
 namespace Its.TutoringModule.ReactiveTutor
 {

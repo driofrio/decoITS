@@ -1,5 +1,4 @@
-﻿using System;
-using Its.TutoringModule.ReactiveTutor.ObjectModel;
+﻿using Its.TutoringModule.ReactiveTutor.ObjectModel;
 
 namespace Its.ExpertModule.ObjectModel
 {

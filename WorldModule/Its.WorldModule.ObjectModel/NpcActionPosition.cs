@@ -1,5 +1,4 @@
 ﻿using System;
-using Its.ExpertModule.ObjectModel;
 
 namespace Its.WorldModule.ObjectModel
 {
@@ -100,14 +99,14 @@ namespace Its.WorldModule.ObjectModel
 			//Checks if npcCoord has more than elements three or less than 3.
 			if (npcCoord.Length > 3 || npcCoord.Length < 3) {
 				//This argument exception says that the npcCoord param is not correct.
-				ArgumentException argEx = new System.ArgumentException ("The number of elements is not correct. It must have" +
+				ArgumentException argEx = new ArgumentException ("The number of elements is not correct. It must have" +
 				                          "three elements, x y z", "npcCoord");
 				throw argEx;
 			}
 			//Checks if npcOrientation has more than elements three or less than 3.
 			if (npcOrientation.Length > 3 || npcOrientation.Length < 3) {
 				//This argument exception says that the npcOrientation param is not correct.
-				ArgumentException argEx = new System.ArgumentException ("The number of elements is not correct. It must have" +
+				ArgumentException argEx = new ArgumentException ("The number of elements is not correct. It must have" +
 				                          "three elements, x y z", "npcOrientation");
 				throw argEx;
 			}

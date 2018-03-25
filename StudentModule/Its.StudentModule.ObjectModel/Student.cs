@@ -99,17 +99,17 @@ namespace Its.StudentModule.ObjectModel
 			//For the name and the surname parameters also a exception is thrown.
 			if (StringUtils.IsNullOrWhiteSpace (key)) {  
 				//This argument exception says that the key param is not correct.
-				ArgumentException argEx = new System.ArgumentException ("The key parameter is not correct, " +
+				ArgumentException argEx = new ArgumentException ("The key parameter is not correct, " +
 					"it can neither be null or empty string nor his contained be blank.", "key");
 				throw argEx;
 			}  else if (StringUtils.IsNullOrWhiteSpace (name)) {
 				//This argument exception says that the name param is not correct.
-				ArgumentException argEx = new System.ArgumentException ("The name parameter is not correct, " +
+				ArgumentException argEx = new ArgumentException ("The name parameter is not correct, " +
 					"it can neither be null or empty string nor his contained be blank.", "name");
 				throw argEx;
 			}  else if (StringUtils.IsNullOrWhiteSpace (surname)) {
 				//This argument exception says that the surname param is not correct.
-				ArgumentException argEx = new System.ArgumentException ("The surname parameter is not correct, " +
+				ArgumentException argEx = new ArgumentException ("The surname parameter is not correct, " +
 					"it can neither be null or empty string nor his contained be blank.", "surname");
 				throw argEx;
 			}  else {
@@ -136,17 +136,17 @@ namespace Its.StudentModule.ObjectModel
 			//For the name, surname, middleName and lastName parameters also a exception is thrown.
 			if (StringUtils.IsNullOrWhiteSpace (key)) {  
 				//This argument exception says that the key param is not correct.
-				ArgumentException argEx = new System.ArgumentException ("The key parameter is not correct, " +
+				ArgumentException argEx = new ArgumentException ("The key parameter is not correct, " +
 					"it can neither be null or empty string nor his contained be blank .", "key");
 				throw argEx;
 			}  else if (StringUtils.IsNullOrWhiteSpace (name)) {
 				//This argument exception says that the name param is not correct.
-				ArgumentException argEx = new System.ArgumentException ("The name parameter is not correct, " +
+				ArgumentException argEx = new ArgumentException ("The name parameter is not correct, " +
 					"it can neither be null or empty string nor his contained be blank .", "name");
 				throw argEx;
 			}  else if (StringUtils.IsNullOrWhiteSpace (surname)) {
 				//This argument exception says that the surname param is not correct.
-				ArgumentException argEx = new System.ArgumentException ("The surname parameter is not correct, " +
+				ArgumentException argEx = new ArgumentException ("The surname parameter is not correct, " +
 					"it can neither be null or empty string nor his contained be blank .", "surname");
 				throw argEx;
 			}  else {

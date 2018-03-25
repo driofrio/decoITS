@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Its.Factories.Common;
 using Its.WorldModule.DataAccess;
 using Its.WorldModule.ObjectModel;
-using Its.Factories.Common;
 
 namespace Its.Factories
 {

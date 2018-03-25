@@ -1,7 +1,6 @@
-﻿using System;
-using Its.TutoringModule.StudentBehaviorPredictor;
+﻿using Its.ExpertModule;
 using Its.StudentModule;
-using Its.ExpertModule;
+using Its.TutoringModule.StudentBehaviorPredictor;
 
 namespace Its.TutoringModule.TutoringCoordinator
 {
@@ -10,7 +9,7 @@ namespace Its.TutoringModule.TutoringCoordinator
 		private static StudentControl _studentControl;
 		private static ExpertControl _expertControl;
 		//private static ReactiveTutor.ReactiveTutor _reactiveTutor;
-		private static Its.TutoringModule.StudentBehaviorPredictor.StudentBehaviorPredictorControl _studentBehaviorPredictor;
+		private static StudentBehaviorPredictorControl _studentBehaviorPredictor;
 
 
 		/// <summary>

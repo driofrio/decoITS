@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Its.StudentModule.DataAccess;
 using Its.TutoringModule.ReactiveTutor.ObjectModel;
 

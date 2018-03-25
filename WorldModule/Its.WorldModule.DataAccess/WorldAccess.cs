@@ -53,7 +53,7 @@ namespace Its.WorldModule.DataAccess
 			string filePath = _confPath + "BlockObjects" + Path.DirectorySeparatorChar + domainKey + ".txt";
 			//Checks if the file exists.
 			if (!File.Exists (filePath)) {
-				ArgumentException argEx = new System.ArgumentException ("There is not a file with the given name.", "domainKey");
+				ArgumentException argEx = new ArgumentException ("There is not a file with the given name.", "domainKey");
 				throw argEx;
 			}
 			//Reads all the lines of the file.
@@ -82,7 +82,7 @@ namespace Its.WorldModule.DataAccess
 			string filePath = _confPath + "NpcManagerMapping" + Path.DirectorySeparatorChar + domainKey + ".txt";
 			//Checks if the file exists.
 			if (!File.Exists (filePath)) {
-				ArgumentException argEx = new System.ArgumentException ("There is not a file with the given name.", "domainKey");
+				ArgumentException argEx = new ArgumentException ("There is not a file with the given name.", "domainKey");
 				throw argEx;
 			}
 			//Reads all the lines of the file.

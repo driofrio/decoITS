@@ -359,18 +359,18 @@ namespace Its.ExpertModule.ObjectModel
 			//If the key parameter is null or empty or his contained is a blank, a exception is thrown.
 			if (StringUtils.IsNullOrWhiteSpace (key)) {  
 				//This argument exception says that the key param is not correct.
-				ArgumentException argEx = new System.ArgumentException ("The key parameter is not correct, " +
+				ArgumentException argEx = new ArgumentException ("The key parameter is not correct, " +
 					"it can neither be null or empty string nor his contained be blank.", "key");
 				throw argEx;
 			} else if (lockObj == true && unlockObj == true) {
 				//This argument exception says that an action cannot lock and unlock an object.
-				ArgumentException argEx = new System.ArgumentException ("The lockObj and unlockObj parameters are not correct, " +
+				ArgumentException argEx = new ArgumentException ("The lockObj and unlockObj parameters are not correct, " +
 					"An action cannot lock and unlock an object at the same time.", "lockObj");
 				throw argEx;
 			} else if (correctiveAction == true && (errorsToCorrect.Count < 1 || errorsToCorrect == null)) {
 				//This argument exception says that an action cannot be corrective and do not have any error in the
 				//associated list.
-				ArgumentException argEx = new System.ArgumentException ("A corrective action must have an error list associated, " +
+				ArgumentException argEx = new ArgumentException ("A corrective action must have an error list associated, " +
 					"This list must be neither empty nor null.", "errorsToCorrect");
 				throw argEx;
 			} else {
@@ -446,18 +446,18 @@ namespace Its.ExpertModule.ObjectModel
 			//If the key parameter is null or empty or his contained is a blank, a exception is thrown.
 			if (StringUtils.IsNullOrWhiteSpace (key)) {  
 				//This argument exception says that the key param is not correct.
-				ArgumentException argEx = new System.ArgumentException ("The key parameter is not correct, " +
+				ArgumentException argEx = new ArgumentException ("The key parameter is not correct, " +
 					"it can neither be null or empty string nor his contained be blank.", "key");
 				throw argEx;
 			} else if (lockObj == true && unlockObj == true) {
 				//This argument exception says that an action cannot lock and unlock an object.
-				ArgumentException argEx = new System.ArgumentException ("The lockObj and unlockObj parameters are not correct, " +
+				ArgumentException argEx = new ArgumentException ("The lockObj and unlockObj parameters are not correct, " +
 				                          "An action cannot lock and unlock an object at the same time.", "lockObj");
 				throw argEx;
 			} else if (correctiveAction == true && (errorsToCorrect.Count < 1 || errorsToCorrect == null)) {
 				//This argument exception says that an action cannot be corrective and do not have any error in the
 				//associated list.
-				ArgumentException argEx = new System.ArgumentException ("A corrective action must have an error list associated, " +
+				ArgumentException argEx = new ArgumentException ("A corrective action must have an error list associated, " +
 				                          "This list must be neither empty nor null.", "errorsToCorrect");
 				throw argEx;
 			} else {

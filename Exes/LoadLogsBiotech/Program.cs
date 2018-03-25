@@ -1,18 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Globalization;
 using System.IO;
+using System.Linq;
+using Its.ExpertModule.ObjectModel;
+using Its.Factories;
 using Its.StudentModule.DataAccess;
 using Its.StudentModule.ObjectModel;
-using Its.ExpertModule.ObjectModel;
 using Its.TutoringModule.ReactiveTutor.ObjectModel;
-using System.Collections.Generic;
-using Its.Factories;
-using System.Linq;
-using System.Globalization;
-using System.Configuration;
-using System.Data;
-using Its.ExpertModule;
-using Its.WorldModule;
-using Its.StudentModule;
 using Its.Utils.Config;
 
 namespace LoadLogsBiotech

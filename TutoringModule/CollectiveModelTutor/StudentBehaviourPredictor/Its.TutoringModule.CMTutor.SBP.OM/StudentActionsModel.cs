@@ -307,7 +307,7 @@ namespace Its.TutoringModule.CMTutor.SBP.OM
 			if(this.TryGetNode(stateKey, out state)){
 				return state;
 			}else{
-				throw new Exceptions.StateNotFoundException(stateKey);
+				throw new StateNotFoundException(stateKey);
 			}
 		}
 
@@ -322,7 +322,7 @@ namespace Its.TutoringModule.CMTutor.SBP.OM
 			if(this.TryGetArc(stateKeyOut, stateKeyIn, out ev)){
 				return ev;
 			}else{
-				throw new Exceptions.EventNotFoundException (stateKeyOut, stateKeyIn);
+				throw new EventNotFoundException (stateKeyOut, stateKeyIn);
 			}
 		}
 

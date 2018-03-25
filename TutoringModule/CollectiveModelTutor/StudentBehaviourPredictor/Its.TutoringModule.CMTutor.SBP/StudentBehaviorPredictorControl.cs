@@ -9,7 +9,6 @@ using Its.TutoringModule.CMTutor.SBP.OM.State;
 using Its.Utils.Config;
 using Its.Utils.Math;
 
-
 namespace Its.TutoringModule.CMTutor.SBP
 {
 	public class StudentBehaviorPredictorControl

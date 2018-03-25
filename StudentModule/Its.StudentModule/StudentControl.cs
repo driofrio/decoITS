@@ -1,12 +1,10 @@
 ﻿using System;
-using System.IO;
-using System.Text;
-using System.Configuration;
 using System.Collections.Generic;
-using Its.StudentModule.ObjectModel;
-using Its.StudentModule.DataAccess;
+using System.IO;
 using Its.ExpertModule.ObjectModel;
 using Its.Factories;
+using Its.StudentModule.DataAccess;
+using Its.StudentModule.ObjectModel;
 using Its.TutoringModule.ReactiveTutor.ObjectModel;
 
 namespace Its.StudentModule
@@ -57,7 +55,7 @@ namespace Its.StudentModule
 		/// </summary>
 		private StudentControl (string ontologyPath, string logsPath, string domainPath)
 		{
-			_instanceDomainLogFactory = Factories.DomainLogFactory.Instance (ontologyPath, logsPath);
+			_instanceDomainLogFactory = DomainLogFactory.Instance (ontologyPath, logsPath);
 
 			ONTOLOGY = OntologyAccess.Instance (ontologyPath, logsPath);
 			//Initializes the domainLogs dictionary.

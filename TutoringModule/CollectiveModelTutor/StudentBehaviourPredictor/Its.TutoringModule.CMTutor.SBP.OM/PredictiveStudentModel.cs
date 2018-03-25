@@ -10,11 +10,13 @@ using Its.TutoringModule.CMTutor.SBP.Exceptions;
 using Its.TutoringModule.CMTutor.SBP.OM.State;
 using Its.TutoringModule.ReactiveTutor.ObjectModel;
 using Its.Utils.Config;
-using weka.core;
 using Its.Utils.Math;
 using Microsoft.AnalysisServices.AdomdClient;
 using weka.clusterers;
+using weka.core;
 using weka.filters.unsupervised.attribute;
+using Attribute = weka.core.Attribute;
+using Environment = System.Environment;
 
 namespace Its.TutoringModule.CMTutor.SBP.OM
 {
@@ -692,9 +694,9 @@ namespace Its.TutoringModule.CMTutor.SBP.OM
 
 			ActionAplication lastAction = _domain.GetLastAction ();
 
-			weka.core.Attribute attKey = new weka.core.Attribute ("Key", (FastVector) null);
-			weka.core.Attribute attNumberErrors = new weka.core.Attribute ("NumberErrors");
-			weka.core.Attribute attTotalTime = new weka.core.Attribute ("TotalTime");
+			Attribute attKey = new Attribute ("Key", (FastVector) null);
+			Attribute attNumberErrors = new Attribute ("NumberErrors");
+			Attribute attTotalTime = new Attribute ("TotalTime");
 			FastVector fvWekaAttributes = new FastVector(3);
 			fvWekaAttributes.addElement(attKey);
 			fvWekaAttributes.addElement(attNumberErrors);
@@ -728,9 +730,9 @@ namespace Its.TutoringModule.CMTutor.SBP.OM
 				if (sudentLogs.Logs [sudentLogs.Logs.Count - 1].Action != lastAction && totalTime == 0)
 					totalTime = totalTime + (_domain.EstimatedTime * 60 * 60) * _config.TimePenalization;
 				Instance instance = new Instance(3);
-				instance.setValue((weka.core.Attribute)fvWekaAttributes.elementAt(0), student.Key);
-				instance.setValue((weka.core.Attribute)fvWekaAttributes.elementAt(1), numErrors);
-				instance.setValue((weka.core.Attribute)fvWekaAttributes.elementAt(2), totalTime);
+				instance.setValue((Attribute)fvWekaAttributes.elementAt(0), student.Key);
+				instance.setValue((Attribute)fvWekaAttributes.elementAt(1), numErrors);
+				instance.setValue((Attribute)fvWekaAttributes.elementAt(2), totalTime);
 				trainingSet.add(instance);
 			}
 			return trainingSet;
@@ -742,8 +744,8 @@ namespace Its.TutoringModule.CMTutor.SBP.OM
 
 			ActionAplication lastAction = _domain.GetLastAction ();
 
-			weka.core.Attribute attKey = new weka.core.Attribute ("Key", (FastVector) null);
-			weka.core.Attribute attNumberErrors = new weka.core.Attribute ("Number");
+			Attribute attKey = new Attribute ("Key", (FastVector) null);
+			Attribute attNumberErrors = new Attribute ("Number");
 			FastVector fvWekaAttributes = new FastVector(2);
 			fvWekaAttributes.addElement(attKey);
 			fvWekaAttributes.addElement(attNumberErrors);
@@ -770,8 +772,8 @@ namespace Its.TutoringModule.CMTutor.SBP.OM
 					}
 				}
 				Instance instance = new Instance(2);
-				instance.setValue((weka.core.Attribute)fvWekaAttributes.elementAt(0), student.Key);
-				instance.setValue((weka.core.Attribute)fvWekaAttributes.elementAt(1), numErrors);
+				instance.setValue((Attribute)fvWekaAttributes.elementAt(0), student.Key);
+				instance.setValue((Attribute)fvWekaAttributes.elementAt(1), numErrors);
 				trainingSet.add(instance);
 			}
 			return trainingSet;
@@ -783,10 +785,10 @@ namespace Its.TutoringModule.CMTutor.SBP.OM
 
 			ActionAplication lastAction = _domain.GetLastAction ();
 
-			weka.core.Attribute attKey = new weka.core.Attribute ("Key", (FastVector) null);
-			weka.core.Attribute attCorrectEvents = new weka.core.Attribute ("CorrectEvents");
-			weka.core.Attribute attIrrelevantEvents = new weka.core.Attribute ("IrrelevantEvents");
-			weka.core.Attribute attRelevantEvents = new weka.core.Attribute ("RelevantEvents");
+			Attribute attKey = new Attribute ("Key", (FastVector) null);
+			Attribute attCorrectEvents = new Attribute ("CorrectEvents");
+			Attribute attIrrelevantEvents = new Attribute ("IrrelevantEvents");
+			Attribute attRelevantEvents = new Attribute ("RelevantEvents");
 			FastVector fvWekaAttributes = new FastVector(4);
 			fvWekaAttributes.addElement(attKey);
 			fvWekaAttributes.addElement(attCorrectEvents);
@@ -822,10 +824,10 @@ namespace Its.TutoringModule.CMTutor.SBP.OM
 					}
 				}
 				Instance instance = new Instance(4);
-				instance.setValue((weka.core.Attribute)fvWekaAttributes.elementAt(0), student.Key);
-				instance.setValue((weka.core.Attribute)fvWekaAttributes.elementAt(1), numCorrectEvents);
-				instance.setValue ((weka.core.Attribute)fvWekaAttributes.elementAt (2), numIrrelevantEvents);
-				instance.setValue((weka.core.Attribute)fvWekaAttributes.elementAt(3), numRelevantEvents);
+				instance.setValue((Attribute)fvWekaAttributes.elementAt(0), student.Key);
+				instance.setValue((Attribute)fvWekaAttributes.elementAt(1), numCorrectEvents);
+				instance.setValue ((Attribute)fvWekaAttributes.elementAt (2), numIrrelevantEvents);
+				instance.setValue((Attribute)fvWekaAttributes.elementAt(3), numRelevantEvents);
 				trainingSet.add(instance);
 			}
 			return trainingSet;
@@ -837,9 +839,9 @@ namespace Its.TutoringModule.CMTutor.SBP.OM
 
 			ActionAplication lastAction = _domain.GetLastAction ();
 
-			weka.core.Attribute attKey = new weka.core.Attribute ("Key", (FastVector) null);
-			weka.core.Attribute attNumberErrors = new weka.core.Attribute ("NumberErrors");
-			weka.core.Attribute attTotalTime = new weka.core.Attribute ("TotalTime");
+			Attribute attKey = new Attribute ("Key", (FastVector) null);
+			Attribute attNumberErrors = new Attribute ("NumberErrors");
+			Attribute attTotalTime = new Attribute ("TotalTime");
 			FastVector fvWekaAttributes = new FastVector(3);
 			fvWekaAttributes.addElement(attKey);
 			fvWekaAttributes.addElement(attNumberErrors);
@@ -874,9 +876,9 @@ namespace Its.TutoringModule.CMTutor.SBP.OM
 					if (sudentLogs.Logs [sudentLogs.Logs.Count - 1].Action != lastAction && totalTime == 0)
 						totalTime = totalTime + (_domain.EstimatedTime * 60 * 60) * _config.TimePenalization;
 					Instance instance = new Instance (3);
-					instance.setValue ((weka.core.Attribute)fvWekaAttributes.elementAt (0), student.Key);
-					instance.setValue ((weka.core.Attribute)fvWekaAttributes.elementAt (1), numErrors);
-					instance.setValue ((weka.core.Attribute)fvWekaAttributes.elementAt (2), totalTime);
+					instance.setValue ((Attribute)fvWekaAttributes.elementAt (0), student.Key);
+					instance.setValue ((Attribute)fvWekaAttributes.elementAt (1), numErrors);
+					instance.setValue ((Attribute)fvWekaAttributes.elementAt (2), totalTime);
 					trainingSet.add (instance);
 				}
 			}
@@ -1283,9 +1285,9 @@ namespace Its.TutoringModule.CMTutor.SBP.OM
 		/// </summary>
 		/// <returns>A <see cref="System.String"/> that represents the current <see cref="PredictiveStudentModel"/>.</returns>
 		public override string ToString(){
-			string temp = "Model: " + _key + " Domain: " + _domain.Key + System.Environment.NewLine;
+			string temp = "Model: " + _key + " Domain: " + _domain.Key + Environment.NewLine;
 			foreach (StudentsCluster sc in _clusters.Values)
-				temp += sc.ToString () + System.Environment.NewLine;
+				temp += sc.ToString () + Environment.NewLine;
 			return temp;
 		}
 	}

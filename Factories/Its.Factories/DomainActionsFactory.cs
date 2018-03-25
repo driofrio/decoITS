@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Its.StudentModule.DataAccess;
 using Its.ExpertModule.DataAccess;
-using Its.ExpertModule.ObjectModel;
 using Its.ExpertModule.Exceptions;
+using Its.ExpertModule.ObjectModel;
+using Its.StudentModule.DataAccess;
 using Its.TutoringModule.ReactiveTutor.ObjectModel;
 
 namespace Its.Factories

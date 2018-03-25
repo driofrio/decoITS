@@ -1,13 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
-using System.Collections.Generic;
-using Its.ExpertModule.ObjectModel;
 using Its.ExpertModule.DataAccess;
-using Its.TutoringModule.ReactiveTutor.ObjectModel;
+using Its.ExpertModule.ObjectModel;
+using Its.Factories;
 using Its.StudentModule.DataAccess;
 using Its.StudentModule.ObjectModel;
-using Its.Factories;
+using Its.TutoringModule.ReactiveTutor.ObjectModel;
 using Its.Utils.Config;
 
 namespace Its.Test

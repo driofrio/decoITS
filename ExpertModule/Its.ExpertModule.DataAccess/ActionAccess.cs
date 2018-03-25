@@ -1,10 +1,9 @@
 ﻿using System;
-using System.IO;
 using System.Collections.Generic;
+using System.Data;
+using System.IO;
 using Excel;
 //using Excel = NetOffice.ExcelApi;
-using System.Data;
-using System.Configuration;
 
 namespace Its.ExpertModule.DataAccess
 {
@@ -76,7 +75,7 @@ namespace Its.ExpertModule.DataAccess
 			filePath = _confPath + Path.DirectorySeparatorChar + domainKey + ".xlsx";
 			//Checks if the file exists.
 			if (!File.Exists (filePath)) {
-				ArgumentException argEx = new System.ArgumentException ("There is not a file with the given name.", "domainKey");
+				ArgumentException argEx = new ArgumentException ("There is not a file with the given name.", "domainKey");
 				throw argEx;
 			}
 			//Creates a FileStream to open the file.

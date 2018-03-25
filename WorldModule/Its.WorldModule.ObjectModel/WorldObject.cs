@@ -1,5 +1,4 @@
-﻿using System;
-using Its.StudentModule.ObjectModel;
+﻿using Its.StudentModule.ObjectModel;
 
 namespace Its.WorldModule.ObjectModel
 {

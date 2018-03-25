@@ -1,18 +1,17 @@
 ﻿using System;
-using System.IO;
 using System.Collections.Generic;
-using System.Globalization;
+using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
+using com.hp.hpl.jena.datatypes.xsd;
 using com.hp.hpl.jena.ontology;
 using com.hp.hpl.jena.rdf.model;
-using com.hp.hpl.jena.datatypes.xsd;
-using org.apache.log4j;
+using Its.ExpertModule.ObjectModel;
+using Its.StudentModule.ObjectModel;
+using Its.TutoringModule.ReactiveTutor.ObjectModel;
 using java.io;
 using java.util;
-using com.hp.hpl.jena.util;
-using Its.StudentModule.ObjectModel;
-using Its.ExpertModule.ObjectModel;
-using Its.TutoringModule.ReactiveTutor.ObjectModel;
+using File = System.IO.File;
 
 namespace Its.StudentModule.DataAccess
 {
@@ -181,36 +180,36 @@ namespace Its.StudentModule.DataAccess
 
 			_otherDataModel.read ("http://www.owl-ontologies.com/knowledge_object.owl/other_error.owl");
 			}catch(System.Security.Cryptography.CryptographicException e){}*/
-			java.io.InputStream fe;
+			InputStream fe;
 
 			try{
-			if (System.IO.File.Exists (_ontologyPath + "other_error.owl")) {
-				fe = new java.io.FileInputStream (_ontologyPath + "other_error.owl");
-				_otherDataModel.read (new java.io.InputStreamReader (fe, "UTF-8"), "");
+			if (File.Exists (_ontologyPath + "other_error.owl")) {
+				fe = new FileInputStream (_ontologyPath + "other_error.owl");
+				_otherDataModel.read (new InputStreamReader (fe, "UTF-8"), "");
 				fe.close ();
 			}
-			}catch(System.Security.Cryptography.CryptographicException e){}
+			}catch(CryptographicException e){}
 
-			if (System.IO.File.Exists (_ontologyPath + "world_error.owl")) {
-				fe = new java.io.FileInputStream (_ontologyPath + "world_error.owl");
-				_worldDataModel.read (new java.io.InputStreamReader (fe, "UTF-8"), "");
+			if (File.Exists (_ontologyPath + "world_error.owl")) {
+				fe = new FileInputStream (_ontologyPath + "world_error.owl");
+				_worldDataModel.read (new InputStreamReader (fe, "UTF-8"), "");
 				fe.close ();
 			}
 
 			//_worldDataModel.read ("file:" + _ontologyPath + "world_error.owl");
 
-			if (System.IO.File.Exists (_ontologyPath + "student_data.owl")) {
-				fe = new java.io.FileInputStream (_ontologyPath + "student_data.owl");
-				_studentDataModel.read (new java.io.InputStreamReader (fe, "UTF-8"), "");
+			if (File.Exists (_ontologyPath + "student_data.owl")) {
+				fe = new FileInputStream (_ontologyPath + "student_data.owl");
+				_studentDataModel.read (new InputStreamReader (fe, "UTF-8"), "");
 				fe.close ();
 			}
 			/*if (System.IO.File.Exists(_ontologyPath + "student_data.owl")) {
 				//Loads the student information.
 				_studentDataModel.read ("file:" + _ontologyPath + "student_data.owl");
 			}*/
-			if (System.IO.File.Exists (_ontologyPath + "plan_data.owl")) {
-				fe = new java.io.FileInputStream (_ontologyPath + "plan_data.owl");
-				_domainDataModel.read (new java.io.InputStreamReader (fe, "UTF-8"), "");
+			if (File.Exists (_ontologyPath + "plan_data.owl")) {
+				fe = new FileInputStream (_ontologyPath + "plan_data.owl");
+				_domainDataModel.read (new InputStreamReader (fe, "UTF-8"), "");
 				fe.close ();
 			}
 			/*if (System.IO.File.Exists(_ontologyPath + "plan_data.owl")) {
@@ -232,13 +231,13 @@ namespace Its.StudentModule.DataAccess
 			_domainDataModel.setNsPrefix ("knowledge_object", "http://www.owl-ontologies.com/knowledge_object.owl#");
 			_domainDataModel.setNsPrefix ("", "http://www.owl-ontologies.com/plan_data.owl");
 			//Checks if the log path exists.
-			if (System.IO.Directory.Exists(_logsPath)) {
+			if (Directory.Exists(_logsPath)) {
 				//Gets all subdirectories.
-				string[] directories = System.IO.Directory.GetDirectories(_logsPath);
+				string[] directories = Directory.GetDirectories(_logsPath);
 				//Loads all owl files from subdirectories.
 				foreach (string p in directories) {
 					//Gets the files in the directory p.
-					string[] files = System.IO.Directory.GetFiles(p, "*.owl");
+					string[] files = Directory.GetFiles(p, "*.owl");
 					//Obtains the Domain key.
 					string domainKey = p.Replace(_logsPath, "");
 					domainKey = domainKey.Replace(Path.DirectorySeparatorChar.ToString(), "");
@@ -268,9 +267,9 @@ namespace Its.StudentModule.DataAccess
 			Ontology ontoTemp = oTemp.createOntology ("");
 			//Imports the ontology resource given by ontology URI.
 			ontoTemp.addImport (oTemp.createResource (STUDENT_INFORMATION_URI));
-			if (System.IO.File.Exists (_logsPath + domainKey + Path.DirectorySeparatorChar + studentKey + ".owl")) {
-				java.io.FileInputStream fe = new java.io.FileInputStream (_logsPath + domainKey + Path.DirectorySeparatorChar + studentKey + ".owl");
-				oTemp.read (new java.io.InputStreamReader (fe, "UTF-8"), "");
+			if (File.Exists (_logsPath + domainKey + Path.DirectorySeparatorChar + studentKey + ".owl")) {
+				FileInputStream fe = new FileInputStream (_logsPath + domainKey + Path.DirectorySeparatorChar + studentKey + ".owl");
+				oTemp.read (new InputStreamReader (fe, "UTF-8"), "");
 				fe.close ();
 			}
 			/*if (System.IO.File.Exists (_logsPath + domainKey + Path.DirectorySeparatorChar + studentKey + ".owl")) {
@@ -378,9 +377,9 @@ namespace Its.StudentModule.DataAccess
 			ontM.add (stmt);
 			//Sets the initialTime property of Action_Trace resource and adds the value.
 			p = ontM.getProperty (STUDENT_TRACE_URI + "initialTime");
-			java.util.Calendar date = new java.util.GregorianCalendar ();
+			Calendar date = new GregorianCalendar ();
 			date.set (log.DateLog.Year, log.DateLog.Month-1, log.DateLog.Day, log.DateLog.Hour, log.DateLog.Minute, log.DateLog.Second);
-			date.set (java.util.Calendar.MILLISECOND, log.DateLog.Millisecond);
+			date.set (Calendar.MILLISECOND, log.DateLog.Millisecond);
 			XSDDateTime t = new XSDDateTime (date);
 			actionTrace.addLiteral (p, t);
 
@@ -525,9 +524,9 @@ namespace Its.StudentModule.DataAccess
 			ontM.add (stmt);
 			//Sets the initialTime property of Action_Trace resource and adds the value.
 			p = ontM.getProperty (STUDENT_TRACE_URI + "initialTime");
-			java.util.Calendar date = new java.util.GregorianCalendar ();
+			Calendar date = new GregorianCalendar ();
 			date.set (log.DateLog.Year, log.DateLog.Month-1, log.DateLog.Day, log.DateLog.Hour, log.DateLog.Minute, log.DateLog.Second);
-			date.set (java.util.Calendar.MILLISECOND, log.DateLog.Millisecond);
+			date.set (Calendar.MILLISECOND, log.DateLog.Millisecond);
 			XSDDateTime t = new XSDDateTime (date);
 			actionTrace.addLiteral (p, t);
 
@@ -672,9 +671,9 @@ namespace Its.StudentModule.DataAccess
 			ontM.add (stmt);
 			//Sets the initialTime property of Action_Trace resource and adds the value.
 			p = ontM.getProperty (STUDENT_TRACE_URI + "initialTime");
-			java.util.Calendar date = new java.util.GregorianCalendar ();
+			Calendar date = new GregorianCalendar ();
 			date.set (log.DateLog.Year, log.DateLog.Month-1, log.DateLog.Day, log.DateLog.Hour, log.DateLog.Minute, log.DateLog.Second);
-			date.set (java.util.Calendar.MILLISECOND, log.DateLog.Millisecond);
+			date.set (Calendar.MILLISECOND, log.DateLog.Millisecond);
 			XSDDateTime t = new XSDDateTime (date);
 			actionTrace.addLiteral (p, t);
 
@@ -854,9 +853,9 @@ namespace Its.StudentModule.DataAccess
 			ontM.add (stmt);
 			//Sets the initialTime property of Action_Trace resource and adds the value.
 			p = ontM.getProperty (STUDENT_TRACE_URI + "initialTime");
-			java.util.Calendar date = new java.util.GregorianCalendar ();
+			Calendar date = new GregorianCalendar ();
 			date.set (log.DateLog.Year, log.DateLog.Month-1, log.DateLog.Day, log.DateLog.Hour, log.DateLog.Minute, log.DateLog.Second);
-			date.set (java.util.Calendar.MILLISECOND, log.DateLog.Millisecond);
+			date.set (Calendar.MILLISECOND, log.DateLog.Millisecond);
 			XSDDateTime t = new XSDDateTime (date);
 			actionTrace.addLiteral (p, t);
 
@@ -1032,9 +1031,9 @@ namespace Its.StudentModule.DataAccess
 			ontM.add (stmt);
 			//Sets the initialTime property of Action_Trace resource and adds the value.
 			p = ontM.getProperty (STUDENT_TRACE_URI + "initialTime");
-			java.util.Calendar date = new java.util.GregorianCalendar ();
+			Calendar date = new GregorianCalendar ();
 			date.set (log.DateLog.Year, log.DateLog.Month-1, log.DateLog.Day, log.DateLog.Hour, log.DateLog.Minute, log.DateLog.Second);
-			date.set (java.util.Calendar.MILLISECOND, log.DateLog.Millisecond);
+			date.set (Calendar.MILLISECOND, log.DateLog.Millisecond);
 			XSDDateTime t = new XSDDateTime (date);
 			actionTrace.addLiteral (p, t);
 
@@ -1210,9 +1209,9 @@ namespace Its.StudentModule.DataAccess
 			ontM.add (stmt);
 			//Sets the initialTime property of Action_Trace resource and adds the value.
 			p = ontM.getProperty (STUDENT_TRACE_URI + "initialTime");
-			java.util.Calendar date = new java.util.GregorianCalendar ();
+			Calendar date = new GregorianCalendar ();
 			date.set (log.DateLog.Year, log.DateLog.Month-1, log.DateLog.Day, log.DateLog.Hour, log.DateLog.Minute, log.DateLog.Second);
-			date.set (java.util.Calendar.MILLISECOND, log.DateLog.Millisecond);
+			date.set (Calendar.MILLISECOND, log.DateLog.Millisecond);
 			XSDDateTime t = new XSDDateTime (date);
 			actionTrace.addLiteral (p, t);
 
@@ -1388,9 +1387,9 @@ namespace Its.StudentModule.DataAccess
 			ontM.add (stmt);
 			//Sets the initialTime property of Action_Trace resource and adds the value.
 			p = ontM.getProperty (STUDENT_TRACE_URI + "initialTime");
-			java.util.Calendar date = new java.util.GregorianCalendar ();
+			Calendar date = new GregorianCalendar ();
 			date.set (log.DateLog.Year, log.DateLog.Month-1, log.DateLog.Day, log.DateLog.Hour, log.DateLog.Minute, log.DateLog.Second);
-			date.set (java.util.Calendar.MILLISECOND, log.DateLog.Millisecond);
+			date.set (Calendar.MILLISECOND, log.DateLog.Millisecond);
 			XSDDateTime t = new XSDDateTime (date);
 			actionTrace.addLiteral (p, t);
 
@@ -1582,9 +1581,9 @@ namespace Its.StudentModule.DataAccess
 			ontM.add (stmt);
 			//Sets the initialTime property of Action_Trace resource and adds the value.
 			p = ontM.getProperty (STUDENT_TRACE_URI + "initialTime");
-			java.util.Calendar date = new java.util.GregorianCalendar ();
+			Calendar date = new GregorianCalendar ();
 			date.set (log.DateLog.Year, log.DateLog.Month-1, log.DateLog.Day, log.DateLog.Hour, log.DateLog.Minute, log.DateLog.Second);
-			date.set (java.util.Calendar.MILLISECOND, log.DateLog.Millisecond);
+			date.set (Calendar.MILLISECOND, log.DateLog.Millisecond);
 			XSDDateTime t = new XSDDateTime (date);
 			actionTrace.addLiteral (p, t);
 
@@ -1759,9 +1758,9 @@ namespace Its.StudentModule.DataAccess
 			ontM.add (stmt);
 			//Sets the initialTime property of Action_Trace resource and adds the value.
 			p = ontM.getProperty (STUDENT_TRACE_URI + "initialTime");
-			java.util.Calendar date = new java.util.GregorianCalendar ();
+			Calendar date = new GregorianCalendar ();
 			date.set (log.DateLog.Year, log.DateLog.Month-1, log.DateLog.Day, log.DateLog.Hour, log.DateLog.Minute, log.DateLog.Second);
-			date.set (java.util.Calendar.MILLISECOND, log.DateLog.Millisecond);
+			date.set (Calendar.MILLISECOND, log.DateLog.Millisecond);
 			XSDDateTime t = new XSDDateTime (date);
 			actionTrace.addLiteral (p, t);
 
@@ -2244,7 +2243,7 @@ namespace Its.StudentModule.DataAccess
 					//Gets the object.
 					XSDDateTime t = (XSDDateTime)stmtAux.getLiteral ().getValue();
 					//Gets the date.
-					java.util.Calendar cal = t.asCalendar ();
+					Calendar cal = t.asCalendar ();
 					//Transforms in a DateTime.
 					DateTime date = new DateTime (cal.get (1), cal.get (2)+1, cal.get (5), cal.get (11),
 						               cal.get (12), cal.get (13), cal.get (14));

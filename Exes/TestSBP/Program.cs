@@ -1,28 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using System.Globalization;
+using System.IO;
 using System.Linq;
-using Its.TutoringModule.StudentBehaviorPredictor;
+using System.Text;
+using System.Xml;
+using DocumentFormat.OpenXml;
+using DocumentFormat.OpenXml.Packaging;
+using DocumentFormat.OpenXml.Spreadsheet;
+using Excel;
 using Its.ExpertModule;
 using Its.ExpertModule.ObjectModel;
-using System.IO;
 using Its.StudentModule;
-using Its.TutoringModule.ReactiveTutor.ObjectModel;
 using Its.StudentModule.ObjectModel;
-using System.Data;
+using Its.TutoringModule.ReactiveTutor.ObjectModel;
+using Its.TutoringModule.StudentBehaviorPredictor;
 using Its.TutoringModule.StudentBehaviorPredictor.ObjectModel;
+using Its.Utils.Config;
 using Its.Utils.Math;
 using Its.WorldModule;
-using System.Globalization;
-using System.Data.SqlClient;
 using Microsoft.AnalysisServices.AdomdClient;
-using System.Xml;
-using System.Data.OleDb;
-using Excel;
-using System.Text;
-using DocumentFormat.OpenXml.Spreadsheet;
-using DocumentFormat.OpenXml.Packaging;
-using DocumentFormat.OpenXml;
-using Its.Utils.Config;
+using Cell = DocumentFormat.OpenXml.Spreadsheet.Cell;
 
 namespace TestSBP
 {
@@ -350,7 +350,7 @@ namespace TestSBP
 			WorksheetPart worksheetPart = InsertWorksheet(workbookPart, clumet.ToString());
 
 			int indexSharedString = InsertSharedStringItem("Cluster", shareStringPart);
-			DocumentFormat.OpenXml.Spreadsheet.Cell cell = InsertCellInWorksheet("A", 1, worksheetPart);
+			Cell cell = InsertCellInWorksheet("A", 1, worksheetPart);
 			cell.DataType = new EnumValue<CellValues>(CellValues.SharedString);
 			cell.CellValue = new CellValue(indexSharedString.ToString());
 			indexSharedString = InsertSharedStringItem("Supp/Conf", shareStringPart);
@@ -631,7 +631,7 @@ namespace TestSBP
 			if (File.Exists (path))
 				File.Delete (path);
 
-			System.IO.StreamWriter sw = new System.IO.StreamWriter(path,true,System.Text.Encoding.Unicode);
+			StreamWriter sw = new StreamWriter(path,true,Encoding.Unicode);
 			sw.Write(model._clusteredData);
 			sw.Close ();
 		}
@@ -691,16 +691,16 @@ namespace TestSBP
 				// Insert a new worksheet.
 				WorksheetPart worksheetPart = InsertWorksheet(spreadSheet.WorkbookPart, "SheetData2");
 
-				DocumentFormat.OpenXml.Spreadsheet.Cell cell1 = InsertCellInWorksheet("A", 1, worksheetPart);
+				Cell cell1 = InsertCellInWorksheet("A", 1, worksheetPart);
 
 				cell1.CellValue = new CellValue("2.2");
 				cell1.DataType = new EnumValue<CellValues>(CellValues.Number);
-				DocumentFormat.OpenXml.Spreadsheet.Cell cell2 = InsertCellInWorksheet("B", 1, worksheetPart);
+				Cell cell2 = InsertCellInWorksheet("B", 1, worksheetPart);
 
 				cell2.CellValue = new CellValue("4.2");
 				cell2.DataType = new EnumValue<CellValues>(CellValues.Number);
 				index = InsertSharedStringItem("prueba2", shareStringPart);
-				DocumentFormat.OpenXml.Spreadsheet.Cell cell = InsertCellInWorksheet("C", 1, worksheetPart);
+				Cell cell = InsertCellInWorksheet("C", 1, worksheetPart);
 				cell.CellValue = new CellValue(index.ToString());
 				cell.DataType = new EnumValue<CellValues>(CellValues.SharedString);
 				// Save the new worksheet.
@@ -786,7 +786,7 @@ namespace TestSBP
 			}
 
 			// The text does not exist in the part. Create the SharedStringItem and return its index.
-			shareStringPart.SharedStringTable.AppendChild(new SharedStringItem(new DocumentFormat.OpenXml.Spreadsheet.Text(text)));
+			shareStringPart.SharedStringTable.AppendChild(new SharedStringItem(new Text(text)));
 			shareStringPart.SharedStringTable.Save();
 
 			return i;
@@ -794,7 +794,7 @@ namespace TestSBP
 
 		// Given a column name, a row index, and a WorksheetPart, inserts a cell into the worksheet. 
 		// If the cell already exists, returns it. 
-		private static DocumentFormat.OpenXml.Spreadsheet.Cell InsertCellInWorksheet(string columnName, uint rowIndex, WorksheetPart worksheetPart)
+		private static Cell InsertCellInWorksheet(string columnName, uint rowIndex, WorksheetPart worksheetPart)
 		{
 			Worksheet worksheet = worksheetPart.Worksheet;
 			SheetData sheetData = worksheet.GetFirstChild<SheetData>();
@@ -830,7 +830,7 @@ namespace TestSBP
 					}
 				}*/
 
-				DocumentFormat.OpenXml.Spreadsheet.Cell newCell = new DocumentFormat.OpenXml.Spreadsheet.Cell() { CellReference = cellReference };
+				Cell newCell = new Cell() { CellReference = cellReference };
 				//row.InsertBefore(newCell, refCell);
 			row.Append(newCell);
 				//worksheet.Save();
@@ -838,7 +838,7 @@ namespace TestSBP
 			//}
 		}
 
-		private static string GetValue(SpreadsheetDocument doc, DocumentFormat.OpenXml.Spreadsheet.Cell cell)
+		private static string GetValue(SpreadsheetDocument doc, Cell cell)
 		{
 			string value = cell.CellValue.InnerText;
 			if (cell.DataType != null && cell.DataType.Value == CellValues.SharedString)
@@ -1006,7 +1006,7 @@ namespace TestSBP
 				foreach (string cluMeth in excels.Keys) {
 					WorksheetPart worksheetPart = InsertWorksheet (spreadSheet.WorkbookPart,cluMeth);
 					indexSharedString = InsertSharedStringItem ("Conf", shareStringPart);
-					DocumentFormat.OpenXml.Spreadsheet.Cell cell = InsertCellInWorksheet ("A", 1, worksheetPart);
+					Cell cell = InsertCellInWorksheet ("A", 1, worksheetPart);
 					cell.CellValue = new CellValue (indexSharedString.ToString ());
 					cell.DataType = new EnumValue<CellValues> (CellValues.SharedString);
 
@@ -1282,7 +1282,7 @@ namespace TestSBP
 			if (File.Exists (path))
 				File.Delete (path);
 
-			System.IO.StreamWriter sw = new System.IO.StreamWriter(path,true,System.Text.Encoding.Unicode);
+			StreamWriter sw = new StreamWriter(path,true,Encoding.Unicode);
 			sw.Write(strExcelXml.ToString());
 			sw.Close ();
 		}
@@ -1829,7 +1829,7 @@ namespace TestSBP
 
 			#region headersheet
 			int indexSharedString = InsertSharedStringItem ("Cluster", shareStringPart);
-			DocumentFormat.OpenXml.Spreadsheet.Cell cell = InsertCellInWorksheet ("A", 1, worksheetPart);
+			Cell cell = InsertCellInWorksheet ("A", 1, worksheetPart);
 			cell.CellValue = new CellValue (indexSharedString.ToString ());
 			cell.DataType = new EnumValue<CellValues> (CellValues.SharedString);
 
@@ -2661,7 +2661,7 @@ namespace TestSBP
 								cell = InsertCellInWorksheet("B", Convert.ToUInt32(currentExcelRow), worksheetPart);
 								cell.CellValue = new CellValue(clu.NumberOfStudents.ToString());
 								cell.DataType = new EnumValue<CellValues>(CellValues.Number);
-								cell = new DocumentFormat.OpenXml.Spreadsheet.Cell()
+								cell = new Cell()
 								{
 									CellReference = "C" + currentExcelRow,
 									DataType = CellValues.String,
@@ -2671,7 +2671,7 @@ namespace TestSBP
 								cell = InsertCellInWorksheet("C", Convert.ToUInt32(currentExcelRow), worksheetPart);
 								cell.CellValue = new CellValue(indexSharedString.ToString());
 								cell.DataType = new EnumValue<CellValues>(CellValues.SharedString);
-								cell = new DocumentFormat.OpenXml.Spreadsheet.Cell()
+								cell = new Cell()
 								{
 									CellReference = "D" + currentExcelRow,
 									DataType = CellValues.String,
@@ -3322,7 +3322,7 @@ private static Dictionary<int,PredictiveStudentModel> CreateModelVal (DomainActi
 
 			#region headersheet
 			int indexSharedString = InsertSharedStringItem("Cluster", shareStringPart);
-			DocumentFormat.OpenXml.Spreadsheet.Cell cell = InsertCellInWorksheet("A", 1, worksheetPart);
+			Cell cell = InsertCellInWorksheet("A", 1, worksheetPart);
 			cell.CellValue = new CellValue(indexSharedString.ToString());
 			cell.DataType = new EnumValue<CellValues>(CellValues.SharedString);
 
@@ -3397,7 +3397,7 @@ private static Dictionary<int,PredictiveStudentModel> CreateModelVal (DomainActi
 
 			#region headersheet
 			int indexSharedString = InsertSharedStringItem("Cluster", shareStringPart);
-			DocumentFormat.OpenXml.Spreadsheet.Cell cell = InsertCellInWorksheet("A", 1, worksheetPart);
+			Cell cell = InsertCellInWorksheet("A", 1, worksheetPart);
 			cell.CellValue = new CellValue(indexSharedString.ToString());
 			cell.DataType = new EnumValue<CellValues>(CellValues.SharedString);
 

@@ -1,11 +1,12 @@
 ﻿using System;
-using System.Linq;
 using System.Collections.Generic;
-using Its.WorldModule.ObjectModel;
-using Its.StudentModule.ObjectModel;
-using Its.StudentModule.DataAccess;
-using Its.TutoringModule.ReactiveTutor.ObjectModel;
+using System.Linq;
+using System.Text.RegularExpressions;
 using Its.Factories;
+using Its.StudentModule.DataAccess;
+using Its.StudentModule.ObjectModel;
+using Its.TutoringModule.ReactiveTutor.ObjectModel;
+using Its.WorldModule.ObjectModel;
 
 namespace Its.WorldModule
 {
@@ -238,7 +239,7 @@ namespace Its.WorldModule
 			var queryActPos = 
 				from actPos in _npcActionPositions
 				where actPos.Value.Action == action && actPos.Value.Plan == plan
-				    && (System.Text.RegularExpressions.Regex.Match (actPos.Value.WorldObj.Name, regularExp)).Success
+				    && (Regex.Match (actPos.Value.WorldObj.Name, regularExp)).Success
 				select actPos.Value.WorldObj;
 			//Adds the worldObjects into the list.
 			foreach (WorldObject o in queryActPos)

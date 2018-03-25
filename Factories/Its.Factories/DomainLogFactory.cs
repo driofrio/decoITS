@@ -1,9 +1,9 @@
 ﻿using System;
-using System.Linq;
 using System.Collections.Generic;
-using Its.StudentModule.ObjectModel;
-using Its.StudentModule.DataAccess;
+using System.Linq;
 using Its.ExpertModule.ObjectModel;
+using Its.StudentModule.DataAccess;
+using Its.StudentModule.ObjectModel;
 using Its.TutoringModule.ReactiveTutor.ObjectModel;
 
 namespace Its.Factories

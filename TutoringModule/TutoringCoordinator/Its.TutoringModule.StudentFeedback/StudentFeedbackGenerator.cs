@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Its.TutoringModule.TC.StudentFeedback
+﻿namespace Its.TutoringModule.TC.StudentFeedback
 {
 	public class StudentFeedbackGenerator
 	{

@@ -71,7 +71,7 @@ namespace Its.TutoringModule.ReactiveTutor.ObjectModel
 			//If the key parameter is null or empty or his contained is a blank, a exception is thrown.
 			if (StringUtils.IsNullOrWhiteSpace (key)) {  
 				//This argument exception says that the key param is not correct.
-				ArgumentException argEx = new System.ArgumentException ("The key parameter is not correct, " +
+				ArgumentException argEx = new ArgumentException ("The key parameter is not correct, " +
 					"it can neither be null or empty string nor his contained be blank.", "key");
 				throw argEx;
 			} else {

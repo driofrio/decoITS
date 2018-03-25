@@ -1,14 +1,13 @@
 ﻿using System;
-using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using Its.ExpertModule.ObjectModel;
-using Its.TutoringModule.ReactiveTutor.ObjectModel;
 using Its.Factories;
 using Its.StudentModule;
 using Its.StudentModule.ObjectModel;
-using Its.WorldModule;
+using Its.TutoringModule.ReactiveTutor.ObjectModel;
 
 namespace Its.ExpertModule
 {
@@ -21,7 +20,7 @@ namespace Its.ExpertModule
 		/// <summary>
 		/// The instance domain actions factory.
 		/// </summary>
-		private static Factories.DomainActionsFactory _instanceDomainActionsFactory;
+		private static DomainActionsFactory _instanceDomainActionsFactory;
 		/// <summary>
 		/// The instance student control.
 		/// </summary>
@@ -70,10 +69,10 @@ namespace Its.ExpertModule
 		private ExpertControl (string ontologyPath, string logsPath, string expertConfPath, int initialCol, int initialRow)
 		{
 			_instanceStudentControl = StudentControl.Instance (ontologyPath, logsPath, expertConfPath);
-			_instanceDomainActionsFactory = Factories.DomainActionsFactory.Instance (ontologyPath, logsPath, expertConfPath, initialCol, initialRow);
+			_instanceDomainActionsFactory = DomainActionsFactory.Instance (ontologyPath, logsPath, expertConfPath, initialCol, initialRow);
 			_domainActionsList = new Dictionary<string, DomainActions> ();
 			//Gets OtherErrors.
-			List<Error> otherErrors = Factories.ErrorFactory.Instance(ontologyPath, logsPath).CreateOtherErrors();
+			List<Error> otherErrors = ErrorFactory.Instance(ontologyPath, logsPath).CreateOtherErrors();
 			//Adds OtherErrors into the dictionary.
 			_otherErrors = new Dictionary<string, Error> ();
 			foreach (Error e in otherErrors)
@@ -312,7 +311,7 @@ namespace Its.ExpertModule
 					//Checks if the action has minimun and/or maximun time.
 					if (action.MinTime > 0) {
 						//Creates a thread to control the minimun timer.
-						Thread minTimerThread = new Thread (new ParameterizedThreadStart(ExpertControl.MinTimer));
+						Thread minTimerThread = new Thread (new ParameterizedThreadStart(MinTimer));
 						//Checks if student has an entry.
 						if (_minTimerController.ContainsKey (student.Key)) {
 							//Checks if a entry for the specific action already exists.
@@ -350,7 +349,7 @@ namespace Its.ExpertModule
 					}
 					if (action.MaxTime > 0) {
 						//Creates a thread to control the minimun timer.
-						Thread maxTimerThread = new Thread (new ParameterizedThreadStart(ExpertControl.MaxTimer));
+						Thread maxTimerThread = new Thread (new ParameterizedThreadStart(MaxTimer));
 						//Checks if student has an entry.
 						if (_maxTimerController.ContainsKey (student.Key)) {
 							//Checks if a entry for the specific action already exists.
@@ -380,7 +379,7 @@ namespace Its.ExpertModule
 						}
 
 						//Creates a thread to control the maximun timer.
-						maxTimerThread = new Thread (new ParameterizedThreadStart(ExpertControl.MaxTimer));
+						maxTimerThread = new Thread (new ParameterizedThreadStart(MaxTimer));
 						//Starts the thread.
 						ArrayList param = new ArrayList();
 						param.Add (maxTimerThread);
@@ -501,7 +500,7 @@ namespace Its.ExpertModule
 				//Checks if the action has minimun and/or maximun time.
 				if (action.MinTime > 0) {
 					//Creates a thread to control the minimun timer.
-					Thread minTimerThread = new Thread (new ParameterizedThreadStart(ExpertControl.MinTimer));
+					Thread minTimerThread = new Thread (new ParameterizedThreadStart(MinTimer));
 					//Checks if student has an entry.
 					if (_minTimerController.ContainsKey (student.Key)) {
 						//Checks if a entry for the specific action already exists.
@@ -539,7 +538,7 @@ namespace Its.ExpertModule
 				}
 				if (action.MaxTime > 0) {
 					//Creates a thread to control the minimun timer.
-					Thread maxTimerThread = new Thread (new ParameterizedThreadStart(ExpertControl.MaxTimer));
+					Thread maxTimerThread = new Thread (new ParameterizedThreadStart(MaxTimer));
 					//Checks if student has an entry.
 					if (_maxTimerController.ContainsKey (student.Key)) {
 						//Checks if a entry for the specific action already exists.
@@ -569,7 +568,7 @@ namespace Its.ExpertModule
 					}
 
 					//Creates a thread to control the maximun timer.
-					maxTimerThread = new Thread (new ParameterizedThreadStart(ExpertControl.MaxTimer));
+					maxTimerThread = new Thread (new ParameterizedThreadStart(MaxTimer));
 					//Starts the thread.
 					ArrayList param = new ArrayList();
 					param.Add (maxTimerThread);

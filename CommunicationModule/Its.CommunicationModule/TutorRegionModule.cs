@@ -1,22 +1,15 @@
 ﻿using System;
-using Its.Utils.Config;
-
-using System.Reflection;
-using log4net;
-using Nini.Config;
-using OpenMetaverse;
-using OpenMetaverse.StructuredData;
-using OpenSim.Framework;
-using OpenSim.Region.Framework.Interfaces;
-using OpenSim.Region.Framework.Scenes;
-using Mono.Addins;
-using System.Data;
-
-using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using Its.TutoringModule.Common;
 using Its.TutoringModule.Factories;
-
+using Its.Utils.Config;
+using log4net;
+using Mono.Addins;
+using Nini.Config;
+using OpenMetaverse;
+using OpenSim.Region.Framework.Interfaces;
+using OpenSim.Region.Framework.Scenes;
 
 [assembly: Addin("TutorRegionModule", "0.1")]
 [assembly: AddinDependency("OpenSim", "0.8.1.1")]
