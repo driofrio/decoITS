@@ -55,6 +55,10 @@
       <Project>{44A3A108-F052-4126-A905-4ADEC242E7E9}</Project>
       <Name>Its.WorldModule</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\Its.TutoringModule.Common\Its.TutoringModule.Common.csproj">
+      <Project>{3EFB63FF-6405-42C2-A615-0FBB56F4BDF2}</Project>
+      <Name>Its.TutoringModule.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Its.TutoringModule.TutoringCoordinator.ReactiveTutor.ObjectModel\Its.TutoringModule.TC.RTutor.OM.csproj">
       <Project>{BE49666E-929B-4CF9-9F37-DDB4E4D6C762}</Project>
       <Name>Its.TutoringModule.TC.RTutor.OM</Name>

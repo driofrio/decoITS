@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using Its.Factories;
+using Its.TutoringModule.Common;
 using Its.TutoringModule.TutoringCoordinator.ReactiveTutor;
 using Its.Utils.Config;
 
@@ -13,9 +15,8 @@ namespace TestSIEMA
             
             string[] keys = new string[] { "Tutorial" }; //Tutorial must refer to Domain and world configuration files with same name
             
-            ITutorConfig config = new DefaultTutorConfig();
-
-            Tutor tutor = new Tutor(config);
+            TutorFactory tf = TutorFactory.Instance(new DefaultTutorConfig());
+            ITutor tutor = tf.CreateReactiveTutor();
             //Carga los estudiantes registrados en el sistema
             tutor.LoadStudents();
 

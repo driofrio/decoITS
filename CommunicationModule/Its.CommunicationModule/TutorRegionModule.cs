@@ -15,6 +15,8 @@ using System.Data;
 
 using System.Collections;
 using System.Collections.Generic;
+using Its.Factories;
+using Its.TutoringModule.Common;
 
 
 [assembly: Addin("TutorRegionModule", "0.1")]
@@ -39,7 +41,8 @@ namespace Its.CommunicationModule
 
 		public void Initialise(IConfigSource config)
 		{
-			tutor = new Tutor(new DefaultTutorConfig());
+			TutorFactory tf = TutorFactory.Instance(new DefaultTutorConfig());
+			ITutor tutor = tf.CreateReactiveTutor();
 			m_log.WarnFormat("[TutorRegionModule] start configuration");
 			try 
 			{
