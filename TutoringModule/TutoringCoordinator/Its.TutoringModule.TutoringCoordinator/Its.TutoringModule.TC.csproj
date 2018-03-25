@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -45,6 +45,18 @@
     <ProjectReference Include="..\..\..\ExpertModule\Its.ExpertModule\Its.ExpertModule.csproj">
       <Project>{053D479C-7695-452A-ABFF-237300DB84AE}</Project>
       <Name>Its.ExpertModule</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Utils\Its.Utils.Config\Its.Utils.Config.csproj">
+      <Project>{B7413821-72A0-4104-B19F-44E0C8FD18A2}</Project>
+      <Name>Its.Utils.Config</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\WorldModule\Its.WorldModule\Its.WorldModule.csproj">
+      <Project>{44A3A108-F052-4126-A905-4ADEC242E7E9}</Project>
+      <Name>Its.WorldModule</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Its.TutoringModule.Common\Its.TutoringModule.Common.csproj">
+      <Project>{3EFB63FF-6405-42C2-A615-0FBB56F4BDF2}</Project>
+      <Name>Its.TutoringModule.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\ReactiveTutor\Its.TutoringModule.TutoringCoordinator.ReactiveTutor\Its.TutoringModule.TC.RTutor.csproj">
       <Project>{17D5BDC5-93B7-4B54-BB7D-8041942658A3}</Project>

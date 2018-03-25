@@ -1,41 +1,24 @@
-﻿using Its.ExpertModule;
-using Its.StudentModule;
-using Its.TutoringModule.StudentBehaviorPredictor;
+﻿using System.Collections.Generic;
+using Its.ExpertModule;
+using Its.TutoringModule.Common;
+using Its.Utils.Config;
+using Its.WorldModule;
 
 namespace Its.TutoringModule.TutoringCoordinator
 {
-	public class TutoringCoordinator
+	public class TutoringCoordinator : AbstractTutor
 	{
-		private static StudentControl _studentControl;
-		private static ExpertControl _expertControl;
-		//private static ReactiveTutor.ReactiveTutor _reactiveTutor;
-		private static StudentBehaviorPredictorControl _studentBehaviorPredictor;
-
-
-		/// <summary>
-		/// The instance.
-		/// </summary>
-		private static TutoringCoordinator _instance = null;
-
-		/// <summary>
-		/// Gets the instance.
-		/// </summary>
-		/// <value>The instance.</value>
-		public static TutoringCoordinator Instance {
-			get {
-				if (_instance == null)
-					_instance = new TutoringCoordinator ();
-
-				return _instance;
-			}
+		public TutoringCoordinator(bool master, ITutorConfig config) : base(master, config)
+		{
 		}
 
-		private TutoringCoordinator ()
+		public TutoringCoordinator(bool master, string ontologyPath, string logsPath, string expertConfPath, string worldConfPath, Dictionary<string, WorldControl> worldControl, ExpertControl expertControl) : base(master, ontologyPath, logsPath, expertConfPath, worldConfPath, worldControl, expertControl)
 		{
-			//_studentControl = StudentControl.Instance;
-			//_expertControl = ExpertControl.Instance;
-			//_reactiveTutor = ReactiveTutor.Instance;
-			//_studentBehaviorPredictor = StudentBehaviorPredictor.StudentBehaviorPredictor.Instance;
+		}
+
+		public override int ToTutor(string actionName, string domainName, string studentKey, string objectName, out List<string> messages)
+		{
+			throw new System.NotImplementedException();
 		}
 	}
 }
