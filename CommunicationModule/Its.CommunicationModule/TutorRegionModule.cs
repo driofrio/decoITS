@@ -33,8 +33,8 @@ namespace Its.CommunicationModule
 
 		public void Initialise(IConfigSource config)
 		{
-			TutorFactory tf = TutorFactory.Instance(new DefaultTutorConfig());
-			tutor = tf.CreateReactiveTutor();
+			TutorFactory tf = TutorFactory.Instance();
+			tutor = tf.CreateReactiveTutor(new DefaultTutorConfig());
 			m_log.WarnFormat("[TutorRegionModule] start configuration");
 			try 
 			{

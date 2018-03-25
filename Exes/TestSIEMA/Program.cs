@@ -14,8 +14,8 @@ namespace TestSIEMA
             
             string[] keys = new string[] { "Tutorial" }; //Tutorial must refer to Domain and world configuration files with same name
             
-            TutorFactory tf = TutorFactory.Instance(new DefaultTutorConfig());
-            ITutor tutor = tf.CreateReactiveTutor();
+            TutorFactory tf = TutorFactory.Instance();
+            ITutor tutor = tf.CreateReactiveTutor(new DefaultTutorConfig());
             //Carga los estudiantes registrados en el sistema
             tutor.LoadStudents();
 
