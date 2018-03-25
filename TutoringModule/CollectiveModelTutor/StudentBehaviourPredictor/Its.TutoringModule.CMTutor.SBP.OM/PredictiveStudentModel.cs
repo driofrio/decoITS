@@ -1,21 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using System.Globalization;
+using System.Linq;
 using Its.ExpertModule.ObjectModel;
 using Its.StudentModule.ObjectModel;
-using System.Linq;
+using Its.TutoringModule.CMTutor.SBP.Exceptions;
+using Its.TutoringModule.CMTutor.SBP.OM.State;
+using Its.TutoringModule.ReactiveTutor.ObjectModel;
+using Its.Utils.Config;
 using weka.core;
-using weka.clusterers;
-using weka.filters.unsupervised.attribute;
-using Its.TutoringModule.StudentBehaviorPredictor.Exceptions;
 using Its.Utils.Math;
 using Microsoft.AnalysisServices.AdomdClient;
-using System.Data;
-using System.Globalization;
-using Its.TutoringModule.ReactiveTutor.ObjectModel;
-using System.Data.SqlClient;
-using Its.Utils.Config;
+using weka.clusterers;
+using weka.filters.unsupervised.attribute;
 
-namespace Its.TutoringModule.StudentBehaviorPredictor.ObjectModel
+namespace Its.TutoringModule.CMTutor.SBP.OM
 {
 	public enum ClusterMethod
 	{
@@ -793,18 +794,18 @@ namespace Its.TutoringModule.StudentBehaviorPredictor.ObjectModel
 			fvWekaAttributes.addElement(attRelevantEvents);
 
 			Instances trainingSet = new Instances("ClusterStudentData", fvWekaAttributes, students.Count);
-			Node<State, Event> initState = new Node<State, Event> ("initState", "", new CorrectState (Area.CorrectFlow, null, false, 1, 1));
+			Node<State.State, Event.Event> initState = new Node<State.State, Event.Event> ("initState", "", new CorrectState (Area.CorrectFlow, null, false, 1, 1));
 			foreach (Student student in students) {
 				StudentLog sudentLogs = domainLog.GetStudentLog(student.Key);
-				Node<State, Event> previousState = initState;
-				List<Node<State, Event>> pastNodes = new List<Node<State, Event>> ();
+				Node<State.State, Event.Event> previousState = initState;
+				List<Node<State.State, Event.Event>> pastNodes = new List<Node<State.State, Event.Event>> ();
 				int numCorrectEvents = 0;
 				int numIrrelevantEvents = 0;
 				int numRelevantEvents = 0;
 				foreach (LogEntry log in sudentLogs.Logs) {
 					if (includeNoPlanActions || log.GetType ().BaseType != typeof(NoPlanAllowedActionLog)) {
 						Area tmpArea = GetArea (log, previousState, pastNodes, initState);
-						Node<State, Event> node = CreateState (log, tmpArea);
+						Node<State.State, Event.Event> node = CreateState (log, tmpArea);
 						switch (tmpArea) {
 						case Area.CorrectFlow:
 							numCorrectEvents++;
@@ -883,7 +884,7 @@ namespace Its.TutoringModule.StudentBehaviorPredictor.ObjectModel
 
 		}
 
-		private Area GetArea(LogEntry log, Node<State,Event> previousState, List<Node<State,Event>> pastNodes, Node<State,Event> initState){
+		private Area GetArea(LogEntry log, Node<State.State,Event.Event> previousState, List<Node<State.State,Event.Event>> pastNodes, Node<State.State,Event.Event> initState){
 			Area area=previousState.Specification.Area;
 			if (log.GetType ().BaseType == typeof(ActionLog)) {
 				if (area == Area.CorrectFlow || area == Area.IrrelevantErrors) {
@@ -916,10 +917,10 @@ namespace Its.TutoringModule.StudentBehaviorPredictor.ObjectModel
 			return area;
 		}
 
-		private static bool IsDependeceRelevantError (List<Dependence> dependences, List<Node<State,Event>> pastNodes, Node<State,Event> initState)
+		private static bool IsDependeceRelevantError (List<Dependence> dependences, List<Node<State.State,Event.Event>> pastNodes, Node<State.State,Event.Event> initState)
 		{
 			bool isRelevantError = false;
-			List<Node<State,Event>> tempPasNodes = pastNodes.Where (x => x.Specification.GetType () == typeof(CorrectState) && x != initState).ToList();
+			List<Node<State.State,Event.Event>> tempPasNodes = pastNodes.Where (x => x.Specification.GetType () == typeof(CorrectState) && x != initState).ToList();
 			foreach (Dependence dep in dependences) {
 				if (dep.GetType () == typeof(SimpleDependence)) {
 					if (tempPasNodes.Count (x => ((CorrectState)x.Specification).Action.Key == ((SimpleDependence)dep).ActionDependence.Key) > 0) {
@@ -937,7 +938,7 @@ namespace Its.TutoringModule.StudentBehaviorPredictor.ObjectModel
 			return isRelevantError;
 		}
 
-		private bool HasPastNodeRelevantError (List<Node<State,Event>> pastNodes)
+		private bool HasPastNodeRelevantError (List<Node<State.State,Event.Event>> pastNodes)
 		{
 			bool isRelevantError = false;
 			for (int i = pastNodes.Count - 1; i >= 0 ; i--) {
@@ -949,33 +950,33 @@ namespace Its.TutoringModule.StudentBehaviorPredictor.ObjectModel
 			return isRelevantError;
 		}
 
-		private Node<State,Event> CreateState(LogEntry log, Area area){
-			State state=null;
-			Node<State,Event> newState = null;
+		private Node<State.State,Event.Event> CreateState(LogEntry log, Area area){
+			State.State state=null;
+			Node<State.State,Event.Event> newState = null;
 
 			if (log.GetType ().BaseType == typeof(ActionLog)) {
 				state = new CorrectState (area, log.Action, log.GetType () == typeof(CorrectiveActionLog));
-				newState = new Node<State,Event> (log.Action.Key+"_"+area.ToString(), log.Action.Description, state);
+				newState = new Node<State.State,Event.Event> (log.Action.Key+"_"+area.ToString(), log.Action.Description, state);
 			} else if (log.GetType () == typeof(DepErrorLog)) {
 				Dependence fail = ((DepErrorLog)log).FailedDependence;
 				state = new DependenceErrorState (area, fail);
-				newState = new Node<State,Event> (log.Action.Key + "_" + fail.Key+"_"+area.ToString(), log.Action.Description, state);
+				newState = new Node<State.State,Event.Event> (log.Action.Key + "_" + fail.Key+"_"+area.ToString(), log.Action.Description, state);
 			} else if (log.GetType () == typeof(IncompErrorLog)) {
 				Incompatibility fail = ((IncompErrorLog)log).FailedIncompatibility;
 				state = new IncompatibilityErrorState (area, fail);
-				newState = new Node<State,Event> (log.Action.Key + "_" + fail.Key+"_"+area.ToString(), log.Action.Description, state);
+				newState = new Node<State.State,Event.Event> (log.Action.Key + "_" + fail.Key+"_"+area.ToString(), log.Action.Description, state);
 			} else if (log.GetType ().BaseType == typeof(TimeErrorLog)) {
 				Error fail = (log.GetType () == typeof(MinTimeErrorLog)) ? log.Action.MinTimeError : log.Action.MaxTimeError;
 				state = new TimeErrorState (area, ((TimeErrorLog)log).Time, fail);
-				newState = new Node<State,Event> (log.Action.Key + "_" + fail.Key+"_"+area.ToString(), log.Action.Description, state);
+				newState = new Node<State.State,Event.Event> (log.Action.Key + "_" + fail.Key+"_"+area.ToString(), log.Action.Description, state);
 			} else if (log.GetType () == typeof(WorldErrorLog)) {
 				Error fail = ((WorldErrorLog)log).ErrorAssociated;
 				state = new WorldErrorState (area, fail, ((WorldErrorLog)log).Type);
-				newState = new Node<State,Event> (log.Action.Key + "_" + fail.Key+"_"+area.ToString(), log.Action.Description, state);
+				newState = new Node<State.State,Event.Event> (log.Action.Key + "_" + fail.Key+"_"+area.ToString(), log.Action.Description, state);
 			} else if (log.GetType () == typeof(OtherErrorLog)) {
 				Error fail = ((OtherErrorLog)log).ErrorAssociated;
 				state = new OtherErrorState (area, fail);
-				newState = new Node<State,Event> (log.Action.Key + "_" + fail.Key+"_"+area.ToString(), log.Action.Description, state);
+				newState = new Node<State.State,Event.Event> (log.Action.Key + "_" + fail.Key+"_"+area.ToString(), log.Action.Description, state);
 			}
 
 			return newState;
@@ -1009,7 +1010,7 @@ namespace Its.TutoringModule.StudentBehaviorPredictor.ObjectModel
 		/// <param name="studentLogs">Student logs.</param>
 		private StudentsCluster ReclusterStudent(string studentKey, StudentLog studentLogs, bool includeNoPlanActions){
 			StudentsCluster oldCluster = FindStudentCluster (studentKey);
-			List<Node<State,Event>> studentNodes = oldCluster.GetStudentNodes (studentKey);
+			List<Node<State.State,Event.Event>> studentNodes = oldCluster.GetStudentNodes (studentKey);
 			StudentsCluster newCluster = GetNewCluster (studentNodes);
 
 			if (newCluster != oldCluster) {
@@ -1140,16 +1141,16 @@ namespace Its.TutoringModule.StudentBehaviorPredictor.ObjectModel
 		}
 		private StudentsClusterByEventsZone MatchClusterByEventsZone(StudentLog studentLogs, bool includeNoPlanActions){
 			StudentsClusterByEventsZone cluMatch = null;
-			Node<State, Event> initState = new Node<State, Event> ("initState", "", new CorrectState (Area.CorrectFlow, null, false, 1, 1));
-			Node<State, Event> previousState = initState;
-			List<Node<State, Event>> pastNodes = new List<Node<State, Event>> ();
+			Node<State.State, Event.Event> initState = new Node<State.State, Event.Event> ("initState", "", new CorrectState (Area.CorrectFlow, null, false, 1, 1));
+			Node<State.State, Event.Event> previousState = initState;
+			List<Node<State.State, Event.Event>> pastNodes = new List<Node<State.State, Event.Event>> ();
 			int numCorrectEvents = 0;
 			int numIrrelevantEvents = 0;
 			int numRelevantEvents = 0;
 			foreach (LogEntry log in studentLogs.Logs) {
 				if (includeNoPlanActions || log.GetType ().BaseType != typeof(NoPlanAllowedActionLog)) {
 					Area tmpArea = GetArea (log, previousState, pastNodes, initState);
-					Node<State, Event> node = CreateState (log, tmpArea);
+					Node<State.State, Event.Event> node = CreateState (log, tmpArea);
 					switch (tmpArea) {
 					case Area.CorrectFlow:
 						numCorrectEvents++;
@@ -1222,14 +1223,14 @@ namespace Its.TutoringModule.StudentBehaviorPredictor.ObjectModel
 		/// </summary>
 		/// <returns>The new cluster.</returns>
 		/// <param name="studentLogs">Student logs.</param>
-		private StudentsCluster GetNewCluster(List<Node<State,Event>> studentNodes){
+		private StudentsCluster GetNewCluster(List<Node<State.State,Event.Event>> studentNodes){
 			StudentsCluster newCluster = null;
 			long maxFrequency = 0;
 			foreach (StudentsCluster tmpcluster in _clusters.Values) {
 				long tmpFrequency = 0;
-				Node<State,Event> previousState = tmpcluster.StudentActionsModel.InitState;
-				foreach (Node<State,Event> tmpState in studentNodes) {
-					if (tmpState != default(Node<State,Event>))
+				Node<State.State,Event.Event> previousState = tmpcluster.StudentActionsModel.InitState;
+				foreach (Node<State.State,Event.Event> tmpState in studentNodes) {
+					if (tmpState != default(Node<State.State,Event.Event>))
 						tmpFrequency += tmpState.Specification.EventFrequency;
 					previousState = tmpState;
 				}
@@ -1262,9 +1263,9 @@ namespace Its.TutoringModule.StudentBehaviorPredictor.ObjectModel
 		/// <returns>The next most probable event.</returns>
 		/// <param name="studentKey">Student key.</param>
 		/// <param name="lastLog">Last log.</param>
-		public Arc<State,Event> GetNextProbableEvent(string studentKey){
+		public Arc<State.State,Event.Event> GetNextProbableEvent(string studentKey){
 			StudentsCluster cluster = FindStudentCluster (studentKey);
-			Arc<State,Event> nextEvent = cluster.GetNextProbableEvent (studentKey);
+			Arc<State.State,Event.Event> nextEvent = cluster.GetNextProbableEvent (studentKey);
 			return nextEvent;
 		}
 
@@ -1278,9 +1279,9 @@ namespace Its.TutoringModule.StudentBehaviorPredictor.ObjectModel
 		}
 
 		/// <summary>
-		/// Returns a <see cref="System.String"/> that represents the current <see cref="Its.TutoringModule.StudentBehaviorPredictor.ObjectModel.PredictiveStudentModel"/>.
+		/// Returns a <see cref="System.String"/> that represents the current <see cref="PredictiveStudentModel"/>.
 		/// </summary>
-		/// <returns>A <see cref="System.String"/> that represents the current <see cref="Its.TutoringModule.StudentBehaviorPredictor.ObjectModel.PredictiveStudentModel"/>.</returns>
+		/// <returns>A <see cref="System.String"/> that represents the current <see cref="PredictiveStudentModel"/>.</returns>
 		public override string ToString(){
 			string temp = "Model: " + _key + " Domain: " + _domain.Key + System.Environment.NewLine;
 			foreach (StudentsCluster sc in _clusters.Values)

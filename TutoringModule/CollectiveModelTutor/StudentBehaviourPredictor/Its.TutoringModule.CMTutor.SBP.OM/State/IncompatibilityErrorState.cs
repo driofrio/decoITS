@@ -1,8 +1,6 @@
-﻿using System;
-using Its.ExpertModule.ObjectModel;
+﻿using Its.ExpertModule.ObjectModel;
 
-
-namespace Its.TutoringModule.StudentBehaviorPredictor.ObjectModel
+namespace Its.TutoringModule.CMTutor.SBP.OM.State
 {
 	public class IncompatibilityErrorState : State
 	{
@@ -23,7 +21,7 @@ namespace Its.TutoringModule.StudentBehaviorPredictor.ObjectModel
 
 		/// <summary>
 		/// Initializes a new instance of the
-		/// <see cref="Its.TutoringModule.StudentBehaviorPredictor.ObjectModel.IncompatibilityErrorState"/> class.
+		/// <see cref="IncompatibilityErrorState"/> class.
 		/// </summary>
 		/// <param name="area">Area.</param>
 		/// <param name="incompatibilityFailed">Incompatibility failed.</param>
@@ -33,9 +31,9 @@ namespace Its.TutoringModule.StudentBehaviorPredictor.ObjectModel
 		}
 
 		/// <summary>
-		/// Returns a <see cref="System.String"/> that represents the current <see cref="Its.TutoringModule.StudentBehaviorPredictor.ObjectModel.IncompatibilityErrorState"/>.
+		/// Returns a <see cref="System.String"/> that represents the current <see cref="IncompatibilityErrorState"/>.
 		/// </summary>
-		/// <returns>A <see cref="System.String"/> that represents the current <see cref="Its.TutoringModule.StudentBehaviorPredictor.ObjectModel.IncompatibilityErrorState"/>.</returns>
+		/// <returns>A <see cref="System.String"/> that represents the current <see cref="IncompatibilityErrorState"/>.</returns>
 		public override string ToString(){
 			return "IncompatibilityErrorState: IncompatibilityFailed: " + _incompatibilityFailed.Key + base.ToString ();
 		}

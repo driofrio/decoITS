@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Data;
 using System.Collections.Generic;
-using Its.StudentModule.ObjectModel;
 using Its.ExpertModule.ObjectModel;
-using Its.Utils.Math;
+using Its.StudentModule.ObjectModel;
 
-namespace Its.TutoringModule.StudentBehaviorPredictor.ObjectModel
+namespace Its.TutoringModule.CMTutor.SBP.OM
 {
 	public class StudentsClusterByErrorTime:StudentsCluster
 	{
@@ -46,7 +44,7 @@ namespace Its.TutoringModule.StudentBehaviorPredictor.ObjectModel
 
 		/// <summary>
 		/// Initializes a new instance of the
-		/// <see cref="Its.TutoringModule.StudentBehaviorPredictor.ObjectModel.StudentsCluster"/> class.
+		/// <see cref="StudentsCluster"/> class.
 		/// </summary>
 		/// <param name="number">Number.</param>
 		/// <param name="minTime">Minimum time.</param>
@@ -67,7 +65,7 @@ namespace Its.TutoringModule.StudentBehaviorPredictor.ObjectModel
 
 		/// <summary>
 		/// Initializes a new instance of the
-		/// <see cref="Its.TutoringModule.StudentBehaviorPredictor.ObjectModel.StudentsCluster"/> class from a date (for visualization purposes)..
+		/// <see cref="StudentsCluster"/> class from a date (for visualization purposes)..
 		/// </summary>
 		/// <param name="number">Number.</param>
 		/// <param name="minTime">Minimum time.</param>
@@ -91,7 +89,7 @@ namespace Its.TutoringModule.StudentBehaviorPredictor.ObjectModel
 
 		/// <summary>
 		/// Initializes a new instance of the
-		/// <see cref="Its.TutoringModule.StudentBehaviorPredictor.ObjectModel.StudentsCluster"/> class craetes a cluster only with the automata (for validation purposes)..
+		/// <see cref="StudentsCluster"/> class craetes a cluster only with the automata (for validation purposes)..
 		/// </summary>
 		/// <param name="number">Number.</param>
 		/// <param name="minTime">Minimum time.</param>

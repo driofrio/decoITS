@@ -1,12 +1,13 @@
 ﻿using System;
-using Its.Utils.Math;
 using System.Collections.Generic;
-using Its.StudentModule.ObjectModel;
 using System.Data;
 using System.Linq;
 using Its.ExpertModule.ObjectModel;
+using Its.StudentModule.ObjectModel;
+using Its.TutoringModule.CMTutor.SBP.OM.State;
+using Its.Utils.Math;
 
-namespace Its.TutoringModule.StudentBehaviorPredictor.ObjectModel
+namespace Its.TutoringModule.CMTutor.SBP.OM
 {
 	public class StudentsCluster
 	{
@@ -26,7 +27,7 @@ namespace Its.TutoringModule.StudentBehaviorPredictor.ObjectModel
 		/// The student keys.
 		/// </summary>
 		private DataTable _studentStates;
-		private Dictionary<string,List<Arc<State,Event>>> _studentEvents;
+		private Dictionary<string,List<Arc<State.State,Event.Event>>> _studentEvents;
 
 		public StudentsCluster (int number)
 		{
@@ -39,10 +40,10 @@ namespace Its.TutoringModule.StudentBehaviorPredictor.ObjectModel
 			DataColumn[] key=new DataColumn[1];
 			key [0] = dc;
 			this._studentStates.PrimaryKey = key;
-			this._studentStates.Columns.Add("LastState", typeof(Node<State,Event>));
+			this._studentStates.Columns.Add("LastState", typeof(Node<State.State,Event.Event>));
 			this._studentStates.Columns.Add("VectorEventCount", typeof(int));
-			this._studentStates.Columns.Add("States", typeof(List<Node<State,Event>>));
-			this._studentEvents = new Dictionary<string, List<Arc<State, Event>>> ();
+			this._studentStates.Columns.Add("States", typeof(List<Node<State.State,Event.Event>>));
+			this._studentEvents = new Dictionary<string, List<Arc<State.State, Event.Event>>> ();
 		}
 
 		public StudentsCluster (int number, List<string> studentKeys, DomainLog logs, Dictionary<string,ActionAplication> incompatibilities, bool includeNoPlanActions)
@@ -55,12 +56,12 @@ namespace Its.TutoringModule.StudentBehaviorPredictor.ObjectModel
 			DataColumn[] key=new DataColumn[1];
 			key [0] = dc;
 			this._studentStates.PrimaryKey = key;
-			this._studentStates.Columns.Add("LastState", typeof(Node<State,Event>));
+			this._studentStates.Columns.Add("LastState", typeof(Node<State.State,Event.Event>));
 			this._studentStates.Columns.Add("VectorEventCount", typeof(int));
-			this._studentStates.Columns.Add("States", typeof(List<Node<State,Event>>));
-			this._studentEvents = new Dictionary<string, List<Arc<State, Event>>> ();
+			this._studentStates.Columns.Add("States", typeof(List<Node<State.State,Event.Event>>));
+			this._studentEvents = new Dictionary<string, List<Arc<State.State, Event.Event>>> ();
 			this._studentActionsModel = new StudentActionsModel (studentKeys.Count);
-			Node<State,Event> lastState = _studentActionsModel.InitState;
+			Node<State.State,Event.Event> lastState = _studentActionsModel.InitState;
 
 			foreach (string studentKey in studentKeys) {
 				StudentLog studentLogs = logs.GetStudentLog (studentKey);
@@ -92,12 +93,12 @@ namespace Its.TutoringModule.StudentBehaviorPredictor.ObjectModel
 			DataColumn[] key=new DataColumn[1];
 			key [0] = dc;
 			this._studentStates.PrimaryKey = key;
-			this._studentStates.Columns.Add("LastState", typeof(Node<State,Event>));
+			this._studentStates.Columns.Add("LastState", typeof(Node<State.State,Event.Event>));
 			this._studentStates.Columns.Add("VectorEventCount", typeof(int));
-			this._studentStates.Columns.Add("States", typeof(List<Node<State,Event>>));
-			this._studentEvents = new Dictionary<string, List<Arc<State, Event>>> ();
+			this._studentStates.Columns.Add("States", typeof(List<Node<State.State,Event.Event>>));
+			this._studentEvents = new Dictionary<string, List<Arc<State.State, Event.Event>>> ();
 			this._studentActionsModel = new StudentActionsModel (logs.Count);
-			Node<State,Event> lastState = _studentActionsModel.InitState;
+			Node<State.State,Event.Event> lastState = _studentActionsModel.InitState;
 
 			foreach (StudentLog studentLogs in logs) {
 				AddStudent (studentLogs, lastState, incompatibilities, includeNoPlanActions);
@@ -128,12 +129,12 @@ namespace Its.TutoringModule.StudentBehaviorPredictor.ObjectModel
 			DataColumn[] key=new DataColumn[1];
 			key [0] = dc;
 			this._studentStates.PrimaryKey = key;
-			this._studentStates.Columns.Add("LastState", typeof(Node<State,Event>));
+			this._studentStates.Columns.Add("LastState", typeof(Node<State.State,Event.Event>));
 			this._studentStates.Columns.Add("VectorEventCount", typeof(int));
-			this._studentStates.Columns.Add("States", typeof(List<Node<State,Event>>));
-			this._studentEvents = new Dictionary<string, List<Arc<State, Event>>> ();
+			this._studentStates.Columns.Add("States", typeof(List<Node<State.State,Event.Event>>));
+			this._studentEvents = new Dictionary<string, List<Arc<State.State, Event.Event>>> ();
 			this._studentActionsModel = new StudentActionsModel (studentKeys.Count);
-			Node<State,Event> lastState = _studentActionsModel.InitState;
+			Node<State.State,Event.Event> lastState = _studentActionsModel.InitState;
 
 			foreach (string studentKey in studentKeys) {
 				StudentLog studentLogs = logs.GetStudentLog (studentKey);
@@ -176,7 +177,7 @@ namespace Its.TutoringModule.StudentBehaviorPredictor.ObjectModel
 		/// <returns><c>true</c> if this instance has a student with the specified key; otherwise, <c>false</c>.</returns>
 		/// <param name="studentKey">Student key.</param>
 		public bool HasStudent(string studentKey){
-			Node<State,Event> lastState = _studentActionsModel.InitState;
+			Node<State.State,Event.Event> lastState = _studentActionsModel.InitState;
 			return _studentStates.Rows.Contains (studentKey);
 		}
 
@@ -194,7 +195,7 @@ namespace Its.TutoringModule.StudentBehaviorPredictor.ObjectModel
 				dr [0] = studentKey;
 				dr [1] = _studentActionsModel.InitState;
 				dr [2] = 0;
-				dr [3] = new List<Node<State,Event>> ();
+				dr [3] = new List<Node<State.State,Event.Event>> ();
 				_studentStates.Rows.Add (dr);
 			}
 		}
@@ -206,9 +207,9 @@ namespace Its.TutoringModule.StudentBehaviorPredictor.ObjectModel
 		/// <param name="log">Log.</param>
 		private void UpdateAutomaton(string studentKey, LogEntry log, Dictionary<string,ActionAplication> incompatibilities){
 			DataRow dr = _studentStates.Rows.Find (studentKey);
-			Node<State,Event> newState = _studentActionsModel.ExpandAutomaton (log, (Node<State,Event>)dr ["LastState"], 
-				(List<Node<State,Event>>)dr ["States"], true, incompatibilities, (int)dr ["VectorEventCount"]);
-			if (newState == (Node<State,Event>)dr ["LastState"])
+			Node<State.State,Event.Event> newState = _studentActionsModel.ExpandAutomaton (log, (Node<State.State,Event.Event>)dr ["LastState"], 
+				(List<Node<State.State,Event.Event>>)dr ["States"], true, incompatibilities, (int)dr ["VectorEventCount"]);
+			if (newState == (Node<State.State,Event.Event>)dr ["LastState"])
 				dr ["VectorEventCount"] = ((int)dr ["VectorEventCount"]) + 1;
 		}
 
@@ -217,25 +218,25 @@ namespace Its.TutoringModule.StudentBehaviorPredictor.ObjectModel
 		/// </summary>
 		/// <param name="studentLogs">Student logs.</param>
 		/// <param name="lastState">Last state.</param>
-		public void AddStudent (StudentLog studentLogs, Node<State,Event> previousState, Dictionary<string,ActionAplication> incompatibilities, bool includeNoPlanActions)
+		public void AddStudent (StudentLog studentLogs, Node<State.State,Event.Event> previousState, Dictionary<string,ActionAplication> incompatibilities, bool includeNoPlanActions)
 		{
-			List<Node<State,Event>> tempPastRepetitives = new List<Node<State,Event>> ();
-			List<Node<State,Event>> tempPastNodes = new List<Node<State,Event>> ();
+			List<Node<State.State,Event.Event>> tempPastRepetitives = new List<Node<State.State,Event.Event>> ();
+			List<Node<State.State,Event.Event>> tempPastNodes = new List<Node<State.State,Event.Event>> ();
 			int iterationNumber = 0;
-			Node<State, Event> newState = null;
+			Node<State.State, Event.Event> newState = null;
 			bool isPastRepetitive = false;
 			bool isActionLog = false;
-			this._studentEvents.Add (studentLogs.Owner.Key, new List<Arc<State, Event>> ());
+			this._studentEvents.Add (studentLogs.Owner.Key, new List<Arc<State.State, Event.Event>> ());
 			Area tempAreaForRepetitives = Area.CorrectFlow;
 			foreach (LogEntry log in studentLogs.Logs) {
 				if (includeNoPlanActions || log.GetType () != typeof(NoPlanAllowedActionLog)) {
 					isActionLog = (log.GetType () == typeof(NoCorrectiveActionLog) || log.GetType () == typeof(CorrectiveActionLog) || log.GetType () == typeof(NoPlanAllowedActionLog));
 					isPastRepetitive = false;
 					if (isActionLog) {
-						Node<State, Event> tmp =
+						Node<State.State, Event.Event> tmp =
 							tempPastRepetitives.SingleOrDefault (s => ((CorrectState)s.Specification).Action.Key == log.Action.Key &&
 								s.Specification.Area == tempAreaForRepetitives);
-						if (tmp != default(Node<State, Event>))
+						if (tmp != default(Node<State.State, Event.Event>))
 							isPastRepetitive = true;
 					}
 					if (previousState.Specification.Area == Area.IrrelevantErrors)
@@ -291,9 +292,9 @@ namespace Its.TutoringModule.StudentBehaviorPredictor.ObjectModel
 				dr [0] = studenKey;
 				dr [1] = _studentActionsModel.InitState;
 				dr [2] = 0;
-				dr [3] = new List<Node<State,Event>> ();
+				dr [3] = new List<Node<State.State,Event.Event>> ();
 				this._studentStates.Rows.Add (dr);
-				this._studentEvents.Add (studenKey, new List<Arc<State, Event>> ());
+				this._studentEvents.Add (studenKey, new List<Arc<State.State, Event.Event>> ());
 				UpdateAutomaton (studenKey, log, incompatibilities);
 			}
 		}
@@ -302,10 +303,10 @@ namespace Its.TutoringModule.StudentBehaviorPredictor.ObjectModel
 		/// Removes a student from this cluster.
 		/// </summary>
 		/// <param name="studentLogs">Student logs.</param>
-		public void RemoveStudent(string studentKey, List<Node<State,Event>> pastNodes, int numberStudentLogs){
+		public void RemoveStudent(string studentKey, List<Node<State.State,Event.Event>> pastNodes, int numberStudentLogs){
 			int iterationNumber = 0;
-			Node<State,Event> previousState = this._studentActionsModel.InitState;
-			foreach (Node<State,Event> node in pastNodes) {
+			Node<State.State,Event.Event> previousState = this._studentActionsModel.InitState;
+			foreach (Node<State.State,Event.Event> node in pastNodes) {
 				if (previousState.Specification.Area == Area.IrrelevantErrors)
 					_studentActionsModel.ReduceAutomaton (previousState, node, iterationNumber);
 				else
@@ -342,11 +343,11 @@ namespace Its.TutoringModule.StudentBehaviorPredictor.ObjectModel
 		/// </summary>
 		/// <returns>The student nodes.</returns>
 		/// <param name="StudentKey">Student key.</param>
-		public List<Node<State,Event>> GetStudentNodes(string StudentKey){
-			return (List<Node<State,Event>>)_studentStates.Rows.Find(StudentKey)[3];
+		public List<Node<State.State,Event.Event>> GetStudentNodes(string StudentKey){
+			return (List<Node<State.State,Event.Event>>)_studentStates.Rows.Find(StudentKey)[3];
 		}
 
-		public List<Arc<State,Event>> GetStudentEvents(string StudentKey){
+		public List<Arc<State.State,Event.Event>> GetStudentEvents(string StudentKey){
 			return _studentEvents[StudentKey];
 		}
 
@@ -355,14 +356,14 @@ namespace Its.TutoringModule.StudentBehaviorPredictor.ObjectModel
 		/// </summary>
 		/// <returns>The next probable event.</returns>
 		/// <param name="studentKey">Student key.</param>
-		public Arc<State,Event> GetNextProbableEvent(string studentKey){
-			return _studentActionsModel.GetNextProbableEvent ((Node<State,Event>)_studentStates.Rows.Find (studentKey) [1]);
+		public Arc<State.State,Event.Event> GetNextProbableEvent(string studentKey){
+			return _studentActionsModel.GetNextProbableEvent ((Node<State.State,Event.Event>)_studentStates.Rows.Find (studentKey) [1]);
 		}
 			
 		/// <summary>
-		/// Returns a <see cref="System.String"/> that represents the current <see cref="Its.TutoringModule.StudentBehaviorPredictor.ObjectModel.StudentsCluster"/>.
+		/// Returns a <see cref="System.String"/> that represents the current <see cref="StudentsCluster"/>.
 		/// </summary>
-		/// <returns>A <see cref="System.String"/> that represents the current <see cref="Its.TutoringModule.StudentBehaviorPredictor.ObjectModel.StudentsCluster"/>.</returns>
+		/// <returns>A <see cref="System.String"/> that represents the current <see cref="StudentsCluster"/>.</returns>
 		public override string ToString(){
 			return "Cluster: " + _number + Environment.NewLine + "Automaton: " + Environment.NewLine + _studentActionsModel.ToString ();
 		}

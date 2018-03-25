@@ -1,7 +1,6 @@
-﻿using System;
-using Its.TutoringModule.ReactiveTutor.ObjectModel;
+﻿using Its.TutoringModule.ReactiveTutor.ObjectModel;
 
-namespace Its.TutoringModule.StudentBehaviorPredictor.ObjectModel
+namespace Its.TutoringModule.CMTutor.SBP.OM.State
 {
 	public class OtherErrorState : State
 	{
@@ -22,7 +21,7 @@ namespace Its.TutoringModule.StudentBehaviorPredictor.ObjectModel
 
 		/// <summary>
 		/// Initializes a new instance of the
-		/// <see cref="Its.TutoringModule.StudentBehaviorPredictor.ObjectModel.WorldErrorState"/> class.
+		/// <see cref="WorldErrorState"/> class.
 		/// </summary>
 		/// <param name="area">Area.</param>
 		/// <param name="errorAssociated">Error associated.</param>
@@ -32,9 +31,9 @@ namespace Its.TutoringModule.StudentBehaviorPredictor.ObjectModel
 		}
 
 		/// <summary>
-		/// Returns a <see cref="System.String"/> that represents the current <see cref="Its.TutoringModule.StudentBehaviorPredictor.ObjectModel.WorldErrorState"/>.
+		/// Returns a <see cref="System.String"/> that represents the current <see cref="WorldErrorState"/>.
 		/// </summary>
-		/// <returns>A <see cref="System.String"/> that represents the current <see cref="Its.TutoringModule.StudentBehaviorPredictor.ObjectModel.WorldErrorState"/>.</returns>
+		/// <returns>A <see cref="System.String"/> that represents the current <see cref="WorldErrorState"/>.</returns>
 		public override string ToString(){
 			return "OtherErrorState: ErrorAssociated: " + _errorAssociated.Key + base.ToString ();
 		}

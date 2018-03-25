@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using Its.Utils.Math;
-using Its.TutoringModule.StudentBehaviorPredictor.Exceptions;
-
-namespace Its.TutoringModule.StudentBehaviorPredictor.ObjectModel
+﻿namespace Its.TutoringModule.CMTutor.SBP.OM.State
 {
 	/// <summary>
 	/// State.

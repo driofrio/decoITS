@@ -1,7 +1,6 @@
-﻿using System;
-using Its.TutoringModule.ReactiveTutor.ObjectModel;
+﻿using Its.TutoringModule.ReactiveTutor.ObjectModel;
 
-namespace Its.TutoringModule.StudentBehaviorPredictor.ObjectModel
+namespace Its.TutoringModule.CMTutor.SBP.OM.State
 {
 	public class TimeErrorState : State
 	{
@@ -36,7 +35,7 @@ namespace Its.TutoringModule.StudentBehaviorPredictor.ObjectModel
 
 		/// <summary>
 		/// Initializes a new instance of the
-		/// <see cref="Its.TutoringModule.StudentBehaviorPredictor.ObjectModel.TimeErrorState"/> class.
+		/// <see cref="TimeErrorState"/> class.
 		/// </summary>
 		/// <param name="area">Area.</param>
 		/// <param name="time">Time.</param>
@@ -48,9 +47,9 @@ namespace Its.TutoringModule.StudentBehaviorPredictor.ObjectModel
 		}
 
 		/// <summary>
-		/// Returns a <see cref="System.String"/> that represents the current <see cref="Its.TutoringModule.StudentBehaviorPredictor.ObjectModel.TimeErrorState"/>.
+		/// Returns a <see cref="System.String"/> that represents the current <see cref="TimeErrorState"/>.
 		/// </summary>
-		/// <returns>A <see cref="System.String"/> that represents the current <see cref="Its.TutoringModule.StudentBehaviorPredictor.ObjectModel.TimeErrorState"/>.</returns>
+		/// <returns>A <see cref="System.String"/> that represents the current <see cref="TimeErrorState"/>.</returns>
 		public override string ToString(){
 			return "TimeErrorState: ErrorAssociated: " + _errorAssociated.Key +" Time: "+_time + base.ToString ();
 		}

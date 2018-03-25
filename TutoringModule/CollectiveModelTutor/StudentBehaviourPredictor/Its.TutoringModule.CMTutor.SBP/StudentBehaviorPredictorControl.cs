@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using Its.TutoringModule.StudentBehaviorPredictor.ObjectModel;
-using Its.StudentModule;
-using Its.StudentModule.ObjectModel;
-using Its.TutoringModule.StudentBehaviorPredictor.Exceptions;
-using Its.Utils.Math;
 using Its.ExpertModule.ObjectModel;
+using Its.StudentModule.ObjectModel;
+using Its.TutoringModule.CMTutor.SBP.Exceptions;
+using Its.TutoringModule.CMTutor.SBP.OM;
+using Its.TutoringModule.CMTutor.SBP.OM.Event;
+using Its.TutoringModule.CMTutor.SBP.OM.State;
 using Its.Utils.Config;
+using Its.Utils.Math;
 
-namespace Its.TutoringModule.StudentBehaviorPredictor
+
+namespace Its.TutoringModule.CMTutor.SBP
 {
 	public class StudentBehaviorPredictorControl
 	{

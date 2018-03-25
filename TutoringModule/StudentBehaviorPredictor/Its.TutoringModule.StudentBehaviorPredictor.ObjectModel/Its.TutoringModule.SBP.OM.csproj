@@ -46,23 +46,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Event\Event.cs" />
-    <Compile Include="Event\NormalEvent.cs" />
-    <Compile Include="Event\VectorEvent.cs" />
-    <Compile Include="State\CorrectState.cs" />
-    <Compile Include="StudentsCluster.cs" />
-    <Compile Include="Area.cs" />
-    <Compile Include="State\State.cs" />
-    <Compile Include="State\DependenceErrorState.cs" />
-    <Compile Include="State\IncompatibilityErrorState.cs" />
-    <Compile Include="StudentActionsModel.cs" />
-    <Compile Include="State\TimeErrorState.cs" />
-    <Compile Include="State\WorldErrorState.cs" />
-    <Compile Include="State\OtherErrorState.cs" />
-    <Compile Include="PredictiveStudentModel.cs" />
-    <Compile Include="StudentsClusterByErrors.cs" />
-    <Compile Include="StudentsClusterByErrorTime.cs" />
-    <Compile Include="StudentsClusterByEventsZone.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -90,12 +73,5 @@
       <Project>{60D51AEE-39B1-45E3-816B-D9DAE9433C1F}</Project>
       <Name>Its.TutoringModule.SBP.Exceptions</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Event\" />
-    <Folder Include="State\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
 </Project>

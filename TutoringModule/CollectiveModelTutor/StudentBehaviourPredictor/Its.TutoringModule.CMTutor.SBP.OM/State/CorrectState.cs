@@ -1,7 +1,6 @@
-﻿using System;
-using Its.ExpertModule.ObjectModel;
+﻿using Its.ExpertModule.ObjectModel;
 
-namespace Its.TutoringModule.StudentBehaviorPredictor.ObjectModel
+namespace Its.TutoringModule.CMTutor.SBP.OM.State
 {
 	public class CorrectState : State
 	{
@@ -23,7 +22,7 @@ namespace Its.TutoringModule.StudentBehaviorPredictor.ObjectModel
 
 		/// <summary>
 		/// Initializes a new instance of the
-		/// <see cref="Its.TutoringModule.StudentBehaviorPredictor.ObjectModel.CorrectState"/> class.
+		/// <see cref="CorrectState"/> class.
 		/// </summary>
 		/// <param name="action">Action.</param>
 		/// <param name="area">Area.</param>
@@ -58,9 +57,9 @@ namespace Its.TutoringModule.StudentBehaviorPredictor.ObjectModel
 		}
 
 		/// <summary>
-		/// Returns a <see cref="System.String"/> that represents the current <see cref="Its.TutoringModule.StudentBehaviorPredictor.ObjectModel.CorrectState"/>.
+		/// Returns a <see cref="System.String"/> that represents the current <see cref="CorrectState"/>.
 		/// </summary>
-		/// <returns>A <see cref="System.String"/> that represents the current <see cref="Its.TutoringModule.StudentBehaviorPredictor.ObjectModel.CorrectState"/>.</returns>
+		/// <returns>A <see cref="System.String"/> that represents the current <see cref="CorrectState"/>.</returns>
 		public override string ToString(){
 			if (_action == null)
 				return "Init " + base.ToString ();

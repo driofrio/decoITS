@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Its.TutoringModule.StudentBehaviorPredictor.Exceptions
+namespace Its.TutoringModule.CMTutor.SBP.Exceptions
 {
 	public class PredictiveStudentModelNotFoundException : Exception{
 		public PredictiveStudentModelNotFoundException():base("Predictive Student Model not found"){

@@ -1,7 +1,6 @@
-﻿using System;
-using Its.ExpertModule.ObjectModel;
+﻿using Its.ExpertModule.ObjectModel;
 
-namespace Its.TutoringModule.StudentBehaviorPredictor.ObjectModel
+namespace Its.TutoringModule.CMTutor.SBP.OM.State
 {
 	public class DependenceErrorState : State
 	{

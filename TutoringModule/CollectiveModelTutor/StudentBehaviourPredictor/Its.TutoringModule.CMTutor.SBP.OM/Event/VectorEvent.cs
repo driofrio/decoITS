@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using Its.ExpertModule.ObjectModel;
-using Its.TutoringModule.StudentBehaviorPredictor.Exceptions;
+using Its.TutoringModule.CMTutor.SBP.Exceptions;
 
-namespace Its.TutoringModule.StudentBehaviorPredictor.ObjectModel
+namespace Its.TutoringModule.CMTutor.SBP.OM.Event
 {
 	public class VectorEvent : Event
 	{
