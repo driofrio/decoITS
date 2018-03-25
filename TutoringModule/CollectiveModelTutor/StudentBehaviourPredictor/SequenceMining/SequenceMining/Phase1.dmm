@@ -1,0 +1,166 @@
+﻿<MiningStructure xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="9c568acc-b967-4b08-8a5f-f31787a603b6" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>Phase1</ID>
+  <Name>Phase1</Name>
+  <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+  <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+  <Annotations>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:CaseTableName</Name>
+      <Value>dbo_Students</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowFriendlyNames</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramLayout</Name>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowRelationshipNames</Name>
+      <Value>false</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:UseDiagramDefaultLayout</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortLeft</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortTop</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingLeft</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingTop</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramZoom</Name>
+      <Value>100</Value>
+    </Annotation>
+  </Annotations>
+  <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+  <State>Unprocessed</State>
+  <Source xsi:type="DataSourceViewBinding" dwd:design-time-name="a155d24c-748a-4df5-9331-d421c9f7e782">
+    <DataSourceViewID>Phase1</DataSourceViewID>
+  </Source>
+  <Columns>
+    <Column xsi:type="ScalarMiningStructureColumn" dwd:design-time-name="d7a4f9b2-6ab1-41d4-9414-d7f1955ecb05">
+      <ID>Id</ID>
+      <Name>Id</Name>
+      <IsKey>true</IsKey>
+      <Type>Text</Type>
+      <Content>Key</Content>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="bab41aa2-6c4b-4f01-a40b-0bccd2d1c21c">
+          <DataType>WChar</DataType>
+          <DataSize>-1</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="1dee9c19-c187-4f9d-9cd8-f3b9022594af">
+            <TableID>dbo_Students</TableID>
+            <ColumnID>id</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+    </Column>
+    <Column xsi:type="TableMiningStructureColumn" dwd:design-time-name="34882749-3492-47ff-a7f7-39964ff45ac7">
+      <Annotations>
+        <Annotation>
+          <Name>MDXFilterComponent</Name>
+          <Value></Value>
+        </Annotation>
+      </Annotations>
+      <ID>Logs Phase1</ID>
+      <Name>Logs Phase1</Name>
+      <ForeignKeyColumns>
+        <ForeignKeyColumn dwd:design-time-name="e8264c87-762c-4774-83f8-c7ebfc9441ac">
+          <DataType>WChar</DataType>
+          <DataSize>-1</DataSize>
+          <NullProcessing>Error</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="4d29afd3-5ccd-472f-8a70-2f0539bf9dc3">
+            <TableID>dbo_LogsPhase1</TableID>
+            <ColumnID>studentid</ColumnID>
+          </Source>
+        </ForeignKeyColumn>
+      </ForeignKeyColumns>
+      <Columns>
+        <Column xsi:type="ScalarMiningStructureColumn" dwd:design-time-name="5fb2e235-6730-4b22-a5f3-a4c92605e53e">
+          <ID>Actionkey</ID>
+          <Name>Actionkey</Name>
+          <Type>Text</Type>
+          <Content>Discrete</Content>
+          <KeyColumns>
+            <KeyColumn dwd:design-time-name="c1847195-e163-4b2f-941b-11bcdb06e4a7">
+              <DataType>WChar</DataType>
+              <DataSize>-1</DataSize>
+              <Source xsi:type="ColumnBinding" dwd:design-time-name="713dd898-465c-4db8-8bc8-9d585653d9eb">
+                <TableID>dbo_LogsPhase1</TableID>
+                <ColumnID>actionkey</ColumnID>
+              </Source>
+            </KeyColumn>
+          </KeyColumns>
+        </Column>
+        <Column xsi:type="ScalarMiningStructureColumn" dwd:design-time-name="02a92190-0ad8-4ebf-9368-4e1181fcbed7">
+          <ID>Sequence</ID>
+          <Name>Sequence</Name>
+          <IsKey>true</IsKey>
+          <Type>Long</Type>
+          <Content>Key Sequence</Content>
+          <KeyColumns>
+            <KeyColumn dwd:design-time-name="006bcf28-058c-43b8-b3ed-a77024ad6287">
+              <DataType>Integer</DataType>
+              <DataSize>-1</DataSize>
+              <Source xsi:type="ColumnBinding" dwd:design-time-name="ad31231a-92fa-4571-93c5-cffa20b86b9d">
+                <TableID>dbo_LogsPhase1</TableID>
+                <ColumnID>sequence</ColumnID>
+              </Source>
+            </KeyColumn>
+          </KeyColumns>
+        </Column>
+      </Columns>
+    </Column>
+  </Columns>
+  <MiningModels>
+    <MiningModel dwd:design-time-name="b2ac5d8e-e2e4-4786-98b8-07a7f7f9c9ce">
+      <ID>Phase1</ID>
+      <Name>Phase1</Name>
+      <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+      <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+      <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+      <State>Unprocessed</State>
+      <Algorithm>Microsoft_Sequence_Clustering</Algorithm>
+      <Columns>
+        <Column dwd:design-time-name="480d5114-a197-4ed4-ae57-2e177a485054">
+          <ID>Id</ID>
+          <Name>Id</Name>
+          <SourceColumnID>Id</SourceColumnID>
+          <Usage>Key</Usage>
+        </Column>
+        <Column dwd:design-time-name="2706be94-2f91-49df-9bcf-d3fb8700b9eb">
+          <ID>Logs Phase1</ID>
+          <Name>Logs Phase1</Name>
+          <SourceColumnID>Logs Phase1</SourceColumnID>
+          <Columns>
+            <Column dwd:design-time-name="533b4c54-aecf-4496-bc5a-72a528896f96">
+              <ID>Actionkey</ID>
+              <Name>Actionkey</Name>
+              <SourceColumnID>Actionkey</SourceColumnID>
+              <Usage>Predict</Usage>
+            </Column>
+            <Column dwd:design-time-name="456280fe-7e87-4e5d-b794-517f21c7eb24">
+              <ID>Sequence</ID>
+              <Name>Sequence</Name>
+              <SourceColumnID>Sequence</SourceColumnID>
+              <Usage>Key</Usage>
+            </Column>
+          </Columns>
+        </Column>
+      </Columns>
+      <AllowDrillThrough>true</AllowDrillThrough>
+    </MiningModel>
+  </MiningModels>
+</MiningStructure>
