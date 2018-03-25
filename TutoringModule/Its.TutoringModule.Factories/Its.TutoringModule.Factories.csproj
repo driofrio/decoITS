@@ -70,6 +70,10 @@
       <Project>{475B44CE-DB9B-4E90-94E8-F96C7567BA76}</Project>
       <Name>Its.TutoringModule.ReactiveTutor</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TutoringCoordinator\Its.TutoringModule.TutoringCoordinator\Its.TutoringModule.TC.csproj">
+      <Project>{7FE32128-C2F9-481E-8D73-79A1875E15DB}</Project>
+      <Name>Its.TutoringModule.TC</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TutoringCoordinator\ReactiveTutor\Its.TutoringModule.TutoringCoordinator.ReactiveTutor\Its.TutoringModule.TC.RTutor.csproj">
       <Project>{17D5BDC5-93B7-4B54-BB7D-8041942658A3}</Project>
       <Name>Its.TutoringModule.TC.RTutor</Name>

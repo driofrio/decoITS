@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using Its.ExpertModule;
-using Its.StudentModule;
 using Its.TutoringModule.CMTutor;
 using Its.TutoringModule.Common;
 using Its.TutoringModule.ReactiveTutor;
+using Its.TutoringModule.TC;
 using Its.Utils.Config;
 using Its.WorldModule;
 
@@ -47,9 +47,9 @@ namespace Its.TutoringModule.Factories
             
             Tutor rTutor = new Tutor(false, ontologyPath, logsPath, expertConfPath, worldConfPath, worldControl, expertControl);
             CollectiveModelTutor cmTutor = new CollectiveModelTutor(false, ontologyPath, logsPath, expertConfPath, worldConfPath, worldControl, expertControl);
+            TutoringCoordinator tc = new TutoringCoordinator(rTutor, cmTutor, ontologyPath, logsPath, expertConfPath, worldConfPath, worldControl, expertControl);
 
-            return rTutor;
-
+            return tc;
         }
     }
 }

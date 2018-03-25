@@ -6,7 +6,7 @@ using Its.TutoringModule.ReactiveTutor;
 using Its.TutoringModule.ReactiveTutor.ObjectModel;
 using Its.WorldModule;
 
-namespace Its.TutoringModule.TutoringCoordinator
+namespace Its.TutoringModule.TC
 {
 	public class TutoringCoordinator : AbstractTutor
 	{
