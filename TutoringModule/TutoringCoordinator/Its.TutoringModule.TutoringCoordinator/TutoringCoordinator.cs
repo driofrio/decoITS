@@ -1,24 +1,38 @@
 ﻿using System.Collections.Generic;
 using Its.ExpertModule;
+using Its.TutoringModule.CMTutor;
 using Its.TutoringModule.Common;
-using Its.Utils.Config;
+using Its.TutoringModule.ReactiveTutor;
+using Its.TutoringModule.ReactiveTutor.ObjectModel;
 using Its.WorldModule;
 
 namespace Its.TutoringModule.TutoringCoordinator
 {
 	public class TutoringCoordinator : AbstractTutor
 	{
-		public TutoringCoordinator(bool master, ITutorConfig config) : base(master, config)
-		{
-		}
+		private Tutor rTutor;
+		private CollectiveModelTutor cmTutor;
 
-		public TutoringCoordinator(bool master, string ontologyPath, string logsPath, string expertConfPath, string worldConfPath, Dictionary<string, WorldControl> worldControl, ExpertControl expertControl) : base(master, ontologyPath, logsPath, expertConfPath, worldConfPath, worldControl, expertControl)
+		public TutoringCoordinator(Tutor rTutor, CollectiveModelTutor cmTutor, string ontologyPath, string logsPath, string expertConfPath, string worldConfPath, Dictionary<string, WorldControl> worldControl, ExpertControl expertControl)
+			: base(true, ontologyPath, logsPath, expertConfPath, worldConfPath, worldControl, expertControl)
 		{
+			this.rTutor = rTutor;
+			this.cmTutor = cmTutor;
 		}
 
 		public override int ToTutor(string actionName, string domainName, string studentKey, string objectName, out List<string> messages)
 		{
-			throw new System.NotImplementedException();
+			List<Error> errorList;
+			ValidateAction(actionName, domainName, studentKey, objectName, out errorList);
+
+			if (cmTutor.HasSupportForAction(actionName, domainName))
+			{
+				return cmTutor.ToTutor(actionName, domainName, studentKey, objectName, out messages);
+			}
+			else
+			{
+				return rTutor.ToTutor(actionName, domainName, studentKey, objectName, out messages);
+			}
 		}
 	}
 }
