@@ -1,5 +1,4 @@
 ﻿using System;
-using Its.TutoringModule.TutoringCoordinator.ReactiveTutor;
 using Its.TutoringModule.StudentBehaviorPredictor;
 using Its.StudentModule;
 using Its.ExpertModule;

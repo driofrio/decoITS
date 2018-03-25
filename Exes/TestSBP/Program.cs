@@ -6,7 +6,7 @@ using Its.ExpertModule;
 using Its.ExpertModule.ObjectModel;
 using System.IO;
 using Its.StudentModule;
-using Its.TutoringModule.TutoringCoordinator.ReactiveTutor.ObjectModel;
+using Its.TutoringModule.ReactiveTutor.ObjectModel;
 using Its.StudentModule.ObjectModel;
 using System.Data;
 using Its.TutoringModule.StudentBehaviorPredictor.ObjectModel;

@@ -1,17 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
 using Its.Utils.StringUtils;
 
-namespace Its.TutoringModule.TutoringCoordinator.ReactiveTutor.ObjectModel
+namespace Its.TutoringModule.ReactiveTutor.ObjectModel
 {
 
 	/// <author>
-	/// Diego Dotor Jara.
+	///  Diego Dotor Jara.
 	/// </author>
 	/// <summary>
-	/// This class will contain the Error message.
+	/// This class will contain the Error.
 	/// </summary>
-	public class ErrorMessage
+	public class Error
 	{
 		/// <summary>
 		/// Identification action number.
@@ -30,61 +29,66 @@ namespace Its.TutoringModule.TutoringCoordinator.ReactiveTutor.ObjectModel
 			}
 		}
 		/// <summary>
-		/// The message.
+		/// Error message.
 		/// </summary>
-		private string _message;
+		private ErrorMessage _message;
 		/// <summary>
 		/// Gets the message.
 		/// </summary>
 		/// <value>The message.</value>
-		public string Message {
+		public ErrorMessage Message {
 			get {
 				return _message;
-			}
-			set {
-				_message = value;
 			}
 		}
-		/*/// <summary>
-		/// The message. The key is the language and the value is the message.
-		/// </summary>
-		private Dictionary<string, string> _message;
 		/// <summary>
-		/// Gets the message.
+		/// Boolean that denotes if the error blocks the action.
 		/// </summary>
-		/// <value>The message.</value>
-		public Dictionary<string, string> Message {
+		private bool _isBlock;
+		/// <summary>
+		/// Gets a value indicating whether this instance is block.
+		/// </summary>
+		/// <value><c>true</c> if this instance is block; otherwise, <c>false</c>.</value>
+		public bool IsBlock {
 			get {
-				return _message;
+				return _isBlock;
 			}
-		}*/
+		}
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="Its.ReactiveTutor.ObjectModel.ErrorMessage"/> class.
+		/// Initializes a new instance of the <see cref="Error"/> class.
 		/// </summary>
 		/// <param name="key">Key.</param>
 		/// <param name="message">Message.</param>
+		/// <param name="isBlock">If set to <c>true</c> is block.</param>
 		/// <exception cref="ArgumentException"> 
 		/// Thrown if the <paramref name="key"/> is empty or blank.
 		/// </exception>
-		public ErrorMessage (string key, /*Dictionary<string, string>*/ string message)
+		public Error (string key, ErrorMessage message, bool isBlock)
 		{
 			//If the key parameter is null or empty or his contained is a blank, a exception is thrown.
 			if (StringUtils.IsNullOrWhiteSpace (key)) {  
 				//This argument exception says that the key param is not correct.
 				ArgumentException argEx = new System.ArgumentException ("The key parameter is not correct, " +
-					"it can neither be null or empty string nor his contained be blank.", "key");
+				                          "it can neither be null or empty string nor his contained be blank.", "key");
 				throw argEx;
 			} else {
 				this._key = key;
 				this._message = message;
+				this._isBlock = isBlock;
 			}
 		}
 
-		public ErrorMessage Clone()
+		public Error(){
+		}
+
+		/// <summary>
+		/// Clone this instance.
+		/// </summary>
+		public Error Clone()
 		{
 			//Creates a new Error.
-			ErrorMessage error = new ErrorMessage(Key, Message);
+			Error error = new Error(Key, Message, IsBlock);
 			return error;
 		}
 	}

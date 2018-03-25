@@ -1,17 +1,11 @@
-﻿using System;
-using System.IO;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Its.ExpertModule;
-using Its.ExpertModule.ObjectModel;
-using Its.StudentModule;
-using Its.StudentModule.ObjectModel;
 using Its.TutoringModule.Common;
-using Its.TutoringModule.TutoringCoordinator.ReactiveTutor.ObjectModel;
+using Its.TutoringModule.ReactiveTutor.ObjectModel;
 using Its.WorldModule;
 using Its.Utils.Config;
 
-namespace Its.TutoringModule.TutoringCoordinator.ReactiveTutor
+namespace Its.TutoringModule.ReactiveTutor
 {
 	public class Tutor : AbstractTutor
 	{

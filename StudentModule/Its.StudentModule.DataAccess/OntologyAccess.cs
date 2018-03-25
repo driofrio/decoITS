@@ -12,7 +12,7 @@ using java.util;
 using com.hp.hpl.jena.util;
 using Its.StudentModule.ObjectModel;
 using Its.ExpertModule.ObjectModel;
-using Its.TutoringModule.TutoringCoordinator.ReactiveTutor.ObjectModel;
+using Its.TutoringModule.ReactiveTutor.ObjectModel;
 
 namespace Its.StudentModule.DataAccess
 {

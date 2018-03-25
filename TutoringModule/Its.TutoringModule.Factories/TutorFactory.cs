@@ -3,11 +3,11 @@ using System.IO;
 using Its.ExpertModule;
 using Its.StudentModule;
 using Its.TutoringModule.Common;
-using Its.TutoringModule.TutoringCoordinator.ReactiveTutor;
+using Its.TutoringModule.ReactiveTutor;
 using Its.Utils.Config;
 using Its.WorldModule;
 
-namespace Its.Factories
+namespace Its.TutoringModule.Factories
 {
     public class TutorFactory
     {
@@ -70,8 +70,7 @@ namespace Its.Factories
 
         public ITutor CreateReactiveTutor()
         {
-            //return new Tutor(true, _ontologyPath, _logsPath, _expertConfPath, _worldConfPath, _worldControl, _expertControl);
-            return null;
+            return new Tutor(true, _ontologyPath, _logsPath, _expertConfPath, _worldConfPath, _worldControl, _expertControl);
         }
         
 //        public ITutor CreateCollectiveModelTutor()

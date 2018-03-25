@@ -3,7 +3,7 @@ using System.IO;
 using Its.StudentModule.DataAccess;
 using Its.StudentModule.ObjectModel;
 using Its.ExpertModule.ObjectModel;
-using Its.TutoringModule.TutoringCoordinator.ReactiveTutor.ObjectModel;
+using Its.TutoringModule.ReactiveTutor.ObjectModel;
 using System.Collections.Generic;
 using Its.Factories;
 using System.Linq;

@@ -49,6 +49,10 @@
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
+    <ProjectReference Include="..\..\TutoringModule\ReactiveTutor\Its.TutoringModule.ReactiveTutor.OM\Its.TutoringModule.ReactiveTutor.OM.csproj">
+      <Project>{D710A525-2C06-4F1A-94C0-4CC79E07A604}</Project>
+      <Name>Its.TutoringModule.ReactiveTutor.OM</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\TutoringModule\TutoringCoordinator\ReactiveTutor\Its.TutoringModule.TutoringCoordinator.ReactiveTutor.ObjectModel\Its.TutoringModule.TC.RTutor.OM.csproj">
       <Project>{BE49666E-929B-4CF9-9F37-DDB4E4D6C762}</Project>
       <Name>Its.TutoringModule.TC.RTutor.OM</Name>

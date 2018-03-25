@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Its.TutoringModule.TutoringCoordinator.ReactiveTutor.ObjectModel;
+using Its.TutoringModule.ReactiveTutor.ObjectModel;
 
 namespace Its.ExpertModule.ObjectModel
 {

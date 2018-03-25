@@ -11,7 +11,7 @@ using Its.Utils.Math;
 using Microsoft.AnalysisServices.AdomdClient;
 using System.Data;
 using System.Globalization;
-using Its.TutoringModule.TutoringCoordinator.ReactiveTutor.ObjectModel;
+using Its.TutoringModule.ReactiveTutor.ObjectModel;
 using System.Data.SqlClient;
 using Its.Utils.Config;
 

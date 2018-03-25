@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using Its.Factories;
 using Its.TutoringModule.Common;
-using Its.TutoringModule.TutoringCoordinator.ReactiveTutor;
+using Its.TutoringModule.Factories;
 using Its.Utils.Config;
 
 namespace TestSIEMA

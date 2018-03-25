@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Its.StudentModule.ObjectModel;
 using Its.StudentModule.DataAccess;
 using Its.ExpertModule.ObjectModel;
-using Its.TutoringModule.TutoringCoordinator.ReactiveTutor.ObjectModel;
+using Its.TutoringModule.ReactiveTutor.ObjectModel;
 
 namespace Its.Factories
 {

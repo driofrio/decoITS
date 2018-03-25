@@ -77,10 +77,6 @@
       <Project>{DAB77C55-8965-4A4B-B2A7-73D74059A63C}</Project>
       <Name>Its.TutoringModule.Factories</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\TutoringModule\TutoringCoordinator\ReactiveTutor\Its.TutoringModule.TutoringCoordinator.ReactiveTutor\Its.TutoringModule.TC.RTutor.csproj">
-      <Project>{17D5BDC5-93B7-4B54-BB7D-8041942658A3}</Project>
-      <Name>Its.TutoringModule.TC.RTutor</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\TutoringModule\TutoringCoordinator\Its.TutoringModule.TutoringCoordinator\Its.TutoringModule.TC.csproj">
       <Project>{7FE32128-C2F9-481E-8D73-79A1875E15DB}</Project>
       <Name>Its.TutoringModule.TC</Name>

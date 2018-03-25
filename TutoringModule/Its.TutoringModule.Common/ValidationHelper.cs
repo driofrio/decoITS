@@ -3,7 +3,7 @@ using Its.ExpertModule;
 using Its.ExpertModule.ObjectModel;
 using Its.StudentModule;
 using Its.StudentModule.ObjectModel;
-using Its.TutoringModule.TutoringCoordinator.ReactiveTutor.ObjectModel;
+using Its.TutoringModule.ReactiveTutor.ObjectModel;
 using Its.WorldModule;
 
 namespace Its.TutoringModule.Common

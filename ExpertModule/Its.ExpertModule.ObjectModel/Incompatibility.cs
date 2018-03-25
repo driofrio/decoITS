@@ -1,5 +1,5 @@
 ﻿using System;
-using Its.TutoringModule.TutoringCoordinator.ReactiveTutor.ObjectModel;
+using Its.TutoringModule.ReactiveTutor.ObjectModel;
 using Its.Utils.StringUtils;
 
 namespace Its.ExpertModule.ObjectModel

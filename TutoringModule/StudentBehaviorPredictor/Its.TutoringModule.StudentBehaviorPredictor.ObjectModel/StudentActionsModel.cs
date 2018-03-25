@@ -3,7 +3,7 @@ using Its.Utils.Math;
 using Its.TutoringModule.StudentBehaviorPredictor.Exceptions;
 using Its.StudentModule.ObjectModel;
 using Its.ExpertModule.ObjectModel;
-using Its.TutoringModule.TutoringCoordinator.ReactiveTutor.ObjectModel;
+using Its.TutoringModule.ReactiveTutor.ObjectModel;
 using System.Collections.Generic;
 using Its.Utils.Math.Exceptions;
 using System.Linq;

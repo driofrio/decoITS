@@ -5,7 +5,7 @@ using Its.StudentModule.DataAccess;
 using Its.ExpertModule.DataAccess;
 using Its.ExpertModule.ObjectModel;
 using Its.ExpertModule.Exceptions;
-using Its.TutoringModule.TutoringCoordinator.ReactiveTutor.ObjectModel;
+using Its.TutoringModule.ReactiveTutor.ObjectModel;
 
 namespace Its.Factories
 {

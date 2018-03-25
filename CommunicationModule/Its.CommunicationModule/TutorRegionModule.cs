@@ -1,5 +1,4 @@
 ﻿using System;
-using Its.TutoringModule.TutoringCoordinator.ReactiveTutor;
 using Its.Utils.Config;
 
 using System.Reflection;
@@ -15,8 +14,8 @@ using System.Data;
 
 using System.Collections;
 using System.Collections.Generic;
-using Its.Factories;
 using Its.TutoringModule.Common;
+using Its.TutoringModule.Factories;
 
 
 [assembly: Addin("TutorRegionModule", "0.1")]
@@ -28,7 +27,7 @@ namespace Its.CommunicationModule
 	[Extension(Path = "/OpenSim/RegionModules", NodeName = "RegionModule", Id = "TutorRegionModule")]
 	public class TutorRegionModule:INonSharedRegionModule
 	{
-		private Tutor tutor = null;
+		private ITutor tutor = null;
 		private IConfig m_config = null;
 		private bool m_enabled = true;
 		private Scene m_scene = null;
@@ -42,7 +41,7 @@ namespace Its.CommunicationModule
 		public void Initialise(IConfigSource config)
 		{
 			TutorFactory tf = TutorFactory.Instance(new DefaultTutorConfig());
-			ITutor tutor = tf.CreateReactiveTutor();
+			tutor = tf.CreateReactiveTutor();
 			m_log.WarnFormat("[TutorRegionModule] start configuration");
 			try 
 			{

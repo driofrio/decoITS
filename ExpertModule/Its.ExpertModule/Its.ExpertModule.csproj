@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -46,13 +46,13 @@
       <Project>{C407248F-9674-45D8-B58F-72A2684555AB}</Project>
       <Name>Its.StudentModule</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\TutoringModule\ReactiveTutor\Its.TutoringModule.ReactiveTutor.OM\Its.TutoringModule.ReactiveTutor.OM.csproj">
+      <Project>{d710a525-2c06-4f1a-94c0-4cc79e07a604}</Project>
+      <Name>Its.TutoringModule.ReactiveTutor.OM</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\WorldModule\Its.WorldModule\Its.WorldModule.csproj">
       <Project>{44A3A108-F052-4126-A905-4ADEC242E7E9}</Project>
       <Name>Its.WorldModule</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\TutoringModule\TutoringCoordinator\ReactiveTutor\Its.TutoringModule.TutoringCoordinator.ReactiveTutor.ObjectModel\Its.TutoringModule.TC.RTutor.OM.csproj">
-      <Project>{BE49666E-929B-4CF9-9F37-DDB4E4D6C762}</Project>
-      <Name>Its.TutoringModule.TC.RTutor.OM</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\StudentModule\Its.StudentModule.ObjectModel\Its.StudentModule.OM.csproj">
       <Project>{EEED4FBB-9FCA-46C9-927A-765F7BC05666}</Project>
