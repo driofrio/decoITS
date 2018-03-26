@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Its.ExpertModule;
+using Its.StudentModule;
 using Its.TutoringModule.CMTutor;
 using Its.TutoringModule.Common;
 using Its.TutoringModule.ReactiveTutor;
@@ -13,8 +14,8 @@ namespace Its.TutoringModule.TC
 		private Tutor rTutor;
 		private CollectiveModelTutor cmTutor;
 
-		public TutoringCoordinator(Tutor rTutor, CollectiveModelTutor cmTutor, string ontologyPath, string logsPath, string expertConfPath, string worldConfPath, Dictionary<string, WorldControl> worldControl, ExpertControl expertControl)
-			: base(true, ontologyPath, logsPath, expertConfPath, worldConfPath, worldControl, expertControl)
+		public TutoringCoordinator(Tutor rTutor, CollectiveModelTutor cmTutor, string ontologyPath, string logsPath, string expertConfPath, string worldConfPath, Dictionary<string, WorldControl> worldControl, ExpertControl expertControl, StudentControl studentControl)
+			: base(ontologyPath, logsPath, expertConfPath, worldConfPath, worldControl, expertControl, studentControl, true)
 		{
 			this.rTutor = rTutor;
 			this.cmTutor = cmTutor;

@@ -12,18 +12,18 @@ namespace TestSIEMA
         {
             Console.WriteLine("Hello!!!");
             
-            string[] keys = new string[] { "Tutorial" }; //Tutorial must refer to Domain and world configuration files with same name
+//            string[] keys = new string[] { "Tutorial" }; //Tutorial must refer to Domain and world configuration files with same name
             
             TutorFactory tf = TutorFactory.Instance();
-            ITutor tutor = tf.CreateReactiveTutor(new DefaultTutorConfig());
+            ITutor tutor = tf.CreateReactiveTutor("Tutorial", new DefaultTutorConfig());
             //Carga los estudiantes registrados en el sistema
-            tutor.LoadStudents();
-
-            foreach (string k in keys)
-            {
-                tutor.LoadWorld(k);
-                tutor.LoadDomain(k);
-            }
+//            tutor.LoadStudents();
+//
+//            foreach (string k in keys)
+//            {
+//                tutor.LoadWorld(k);
+//                tutor.LoadDomain(k);
+//            }
 
 
             //Para registrar estudiantes

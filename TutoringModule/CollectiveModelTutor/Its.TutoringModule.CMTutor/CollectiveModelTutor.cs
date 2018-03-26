@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Its.ExpertModule;
+using Its.StudentModule;
 using Its.TutoringModule.Common;
 using Its.Utils.Config;
 using Its.WorldModule;
@@ -8,11 +9,12 @@ namespace Its.TutoringModule.CMTutor
 {
     public class CollectiveModelTutor : AbstractTutor
     {
-        public CollectiveModelTutor(bool master, ITutorConfig config) : base(master, config)
+        public CollectiveModelTutor(string domainKey, ITutorConfig config, bool master) : base(domainKey, config, master)
         {
         }
 
-        public CollectiveModelTutor(bool master, string ontologyPath, string logsPath, string expertConfPath, string worldConfPath, Dictionary<string, WorldControl> worldControl, ExpertControl expertControl) : base(master, ontologyPath, logsPath, expertConfPath, worldConfPath, worldControl, expertControl)
+        public CollectiveModelTutor(string ontologyPath, string logsPath, string expertConfPath, string worldConfPath, Dictionary<string, WorldControl> worldControl, ExpertControl expertControl, StudentControl studentControl, bool master)
+            : base(ontologyPath, logsPath, expertConfPath, worldConfPath, worldControl, expertControl, studentControl, master)
         {
         }
 

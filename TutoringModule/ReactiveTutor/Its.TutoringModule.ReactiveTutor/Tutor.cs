@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Its.ExpertModule;
+using Its.StudentModule;
 using Its.TutoringModule.Common;
 using Its.TutoringModule.ReactiveTutor.ObjectModel;
 using Its.Utils.Config;
@@ -10,14 +11,14 @@ namespace Its.TutoringModule.ReactiveTutor
 	public class Tutor : AbstractTutor
 	{
 
-		public Tutor(bool master, ITutorConfig config) : base(master, config)
+		public Tutor(string domainKey, ITutorConfig config, bool master) : base(domainKey, config, master)
 		{
 			// Base constructor
 		}
 
-		public Tutor(bool master, string ontologyPath, string logsPath, string expertConfPath, string worldConfPath,
-			Dictionary<string, WorldControl> worldControl, ExpertControl expertControl)
-			: base(master, ontologyPath, logsPath, expertConfPath, worldConfPath, worldControl, expertControl)
+		public Tutor(string ontologyPath, string logsPath, string expertConfPath, string worldConfPath,
+			Dictionary<string, WorldControl> worldControl, ExpertControl expertControl, StudentControl studentControl, bool master)
+			: base(ontologyPath, logsPath, expertConfPath, worldConfPath, worldControl, expertControl, studentControl, master)
 		{
 			// Base constructor
 		}

@@ -51,7 +51,7 @@ namespace Its.TutoringModule.Common
 
 	    private ValidationHelper _valiationHelper;
 
-	    public AbstractTutor(bool master, ITutorConfig config)
+	    public AbstractTutor(string domainKey, ITutorConfig config, bool master)
 	    {
 		    _master = master;
 		    //Gets the configuration settings.
@@ -66,9 +66,15 @@ namespace Its.TutoringModule.Common
 		    _expertControl = ExpertControl.Instance(_ontologyPath, _logsPath, _expertConfPath, 
 			    config.InitialColumn, config.InitialRow);
 		    _valiationHelper = new ValidationHelper(_worldControl, _studentControl, _expertControl);
+
+		    if (_master)
+		    {
+			    Init(domainKey);
+		    }
 	    }
 	    
-	    public AbstractTutor(bool master, string ontologyPath, string logsPath, string expertConfPath, string worldConfPath, Dictionary<string, WorldControl> worldControl, ExpertControl expertControl)
+	    public AbstractTutor(string ontologyPath, string logsPath, string expertConfPath, string worldConfPath, Dictionary<string, WorldControl> worldControl, 
+		    ExpertControl expertControl, StudentControl studentControl, bool master)
 	    {
 		    _master = master;
 		    _ontologyPath = ontologyPath;
@@ -77,6 +83,7 @@ namespace Its.TutoringModule.Common
 		    _worldConfPath = worldConfPath;
 		    _worldControl = worldControl;
 		    _expertControl = expertControl;
+		    _studentControl = studentControl;
 	    }
 	    
         abstract public int ToTutor(string actionName, string domainName, string studentKey, string objectName,
@@ -108,11 +115,18 @@ namespace Its.TutoringModule.Common
 	        return result;
         }
 
+	    private void Init(string key)
+	    {
+		    LoadStudents();
+		    LoadWorld(key);
+		    LoadDomain(key);
+	    }
+
         /// <summary>
 		/// Loads the domain.
 		/// </summary>
 		/// <param name="key">Key.</param>
-		public void LoadDomain (string key)
+		private void LoadDomain (string key)
 		{
 			//Creates the domain from ExpertoControl.
 			_expertControl.CreateDomain (key);
@@ -123,7 +137,7 @@ namespace Its.TutoringModule.Common
 		/// <summary>
 		/// Loads the students.
 		/// </summary>
-		public void LoadStudents ()
+		private void LoadStudents ()
 		{
 			//Gets the StudentControl instance.
 			_studentControl = StudentControl.Instance(_ontologyPath, _logsPath, _expertConfPath);
@@ -133,7 +147,7 @@ namespace Its.TutoringModule.Common
 		/// Loads the world.
 		/// </summary>
 		/// <param name="key">Virtual environment key.</param>
-		public void LoadWorld (string key)
+		private void LoadWorld (string key)
 		{
 			//Creates a new WorldControl to the dictionary.
 			WorldControl worldControl = WorldControl.Instance(_ontologyPath, _logsPath + Path.DirectorySeparatorChar + key);
