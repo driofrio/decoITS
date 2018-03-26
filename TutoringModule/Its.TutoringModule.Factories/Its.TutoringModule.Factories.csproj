@@ -42,9 +42,17 @@
     <Compile Include="TutorFactory.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\ExpertModule\Its.ExpertModule.ObjectModel\Its.ExpertModule.OM.csproj">
+      <Project>{8b928308-3d38-4cf5-8352-162a23f9a5ea}</Project>
+      <Name>Its.ExpertModule.OM</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\ExpertModule\Its.ExpertModule\Its.ExpertModule.csproj">
       <Project>{053D479C-7695-452A-ABFF-237300DB84AE}</Project>
       <Name>Its.ExpertModule</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\StudentModule\Its.StudentModule.ObjectModel\Its.StudentModule.OM.csproj">
+      <Project>{eeed4fbb-9fca-46c9-927a-765f7bc05666}</Project>
+      <Name>Its.StudentModule.OM</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\StudentModule\Its.StudentModule\Its.StudentModule.csproj">
       <Project>{C407248F-9674-45D8-B58F-72A2684555AB}</Project>
@@ -66,6 +74,10 @@
       <Project>{3EFB63FF-6405-42C2-A615-0FBB56F4BDF2}</Project>
       <Name>Its.TutoringModule.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ReactiveTutor\Its.TutoringModule.ReactiveTutor.OM\Its.TutoringModule.ReactiveTutor.OM.csproj">
+      <Project>{d710a525-2c06-4f1a-94c0-4cc79e07a604}</Project>
+      <Name>Its.TutoringModule.ReactiveTutor.OM</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ReactiveTutor\Its.TutoringModule.ReactiveTutor\Its.TutoringModule.ReactiveTutor.csproj">
       <Project>{475B44CE-DB9B-4E90-94E8-F96C7567BA76}</Project>
       <Name>Its.TutoringModule.ReactiveTutor</Name>
@@ -73,10 +85,6 @@
     <ProjectReference Include="..\TutoringCoordinator\Its.TutoringModule.TutoringCoordinator\Its.TutoringModule.TC.csproj">
       <Project>{7FE32128-C2F9-481E-8D73-79A1875E15DB}</Project>
       <Name>Its.TutoringModule.TC</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TutoringCoordinator\ReactiveTutor\Its.TutoringModule.TutoringCoordinator.ReactiveTutor\Its.TutoringModule.TC.RTutor.csproj">
-      <Project>{17D5BDC5-93B7-4B54-BB7D-8041942658A3}</Project>
-      <Name>Its.TutoringModule.TC.RTutor</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

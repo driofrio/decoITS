@@ -65,16 +65,17 @@ namespace Its.TutoringModule.Common
 		    //Gets the ExpertControl instance.
 		    _expertControl = ExpertControl.Instance(_ontologyPath, _logsPath, _expertConfPath, 
 			    config.InitialColumn, config.InitialRow);
-		    _valiationHelper = new ValidationHelper(_worldControl, _studentControl, _expertControl);
 
 		    if (_master)
 		    {
 			    Init(domainKey);
 		    }
+		    
+		    _valiationHelper = new ValidationHelper(_worldControl, _studentControl, _expertControl);
 	    }
 	    
 	    public AbstractTutor(string ontologyPath, string logsPath, string expertConfPath, string worldConfPath, Dictionary<string, WorldControl> worldControl, 
-		    ExpertControl expertControl, StudentControl studentControl, bool master)
+		    ExpertControl expertControl, StudentControl studentControl, ValidationHelper validationHelper, bool master)
 	    {
 		    _master = master;
 		    _ontologyPath = ontologyPath;
@@ -84,6 +85,7 @@ namespace Its.TutoringModule.Common
 		    _worldControl = worldControl;
 		    _expertControl = expertControl;
 		    _studentControl = studentControl;
+		    _valiationHelper = validationHelper;
 	    }
 	    
         abstract public int ToTutor(string actionName, string domainName, string studentKey, string objectName,
