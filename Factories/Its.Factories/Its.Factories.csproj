@@ -50,6 +50,10 @@
       <Project>{d710a525-2c06-4f1a-94c0-4cc79e07a604}</Project>
       <Name>Its.TutoringModule.ReactiveTutor.OM</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Utils\Its.Utils.StringUtils\Its.Utils.StringUtils.csproj">
+      <Project>{0C029A6D-A272-4FE0-99C6-A70F1842942F}</Project>
+      <Name>Its.Utils.StringUtils</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Its.Factories.Common\Its.Factories.Common.csproj">
       <Project>{766D89B3-D51B-4C4C-8EAA-2C2F67BDE656}</Project>
       <Name>Its.Factories.Common</Name>

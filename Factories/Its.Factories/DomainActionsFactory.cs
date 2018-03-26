@@ -6,6 +6,7 @@ using Its.ExpertModule.Exceptions;
 using Its.ExpertModule.ObjectModel;
 using Its.StudentModule.DataAccess;
 using Its.TutoringModule.ReactiveTutor.ObjectModel;
+using Its.Utils.StringUtils;
 
 namespace Its.Factories
 {
@@ -808,16 +809,7 @@ namespace Its.Factories
 				//Obtains the tutor message.
 				string tMsg = o [5].ToString ();
 				//Creates a TutorMessage
-				TutorMessage tutorMsg;
-				//Checks if the tutor message is empty.
-				if (tMsg != "") {
-					//Adds a value.
-					tutorMsg = new TutorMessage (_genTutorMsgKey.ToString (), tMsg);
-					//Increase the generator.
-					_genTutorMsgKey++;
-				} else {
-					tutorMsg = null;
-				}
+				TutorMessage tutorMsg = createTutorMsgHelper(tMsg);
 				//Obtains the dependencies.
 				s = o [6].ToString ();
 				//Creates the ComplexDependence.
@@ -1015,6 +1007,22 @@ namespace Its.Factories
 				bool isInPlan = true;
 				if (s == "0")
 					isInPlan = false;
+				//Obtains IsCheckpoint flag value.
+				s = o [21].ToString ();
+				bool isCheckpoint = false;
+				if (s == "1")
+					isCheckpoint = true;
+				// Obtains Collective Student Model tutor messages.
+				// Expecting messages to be defined in the order of increasing level of details:
+				// low detail -> medium detail -> high detail
+				s = o [22].ToString ();
+				string[] csmTutorMessages = s.Split (new char[] { '\\' });
+				string lowDetailMsg = csmTutorMessages.Length >= 1 ? csmTutorMessages[0] : null;
+				string mediumDetailMsg = csmTutorMessages.Length >= 2 ? csmTutorMessages[1] : null;
+				string highDetailMsg = csmTutorMessages.Length >= 3 ? csmTutorMessages[2] : null;
+				TutorMessage lowDetailTutorMessage = createTutorMsgHelper(lowDetailMsg);
+				TutorMessage mediumDetailTutorMessage = createTutorMsgHelper(mediumDetailMsg);
+				TutorMessage highDetailTutorMessage = createTutorMsgHelper(highDetailMsg);
 
 
 				//Creates the ActionAplication.
@@ -1023,16 +1031,19 @@ namespace Its.Factories
 				if (minTime > 0) {
 					action = new ActionAplication (key, phase, name, description, objectName,
 						lockObj, unlockObj, isRepetitive, initPhase, validatePhaseErrors, dependence, incompatibilities, 
-						false, isInPlan, null, okMessage, showOkMessage, null, tutorMsg, minTime, minTimeError, maxTime, maxTimeError);
+						false, isInPlan, null, okMessage, showOkMessage, null, tutorMsg, minTime, minTimeError, maxTime, maxTimeError,
+						isCheckpoint, lowDetailTutorMessage, mediumDetailTutorMessage, highDetailTutorMessage);
 
 				} else if (maxTime > 0) {
 					action = new ActionAplication (key, phase, name, description, objectName,
 						lockObj, unlockObj, isRepetitive, initPhase, validatePhaseErrors, dependence, incompatibilities, 
-						false, isInPlan, null, okMessage, showOkMessage, null, tutorMsg, minTime, minTimeError, maxTime, maxTimeError);
+						false, isInPlan, null, okMessage, showOkMessage, null, tutorMsg, minTime, minTimeError, maxTime, maxTimeError,
+						isCheckpoint, lowDetailTutorMessage, mediumDetailTutorMessage, highDetailTutorMessage);
 				}else {
 					action = new ActionAplication (key, phase, name, description, objectName,
 						lockObj, unlockObj, isRepetitive, initPhase, validatePhaseErrors, dependence, incompatibilities,
-						false, isInPlan, null, okMessage, showOkMessage, null,  tutorMsg);
+						false, isInPlan, null, okMessage, showOkMessage, null,  tutorMsg,
+						isCheckpoint, lowDetailTutorMessage, mediumDetailTutorMessage, highDetailTutorMessage);
 				}
 				//Adds into the list.
 				actions.Add (action);
@@ -1131,6 +1142,19 @@ namespace Its.Factories
 
 			//Returns the DomainActions.
 			return domain;
+		}
+
+		private TutorMessage createTutorMsgHelper(string msg)
+		{
+			TutorMessage tutorMsg = null;
+			if (!StringUtils.IsNullOrWhiteSpace(msg)) {
+				//Adds a value.
+				tutorMsg = new TutorMessage (_genTutorMsgKey.ToString (), msg);
+				//Increase the generator.
+				_genTutorMsgKey++;
+			}
+
+			return tutorMsg;
 		}
 	}
 }

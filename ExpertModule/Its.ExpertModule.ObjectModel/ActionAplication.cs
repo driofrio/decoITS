@@ -319,6 +319,58 @@ namespace Its.ExpertModule.ObjectModel
 				return _tutorMsg;
 			}
 		}
+		/// <summary>
+		/// Whether action represents a checkpoint for student reclustering in Collective Student Model tutoring strategy.
+		/// </summary>
+		private bool _isCheckpoint;
+		/// <summary>
+		/// Gets the IsCheckpoint flag.
+		/// </summary>
+		/// <value>Boolean to indicate whether current action is a checkpoint for student reclustering.</value>
+		public bool IsCheckpoint {
+			get {
+				return _isCheckpoint;
+			}
+		}
+		/// <summary>
+		/// The low-detail (most generic) tutor message for Collective Student Model tutor.
+		/// </summary>
+		private TutorMessage _tutorMsgLowDetail;
+		/// <summary>
+		/// Gets the tutor message.
+		/// </summary>
+		/// <value>The tutor message.</value>
+		public TutorMessage TutorMsgLowDetail {
+			get {
+				return _tutorMsgLowDetail;
+			}
+		}
+		/// <summary>
+		/// The medium-detail tutor message for Collective Student Model tutor.
+		/// </summary>
+		private TutorMessage _tutorMsgMediumDetail;
+		/// <summary>
+		/// Gets the tutor message.
+		/// </summary>
+		/// <value>The tutor message.</value>
+		public TutorMessage TutorMsgMediumDetail {
+			get {
+				return _tutorMsgMediumDetail;
+			}
+		}
+		/// <summary>
+		/// The high-detail (most detailed) tutor message for Collective Student Model tutor.
+		/// </summary>
+		private TutorMessage _tutorMsgHighDetail;
+		/// <summary>
+		/// Gets the tutor message.
+		/// </summary>
+		/// <value>The tutor message.</value>
+		public TutorMessage TutorMsgHighDetail {
+			get {
+				return _tutorMsgHighDetail;
+			}
+		}
 		 
 
 		/// <summary>
@@ -354,7 +406,8 @@ namespace Its.ExpertModule.ObjectModel
 		public ActionAplication (string key, int phase, string name, string description, List<string> objectName, bool lockObj, 
 			bool unlockObj, bool isRepetitive, bool initPhase, bool validatePhaseErrors, ComplexDependence dependence, 
 			List<Incompatibility> incompatibilities, bool correctiveAction, bool noPlanAction, List<Error> errorsToCorrect,
-			string okMessage, bool showOkMessage, List<ActionAplication> possibleNextActions, TutorMessage tutorMessage)
+			string okMessage, bool showOkMessage, List<ActionAplication> possibleNextActions, TutorMessage tutorMessage,
+			bool isCheckpoint, TutorMessage tutorMsgLowDetail, TutorMessage tutorMsgMediumDetail, TutorMessage tutorMsgHighDetail)
 		{
 			//If the key parameter is null or empty or his contained is a blank, a exception is thrown.
 			if (StringUtils.IsNullOrWhiteSpace (key)) {  
@@ -397,6 +450,10 @@ namespace Its.ExpertModule.ObjectModel
 				this._showOkMessage = showOkMessage;
 				this._possibleNextActions = possibleNextActions;
 				this._tutorMsg = tutorMessage;
+				this._isCheckpoint = isCheckpoint;
+				this._tutorMsgLowDetail = tutorMsgLowDetail;
+				this._tutorMsgMediumDetail = tutorMsgMediumDetail;
+				this._tutorMsgHighDetail = tutorMsgHighDetail;
 			}
 		}
 
@@ -441,7 +498,8 @@ namespace Its.ExpertModule.ObjectModel
 			bool unlockObj, bool isRepetitive, bool initPhase, bool validatePhaseErrors,
 			ComplexDependence dependence, List<Incompatibility> incompatibilities, bool correctiveAction, bool noPlanAction,
 			List<Error> errorsToCorrect, string okMessage, bool showOkMessage, List<ActionAplication> possibleNextActions,
-			TutorMessage tutorMessage, int minTime, Error minTimeError, int maxTime = 0, Error maxTimeError = null)
+			TutorMessage tutorMessage, int minTime, Error minTimeError, int maxTime = 0, Error maxTimeError = null,
+			bool isCheckpoint = false, TutorMessage tutorMsgLowDetail = null, TutorMessage tutorMsgMediumDetail = null, TutorMessage tutorMsgHighDetail = null)
 		{
 			//If the key parameter is null or empty or his contained is a blank, a exception is thrown.
 			if (StringUtils.IsNullOrWhiteSpace (key)) {  
@@ -484,6 +542,10 @@ namespace Its.ExpertModule.ObjectModel
 				this._minTimeError = minTimeError;
 				this._maxTime = maxTime;
 				this._maxTimeError = maxTimeError;
+				this._isCheckpoint = isCheckpoint;
+				this._tutorMsgLowDetail = tutorMsgLowDetail;
+				this._tutorMsgMediumDetail = tutorMsgMediumDetail;
+				this._tutorMsgHighDetail = tutorMsgHighDetail;
 			}
 		}
 
