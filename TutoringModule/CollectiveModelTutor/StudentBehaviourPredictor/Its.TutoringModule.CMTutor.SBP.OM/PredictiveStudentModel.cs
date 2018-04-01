@@ -984,7 +984,7 @@ namespace Its.TutoringModule.CMTutor.SBP.OM
 			return newState;
 		}
 
-		/*/// <summary>
+		/// <summary>
 		/// Updates the model.
 		/// </summary>
 		/// <param name="studentKey">Student key.</param>
@@ -1000,10 +1000,10 @@ namespace Its.TutoringModule.CMTutor.SBP.OM
 		/// <param name="studentKey">Student key.</param>
 		/// <param name="log">Log.</param>
 		/// <param name="studentLogs">Student logs.</param>
-		public void UpdateModel(string studentKey, LogEntry log, StudentLog studentLogs){
-			StudentsCluster newCluster = ReclusterStudent (studentKey, studentLogs);
+		public void UpdateModelAndRecluster(string studentKey, LogEntry log, StudentLog studentLogs){
+			StudentsCluster newCluster = ReclusterStudent (studentKey, studentLogs, true);
 			newCluster.UpdateAutomaton (studentKey, log, this._incompatibilities);
-		}*/
+		}
 
 		/// <summary>
 		/// Reclusters the student.

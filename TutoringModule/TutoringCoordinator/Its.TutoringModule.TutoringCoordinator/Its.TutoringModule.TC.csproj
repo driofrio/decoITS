@@ -46,6 +46,10 @@
       <Project>{053D479C-7695-452A-ABFF-237300DB84AE}</Project>
       <Name>Its.ExpertModule</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\Utils\Its.Utils.Config\Its.Utils.Config.csproj">
+      <Project>{B7413821-72A0-4104-B19F-44E0C8FD18A2}</Project>
+      <Name>Its.Utils.Config</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\WorldModule\Its.WorldModule\Its.WorldModule.csproj">
       <Project>{44A3A108-F052-4126-A905-4ADEC242E7E9}</Project>
       <Name>Its.WorldModule</Name>

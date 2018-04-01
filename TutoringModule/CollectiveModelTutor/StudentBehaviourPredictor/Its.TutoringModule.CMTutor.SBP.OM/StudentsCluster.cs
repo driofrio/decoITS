@@ -205,7 +205,7 @@ namespace Its.TutoringModule.CMTutor.SBP.OM
 		/// </summary>
 		/// <param name="studentKey">Student key.</param>
 		/// <param name="log">Log.</param>
-		private void UpdateAutomaton(string studentKey, LogEntry log, Dictionary<string,ActionAplication> incompatibilities){
+		public void UpdateAutomaton(string studentKey, LogEntry log, Dictionary<string,ActionAplication> incompatibilities){
 			DataRow dr = _studentStates.Rows.Find (studentKey);
 			Node<State.State,Event.Event> newState = _studentActionsModel.ExpandAutomaton (log, (Node<State.State,Event.Event>)dr ["LastState"], 
 				(List<Node<State.State,Event.Event>>)dr ["States"], true, incompatibilities, (int)dr ["VectorEventCount"]);

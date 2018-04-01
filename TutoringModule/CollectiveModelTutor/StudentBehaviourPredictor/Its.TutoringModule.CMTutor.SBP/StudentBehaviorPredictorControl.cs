@@ -91,7 +91,7 @@ namespace Its.TutoringModule.CMTutor.SBP
 			return model;
 		}
 
-		/*/// <summary>
+		/// <summary>
 		/// Updates the model for a domain.
 		/// </summary>
 		/// <param name="domianKey">Domain key.</param>
@@ -99,11 +99,14 @@ namespace Its.TutoringModule.CMTutor.SBP
 		/// <param name="log">Log.</param>
 		public void UpdateModel(string domainKey, string studentKey, LogEntry log){
 			PredictiveStudentModel model = _models [domainKey];
-			if (!model.ContainsStudent (studentKey)) {
-				model.DefaultCluster.AddStudent (studentKey, log);
-				//model.DefaultCluster.UpdateAutomaton (studentKey, log);
-			} else
-				model.UpdateModel (studentKey, log);
+			if (!model.ContainsStudent (studentKey)) 
+			{
+				model.DefaultCluster.AddStudent (studentKey, log, new Dictionary<string,ActionAplication>(), true);
+			}
+			else
+			{
+				model.UpdateModel (studentKey, log);	
+			}
 		}
 
 		/// <summary>
@@ -113,9 +116,9 @@ namespace Its.TutoringModule.CMTutor.SBP
 		/// <param name="studentKey">Student key.</param>
 		/// <param name="log">Log.</param>
 		/// <param name="studentLogs">Student logs.</param>
-		public void UpdateModel(string domainKey, string studentKey, LogEntry log, StudentLog studentLogs){
-			_models[domainKey].UpdateModel(studentKey, log, studentLogs);
-		}*/
+		public void UpdateModelAndRecluster(string domainKey, string studentKey, LogEntry log, StudentLog studentLogs){
+			_models[domainKey].UpdateModelAndRecluster(studentKey, log, studentLogs);
+		}
 
 		/// <summary>
 		/// Gets the next most probable event.

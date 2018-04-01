@@ -57,9 +57,9 @@ namespace Its.TutoringModule.Factories
             ValidationHelper valiationHelper = new ValidationHelper(worldControlDict, studentControl, expertControl);
             
             
-            Tutor rTutor = new Tutor(ontologyPath, logsPath, expertConfPath, worldConfPath, worldControlDict, expertControl, studentControl, valiationHelper, false);
-            CollectiveModelTutor cmTutor = new CollectiveModelTutor(ontologyPath, logsPath, expertConfPath, worldConfPath, worldControlDict, expertControl, studentControl, valiationHelper, false);
-            TutoringCoordinator tc = new TutoringCoordinator(rTutor, cmTutor, ontologyPath, logsPath, expertConfPath, worldConfPath, worldControlDict, expertControl, studentControl, valiationHelper);
+            Tutor rTutor = new Tutor(ontologyPath, logsPath, expertConfPath, worldConfPath, worldControlDict, expertControl, studentControl, valiationHelper, config, false);
+            CollectiveModelTutor cmTutor = new CollectiveModelTutor(ontologyPath, logsPath, expertConfPath, worldConfPath, worldControlDict, expertControl, studentControl, valiationHelper, config, false);
+            TutoringCoordinator tc = new TutoringCoordinator(rTutor, cmTutor, ontologyPath, logsPath, expertConfPath, worldConfPath, worldControlDict, expertControl, studentControl, valiationHelper, config);
 
             return tc;
         }

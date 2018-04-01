@@ -49,6 +49,8 @@ namespace Its.TutoringModule.Common
 	    /// </summary>
 	    protected bool _master;
 
+	    protected ITutorConfig _config;
+	    
 	    private ValidationHelper _valiationHelper;
 
 	    public AbstractTutor(string domainKey, ITutorConfig config, bool master)
@@ -72,10 +74,12 @@ namespace Its.TutoringModule.Common
 		    }
 		    
 		    _valiationHelper = new ValidationHelper(_worldControl, _studentControl, _expertControl);
+
+		    _config = config;
 	    }
 	    
 	    public AbstractTutor(string ontologyPath, string logsPath, string expertConfPath, string worldConfPath, Dictionary<string, WorldControl> worldControl, 
-		    ExpertControl expertControl, StudentControl studentControl, ValidationHelper validationHelper, bool master)
+		    ExpertControl expertControl, StudentControl studentControl, ValidationHelper validationHelper, ITutorConfig config, bool master)
 	    {
 		    _master = master;
 		    _ontologyPath = ontologyPath;
@@ -86,6 +90,7 @@ namespace Its.TutoringModule.Common
 		    _expertControl = expertControl;
 		    _studentControl = studentControl;
 		    _valiationHelper = validationHelper;
+		    _config = config;
 	    }
 	    
         abstract public int ToTutor(string actionName, string domainName, string studentKey, string objectName,

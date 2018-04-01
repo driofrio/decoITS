@@ -5,6 +5,7 @@ using Its.TutoringModule.CMTutor;
 using Its.TutoringModule.Common;
 using Its.TutoringModule.ReactiveTutor;
 using Its.TutoringModule.ReactiveTutor.ObjectModel;
+using Its.Utils.Config;
 using Its.WorldModule;
 
 namespace Its.TutoringModule.TC
@@ -14,8 +15,8 @@ namespace Its.TutoringModule.TC
 		private Tutor rTutor;
 		private CollectiveModelTutor cmTutor;
 
-		public TutoringCoordinator(Tutor rTutor, CollectiveModelTutor cmTutor, string ontologyPath, string logsPath, string expertConfPath, string worldConfPath, Dictionary<string, WorldControl> worldControl, ExpertControl expertControl, StudentControl studentControl, ValidationHelper valiationHelper)
-			: base(ontologyPath, logsPath, expertConfPath, worldConfPath, worldControl, expertControl, studentControl, valiationHelper, true)
+		public TutoringCoordinator(Tutor rTutor, CollectiveModelTutor cmTutor, string ontologyPath, string logsPath, string expertConfPath, string worldConfPath, Dictionary<string, WorldControl> worldControl, ExpertControl expertControl, StudentControl studentControl, ValidationHelper valiationHelper, ITutorConfig config)
+			: base(ontologyPath, logsPath, expertConfPath, worldConfPath, worldControl, expertControl, studentControl, valiationHelper, config, true)
 		{
 			this.rTutor = rTutor;
 			this.cmTutor = cmTutor;
@@ -26,7 +27,7 @@ namespace Its.TutoringModule.TC
 			List<Error> errorList;
 			ValidateAction(actionName, domainName, studentKey, objectName, out errorList);
 
-			if (cmTutor.HasSupportForAction(actionName, domainName))
+			if (cmTutor.HasSupportForAction(actionName, domainName, studentKey))
 			{
 				return cmTutor.ToTutor(actionName, domainName, studentKey, objectName, out messages);
 			}
