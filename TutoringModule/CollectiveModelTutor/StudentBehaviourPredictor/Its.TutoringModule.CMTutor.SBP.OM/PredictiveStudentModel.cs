@@ -1188,7 +1188,7 @@ namespace Its.TutoringModule.CMTutor.SBP.OM
 		/// </summary>
 		/// <returns>The student cluster.</returns>
 		/// <param name="studentKey">Student key.</param>
-		private StudentsCluster FindStudentCluster(string studentKey){
+		public StudentsCluster FindStudentCluster(string studentKey){
 			StudentsCluster cluster = null;
 			foreach (StudentsCluster tmpcluster in _clusters.Values) {
 				if (tmpcluster.HasStudent (studentKey)) {

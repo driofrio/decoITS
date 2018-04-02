@@ -359,6 +359,20 @@ namespace Its.TutoringModule.CMTutor.SBP.OM
 		public Arc<State.State,Event.Event> GetNextProbableEvent(string studentKey){
 			return _studentActionsModel.GetNextProbableEvent ((Node<State.State,Event.Event>)_studentStates.Rows.Find (studentKey) [1]);
 		}
+
+		/// <summary>
+		/// Gets the support value for the last state corresponding to last performed action
+		/// </summary>
+		/// <returns>Support value in the range [0, 1].</returns>
+		/// <param name="studentKey">Student key.</param>
+		public double GetLastStateSupport(string studentKey)
+		{
+			DataRow dr = _studentStates.Rows.Find (studentKey);
+			Node<State.State, Event.Event> lastState = (Node<State.State, Event.Event>) dr["LastState"];
+			double gamma = lastState.Specification.StudentFrequency;
+			double support = gamma / NumberOfStudents;
+			return support;
+		}
 			
 		/// <summary>
 		/// Returns a <see cref="System.String"/> that represents the current <see cref="StudentsCluster"/>.

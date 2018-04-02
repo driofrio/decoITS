@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
+using System.Runtime.Remoting.Contexts;
 using Its.ExpertModule;
 using Its.ExpertModule.ObjectModel;
 using Its.StudentModule;
 using Its.StudentModule.ObjectModel;
 using Its.TutoringModule.CMTutor.SBP;
+using Its.TutoringModule.CMTutor.SBP.OM;
 using Its.TutoringModule.Common;
 using Its.Utils.Config;
 using Its.WorldModule;
@@ -12,6 +14,8 @@ namespace Its.TutoringModule.CMTutor
 {
     public class CollectiveModelTutor : AbstractTutor
     {
+        private static readonly ClusterMethod CLUSTER_METHOD = ClusterMethod.EventsByZone;
+        
         private StudentBehaviorPredictorControl sbpControl;
         
         public CollectiveModelTutor(string domainKey, ITutorConfig config, bool master) : base(domainKey, config, master)
@@ -28,6 +32,15 @@ namespace Its.TutoringModule.CMTutor
         public bool HasSupportForAction(string actionName, string domainName, string studentKey)
         {
             UpdateModel(actionName, domainName, studentKey);
+
+            double support = sbpControl.GetLastStateSupport(domainName, CLUSTER_METHOD, studentKey);
+            double minSupportThreshold = _config.MinSupportThreshold;
+            
+            if (support >= minSupportThreshold)
+            {
+                return true;
+            }
+            
             return false;
         }
 
@@ -45,11 +58,11 @@ namespace Its.TutoringModule.CMTutor
             if (lastActionLog.Action.Name == actionName) {
                 if (lastActionLog.Action.IsCheckpoint)
                 {
-                    sbpControl.UpdateModelAndRecluster(domainName, studentKey, lastActionLog, studentLog);
+                    sbpControl.UpdateModelAndRecluster(domainName, CLUSTER_METHOD, studentKey, lastActionLog, studentLog);
                 }
                 else
                 {
-                    sbpControl.UpdateModel(domainName, studentKey, lastActionLog);
+                    sbpControl.UpdateModel(domainName, CLUSTER_METHOD, studentKey, lastActionLog);
                 }
             }
         }

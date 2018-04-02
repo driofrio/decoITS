@@ -70,6 +70,10 @@
       <Project>{3EFB63FF-6405-42C2-A615-0FBB56F4BDF2}</Project>
       <Name>Its.TutoringModule.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\StudentBehaviourPredictor\Its.TutoringModule.CMTutor.SBP.OM\Its.TutoringModule.CMTutor.SBP.OM.csproj">
+      <Project>{9DD64010-4EFB-4813-9CA5-628C96EAFB14}</Project>
+      <Name>Its.TutoringModule.CMTutor.SBP.OM</Name>
+    </ProjectReference>
     <ProjectReference Include="..\StudentBehaviourPredictor\Its.TutoringModule.CMTutor.SBP\Its.TutoringModule.CMTutor.SBP.csproj">
       <Project>{69E607FE-1C1C-4E48-A0E9-8585D15CCAE6}</Project>
       <Name>Its.TutoringModule.CMTutor.SBP</Name>

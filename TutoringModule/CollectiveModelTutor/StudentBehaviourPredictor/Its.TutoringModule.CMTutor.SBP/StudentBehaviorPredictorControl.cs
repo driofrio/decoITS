@@ -97,8 +97,8 @@ namespace Its.TutoringModule.CMTutor.SBP
 		/// <param name="domianKey">Domain key.</param>
 		/// <param name="studetKey">Student key.</param>
 		/// <param name="log">Log.</param>
-		public void UpdateModel(string domainKey, string studentKey, LogEntry log){
-			PredictiveStudentModel model = _models [domainKey];
+		public void UpdateModel(string domainKey, ClusterMethod cluMet, string studentKey, LogEntry log){
+			PredictiveStudentModel model = GetModel(domainKey, cluMet);
 			if (!model.ContainsStudent (studentKey)) 
 			{
 				model.DefaultCluster.AddStudent (studentKey, log, new Dictionary<string,ActionAplication>(), true);
@@ -116,8 +116,10 @@ namespace Its.TutoringModule.CMTutor.SBP
 		/// <param name="studentKey">Student key.</param>
 		/// <param name="log">Log.</param>
 		/// <param name="studentLogs">Student logs.</param>
-		public void UpdateModelAndRecluster(string domainKey, string studentKey, LogEntry log, StudentLog studentLogs){
-			_models[domainKey].UpdateModelAndRecluster(studentKey, log, studentLogs);
+		public void UpdateModelAndRecluster(string domainKey, ClusterMethod cluMet, string studentKey, LogEntry log, StudentLog studentLogs)
+		{
+			PredictiveStudentModel model = GetModel(domainKey, cluMet);
+			model.UpdateModelAndRecluster(studentKey, log, studentLogs);
 		}
 
 		/// <summary>
@@ -129,6 +131,18 @@ namespace Its.TutoringModule.CMTutor.SBP
 		/// <param name="lastLog">Last log.</param>
 		public Arc<State,Event> GetNextProbableEvent(PredictiveStudentModel model, string studentKey){
 			return model.GetNextProbableEvent (studentKey);
+		}
+
+		/// <summary>
+		/// Gets the support value for the last state corresponding to last performed action
+		/// </summary>
+		/// <returns>Support value in the range [0, 1].</returns>
+		/// <param name="studentKey">Student key.</param>
+		public double GetLastStateSupport(string domainKey, ClusterMethod cluMet, string studentKey)
+		{
+			PredictiveStudentModel model = GetModel(domainKey, cluMet);
+			StudentsCluster cluster = model.FindStudentCluster(studentKey);
+			return cluster.GetLastStateSupport(studentKey);
 		}
 
 		/// <summary>
