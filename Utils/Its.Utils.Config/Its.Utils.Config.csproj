@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DefaultTutorConfig.cs" />
+    <Compile Include="CustomTutorConfig.cs" />
     <Compile Include="ITutorConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
