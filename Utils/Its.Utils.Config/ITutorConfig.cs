@@ -9,6 +9,7 @@
         string LogsPath { get; }
         string DomainConfigurationPath { get; }
         string WorldConfigurationPath { get; }
+        
         int TimePenalization { get; }
         int NoTutoringNoBlockErrorPenalization { get; }
         int TutoringBlockErrorPenalization { get; }
