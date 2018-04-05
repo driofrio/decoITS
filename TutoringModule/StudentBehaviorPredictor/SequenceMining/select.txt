@@ -1,8 +1,0 @@
-SELECT Cluster(),t.[id] From [Students Seq Clustering] 
-PREDICTION JOIN  SHAPE { OPENQUERY([Lab Biotecnologia],
-'SELECT [id] FROM [dbo].[StudentsVal] ORDER BY [id]')}
-APPEND ({OPENQUERY([Lab Biotecnologia],
-'SELECT [actionkey], [secuence], [studentid] FROM [dbo].[LogsVal] ORDER BY [studentid]')}
-RELATE [id] TO [studentid]) AS [LogsVal] AS t
-ON [Students Seq Clustering].[Logs].[Actionkey] = t.[LogsVal].[actionkey] AND
-[Students Seq Clustering].[Logs].[Secuence] = t.[LogsVal].[secuence]
