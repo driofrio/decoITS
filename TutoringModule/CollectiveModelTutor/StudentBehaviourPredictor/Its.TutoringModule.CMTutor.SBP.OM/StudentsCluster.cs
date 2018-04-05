@@ -43,6 +43,8 @@ namespace Its.TutoringModule.CMTutor.SBP.OM
 			this._studentStates.Columns.Add("LastState", typeof(Node<State.State,Event.Event>));
 			this._studentStates.Columns.Add("VectorEventCount", typeof(int));
 			this._studentStates.Columns.Add("States", typeof(List<Node<State.State,Event.Event>>));
+			// Caching past repetitive states to avoid recalculating whenever new student Action is added to the cluster
+			this._studentStates.Columns.Add("RepetitiveStates", typeof(List<Node<State.State,Event.Event>>));
 			this._studentEvents = new Dictionary<string, List<Arc<State.State, Event.Event>>> ();
 		}
 
@@ -59,6 +61,8 @@ namespace Its.TutoringModule.CMTutor.SBP.OM
 			this._studentStates.Columns.Add("LastState", typeof(Node<State.State,Event.Event>));
 			this._studentStates.Columns.Add("VectorEventCount", typeof(int));
 			this._studentStates.Columns.Add("States", typeof(List<Node<State.State,Event.Event>>));
+			// Caching past repetitive states to avoid recalculating whenever new student Action is added to the cluster
+			this._studentStates.Columns.Add("RepetitiveStates", typeof(List<Node<State.State,Event.Event>>));
 			this._studentEvents = new Dictionary<string, List<Arc<State.State, Event.Event>>> ();
 			this._studentActionsModel = new StudentActionsModel (studentKeys.Count);
 			Node<State.State,Event.Event> lastState = _studentActionsModel.InitState;
@@ -96,6 +100,8 @@ namespace Its.TutoringModule.CMTutor.SBP.OM
 			this._studentStates.Columns.Add("LastState", typeof(Node<State.State,Event.Event>));
 			this._studentStates.Columns.Add("VectorEventCount", typeof(int));
 			this._studentStates.Columns.Add("States", typeof(List<Node<State.State,Event.Event>>));
+			// Caching past repetitive states to avoid recalculating whenever new student Action is added to the cluster
+			this._studentStates.Columns.Add("RepetitiveStates", typeof(List<Node<State.State,Event.Event>>));
 			this._studentEvents = new Dictionary<string, List<Arc<State.State, Event.Event>>> ();
 			this._studentActionsModel = new StudentActionsModel (logs.Count);
 			Node<State.State,Event.Event> lastState = _studentActionsModel.InitState;
@@ -132,6 +138,8 @@ namespace Its.TutoringModule.CMTutor.SBP.OM
 			this._studentStates.Columns.Add("LastState", typeof(Node<State.State,Event.Event>));
 			this._studentStates.Columns.Add("VectorEventCount", typeof(int));
 			this._studentStates.Columns.Add("States", typeof(List<Node<State.State,Event.Event>>));
+			// Caching past repetitive states to avoid recalculating whenever new student Action is added to the cluster
+			this._studentStates.Columns.Add("RepetitiveStates", typeof(List<Node<State.State,Event.Event>>));
 			this._studentEvents = new Dictionary<string, List<Arc<State.State, Event.Event>>> ();
 			this._studentActionsModel = new StudentActionsModel (studentKeys.Count);
 			Node<State.State,Event.Event> lastState = _studentActionsModel.InitState;
@@ -196,6 +204,7 @@ namespace Its.TutoringModule.CMTutor.SBP.OM
 				dr [1] = _studentActionsModel.InitState;
 				dr [2] = 0;
 				dr [3] = new List<Node<State.State,Event.Event>> ();
+				dr [4] = new List<Node<State.State,Event.Event>> ();
 				_studentStates.Rows.Add (dr);
 			}
 		}
@@ -277,6 +286,7 @@ namespace Its.TutoringModule.CMTutor.SBP.OM
 			dr [1] = previousState;
 			dr [2] = iterationNumber;
 			dr [3] = tempPastNodes;
+			dr [4] = new List<Node<State.State,Event.Event>> ();
 			this._studentStates.Rows.Add (dr);
 		}
 
@@ -293,6 +303,7 @@ namespace Its.TutoringModule.CMTutor.SBP.OM
 				dr [1] = _studentActionsModel.InitState;
 				dr [2] = 0;
 				dr [3] = new List<Node<State.State,Event.Event>> ();
+				dr [4] = new List<Node<State.State,Event.Event>> ();
 				this._studentStates.Rows.Add (dr);
 				this._studentEvents.Add (studenKey, new List<Arc<State.State, Event.Event>> ());
 				UpdateAutomaton (studenKey, log, incompatibilities);
