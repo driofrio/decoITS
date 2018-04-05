@@ -65,12 +65,11 @@ namespace Its.TutoringModule.CMTutor.SBP.OM
 			this._studentStates.Columns.Add("RepetitiveStates", typeof(List<Node<State.State,Event.Event>>));
 			this._studentEvents = new Dictionary<string, List<Arc<State.State, Event.Event>>> ();
 			this._studentActionsModel = new StudentActionsModel (studentKeys.Count);
-			Node<State.State,Event.Event> lastState = _studentActionsModel.InitState;
 
 			foreach (string studentKey in studentKeys) {
 				StudentLog studentLogs = logs.GetStudentLog (studentKey);
 
-				AddStudent (studentLogs, lastState, incompatibilities, includeNoPlanActions);
+				AddStudent (studentLogs, incompatibilities, includeNoPlanActions);
 			}
 		}
 
@@ -104,10 +103,9 @@ namespace Its.TutoringModule.CMTutor.SBP.OM
 			this._studentStates.Columns.Add("RepetitiveStates", typeof(List<Node<State.State,Event.Event>>));
 			this._studentEvents = new Dictionary<string, List<Arc<State.State, Event.Event>>> ();
 			this._studentActionsModel = new StudentActionsModel (logs.Count);
-			Node<State.State,Event.Event> lastState = _studentActionsModel.InitState;
 
 			foreach (StudentLog studentLogs in logs) {
-				AddStudent (studentLogs, lastState, incompatibilities, includeNoPlanActions);
+				AddStudent (studentLogs, incompatibilities, includeNoPlanActions);
 			}
 		}
 
@@ -142,12 +140,11 @@ namespace Its.TutoringModule.CMTutor.SBP.OM
 			this._studentStates.Columns.Add("RepetitiveStates", typeof(List<Node<State.State,Event.Event>>));
 			this._studentEvents = new Dictionary<string, List<Arc<State.State, Event.Event>>> ();
 			this._studentActionsModel = new StudentActionsModel (studentKeys.Count);
-			Node<State.State,Event.Event> lastState = _studentActionsModel.InitState;
 
 			foreach (string studentKey in studentKeys) {
 				StudentLog studentLogs = logs.GetStudentLog (studentKey);
 				if (((LogEntry)studentLogs.Logs [0]).DateLog >= fromDate)
-					AddStudent (studentLogs, lastState, incompatibilities, includeNoPlanActions);
+					AddStudent (studentLogs, incompatibilities, includeNoPlanActions);
 			}
 		}
 
@@ -214,12 +211,49 @@ namespace Its.TutoringModule.CMTutor.SBP.OM
 		/// </summary>
 		/// <param name="studentKey">Student key.</param>
 		/// <param name="log">Log.</param>
-		public void UpdateAutomaton(string studentKey, LogEntry log, Dictionary<string,ActionAplication> incompatibilities){
-			DataRow dr = _studentStates.Rows.Find (studentKey);
-			Node<State.State,Event.Event> newState = _studentActionsModel.ExpandAutomaton (log, (Node<State.State,Event.Event>)dr ["LastState"], 
-				(List<Node<State.State,Event.Event>>)dr ["States"], true, incompatibilities, (int)dr ["VectorEventCount"]);
-			if (newState == (Node<State.State,Event.Event>)dr ["LastState"])
-				dr ["VectorEventCount"] = ((int)dr ["VectorEventCount"]) + 1;
+		private void UpdateAutomaton(string studentKey, LogEntry log, Dictionary<string,ActionAplication> incompatibilities, DataRow studentDataRow){
+			List<Node<State.State,Event.Event>> tempPastRepetitives = (List<Node<State.State,Event.Event>>)studentDataRow["RepetitiveStates"];
+			List<Node<State.State,Event.Event>> tempPastNodes = (List<Node<State.State,Event.Event>>)studentDataRow["States"];
+			int iterationNumber = (int)studentDataRow["VectorEventCount"];
+			Node<State.State, Event.Event> previousState = (Node<State.State,Event.Event>)studentDataRow["LastState"];
+			
+			Area tempAreaForRepetitives = previousState.Specification.Area;
+			Node<State.State, Event.Event> newState = null;
+			bool isPastRepetitive = false;
+			// Loop start
+			bool isActionLog = (log.GetType () == typeof(NoCorrectiveActionLog) || 
+			                    log.GetType () == typeof(CorrectiveActionLog) || 
+			                    log.GetType () == typeof(NoPlanAllowedActionLog));
+			if (isActionLog) {
+				Node<State.State, Event.Event> tmp =
+					tempPastRepetitives.SingleOrDefault (s => ((CorrectState)s.Specification).Action.Key == log.Action.Key &&
+						s.Specification.Area == tempAreaForRepetitives);
+				if (tmp != default(Node<State.State, Event.Event>))
+					isPastRepetitive = true;
+			}
+			if (previousState.Specification.Area == Area.IrrelevantErrors)
+				newState = _studentActionsModel.ExpandAutomaton (log, previousState, tempPastNodes, isPastRepetitive, incompatibilities, iterationNumber);
+			else
+				newState = _studentActionsModel.ExpandAutomaton (log, previousState, tempPastNodes, isPastRepetitive, incompatibilities);
+			
+			if (newState == previousState && !isPastRepetitive)
+				iterationNumber++;
+			else if(!isPastRepetitive)
+				this._studentEvents [studentKey].Add (this.StudentActionsModel.GetEvent (previousState.Key, newState.Key));
+			
+			if (isActionLog && log.Action.IsRepetitive && !isPastRepetitive && !tempPastRepetitives.Contains (newState))
+				tempPastRepetitives.Add (newState);
+			if (!tempPastNodes.Contains (newState)) {
+				tempPastNodes.Add (newState);
+			} else {
+				int index = tempPastNodes.IndexOf (tempPastNodes.Find (x => x == newState));
+				tempPastNodes [index] = newState;
+			}
+
+			studentDataRow["States"] = tempPastNodes;
+			studentDataRow["LastState"] = newState;
+			studentDataRow["RepetitiveStates"] = tempPastRepetitives;
+			studentDataRow["VectorEventCount"] = iterationNumber;
 		}
 
 		/// <summary>
@@ -227,67 +261,25 @@ namespace Its.TutoringModule.CMTutor.SBP.OM
 		/// </summary>
 		/// <param name="studentLogs">Student logs.</param>
 		/// <param name="lastState">Last state.</param>
-		public void AddStudent (StudentLog studentLogs, Node<State.State,Event.Event> previousState, Dictionary<string,ActionAplication> incompatibilities, bool includeNoPlanActions)
+		public void AddStudent (StudentLog studentLogs, Dictionary<string,ActionAplication> incompatibilities, bool includeNoPlanActions)
 		{
-			List<Node<State.State,Event.Event>> tempPastRepetitives = new List<Node<State.State,Event.Event>> ();
-			List<Node<State.State,Event.Event>> tempPastNodes = new List<Node<State.State,Event.Event>> ();
-			int iterationNumber = 0;
-			Node<State.State, Event.Event> newState = null;
-			bool isPastRepetitive = false;
-			bool isActionLog = false;
-			this._studentEvents.Add (studentLogs.Owner.Key, new List<Arc<State.State, Event.Event>> ());
-			Area tempAreaForRepetitives = Area.CorrectFlow;
+			string studentKey = studentLogs.Owner.Key;
+			
+			_numberEvents += studentLogs.Logs.Count;
+			this._studentEvents.Add (studentKey, new List<Arc<State.State, Event.Event>> ());
+			InitStudent(studentKey);
+			
+			DataRow dr = _studentStates.Rows.Find (studentKey);
+			// Suspending row events until all log entries are processed
+			dr.BeginEdit();
+			
 			foreach (LogEntry log in studentLogs.Logs) {
 				if (includeNoPlanActions || log.GetType () != typeof(NoPlanAllowedActionLog)) {
-					isActionLog = (log.GetType () == typeof(NoCorrectiveActionLog) || log.GetType () == typeof(CorrectiveActionLog) || log.GetType () == typeof(NoPlanAllowedActionLog));
-					isPastRepetitive = false;
-					if (isActionLog) {
-						Node<State.State, Event.Event> tmp =
-							tempPastRepetitives.SingleOrDefault (s => ((CorrectState)s.Specification).Action.Key == log.Action.Key &&
-								s.Specification.Area == tempAreaForRepetitives);
-						if (tmp != default(Node<State.State, Event.Event>))
-							isPastRepetitive = true;
-					}
-					if (previousState.Specification.Area == Area.IrrelevantErrors)
-						newState = _studentActionsModel.ExpandAutomaton (log, previousState, tempPastNodes, isPastRepetitive, incompatibilities, iterationNumber);
-					else
-						newState = _studentActionsModel.ExpandAutomaton (log, previousState, tempPastNodes, isPastRepetitive, incompatibilities);
-
-					if (newState.Specification.Area != Area.IrrelevantErrors)
-						tempAreaForRepetitives = newState.Specification.Area;
-					
-					if (newState == previousState && !isPastRepetitive)
-						iterationNumber++;
-					else if(!isPastRepetitive)
-						this._studentEvents [studentLogs.Owner.Key].Add (this.StudentActionsModel.GetEvent (previousState.Key, newState.Key));
-					if (isActionLog && log.Action.IsRepetitive && !isPastRepetitive && !tempPastRepetitives.Contains (newState))
-						tempPastRepetitives.Add (newState);
-					if (!tempPastNodes.Contains (newState)) {
-						tempPastNodes.Add (newState);
-					} else {
-						int index = tempPastNodes.IndexOf (tempPastNodes.Find (x => x == newState));
-						tempPastNodes [index] = newState;
-					}
-
-					/*if ((previousState.Key.Contains ("f1t31") && newState.Key.Contains ("f1t32_f1t31"))
-					   || (previousState.Key.Contains ("f1t13") && newState.Key.Contains ("f1t20_f1t19"))
-					   || (previousState.Key.Contains ("f1t13") && newState.Key.Contains ("f1t20_f1t16"))
-					   || (previousState.Key.Contains ("f1t13") && newState.Key.Contains ("f1t20_f1t17"))
-					   || (previousState.Key.Contains ("f1t11") && newState.Key.Contains ("f1t16_f1t12"))) {
-						int x = 0;
-					}*/
-
-					previousState = newState;
+					UpdateAutomaton(studentKey, log, incompatibilities, dr);
 				}
 			}
-			_numberEvents += studentLogs.Logs.Count;
-			object[] dr = new object[4];
-			dr [0] = studentLogs.Owner.Key;
-			dr [1] = previousState;
-			dr [2] = iterationNumber;
-			dr [3] = tempPastNodes;
-			dr [4] = new List<Node<State.State,Event.Event>> ();
-			this._studentStates.Rows.Add (dr);
+			
+			dr.AcceptChanges();
 		}
 
 		/// <summary>
@@ -295,18 +287,30 @@ namespace Its.TutoringModule.CMTutor.SBP.OM
 		/// </summary>
 		/// <param name="studenKey">Studen key.</param>
 		/// <param name="previousState">Previous state.</param>
-		public void AddStudent (string studenKey, LogEntry log, Dictionary<string,ActionAplication> incompatibilities, bool includeNoPlanActions)
+		public void AddStudent (string studentKey, LogEntry log, Dictionary<string,ActionAplication> incompatibilities, bool includeNoPlanActions)
 		{
+			_numberEvents += 1;
+			this._studentEvents.Add (studentKey, new List<Arc<State.State, Event.Event>> ());
+			InitStudent(studentKey);
+			
+			DataRow dr = _studentStates.Rows.Find (studentKey);
+			
+			if (includeNoPlanActions || log.GetType () != typeof(NoPlanAllowedActionLog)) {				
+				UpdateAutomaton (studentKey, log, incompatibilities, dr);
+			}
+		}
+		
+		/// <summary>
+		/// Adds a new student action to this cluster.
+		/// </summary>
+		/// <param name="studenKey">Studen key.</param>
+		/// <param name="previousState">Previous state.</param>
+		public void AddStudentAction (string studentKey, LogEntry log, Dictionary<string,ActionAplication> incompatibilities, bool includeNoPlanActions)
+		{
+			_numberEvents += 1;
 			if (includeNoPlanActions || log.GetType () != typeof(NoPlanAllowedActionLog)) {
-				object[] dr = new object[4];
-				dr [0] = studenKey;
-				dr [1] = _studentActionsModel.InitState;
-				dr [2] = 0;
-				dr [3] = new List<Node<State.State,Event.Event>> ();
-				dr [4] = new List<Node<State.State,Event.Event>> ();
-				this._studentStates.Rows.Add (dr);
-				this._studentEvents.Add (studenKey, new List<Arc<State.State, Event.Event>> ());
-				UpdateAutomaton (studenKey, log, incompatibilities);
+				DataRow dr = _studentStates.Rows.Find (studentKey);
+				UpdateAutomaton (studentKey, log, incompatibilities, dr);
 			}
 		}
 

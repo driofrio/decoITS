@@ -991,7 +991,7 @@ namespace Its.TutoringModule.CMTutor.SBP.OM
 		/// <param name="log">Log.</param>
 		public void UpdateModel(string studentKey, LogEntry log){
 			StudentsCluster cluster = FindStudentCluster (studentKey);
-			cluster.UpdateAutomaton (studentKey, log, this._incompatibilities);
+			cluster.AddStudentAction(studentKey, log, _incompatibilities, true);
 		}
 
 		/// <summary>
@@ -1002,7 +1002,7 @@ namespace Its.TutoringModule.CMTutor.SBP.OM
 		/// <param name="studentLogs">Student logs.</param>
 		public void UpdateModelAndRecluster(string studentKey, LogEntry log, StudentLog studentLogs){
 			StudentsCluster newCluster = ReclusterStudent (studentKey, studentLogs, true);
-			newCluster.UpdateAutomaton (studentKey, log, this._incompatibilities);
+			newCluster.AddStudentAction(studentKey, log, _incompatibilities, true);
 		}
 
 		/// <summary>
@@ -1017,7 +1017,7 @@ namespace Its.TutoringModule.CMTutor.SBP.OM
 
 			if (newCluster != oldCluster) {
 				oldCluster.RemoveStudent (studentKey, studentNodes, studentLogs.Logs.Count);
-				newCluster.AddStudent (studentLogs, newCluster.StudentActionsModel.InitState, this._incompatibilities, includeNoPlanActions);
+				newCluster.AddStudent (studentLogs, this._incompatibilities, includeNoPlanActions);
 			}
 			return newCluster;
 		}
