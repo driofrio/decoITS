@@ -108,8 +108,9 @@ namespace Its.ExpertModule.DataAccess
 						record [19] == null ? "" : record [19].ToString (), //Init phase. 18
 						record [20] == null ? "" : record [20].ToString (), //Object name. 19
 						record [21] == null ? "" : record [21].ToString (), //In Phase. 20
-						record [22] == null ? "" : record [22].ToString (), //Is Checkpoint?. 21
-						record [23] == null ? "" : record [23].ToString () //Collective Model Tutor messages. 22
+						record [22] == null ? "" : record [22].ToString (), //Support threshold. 21
+						record [23] == null ? "" : record [23].ToString (), //Is Checkpoint?. 22
+						record [24] == null ? "" : record [24].ToString () //Collective Model Tutor messages. 23
 					};
 
 					//Adds the action information into the list which will be returned.

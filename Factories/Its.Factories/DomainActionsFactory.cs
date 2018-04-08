@@ -1007,15 +1007,27 @@ namespace Its.Factories
 				bool isInPlan = true;
 				if (s == "0")
 					isInPlan = false;
-				//Obtains IsCheckpoint flag value.
+				//Obtains Support Threshold value in the range [0; 1]
 				s = o [21].ToString ();
+				double supportThreshold = 0;
+				if (!StringUtils.IsNullOrWhiteSpace(s))
+				{
+					supportThreshold = double.Parse(s);
+					double epsilon = 0.0001;
+					if (supportThreshold < (0 - epsilon) || supportThreshold > (1 + epsilon))
+					{
+						throw new ArgumentException ("Invalid support threshold value in Action " + key + ": threshold value must be a float in the range [0; 1]");
+					}
+				}
+				//Obtains IsCheckpoint flag value.
+				s = o [22].ToString ();
 				bool isCheckpoint = false;
 				if (s == "1")
 					isCheckpoint = true;
 				// Obtains Collective Student Model tutor messages.
 				// Expecting messages to be defined in the order of increasing level of details:
 				// low detail -> medium detail -> high detail
-				s = o [22].ToString ();
+				s = o [23].ToString ();
 				string[] csmTutorMessages = s.Split (new char[] { '\\' });
 				string lowDetailMsg = csmTutorMessages.Length >= 1 ? csmTutorMessages[0] : null;
 				string mediumDetailMsg = csmTutorMessages.Length >= 2 ? csmTutorMessages[1] : null;
@@ -1032,18 +1044,18 @@ namespace Its.Factories
 					action = new ActionAplication (key, phase, name, description, objectName,
 						lockObj, unlockObj, isRepetitive, initPhase, validatePhaseErrors, dependence, incompatibilities, 
 						false, isInPlan, null, okMessage, showOkMessage, null, tutorMsg, minTime, minTimeError, maxTime, maxTimeError,
-						isCheckpoint, lowDetailTutorMessage, mediumDetailTutorMessage, highDetailTutorMessage);
+						supportThreshold, isCheckpoint, lowDetailTutorMessage, mediumDetailTutorMessage, highDetailTutorMessage);
 
 				} else if (maxTime > 0) {
 					action = new ActionAplication (key, phase, name, description, objectName,
 						lockObj, unlockObj, isRepetitive, initPhase, validatePhaseErrors, dependence, incompatibilities, 
 						false, isInPlan, null, okMessage, showOkMessage, null, tutorMsg, minTime, minTimeError, maxTime, maxTimeError,
-						isCheckpoint, lowDetailTutorMessage, mediumDetailTutorMessage, highDetailTutorMessage);
+						supportThreshold, isCheckpoint, lowDetailTutorMessage, mediumDetailTutorMessage, highDetailTutorMessage);
 				}else {
 					action = new ActionAplication (key, phase, name, description, objectName,
 						lockObj, unlockObj, isRepetitive, initPhase, validatePhaseErrors, dependence, incompatibilities,
 						false, isInPlan, null, okMessage, showOkMessage, null,  tutorMsg,
-						isCheckpoint, lowDetailTutorMessage, mediumDetailTutorMessage, highDetailTutorMessage);
+						supportThreshold, isCheckpoint, lowDetailTutorMessage, mediumDetailTutorMessage, highDetailTutorMessage);
 				}
 				//Adds into the list.
 				actions.Add (action);

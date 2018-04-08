@@ -320,6 +320,20 @@ namespace Its.ExpertModule.ObjectModel
 			}
 		}
 		/// <summary>
+		/// Amount of support that this action needs to have by Collective Student Model
+		/// in order to provide Collective Model Tutor feedback.
+		/// </summary>
+		private double _supportThreshold;
+		/// <summary>
+		/// Gets the SupportThreshold flag.
+		/// </summary>
+		/// <value>Boolean to indicate whether current action is a checkpoint for student reclustering.</value>
+		public double SupportThreshold {
+			get {
+				return _supportThreshold;
+			}
+		}
+		/// <summary>
 		/// Whether action represents a checkpoint for student reclustering in Collective Student Model tutoring strategy.
 		/// </summary>
 		private bool _isCheckpoint;
@@ -407,7 +421,7 @@ namespace Its.ExpertModule.ObjectModel
 			bool unlockObj, bool isRepetitive, bool initPhase, bool validatePhaseErrors, ComplexDependence dependence, 
 			List<Incompatibility> incompatibilities, bool correctiveAction, bool noPlanAction, List<Error> errorsToCorrect,
 			string okMessage, bool showOkMessage, List<ActionAplication> possibleNextActions, TutorMessage tutorMessage,
-			bool isCheckpoint, TutorMessage tutorMsgLowDetail, TutorMessage tutorMsgMediumDetail, TutorMessage tutorMsgHighDetail)
+			double supportThreshold, bool isCheckpoint, TutorMessage tutorMsgLowDetail, TutorMessage tutorMsgMediumDetail, TutorMessage tutorMsgHighDetail)
 		{
 			//If the key parameter is null or empty or his contained is a blank, a exception is thrown.
 			if (StringUtils.IsNullOrWhiteSpace (key)) {  
@@ -450,6 +464,7 @@ namespace Its.ExpertModule.ObjectModel
 				this._showOkMessage = showOkMessage;
 				this._possibleNextActions = possibleNextActions;
 				this._tutorMsg = tutorMessage;
+				this._supportThreshold = supportThreshold;
 				this._isCheckpoint = isCheckpoint;
 				this._tutorMsgLowDetail = tutorMsgLowDetail;
 				this._tutorMsgMediumDetail = tutorMsgMediumDetail;
@@ -499,7 +514,7 @@ namespace Its.ExpertModule.ObjectModel
 			ComplexDependence dependence, List<Incompatibility> incompatibilities, bool correctiveAction, bool noPlanAction,
 			List<Error> errorsToCorrect, string okMessage, bool showOkMessage, List<ActionAplication> possibleNextActions,
 			TutorMessage tutorMessage, int minTime, Error minTimeError, int maxTime = 0, Error maxTimeError = null,
-			bool isCheckpoint = false, TutorMessage tutorMsgLowDetail = null, TutorMessage tutorMsgMediumDetail = null, TutorMessage tutorMsgHighDetail = null)
+			double supportThreshold = 0, bool isCheckpoint = false, TutorMessage tutorMsgLowDetail = null, TutorMessage tutorMsgMediumDetail = null, TutorMessage tutorMsgHighDetail = null)
 		{
 			//If the key parameter is null or empty or his contained is a blank, a exception is thrown.
 			if (StringUtils.IsNullOrWhiteSpace (key)) {  
@@ -542,6 +557,7 @@ namespace Its.ExpertModule.ObjectModel
 				this._minTimeError = minTimeError;
 				this._maxTime = maxTime;
 				this._maxTimeError = maxTimeError;
+				this._supportThreshold = supportThreshold;
 				this._isCheckpoint = isCheckpoint;
 				this._tutorMsgLowDetail = tutorMsgLowDetail;
 				this._tutorMsgMediumDetail = tutorMsgMediumDetail;

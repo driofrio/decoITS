@@ -157,7 +157,7 @@ namespace Its.Test
 			ActionAplication action = new ActionAplication ("f01a32", 1, "Comer tarta", "Comerse la tarta fabricada.", 
 				                          new List<string> (new string[] { "Tarta" }), false, false, false, false, false,
 				                          complexDependence, null, false, true, null, "Tarta comida.", true, null, tutorMessage,
-										  false, null, null, null);
+										  0, false, null, null, null);
 			//Creates the Domain.
 			Console.WriteLine ("Creando dominio de práctica...");
 			//Creates the actions list.
