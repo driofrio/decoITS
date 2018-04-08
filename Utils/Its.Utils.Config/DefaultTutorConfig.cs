@@ -38,11 +38,6 @@ namespace Its.Utils.Config
         {
             get { return ConfigurationManager.AppSettings["worldConfigurationPath"]; }
         }
-
-        public double MinSupportThreshold
-        {
-            get { return double.Parse(ConfigurationManager.AppSettings["MinSupportThreshold"]); }
-        }
         
         public int TimePenalization
         {

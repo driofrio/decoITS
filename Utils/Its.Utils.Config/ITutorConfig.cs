@@ -10,7 +10,6 @@
         string DomainConfigurationPath { get; }
         string WorldConfigurationPath { get; }
         
-        double MinSupportThreshold { get; }
         int TimePenalization { get; }
         int NoTutoringNoBlockErrorPenalization { get; }
         int TutoringBlockErrorPenalization { get; }

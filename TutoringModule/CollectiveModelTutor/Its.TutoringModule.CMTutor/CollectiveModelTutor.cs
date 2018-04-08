@@ -33,10 +33,11 @@ namespace Its.TutoringModule.CMTutor
         {
             UpdateModel(actionName, domainName, studentKey);
 
+            ActionAplication action = _expertControl.GetActionByName(domainName, actionName, studentKey);
+            double actionSupportThreshold = action.SupportThreshold;
             double support = sbpControl.GetLastStateSupport(domainName, CLUSTER_METHOD, studentKey);
-            double minSupportThreshold = _config.MinSupportThreshold;
             
-            if (support >= minSupportThreshold)
+            if (support >= actionSupportThreshold)
             {
                 return true;
             }
