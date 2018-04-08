@@ -44,7 +44,7 @@ namespace Its.TutoringModule.CMTutor
             return false;
         }
 
-        public override int ToTutor(string actionName, string domainName, string studentKey, string objectName, out List<string> messages)
+        public override int ToTutor(string actionName, string domainName, string studentKey, string objectName, out Dictionary<string, List<string>> messages)
         {
             throw new System.NotImplementedException();
         }

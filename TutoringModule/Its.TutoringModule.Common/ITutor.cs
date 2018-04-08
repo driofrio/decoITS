@@ -5,7 +5,7 @@ namespace Its.TutoringModule.Common
     public interface ITutor
     {
         int ToTutor(string actionName, string domainName, string studentKey, string objectName,
-            out List<string> messages);
+            out Dictionary<string, List<string>> messages);
 
         void CreateStudent(string key, string name, string middleName, string surname, string lastName);
 

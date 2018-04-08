@@ -22,7 +22,7 @@ namespace Its.TutoringModule.TC
 			this.cmTutor = cmTutor;
 		}
 
-		public override int ToTutor(string actionName, string domainName, string studentKey, string objectName, out List<string> messages)
+		public override int ToTutor(string actionName, string domainName, string studentKey, string objectName, out Dictionary<string, List<string>> messages)
 		{
 			List<Error> errorList;
 			ValidateAction(actionName, domainName, studentKey, objectName, out errorList);

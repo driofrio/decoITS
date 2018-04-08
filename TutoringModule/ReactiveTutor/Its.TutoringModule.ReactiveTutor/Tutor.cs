@@ -31,14 +31,14 @@ namespace Its.TutoringModule.ReactiveTutor
 		/// <param name="domainName">Domain name.</param>
 		/// <param name="studentKey">Student key.</param>
 		/// <param name="nameObject">Name object.</param>
-		public override int ToTutor (string actionName, string domainName, string studentKey, string objectName, out List<string> messages)
+		public override int ToTutor (string actionName, string domainName, string studentKey, string objectName, out Dictionary<string, List<string>> messages)
 		{
 			//Creates a list for the errors.
 			List<Error> errorList;
 			//Creates a list for tutor messages.
 			List<TutorMessage> tutorMessages;
 			//Creates a list for the message.
-			messages = new List<string>() ;
+			messages = new Dictionary<string, List<string>>() ;
 			//Creates a string for correct message.
 			string okMessage;
 			//Calls Validation Method.
@@ -48,40 +48,43 @@ namespace Its.TutoringModule.ReactiveTutor
 			//No valido bloqueante
 			case 0:
 				//Adds the error message to the list.
-				foreach (Error e in errorList)
-					messages.Add (e.Message.Message);
+				AddErrorMessages(ref messages, errorList);
 				break;
 			//Valido
 			case 1:
 				//Calls the GetMessages method.
 				GetMessages (actionName, domainName, studentKey, out tutorMessages, out okMessage);
-                //Adds into the list that will be returned.
+                
+				//Adds into the list that will be returned.
                 if (okMessage != string.Empty)
-                    messages.Add(okMessage);
+	                AddConfirmationMessage(ref messages, okMessage);
+				
 				//Adds the tutor messages if they exist.
 				if (tutorMessages.Count > 0)
-					foreach (TutorMessage tm in tutorMessages)
-						messages.Add (tm.Message);
+					AddTutorMessages(ref messages, tutorMessages);
+				
 				//Adds the error message to the list, whether they exist.
 				if (errorList.Count > 0)
-					foreach (Error e in errorList)
-						messages.Add (e.Message.Message);
+					AddErrorMessages(ref messages, errorList);
+					
 				break;
 			//No valido no bloqueante
 			case -1:
 				//Calls the GetMessages method.
 				GetMessages (actionName, domainName, studentKey, out tutorMessages, out okMessage);
-                //Adds into the list that will be returned.
-                if (okMessage != string.Empty)
-                    messages.Add(okMessage);
+                
+				//Adds into the list that will be returned.
+				if (okMessage != string.Empty)
+					AddConfirmationMessage(ref messages, okMessage);
+				
 				//Adds the tutor messages if they exist.
 				if (tutorMessages.Count > 0)
-					foreach (TutorMessage tm in tutorMessages)
-						messages.Add (tm.Message);
+					AddTutorMessages(ref messages, tutorMessages);
+				
 				//Adds the error message to the list, whether they exist.
 				if (errorList.Count > 0)
-					foreach (Error e in errorList)
-						messages.Add (e.Message.Message);
+					AddErrorMessages(ref messages, errorList);
+				
 				break;
 			}
 

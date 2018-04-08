@@ -94,7 +94,7 @@ namespace Its.TutoringModule.Common
 	    }
 	    
         abstract public int ToTutor(string actionName, string domainName, string studentKey, string objectName,
-            out List<string> messages);
+            out Dictionary<string, List<string>> messages);
         
         /// <summary>
 		/// Validates the action. If Tutor calling this method is "master" entity, then actual validation is performed.
@@ -238,5 +238,104 @@ namespace Its.TutoringModule.Common
 			//Resets the practice.
 			_studentControl.ResetPractice (domainName, studentKey);
 		}
+
+	    /// <summary>
+	    /// Helper method to populate message dictionary with an error message
+	    /// </summary>
+	    /// <param name="messages">Message dictionary.</param>
+	    /// <param name="error">Error to add.</param>
+	    protected void AddErrorMessage(ref Dictionary<string, List<string>> messages, Error error)
+	    {
+		    if (!messages.ContainsKey("errors"))
+		    {
+			    messages.Add("errors", new List<string>());
+		    }
+		    
+		    messages["errors"].Add(error.Message.Message);
+	    }
+	    
+	    /// <summary>
+	    /// Helper method to populate message dictionary with multiple error messages in one go
+	    /// </summary>
+	    /// <param name="messages">Message dictionary.</param>
+	    /// <param name="errors">Errors to add.</param>
+	    protected void AddErrorMessages(ref Dictionary<string, List<string>> messages, List<Error> errors)
+	    {
+		    foreach (Error error in errors)
+		    {
+			    AddErrorMessage(ref messages, error);
+		    }
+	    }
+	    
+	    /// <summary>
+	    /// Helper method to populate message dictionary with tutor message
+	    /// </summary>
+	    /// <param name="messages">Message dictionary.</param>
+	    /// <param name="msg">Tutor message to add.</param>
+	    protected void AddTutorMessage(ref Dictionary<string, List<string>> messages, TutorMessage msg)
+	    {
+		    if (!messages.ContainsKey("tutor"))
+		    {
+			    messages.Add("tutor", new List<string>());
+		    }
+		    
+		    messages["tutor"].Add(msg.Message);
+	    }
+	    
+	    /// <summary>
+	    /// Helper method to populate message dictionary with multiple tutor message in one go
+	    /// </summary>
+	    /// <param name="messages">Message dictionary.</param>
+	    /// <param name="tutorMessages">Tutor messages to add.</param>
+	    protected void AddTutorMessages(ref Dictionary<string, List<string>> messages, List<TutorMessage> tutorMessages)
+	    {   
+		    foreach (TutorMessage msg in tutorMessages)
+		    {
+			    AddTutorMessage(ref messages, msg);
+		    }
+	    }
+	    
+	    /// <summary>
+	    /// Helper method to populate message dictionary with confirmation message
+	    /// </summary>
+	    /// <param name="messages">Message dictionary.</param>
+	    /// <param name="msg">Confirmation message to add.</param>
+	    protected void AddConfirmationMessage(ref Dictionary<string, List<string>> messages, String msg)
+	    {
+		    if (!messages.ContainsKey("confirmation"))
+		    {
+			    messages.Add("confirmation", new List<string>());
+		    }
+		    
+		    messages["confirmation"].Add(msg);
+	    }
+	    
+	    /// <summary>
+	    /// Helper method to populate message dictionary with error prevention message
+	    /// </summary>
+	    /// <param name="messages">Message dictionary.</param>
+	    /// <param name="msg">Error prevention message to add.</param>
+	    protected void AddErrorPreventionMessage(ref Dictionary<string, List<string>> messages, TutorMessage msg)
+	    {
+		    if (!messages.ContainsKey("errorPrevention"))
+		    {
+			    messages.Add("errorPrevention", new List<string>());
+		    }
+		    
+		    messages["errorPrevention"].Add(msg.Message);
+	    }
+	    
+	    /// <summary>
+	    /// Helper method to populate message dictionary with multiple error prevention messages in one go
+	    /// </summary>
+	    /// <param name="messages">Message dictionary.</param>
+	    /// <param name="errorPreventionMessages">Error prevention messages to add.</param>
+	    protected void AddErrorPreventionMessages(ref Dictionary<string, List<string>> messages, List<TutorMessage> errorPreventionMessages)
+	    {
+		    foreach (TutorMessage msg in errorPreventionMessages)
+		    {
+			    AddErrorPreventionMessage(ref messages, msg);
+		    }
+	    }
     }
 }
