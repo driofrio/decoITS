@@ -481,9 +481,32 @@ namespace Its.TutoringModule.CMTutor.SBP.OM
 		/// <returns>The next most probable event.</returns>
 		/// <param name="lastLog">Last log.</param>
 		public Arc<State.State,Event.Event> GetNextProbableEvent(Node<State.State,Event.Event> lastState){
+			return GetMostProbableEvent(lastState.OutArcs.Values.ToList());
+		}
+		
+		/// <summary>
+		/// Gets the next most probable CORRECT event.
+		/// </summary>
+		/// <returns>The next most probable correct event.</returns>
+		/// <param name="lastLog">Last log.</param>
+		public Arc<State.State,Event.Event> GetNextProbableCorrectEvent(Node<State.State,Event.Event> lastState){
 			long maxFrequency = 0;
 			Arc<State.State,Event.Event> mostFrequentEvent = null;
-			foreach (Arc<State.State,Event.Event> evt in lastState.OutArcs.Values) {
+			List<Arc<State.State, Event.Event>> correctEvents = lastState.OutArcs.Values.ToList();
+			correctEvents = SelectCorrectEvents(correctEvents);
+
+			return GetMostProbableEvent(correctEvents);
+		}
+		
+		/// <summary>
+		/// Gets the most probable event from the list.
+		/// </summary>
+		/// <returns>The most probable event from the list.</returns>
+		/// <param name="lastLog">Last log.</param>
+		public Arc<State.State,Event.Event> GetMostProbableEvent(List<Arc<State.State, Event.Event>> events){
+			long maxFrequency = 0;
+			Arc<State.State,Event.Event> mostFrequentEvent = null;
+			foreach (Arc<State.State,Event.Event> evt in events) {
 				if (evt.Specification.GetType () == typeof(NormalEvent)) {
 					NormalEvent tmpEvt = (NormalEvent)evt.Specification;
 					if (tmpEvt.Frequency > maxFrequency) {
@@ -581,19 +604,25 @@ namespace Its.TutoringModule.CMTutor.SBP.OM
 			List<Arc<State.State, Event.Event>> eventsNorm = events.Where(x => x.Specification.GetType() == typeof(NormalEvent)).ToList();
 			List<Arc<State.State, Event.Event>> eventsVect = events.Where(x => x.Specification.GetType() == typeof(VectorEvent)).ToList();
 			
-			foreach (Arc<State.State, Event.Event> arc in eventsNorm)
+			foreach (Arc<State.State, Event.Event> arc in events)
 			{
-				if(((double)((NormalEvent)arc.Specification).Frequency / arc.NodeOut.Specification.EventFrequency) > threshold)
-					selectedEvents.Add(arc);
-			}
-			
-			foreach (Arc<State.State, Event.Event> arc in eventsVect)
-			{
-				if (((double)((VectorEvent)arc.Specification).Frequency.Sum() / arc.NodeOut.Specification.EventFrequency) > threshold)
+				if(GetEventConfidence(arc) > threshold)
 					selectedEvents.Add(arc);
 			}
 
 			return selectedEvents;
+		}
+		
+		public double GetEventConfidence(Arc<State.State, Event.Event> evt)
+		{
+			if (evt.Specification.GetType() == typeof(NormalEvent))
+			{
+				return (double) ((NormalEvent) evt.Specification).Frequency / evt.NodeOut.Specification.EventFrequency;
+			}
+			else
+			{
+				return (double) ((VectorEvent) evt.Specification).Frequency.Sum() / evt.NodeOut.Specification.EventFrequency;
+			}
 		}
 	}
 }

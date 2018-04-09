@@ -16,6 +16,13 @@ using Its.WorldModule;
 
 namespace Its.TutoringModule.CMTutor
 {
+    public enum TutorMessageLevel
+    {
+        LowDetailMessage,    // most generic message level 
+        MediumDetailMessage, // mssage level with some extra details compared to low detail message
+        HighDetailMessage    // most detailed message level
+    }
+    
     public class CollectiveModelTutor : AbstractTutor
     {
         private static readonly ClusterMethod CLUSTER_METHOD = ClusterMethod.EventsByZone;
@@ -51,14 +58,15 @@ namespace Its.TutoringModule.CMTutor
 
         public override int ToTutor(string actionName, string domainName, string studentKey, string objectName, out Dictionary<string, List<string>> messages)
         {
-            List<Error> errorList;
-            List<TutorMessage> tutorMessages;
-            List<TutorMessage> errorPreventionMessages;
+            List<Error> errorList = new List<Error>();
+            List<TutorMessage> tutorMessages = new List<TutorMessage>();
+            List<TutorMessage> errorPreventionMessages = new List<TutorMessage>();
+            string okMessage;
             messages = new Dictionary<string, List<string>>() ;
 
             int result = ValidateAction(actionName, domainName, studentKey, objectName, out errorList);
 
-            string okMessage = GetConfirmationMessage(actionName, domainName, studentKey);
+            okMessage = GetConfirmationMessage(actionName, domainName, studentKey);
             
             // 1. Obtain tutor messages for zones of proximal development (ZDP)
             if (ZDPTutoringNeeded(domainName, studentKey))
@@ -69,6 +77,9 @@ namespace Its.TutoringModule.CMTutor
             // 2. Obtain error prevention messages for most probable next action
             
             // 3. Add messages to the dictionary depending on the validation result
+            
+            AddConfirmationMessage(ref messages, okMessage);
+            AddTutorMessages(ref messages, tutorMessages);
 
             return result;
         }
@@ -78,8 +89,34 @@ namespace Its.TutoringModule.CMTutor
             tutorMessages = new List<TutorMessage>();
             if (ZDPTutoringNeeded(domainName, studentKey))
             {
-//                GetNextProbableCorrectEvent
-//                GetRightLevelMessageForEvent
+                Arc<State, Event> nextEvent = sbpControl.GetNextProbableCorrectEvent(domainName, CLUSTER_METHOD, studentKey);
+                double conf = sbpControl.GetEventConfidence(domainName, CLUSTER_METHOD, studentKey, nextEvent);
+                double noTutoringThreshold = _config.NoTutoringEventConfidenceThreshold;
+                double lowDetailThreshold = _config.LowDetailTutoringEventConfidenceThreshold;
+                double mediumDetailThreshold = _config.MediumDetailTutoringEventConfidenceThreshold;
+
+                TutorMessage message = null;
+
+                if (noTutoringThreshold >= conf && conf > lowDetailThreshold)
+                {
+                    // low detail message
+                    message = GetTutorMessage(actionName, domainName, studentKey, TutorMessageLevel.LowDetailMessage);
+                }
+                else if (lowDetailThreshold >= conf && conf > mediumDetailThreshold)
+                {
+                    // medium detail message
+                    message = GetTutorMessage(actionName, domainName, studentKey, TutorMessageLevel.MediumDetailMessage);
+                }
+                else if (mediumDetailThreshold >= conf)
+                {
+                    // high detail message
+                    message = GetTutorMessage(actionName, domainName, studentKey, TutorMessageLevel.HighDetailMessage);
+                }
+
+                if (message != null)
+                {
+                    tutorMessages.Add(message);
+                }
             }
         }
 
@@ -95,7 +132,7 @@ namespace Its.TutoringModule.CMTutor
                 return false;
             }
             
-            // Check that there are other correct events with lowerer confidence 
+            // Check that there are other correct events with lower confidence 
             List<Arc<State, Event>> correctEvents = 
                 sbpControl.GetNextCorrectEventsAboveThreshold(domainName, CLUSTER_METHOD, studentKey, 0);
             if (correctEvents == null || correctEvents.Count == 0)
@@ -134,6 +171,27 @@ namespace Its.TutoringModule.CMTutor
             _expertControl.GetMessages (actionName, domainName, studentKey, out okMessage, out tutorMessage);
 
             return okMessage;
+        }
+
+        private TutorMessage GetTutorMessage(string actionName, string domainName, string studentKey,
+            TutorMessageLevel messageLevel)
+        {
+            TutorMessage message = null;
+            ActionAplication action = _expertControl.GetActionByName(domainName, actionName, studentKey);
+            if (messageLevel == TutorMessageLevel.LowDetailMessage)
+            {
+                message = action.TutorMsgLowDetail;
+            } 
+            else if (messageLevel == TutorMessageLevel.MediumDetailMessage)
+            {
+                message = action.TutorMsgMediumDetail;
+            }
+            else
+            {
+                message = action.TutorMsgHighDetail;
+            }
+
+            return message;
         }
     }
 }

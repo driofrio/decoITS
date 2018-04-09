@@ -374,6 +374,15 @@ namespace Its.TutoringModule.CMTutor.SBP.OM
 		public Arc<State.State,Event.Event> GetNextProbableEvent(string studentKey){
 			return _studentActionsModel.GetNextProbableEvent ((Node<State.State,Event.Event>)_studentStates.Rows.Find (studentKey) [1]);
 		}
+		
+		/// <summary>
+		/// Gets the next most probable correct event.
+		/// </summary>
+		/// <returns>The next probable event.</returns>
+		/// <param name="studentKey">Student key.</param>
+		public Arc<State.State,Event.Event> GetNextProbableCorrectEvent(string studentKey){
+			return _studentActionsModel.GetNextProbableCorrectEvent ((Node<State.State,Event.Event>)_studentStates.Rows.Find (studentKey) [1]);
+		}
 
 		/// <summary>
 		/// Gets the support value for the last state corresponding to last performed action
@@ -400,6 +409,11 @@ namespace Its.TutoringModule.CMTutor.SBP.OM
 			events = _studentActionsModel.SelectCorrectEvents(events);
 			events = _studentActionsModel.SelectEventsAboveConfidenceThreshold(events, threshold);
 			return events;
+		}
+		
+		public double GetEventConfidence(Arc<State.State, Event.Event> evt)
+		{
+			return _studentActionsModel.GetEventConfidence(evt);
 		}
 			
 		/// <summary>

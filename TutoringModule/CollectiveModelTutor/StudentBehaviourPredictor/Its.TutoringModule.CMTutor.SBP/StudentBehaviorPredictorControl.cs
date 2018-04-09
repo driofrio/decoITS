@@ -132,6 +132,18 @@ namespace Its.TutoringModule.CMTutor.SBP
 		public Arc<State,Event> GetNextProbableEvent(PredictiveStudentModel model, string studentKey){
 			return model.GetNextProbableEvent (studentKey);
 		}
+		
+		/// <summary>
+		/// Gets the next most probable CORRECT event.
+		/// </summary>
+		/// <returns>The next most probable CORRECT event.</returns>
+		/// <param name="domainKey">Domain key.</param>
+		/// <param name="studentKey">Student key.</param>
+		public Arc<State,Event> GetNextProbableCorrectEvent(string domainKey, ClusterMethod cluMet, string studentKey)
+		{
+			PredictiveStudentModel model = GetModel(domainKey, cluMet);
+			return model.GetNextProbableCorrectEvent(studentKey);
+		}
 
 		/// <summary>
 		/// Gets the support value for the last state corresponding to last performed action
@@ -150,6 +162,13 @@ namespace Its.TutoringModule.CMTutor.SBP
 			PredictiveStudentModel model = GetModel(domainKey, cluMet);
 			StudentsCluster cluster = model.FindStudentCluster(studentKey);
 			return cluster.GetNextCorrectEventsAboveThreshold(studentKey, threshold); 
+		}
+		
+		public double GetEventConfidence(string domainKey, ClusterMethod cluMet, string studentKey, Arc<State, Event> evt)
+		{
+			PredictiveStudentModel model = GetModel(domainKey, cluMet);
+			StudentsCluster cluster = model.FindStudentCluster(studentKey);
+			return cluster.GetEventConfidence(evt);
 		}
 
 		/// <summary>

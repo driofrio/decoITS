@@ -1270,6 +1270,17 @@ namespace Its.TutoringModule.CMTutor.SBP.OM
 			Arc<State.State,Event.Event> nextEvent = cluster.GetNextProbableEvent (studentKey);
 			return nextEvent;
 		}
+		
+		/// <summary>
+		/// Gets the next most probable CORRECT event.
+		/// </summary>
+		/// <returns>The next most probable correct event.</returns>
+		/// <param name="studentKey">Student key.</param>
+		public Arc<State.State,Event.Event> GetNextProbableCorrectEvent(string studentKey){
+			StudentsCluster cluster = FindStudentCluster (studentKey);
+			Arc<State.State,Event.Event> nextEvent = cluster.GetNextProbableCorrectEvent (studentKey);
+			return nextEvent;
+		}
 
 		private class ClusterStudentDataRow{
 			public string Key{ get; set;}
