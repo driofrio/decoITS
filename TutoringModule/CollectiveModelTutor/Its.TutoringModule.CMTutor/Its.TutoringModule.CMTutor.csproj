@@ -62,6 +62,10 @@
       <Project>{B7413821-72A0-4104-B19F-44E0C8FD18A2}</Project>
       <Name>Its.Utils.Config</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\Utils\Its.Utils.Math\Its.Utils.Math.csproj">
+      <Project>{39C82212-9961-42EE-8030-686514AB7B92}</Project>
+      <Name>Its.Utils.Math</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\WorldModule\Its.WorldModule\Its.WorldModule.csproj">
       <Project>{44A3A108-F052-4126-A905-4ADEC242E7E9}</Project>
       <Name>Its.WorldModule</Name>
@@ -69,6 +73,10 @@
     <ProjectReference Include="..\..\Its.TutoringModule.Common\Its.TutoringModule.Common.csproj">
       <Project>{3EFB63FF-6405-42C2-A615-0FBB56F4BDF2}</Project>
       <Name>Its.TutoringModule.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ReactiveTutor\Its.TutoringModule.ReactiveTutor.OM\Its.TutoringModule.ReactiveTutor.OM.csproj">
+      <Project>{D710A525-2C06-4F1A-94C0-4CC79E07A604}</Project>
+      <Name>Its.TutoringModule.ReactiveTutor.OM</Name>
     </ProjectReference>
     <ProjectReference Include="..\StudentBehaviourPredictor\Its.TutoringModule.CMTutor.SBP.OM\Its.TutoringModule.CMTutor.SBP.OM.csproj">
       <Project>{9DD64010-4EFB-4813-9CA5-628C96EAFB14}</Project>

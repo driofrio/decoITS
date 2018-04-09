@@ -145,6 +145,13 @@ namespace Its.TutoringModule.CMTutor.SBP
 			return cluster.GetLastStateSupport(studentKey);
 		}
 
+		public List<Arc<State, Event>> GetNextCorrectEventsAboveThreshold(string domainKey, ClusterMethod cluMet, string studentKey, double threshold)
+		{
+			PredictiveStudentModel model = GetModel(domainKey, cluMet);
+			StudentsCluster cluster = model.FindStudentCluster(studentKey);
+			return cluster.GetNextCorrectEventsAboveThreshold(studentKey, threshold); 
+		}
+
 		/// <summary>
 		/// Returns a <see cref="System.String"/> that represents the current <see cref="Its.TutoringModule.StudentBehaviorPredictor.StudentBehaviorPredictor"/>.
 		/// </summary>

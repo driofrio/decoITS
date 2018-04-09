@@ -38,7 +38,22 @@ namespace Its.Utils.Config
         {
             get { return ConfigurationManager.AppSettings["worldConfigurationPath"]; }
         }
-        
+
+        public double NoTutoringEventConfidenceThreshold
+        {
+            get { return double.Parse(ConfigurationManager.AppSettings["NoTutoringEventConfidenceThreshold"]); }
+        }
+
+        public double LowDetailTutoringEventConfidenceThreshold
+        {
+            get { return double.Parse(ConfigurationManager.AppSettings["LowDetailTutoringEventConfidenceThreshold"]); }
+        }
+
+        public double MediumDetailTutoringEventConfidenceThreshold
+        {
+            get { return double.Parse(ConfigurationManager.AppSettings["MediumDetailTutoringEventConfidenceThreshold"]); }
+        }
+
         public int TimePenalization
         {
             get { return int.Parse(ConfigurationManager.AppSettings["TimePenalization"]); }

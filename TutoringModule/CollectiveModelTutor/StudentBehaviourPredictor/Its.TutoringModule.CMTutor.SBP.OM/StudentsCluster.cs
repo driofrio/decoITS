@@ -384,9 +384,22 @@ namespace Its.TutoringModule.CMTutor.SBP.OM
 		{
 			DataRow dr = _studentStates.Rows.Find (studentKey);
 			Node<State.State, Event.Event> lastState = (Node<State.State, Event.Event>) dr["LastState"];
-			double gamma = lastState.Specification.StudentFrequency;
-			double support = gamma / NumberOfStudents;
-			return support;
+			return _studentActionsModel.GetStateSupport(lastState, NumberOfStudents);
+		}
+
+		public List<Arc<State.State, Event.Event>> GetAllNextEvents(string studentKey)
+		{
+			DataRow dr = _studentStates.Rows.Find (studentKey);
+			Node<State.State, Event.Event> lastState = (Node<State.State, Event.Event>) dr["LastState"];
+			return lastState.OutArcs.Values.ToList();
+		}
+		
+		public List<Arc<State.State, Event.Event>> GetNextCorrectEventsAboveThreshold(string studentKey, double threshold)
+		{
+			List<Arc<State.State, Event.Event>> events = this.GetAllNextEvents(studentKey);
+			events = _studentActionsModel.SelectCorrectEvents(events);
+			events = _studentActionsModel.SelectEventsAboveConfidenceThreshold(events, threshold);
+			return events;
 		}
 			
 		/// <summary>

@@ -538,6 +538,63 @@ namespace Its.TutoringModule.CMTutor.SBP.OM
 			}
 			return events;
 		}
+
+		public double GetStateSupport(Node<State.State, Event.Event> state, int numberOfStudents)
+		{
+			double gamma = state.Specification.StudentFrequency;
+			double support = 0;
+			if (numberOfStudents > 0)
+			{
+				support = gamma / numberOfStudents;
+			}
+			return support;
+		}
+		
+		/// <summary>
+		/// Select events that lead to correct states.
+		/// (Correct from the point of view of action validation,
+		/// but not necessarily leading to a state in the correct state zone)
+		/// </summary>
+		/// <returns>Correct events.</returns>
+		/// <param name="events">Events to filter.</param>
+		public List<Arc<State.State, Event.Event>> SelectCorrectEvents(List<Arc<State.State, Event.Event>> events)
+		{
+			List<Arc<State.State, Event.Event>> correctEvents = new List<Arc<State.State, Event.Event>>();
+			foreach (Arc<State.State, Event.Event> evt in events)
+			{
+				if (evt.NodeOut.Specification.GetType() == typeof(CorrectState)) {
+					correctEvents.Add(evt);
+				}
+			}
+
+			return correctEvents;
+		}
+		
+		/// <summary>
+		/// Select events with confidence above given threshold.
+		/// </summary>
+		/// <returns>Events with confidence above given threshold.</returns>
+		/// <param name="events">Events to filter.</param>
+		public List<Arc<State.State, Event.Event>> SelectEventsAboveConfidenceThreshold(List<Arc<State.State, Event.Event>> events, double threshold)
+		{
+			List<Arc<State.State, Event.Event>> selectedEvents = new List<Arc<State.State, Event.Event>>();
+			List<Arc<State.State, Event.Event>> eventsNorm = events.Where(x => x.Specification.GetType() == typeof(NormalEvent)).ToList();
+			List<Arc<State.State, Event.Event>> eventsVect = events.Where(x => x.Specification.GetType() == typeof(VectorEvent)).ToList();
+			
+			foreach (Arc<State.State, Event.Event> arc in eventsNorm)
+			{
+				if(((double)((NormalEvent)arc.Specification).Frequency / arc.NodeOut.Specification.EventFrequency) > threshold)
+					selectedEvents.Add(arc);
+			}
+			
+			foreach (Arc<State.State, Event.Event> arc in eventsVect)
+			{
+				if (((double)((VectorEvent)arc.Specification).Frequency.Sum() / arc.NodeOut.Specification.EventFrequency) > threshold)
+					selectedEvents.Add(arc);
+			}
+
+			return selectedEvents;
+		}
 	}
 }
 

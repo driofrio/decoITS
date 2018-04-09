@@ -10,6 +10,9 @@
         string DomainConfigurationPath { get; }
         string WorldConfigurationPath { get; }
         
+        double NoTutoringEventConfidenceThreshold { get; }
+        double LowDetailTutoringEventConfidenceThreshold { get; }
+        double MediumDetailTutoringEventConfidenceThreshold { get; }
         int TimePenalization { get; }
         int NoTutoringNoBlockErrorPenalization { get; }
         int TutoringBlockErrorPenalization { get; }
