@@ -17,93 +17,53 @@ namespace Its.TutoringModule.ReactiveTutor
 		}
 
 		public Tutor(string ontologyPath, string logsPath, string expertConfPath, string worldConfPath,
-			Dictionary<string, WorldControl> worldControl, ExpertControl expertControl, StudentControl studentControl, ValidationHelper valiationHelper, ITutorConfig config, bool master)
-			: base(ontologyPath, logsPath, expertConfPath, worldConfPath, worldControl, expertControl, studentControl, valiationHelper, config, master)
+			Dictionary<string, WorldControl> worldControl, ExpertControl expertControl, StudentControl studentControl, ITutorConfig config, bool master)
+			: base(ontologyPath, logsPath, expertConfPath, worldConfPath, worldControl, expertControl, studentControl, config, master)
 		{
 			// Base constructor
 		}
 
-		/// <summary>
-		/// Does the tutoring for an action.
-		/// </summary>
-		/// <returns>The tutor.</returns>
-		/// <param name="actionName">Action name.</param>
-		/// <param name="domainName">Domain name.</param>
-		/// <param name="studentKey">Student key.</param>
-		/// <param name="nameObject">Name object.</param>
-		public override int ToTutor (string actionName, string domainName, string studentKey, string objectName, out Dictionary<string, List<string>> messages)
+		protected override Dictionary<string, List<string>> GetTutoringStrategyMessages(string actionName, string domainName, string studentKey)
 		{
-			//Creates a list for the errors.
-			List<Error> errorList;
-			//Creates a list for tutor messages.
-			List<TutorMessage> tutorMessages;
-			//Creates a list for the message.
-			messages = new Dictionary<string, List<string>>() ;
-			//Creates a string for correct message.
 			string okMessage;
-			//Calls Validation Method.
-			int result = ValidateAction(actionName, domainName, studentKey, objectName, out errorList);
+			List<TutorMessage> tutorMessages;
+			Dictionary<string, List<string>> messages = new Dictionary<string, List<string>>();
+			
 			//Checks the result.
-			switch (result) {
-			//No valido bloqueante
-			case 0:
-				//Adds the error message to the list.
-				AddErrorMessages(ref messages, errorList);
-				break;
-			//Valido
-			case 1:
-				//Calls the GetMessages method.
-				GetMessages (actionName, domainName, studentKey, out tutorMessages, out okMessage);
+			switch (lastValidationResult) {
+				//No valido bloqueante
+				case 0:
+					// No tutoring provided if blocking error was made
+					break;
+				//Valido
+				case 1:
+					_expertControl.GetMessages(actionName, domainName, studentKey, out okMessage, out tutorMessages);
                 
-				//Adds into the list that will be returned.
-                if (okMessage != string.Empty)
-	                AddConfirmationMessage(ref messages, okMessage);
+					//Adds into the list that will be returned.
+					if (okMessage != string.Empty)
+						AddConfirmationMessage(ref messages, okMessage);
 				
-				//Adds the tutor messages if they exist.
-				if (tutorMessages.Count > 0)
-					AddTutorMessages(ref messages, tutorMessages);
-				
-				//Adds the error message to the list, whether they exist.
-				if (errorList.Count > 0)
-					AddErrorMessages(ref messages, errorList);
+					//Adds the tutor messages if they exist.
+					if (tutorMessages.Count > 0)
+						AddTutorMessages(ref messages, tutorMessages);
 					
-				break;
-			//No valido no bloqueante
-			case -1:
-				//Calls the GetMessages method.
-				GetMessages (actionName, domainName, studentKey, out tutorMessages, out okMessage);
+					break;
+				//No valido no bloqueante
+				case -1:
+					_expertControl.GetMessages(actionName, domainName, studentKey, out okMessage, out tutorMessages);
                 
-				//Adds into the list that will be returned.
-				if (okMessage != string.Empty)
-					AddConfirmationMessage(ref messages, okMessage);
+					//Adds into the list that will be returned.
+					if (okMessage != string.Empty)
+						AddConfirmationMessage(ref messages, okMessage);
 				
-				//Adds the tutor messages if they exist.
-				if (tutorMessages.Count > 0)
-					AddTutorMessages(ref messages, tutorMessages);
+					//Adds the tutor messages if they exist.
+					if (tutorMessages.Count > 0)
+						AddTutorMessages(ref messages, tutorMessages);
 				
-				//Adds the error message to the list, whether they exist.
-				if (errorList.Count > 0)
-					AddErrorMessages(ref messages, errorList);
-				
-				break;
+					break;
 			}
 
-			//Returns the result.
-			return result;
-		}
-
-		/// <summary>
-		/// Gets the messages.
-		/// </summary>
-		/// <param name="actionName">Action name.</param>
-		/// <param name="domainName">Domain name.</param>
-		/// <param name="studentKey">Student key.</param>
-		/// <param name="tutorMessage">Tutor message.</param>
-		/// <param name="actionOrErrorMessage">Action or error message.</param>
-		private void GetMessages (string actionName, string domainName, string studentKey, out List<TutorMessage> tutorMessage, out string okMessage)
-		{
-			//Calls the expertControl GetMessages method.
-			_expertControl.GetMessages (actionName, domainName, studentKey, out okMessage, out tutorMessage); 
+			return messages;
 		}
 	}
 }

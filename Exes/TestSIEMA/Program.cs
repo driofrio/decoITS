@@ -39,12 +39,20 @@ namespace TestSIEMA
             string domain = "Tutorial";
             string studentKey = "22";
             string relatedObject = "SeleccionPractica";
-            Dictionary<string, List<string>> messages = new Dictionary<string, List<string>>();
+            Dictionary<string, List<string>> messages;
+            List<string> errors;
 
-            int codigoFinalizacion = tutor.ToTutor (actionName, domain,
-                studentKey, relatedObject, out messages);
-
+            int codigoFinalizacion = tutor.Validate(actionName, domain,
+                studentKey, relatedObject, out errors);
+            
             Console.WriteLine ("Return Code: " + codigoFinalizacion);
+            Console.WriteLine ("Errors: ");
+            foreach (string error in errors) {
+                Console.WriteLine (error);
+            }
+
+            messages = tutor.GetTutorMessages(actionName, domain, studentKey);
+
             foreach (string key in messages.Keys) {
                 Console.WriteLine (key + ":");
                 foreach (string msg in messages[key])

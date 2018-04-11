@@ -1057,7 +1057,11 @@ namespace Its.ExpertModule
 		{
 			//Returns the result.
 			DomainActions value = null;
-			_domainActionsList.TryGetValue(domainKey, out value);
+			if (!_domainActionsList.TryGetValue(domainKey, out value))
+			{
+				throw new ArgumentException ("There is not any Domain with the given key: \"" + domainKey + "\"");	
+			}
+			
 			return value;
 		}
 	}

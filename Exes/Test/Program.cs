@@ -60,7 +60,7 @@ namespace Its.Test
 			NoCorrectiveActionLog noCorrectiveActionLog = new NoCorrectiveActionLog (action, true);
 			//Adds the log into the ontology.
 			Console.WriteLine ("Añadiendo log a la ontología...");
-			ontology.AddLogIntoOnto (noCorrectiveActionLog, student, domain);
+			ontology.AddNoCorrectiveActionLogIntoOnto(noCorrectiveActionLog, student, domain);
 
 			Console.WriteLine ("Escritura finalizada.");
 		}
@@ -102,7 +102,7 @@ namespace Its.Test
 			CorrectiveActionLog correctiveActionLog = new CorrectiveActionLog (action, true, true);
 			//Adds the log into the ontology.
 			Console.WriteLine ("Añadiendo log a la ontología...");
-			ontology.AddLogIntoOnto (correctiveActionLog, student, domain);
+			ontology.AddCorrectiveActionLogIntoOnto(correctiveActionLog, student, domain);
 
 			//Saves the ontology into disc.
 			Console.WriteLine ("Guardando ontología en disco...");
@@ -182,7 +182,7 @@ namespace Its.Test
 			DepErrorLog depErrorLog = new DepErrorLog (action, true, complexDependence, true);
 			//Adds the log into the ontology.
 			Console.WriteLine ("Añadiendo log a la ontología...");
-			ontology.AddLogIntoOnto (depErrorLog, student, domain);
+			ontology.AddDepErrorLogIntoOnto(depErrorLog, student, domain);
 
 			//Saves the ontology into disc.
 			Console.WriteLine ("Guardando ontología en disco...");
@@ -233,7 +233,7 @@ namespace Its.Test
 			WorldErrorLog worldErrorLog = new WorldErrorLog(action, true, error, "avataroutofrange");
 			//Adds the log into the ontology.
 			Console.WriteLine ("Añadiendo log a la ontología...");
-			ontology.AddLogIntoOnto (worldErrorLog, student, domain);
+			ontology.AddWorldErrorLogIntoOnto(worldErrorLog, student, domain);
 
 			//Saves the ontology into disc.
 			Console.WriteLine ("Guardando ontología en disco...");

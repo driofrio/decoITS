@@ -508,19 +508,19 @@ namespace LoadLogsBiotech
 
 					foreach (LogEntry log in stdLog.Logs) {
 						if (log.GetType () == typeof(NoCorrectiveActionLog))
-							ontology.AddLogIntoOnto ((NoCorrectiveActionLog)log, student, tmpDomain);
+							ontology.AddNoCorrectiveActionLogIntoOnto(log, student, tmpDomain);
 						else if (log.GetType () == typeof(NoPlanAllowedActionLog))
-							ontology.AddLogIntoOnto ((NoPlanAllowedActionLog)log, student, tmpDomain);
+							ontology.AddNoPlanAllowedActionLogIntoOnto(log, student, tmpDomain);
 						else if (log.GetType () == typeof(OtherErrorLog))
-							ontology.AddLogIntoOnto ((OtherErrorLog)log, student, tmpDomain);
+							ontology.AddOtherErrorLogIntoOnto(log, student, tmpDomain);
 						else if (log.GetType () == typeof(OtherErrorLog))
-							ontology.AddLogIntoOnto ((OtherErrorLog)log, student, tmpDomain);
+							ontology.AddOtherErrorLogIntoOnto(log, student, tmpDomain);
 						else if (log.GetType () == typeof(DepErrorLog))
-							ontology.AddLogIntoOnto ((DepErrorLog)log, student, tmpDomain);
+							ontology.AddDepErrorLogIntoOnto(log, student, tmpDomain);
 						else if (log.GetType () == typeof(IncompErrorLog))
-							ontology.AddLogIntoOnto ((IncompErrorLog)log, student, tmpDomain);
+							ontology.AddIncompErrorLogIntoOnto(log, student, tmpDomain);
 						else if (log.GetType () == typeof(WorldErrorLog))
-							ontology.AddLogIntoOnto ((WorldErrorLog)log, student, tmpDomain);
+							ontology.AddWorldErrorLogIntoOnto(log, student, tmpDomain);
 					}
 
 				}

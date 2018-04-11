@@ -34,8 +34,8 @@ namespace Its.TutoringModule.CMTutor
             sbpControl = StudentBehaviorPredictorControl.Instance(_config);
         }
 
-        public CollectiveModelTutor(string ontologyPath, string logsPath, string expertConfPath, string worldConfPath, Dictionary<string, WorldControl> worldControl, ExpertControl expertControl, StudentControl studentControl, ValidationHelper valiationHelper, ITutorConfig config, bool master)
-            : base(ontologyPath, logsPath, expertConfPath, worldConfPath, worldControl, expertControl, studentControl, valiationHelper, config, master)
+        public CollectiveModelTutor(string ontologyPath, string logsPath, string expertConfPath, string worldConfPath, Dictionary<string, WorldControl> worldControl, ExpertControl expertControl, StudentControl studentControl, ITutorConfig config, bool master)
+            : base(ontologyPath, logsPath, expertConfPath, worldConfPath, worldControl, expertControl, studentControl, config, master)
         {
             sbpControl = StudentBehaviorPredictorControl.Instance(_config);
         }
@@ -55,16 +55,13 @@ namespace Its.TutoringModule.CMTutor
             
             return false;
         }
-
-        public override int ToTutor(string actionName, string domainName, string studentKey, string objectName, out Dictionary<string, List<string>> messages)
+        
+        protected override Dictionary<string, List<string>> GetTutoringStrategyMessages(string actionName, string domainName, string studentKey)
         {
-            List<Error> errorList = new List<Error>();
             List<TutorMessage> tutorMessages = new List<TutorMessage>();
             List<TutorMessage> errorPreventionMessages = new List<TutorMessage>();
             string okMessage;
-            messages = new Dictionary<string, List<string>>() ;
-
-            int result = ValidateAction(actionName, domainName, studentKey, objectName, out errorList);
+            Dictionary<string, List<string>> messages = new Dictionary<string, List<string>>() ;
 
             okMessage = GetConfirmationMessage(actionName, domainName, studentKey);
             
@@ -81,7 +78,7 @@ namespace Its.TutoringModule.CMTutor
             AddConfirmationMessage(ref messages, okMessage);
             AddTutorMessages(ref messages, tutorMessages);
 
-            return result;
+            return messages;
         }
 
         private void ZDPTutoring(string actionName, string domainName, string studentKey, out List<TutorMessage> tutorMessages)
@@ -100,17 +97,17 @@ namespace Its.TutoringModule.CMTutor
                 if (noTutoringThreshold >= conf && conf > lowDetailThreshold)
                 {
                     // low detail message
-                    message = GetTutorMessage(actionName, domainName, studentKey, TutorMessageLevel.LowDetailMessage);
+                    message = GetCollectiveModelTutorMessage(actionName, domainName, studentKey, TutorMessageLevel.LowDetailMessage);
                 }
                 else if (lowDetailThreshold >= conf && conf > mediumDetailThreshold)
                 {
                     // medium detail message
-                    message = GetTutorMessage(actionName, domainName, studentKey, TutorMessageLevel.MediumDetailMessage);
+                    message = GetCollectiveModelTutorMessage(actionName, domainName, studentKey, TutorMessageLevel.MediumDetailMessage);
                 }
                 else if (mediumDetailThreshold >= conf)
                 {
                     // high detail message
-                    message = GetTutorMessage(actionName, domainName, studentKey, TutorMessageLevel.HighDetailMessage);
+                    message = GetCollectiveModelTutorMessage(actionName, domainName, studentKey, TutorMessageLevel.HighDetailMessage);
                 }
 
                 if (message != null)
@@ -173,7 +170,7 @@ namespace Its.TutoringModule.CMTutor
             return okMessage;
         }
 
-        private TutorMessage GetTutorMessage(string actionName, string domainName, string studentKey,
+        private TutorMessage GetCollectiveModelTutorMessage(string actionName, string domainName, string studentKey,
             TutorMessageLevel messageLevel)
         {
             TutorMessage message = null;

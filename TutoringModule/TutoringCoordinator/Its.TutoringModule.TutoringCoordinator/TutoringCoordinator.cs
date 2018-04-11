@@ -15,25 +15,22 @@ namespace Its.TutoringModule.TC
 		private Tutor rTutor;
 		private CollectiveModelTutor cmTutor;
 
-		public TutoringCoordinator(Tutor rTutor, CollectiveModelTutor cmTutor, string ontologyPath, string logsPath, string expertConfPath, string worldConfPath, Dictionary<string, WorldControl> worldControl, ExpertControl expertControl, StudentControl studentControl, ValidationHelper valiationHelper, ITutorConfig config)
-			: base(ontologyPath, logsPath, expertConfPath, worldConfPath, worldControl, expertControl, studentControl, valiationHelper, config, true)
+		public TutoringCoordinator(Tutor rTutor, CollectiveModelTutor cmTutor, string ontologyPath, string logsPath, string expertConfPath, string worldConfPath, Dictionary<string, WorldControl> worldControl, ExpertControl expertControl, StudentControl studentControl, ITutorConfig config)
+			: base(ontologyPath, logsPath, expertConfPath, worldConfPath, worldControl, expertControl, studentControl, config, true)
 		{
 			this.rTutor = rTutor;
 			this.cmTutor = cmTutor;
 		}
 
-		public override int ToTutor(string actionName, string domainName, string studentKey, string objectName, out Dictionary<string, List<string>> messages)
+		protected override Dictionary<string, List<string>> GetTutoringStrategyMessages(string actionName, string domainName, string studentKey)
 		{
-			List<Error> errorList;
-			ValidateAction(actionName, domainName, studentKey, objectName, out errorList);
-
 			if (cmTutor.HasSupportForAction(actionName, domainName, studentKey))
 			{
-				return cmTutor.ToTutor(actionName, domainName, studentKey, objectName, out messages);
+				return cmTutor.GetTutorMessages(actionName, domainName, studentKey);
 			}
 			else
 			{
-				return rTutor.ToTutor(actionName, domainName, studentKey, objectName, out messages);
+				return rTutor.GetTutorMessages(actionName, domainName, studentKey);
 			}
 		}
 	}

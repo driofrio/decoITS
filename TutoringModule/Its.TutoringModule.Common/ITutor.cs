@@ -4,9 +4,10 @@ namespace Its.TutoringModule.Common
 {
     public interface ITutor
     {
-        int ToTutor(string actionName, string domainName, string studentKey, string objectName,
-            out Dictionary<string, List<string>> messages);
-
+        int Validate(string actionName, string domainName, string studentKey, string objectName, out List<string> errors);
+        
+        Dictionary<string, List<string>> GetTutorMessages(string actionName, string domainName, string studentKey);
+        
         void CreateStudent(string key, string name, string middleName, string surname, string lastName);
 
         string WorldError(string domainKey, string actionName, string studentKey, string type, List<string> nameObject);

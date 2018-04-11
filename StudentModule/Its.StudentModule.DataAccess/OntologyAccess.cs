@@ -295,8 +295,10 @@ namespace Its.StudentModule.DataAccess
 		/// Adds the log into the ontology.
 		/// </summary>
 		/// <param name="log">Log.</param>
-		public void AddLogIntoOnto (NoCorrectiveActionLog log, Student student, DomainActions domain) 
+		public void AddNoCorrectiveActionLogIntoOnto (LogEntry logEntry, Student student, DomainActions domain)
 		{
+			NoCorrectiveActionLog log = (NoCorrectiveActionLog) logEntry;
+			
 			//Creates a auxiliar variable.
 			OntModel ontM;
 			//Selects the ontology model with the specific domain and student
@@ -406,8 +408,10 @@ namespace Its.StudentModule.DataAccess
 		/// Adds the log into onto.
 		/// </summary>
 		/// <param name="log">Log.</param>
-		public void AddLogIntoOnto (CorrectiveActionLog log, Student student, DomainActions domain) 
+		public void AddCorrectiveActionLogIntoOnto (LogEntry logEntry, Student student, DomainActions domain)
 		{
+			CorrectiveActionLog log = (CorrectiveActionLog) logEntry;
+			
 			//Creates a auxiliar variable.
 			OntModel ontM;
 			//Selects the ontology model with the specific domain and student
@@ -553,8 +557,10 @@ namespace Its.StudentModule.DataAccess
 		/// Adds the log into onto.
 		/// </summary>
 		/// <param name="log">Log.</param>
-		public void AddLogIntoOnto (NoPlanAllowedActionLog log, Student student, DomainActions domain) 
+		public void AddNoPlanAllowedActionLogIntoOnto (LogEntry logEntry, Student student, DomainActions domain)
 		{
+			NoPlanAllowedActionLog log = (NoPlanAllowedActionLog) logEntry;
+			
 			//Creates a auxiliar variable.
 			OntModel ontM;
 			//Selects the ontology model with the specific domain and student
@@ -700,8 +706,10 @@ namespace Its.StudentModule.DataAccess
 		/// Adds the log into onto.
 		/// </summary>
 		/// <param name="log">Log.</param>
-		public void AddLogIntoOnto (DepErrorLog log, Student student, DomainActions domain)
+		public void AddDepErrorLogIntoOnto (LogEntry logEntry, Student student, DomainActions domain)
 		{
+			DepErrorLog log = (DepErrorLog) logEntry;
+			
 			//Creates a auxiliar variable.
 			OntModel ontM;
 			//Selects the ontology model with the specific domain and student
@@ -882,8 +890,10 @@ namespace Its.StudentModule.DataAccess
 		/// Adds the log into onto.
 		/// </summary>
 		/// <param name="log">Log.</param>
-		public void AddLogIntoOnto (IncompErrorLog log, Student student, DomainActions domain)
+		public void AddIncompErrorLogIntoOnto (LogEntry logEntry, Student student, DomainActions domain)
 		{
+			IncompErrorLog log = (IncompErrorLog) logEntry;
+			
 			//Creates a auxiliar variable.
 			OntModel ontM;
 			//Selects the ontology model with the specific domain and student
@@ -1060,8 +1070,10 @@ namespace Its.StudentModule.DataAccess
 		/// Adds the log into onto.
 		/// </summary>
 		/// <param name="log">Log.</param>
-		public void AddLogIntoOnto (MinTimeErrorLog log, Student student, DomainActions domain)
+		public void AddMinTimeErrorLogIntoOnto (LogEntry logEntry, Student student, DomainActions domain)
 		{
+			MinTimeErrorLog log = (MinTimeErrorLog) logEntry;
+			
 			//Creates a auxiliar variable.
 			OntModel ontM;
 			//Selects the ontology model with the specific domain and student
@@ -1238,8 +1250,10 @@ namespace Its.StudentModule.DataAccess
 		/// Adds the log into onto.
 		/// </summary>
 		/// <param name="log">Log.</param>
-		public void AddLogIntoOnto (MaxTimeErrorLog log, Student student, DomainActions domain)
+		public void AddMaxTimeErrorLogIntoOnto (LogEntry logEntry, Student student, DomainActions domain)
 		{
+			MaxTimeErrorLog log = (MaxTimeErrorLog) logEntry;
+			
 			//Creates a auxiliar variable.
 			OntModel ontM;
 			//Selects the ontology model with the specific domain and student
@@ -1416,8 +1430,10 @@ namespace Its.StudentModule.DataAccess
 		/// Adds the log into onto.
 		/// </summary>
 		/// <param name="log">Log.</param>
-		public void AddLogIntoOnto (WorldErrorLog log, Student student, DomainActions domain)
+		public void AddWorldErrorLogIntoOnto (LogEntry logEntry, Student student, DomainActions domain)
 		{
+			WorldErrorLog log = (WorldErrorLog) logEntry;
+			
 			//Creates a auxiliar variable.
 			OntModel ontM;
 			//Selects the ontology model with the specific domain and student
@@ -1620,8 +1636,10 @@ namespace Its.StudentModule.DataAccess
 		/// Adds the log into onto.
 		/// </summary>
 		/// <param name="log">Log.</param>
-		public void AddLogIntoOnto (OtherErrorLog log, Student student, DomainActions domain)
+		public void AddOtherErrorLogIntoOnto (LogEntry logEntry, Student student, DomainActions domain)
 		{
+			OtherErrorLog log = (OtherErrorLog) logEntry;
+			
 			//Creates a auxiliar variable.
 			OntModel ontM;
 			//Selects the ontology model with the specific domain and student

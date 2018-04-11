@@ -54,12 +54,9 @@ namespace Its.TutoringModule.Factories
             StudentControl studentControl = StudentControl.Instance(ontologyPath, logsPath, expertConfPath);
             studentControl.GetDomainLogsFromOntology(expertControl.GetDomainActions(domainKey), expertControl.OtherErrors, worldControlDict[domainKey].WorldErrors);
             
-            ValidationHelper valiationHelper = new ValidationHelper(worldControlDict, studentControl, expertControl);
-            
-            
-            Tutor rTutor = new Tutor(ontologyPath, logsPath, expertConfPath, worldConfPath, worldControlDict, expertControl, studentControl, valiationHelper, config, false);
-            CollectiveModelTutor cmTutor = new CollectiveModelTutor(ontologyPath, logsPath, expertConfPath, worldConfPath, worldControlDict, expertControl, studentControl, valiationHelper, config, false);
-            TutoringCoordinator tc = new TutoringCoordinator(rTutor, cmTutor, ontologyPath, logsPath, expertConfPath, worldConfPath, worldControlDict, expertControl, studentControl, valiationHelper, config);
+            Tutor rTutor = new Tutor(ontologyPath, logsPath, expertConfPath, worldConfPath, worldControlDict, expertControl, studentControl, config, false);
+            CollectiveModelTutor cmTutor = new CollectiveModelTutor(ontologyPath, logsPath, expertConfPath, worldConfPath, worldControlDict, expertControl, studentControl, config, false);
+            TutoringCoordinator tc = new TutoringCoordinator(rTutor, cmTutor, ontologyPath, logsPath, expertConfPath, worldConfPath, worldControlDict, expertControl, studentControl, config);
 
             return tc;
         }

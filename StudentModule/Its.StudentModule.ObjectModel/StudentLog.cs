@@ -51,6 +51,19 @@ namespace Its.StudentModule.ObjectModel
 			}
 		}
 		/// <summary>
+		/// Logs produced by last user action. Not written to ontology until StudentControl.FlushLastActionLogs() method is called
+		/// </summary>
+		private List<LogEntry> _lastActionLogs;
+		/// <summary>
+		/// Gets logs produced by last user action.
+		/// </summary>
+		/// <value>The logs.</value>
+		public List<LogEntry> LastActionLogs {
+			get {
+				return _lastActionLogs.OrderBy(p=>p.DateLog).ToList<LogEntry>();
+			}
+		}
+		/// <summary>
 		/// The current phase.
 		/// </summary>
 		private int _currentPhase;

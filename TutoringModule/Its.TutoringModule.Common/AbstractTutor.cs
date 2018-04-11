@@ -50,8 +50,11 @@ namespace Its.TutoringModule.Common
 	    protected bool _master;
 
 	    protected ITutorConfig _config;
-	    
-	    private ValidationHelper _valiationHelper;
+
+	    /// <summary>
+	    /// Result of the last call to Validate() method. Used by concrete tutors to determine tutoring strategy.
+	    /// </summary>
+	    protected int lastValidationResult;
 
 	    public AbstractTutor(string domainKey, ITutorConfig config, bool master)
 	    {
@@ -72,14 +75,12 @@ namespace Its.TutoringModule.Common
 		    {
 			    Init(domainKey);
 		    }
-		    
-		    _valiationHelper = new ValidationHelper(_worldControl, _studentControl, _expertControl);
 
 		    _config = config;
 	    }
 	    
 	    public AbstractTutor(string ontologyPath, string logsPath, string expertConfPath, string worldConfPath, Dictionary<string, WorldControl> worldControl, 
-		    ExpertControl expertControl, StudentControl studentControl, ValidationHelper validationHelper, ITutorConfig config, bool master)
+		    ExpertControl expertControl, StudentControl studentControl, ITutorConfig config, bool master)
 	    {
 		    _master = master;
 		    _ontologyPath = ontologyPath;
@@ -89,38 +90,37 @@ namespace Its.TutoringModule.Common
 		    _worldControl = worldControl;
 		    _expertControl = expertControl;
 		    _studentControl = studentControl;
-		    _valiationHelper = validationHelper;
 		    _config = config;
 	    }
 	    
-        abstract public int ToTutor(string actionName, string domainName, string studentKey, string objectName,
-            out Dictionary<string, List<string>> messages);
-        
-        /// <summary>
-		/// Validates the action. If Tutor calling this method is "master" entity, then actual validation is performed.
-		/// Otherwise, results of the last validated action are returned (on assumption that master entity has already performed validation).
-		/// </summary>
-		/// <returns>The action.</returns>
-		/// <param name="actionName">Action name.</param>
-		/// <param name="domainName">Domain name.</param>
-		/// <param name="studentKey">Student key.</param>
-		/// <param name="nameObject">Name object.</param>
-		/// <param name="outputError">Output error.</param>
-		protected int ValidateAction (string actionName, string domainName, string studentKey, string objectName, out List<Error> outputError)
-        {
-	        int result;
-	        
-			if (_master)
-			{
-				result = _valiationHelper.ValidateAction(actionName, domainName, studentKey, objectName, out outputError);
-			}
-			else
-			{
-				result = _valiationHelper.GetLastValidationResults(out outputError);
-			}
-
-	        return result;
-        }
+//        abstract public int ToTutor(string actionName, string domainName, string studentKey, string objectName,
+//            out Dictionary<string, List<string>> messages);
+//        
+//        /// <summary>
+//		/// Validates the action. If Tutor calling this method is "master" entity, then actual validation is performed.
+//		/// Otherwise, results of the last validated action are returned (on assumption that master entity has already performed validation).
+//		/// </summary>
+//		/// <returns>The action.</returns>
+//		/// <param name="actionName">Action name.</param>
+//		/// <param name="domainName">Domain name.</param>
+//		/// <param name="studentKey">Student key.</param>
+//		/// <param name="nameObject">Name object.</param>
+//		/// <param name="outputError">Output error.</param>
+//		protected int ValidateAction (string actionName, string domainName, string studentKey, string objectName, out List<Error> outputError)
+//        {
+//	        int result;
+//	        
+//			if (_master)
+//			{
+//				result = _valiationHelper.ValidateAction(actionName, domainName, studentKey, objectName, out outputError);
+//			}
+//			else
+//			{
+//				result = _valiationHelper.GetLastValidationResults(out outputError);
+//			}
+//
+//	        return result;
+//        }
 
 	    private void Init(string key)
 	    {
@@ -164,7 +164,76 @@ namespace Its.TutoringModule.Common
 			_worldControl.Add(key, worldControl);
 		}
 
-		/// <summary>
+	    public int Validate(string actionName, string domainName, string studentKey, string objectName, out List<string> errorMessages)
+	    {
+		    //Creates the result variable.
+		    int result = 1;
+		    //Creates a bool variable to get if the action block or not the object.
+		    bool blockObj;
+		    //Gets the student with the given key.
+		    Student student = _studentControl.GetStudent (studentKey);
+		    //Validates if the object is block.
+		    bool blockRes = _worldControl[domainName].ObjectBlockValidate(objectName, student);
+		    //Checks the value returned.
+		    if (blockRes == true) {
+			    //Creates a WorldError.
+			    List<string> objectNameList = new List<string> ();
+			    objectNameList.Add (objectName);
+			    Error worldError = _worldControl [domainName].GetWorldError ("objectblocked", objectNameList);
+			    //Gets the action aplication.
+			    ActionAplication action = _expertControl.GetActionByName (domainName, actionName, studentKey);
+			    //Gets the domain.
+			    DomainActions domain = _expertControl.GetDomainActions (domainName);
+			    //Registers the error.
+			    _studentControl.CreateWorldErrorLog (action, domain, student, false, worldError, "objectblocked");
+			    //Adds the error into the list.
+			    errorMessages = new List<string>();
+			    errorMessages.Add(worldError.Message.Message);
+			    //Sets the result.
+			    result = 0;
+		    } else {
+			    //Calls the expert action validation and gets the result.
+			    List<Error> errors;
+			    result = _expertControl.ActionValidation (actionName, domainName, studentKey, objectName, out errors, out blockObj);
+			    //Checks if the action blocks or not the object.
+			    if (blockObj == true)
+				    //Blocks the object.
+				    _worldControl[domainName].BlockObject(objectName, student);
+
+			    //Add errors to the list.
+			    errorMessages = new List<string>();
+			    foreach (Error err in errors)
+			    {
+				    errorMessages.Add(err.Message.Message);
+			    }
+		    }
+
+		    this.lastValidationResult = result;
+		    
+		    //Returns the result.
+		    return result;
+	    }
+
+	    public Dictionary<string, List<string>> GetTutorMessages(string actionName, string domainName, string studentKey)
+	    {
+		    // Call subclass method to obtain tutor-specific messages
+		    Dictionary<string, List<string>> messages = GetTutoringStrategyMessages(actionName, domainName, studentKey);
+
+		    // Ensure logs are flushed only once per action by the master tutor
+		    if (_master)
+		    {
+			    // Finally flush LogEntries to ontology
+			    DomainActions domain = _expertControl.GetDomainActions(domainName);
+			    Student student = _studentControl.GetStudent(studentKey);
+			    _studentControl.FlushLastActionLogs(domain, student);
+		    }
+
+		    return messages;
+	    }
+
+	    abstract protected Dictionary<string, List<string>> GetTutoringStrategyMessages(string actionName, string domainName, string studentKey);
+
+	    /// <summary>
 		/// Creates the student.
 		/// </summary>
 		/// <param name="name">Name.</param>
