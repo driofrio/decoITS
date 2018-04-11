@@ -93,6 +93,7 @@ namespace Its.StudentModule.ObjectModel
 			this._key = student.Key;
 			this._owner = student;
 			this._logs = new List<LogEntry> ();
+			this._lastActionLogs = new List<LogEntry>();
 		}
 
 		public StudentLog (Student student, List<LogEntry> logs)
@@ -100,6 +101,7 @@ namespace Its.StudentModule.ObjectModel
 			this._key = student.Key;
 			this._owner = student;
 			this._logs = logs;
+			this._lastActionLogs = new List<LogEntry>();
 		}
 
 		/// <summary>
