@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:student_monitoring="http://www.owl-ontologies.com/student_monitoring.owl#"
+    xmlns:Knowledge_Object="http://www.owl-ontologies.com/knowledge_object.owl#"
+    xmlns:xsp="http://www.owl-ontologies.com/2005/08/07/xsp.owl#"
+    xmlns:Student_Profile="http://www.owl-ontologies.com/student_profile.owl#"
+    xmlns:p1="http://www.owl-ontologies.com/assert.owl#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:owl2xml="http://www.w3.org/2006/12/owl2-xml#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+    xmlns:student_information="http://www.owl-ontologies.com/student_information#"
+    xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:unnamed="http://www.owl-ontologies.com/unnamed.owl#"
+  xml:base="http://www.owl-ontologies.com/student_monitoring.owl">
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl"/>
+    <owl:imports rdf:resource="http://www.owl-ontologies.com/student_information"/>
+    <owl:imports rdf:resource="http://www.owl-ontologies.com/student_profile.owl"/>
+  </owl:Ontology>
+  <owl:Class rdf:ID="Position_Monitoring_Strategy">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Variable_Monitoring_Strategy"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Posición no es en realidad la definitiva. Será importada de la ontología geométrica. A revisar....</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.owl-ontologies.com/student_information#Student_Information"/>
+  <owl:Class rdf:about="#Variable_Monitoring_Strategy">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Student_Monitoring_Strategy"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#Variable"/>
+  <owl:ObjectProperty rdf:ID="monitoringOfStudent">
+    <rdfs:range rdf:resource="http://www.owl-ontologies.com/student_information#Student_Information"/>
+    <rdfs:domain rdf:resource="#Student_Monitoring_Strategy"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="samplingVariable">
+    <rdfs:range rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#Variable"/>
+    <rdfs:domain rdf:resource="#Variable_Monitoring_Strategy"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:ID="samplingFrequency">
+    <rdfs:domain rdf:resource="#Variable_Monitoring_Strategy"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  </owl:DatatypeProperty>
+</rdf:RDF>
+
+<!-- Created with TopBraid -->

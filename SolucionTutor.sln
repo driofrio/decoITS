@@ -85,6 +85,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Its.TutoringModule.CMTutor.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Its.TutoringModule.CMTutor", "TutoringModule\CollectiveModelTutor\Its.TutoringModule.CMTutor\Its.TutoringModule.CMTutor.csproj", "{E18AC5F1-D56D-4C2D-A2AE-AEADE455045E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Its.TutoringModule.CMTutorTest", "TutoringModule\CollectiveModelTutor\Its.TutoringModule.CMTutorTest\Its.TutoringModule.CMTutorTest.csproj", "{097AF011-607C-49C1-904F-DD1039EACDFF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -207,6 +209,10 @@ Global
 		{E18AC5F1-D56D-4C2D-A2AE-AEADE455045E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E18AC5F1-D56D-4C2D-A2AE-AEADE455045E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E18AC5F1-D56D-4C2D-A2AE-AEADE455045E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{097AF011-607C-49C1-904F-DD1039EACDFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{097AF011-607C-49C1-904F-DD1039EACDFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{097AF011-607C-49C1-904F-DD1039EACDFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{097AF011-607C-49C1-904F-DD1039EACDFF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{053D479C-7695-452A-ABFF-237300DB84AE} = {34E53C64-6F04-4A28-90F5-EEC20EF344DF}
@@ -243,5 +249,6 @@ Global
 		{51F6E81B-5A21-4EE5-8CB9-56E8CFD4D812} = {CC8AA04E-B108-40C5-9E3E-F9ADA9D6520A}
 		{9DD64010-4EFB-4813-9CA5-628C96EAFB14} = {CC8AA04E-B108-40C5-9E3E-F9ADA9D6520A}
 		{E18AC5F1-D56D-4C2D-A2AE-AEADE455045E} = {253CC56A-7AD6-4A0F-9401-19630353E052}
+		{097AF011-607C-49C1-904F-DD1039EACDFF} = {253CC56A-7AD6-4A0F-9401-19630353E052}
 	EndGlobalSection
 EndGlobal

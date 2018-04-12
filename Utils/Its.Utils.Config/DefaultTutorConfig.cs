@@ -1,87 +1,262 @@
-﻿using System.Configuration;
+﻿using System.Collections.Generic;
+using System.Configuration;
 
 namespace Its.Utils.Config
 {
     public class DefaultTutorConfig : ITutorConfig
     {
+        private int initialColumn;
+        private int finalColumn;
+        private int initialRow;
+        private string ontologyPath;
+        private string logsPath;
+        private string domainConfigurationPath;
+        private string worldConfigurationPath;
+        private int timePenalization;
+        private int noTutoringNoBlockErrorPenalization;
+        private int tutoringBlockErrorPenalization;
+        private int tutoringNoBlockErrorPenalization;
+        private string assConString;
+        private string bddConString;
+        private double noTutoringEventConfidenceThreshold;
+        private double lowDetailTutoringEventConfidenceThreshold;
+        private double mediumDetailTutoringEventConfidenceThreshold;
+        
         public int InitialColumn
         {
-            get { return int.Parse(ConfigurationManager.AppSettings["initialColumn"]); }
+            get { return initialColumn; }
         }
 
         public int FinalColumn
         {
-            get { return int.Parse(ConfigurationManager.AppSettings["finalColumn"]); }
+            get { return finalColumn; }
         }
 
         public int InitialRow
         {
-            get { return int.Parse(ConfigurationManager.AppSettings["initialRow"]); }
+            get { return initialRow; }
         }
 
         public string OntologyPath
         {
-            get { return ConfigurationManager.AppSettings["ontologyPath"]; }
+            get { return ontologyPath; }
         }
 
         public string LogsPath
         {
-            get { return ConfigurationManager.AppSettings["logsPath"]; }
+            get { return logsPath; }
         }
 
         public string DomainConfigurationPath
         {
-            get { return ConfigurationManager.AppSettings["domainConfigurationPath"]; }
+            get { return domainConfigurationPath; }
         }
 
         public string WorldConfigurationPath
         {
-            get { return ConfigurationManager.AppSettings["worldConfigurationPath"]; }
-        }
-
-        public double NoTutoringEventConfidenceThreshold
-        {
-            get { return double.Parse(ConfigurationManager.AppSettings["NoTutoringEventConfidenceThreshold"]); }
-        }
-
-        public double LowDetailTutoringEventConfidenceThreshold
-        {
-            get { return double.Parse(ConfigurationManager.AppSettings["LowDetailTutoringEventConfidenceThreshold"]); }
-        }
-
-        public double MediumDetailTutoringEventConfidenceThreshold
-        {
-            get { return double.Parse(ConfigurationManager.AppSettings["MediumDetailTutoringEventConfidenceThreshold"]); }
+            get { return worldConfigurationPath; }
         }
 
         public int TimePenalization
         {
-            get { return int.Parse(ConfigurationManager.AppSettings["TimePenalization"]); }
+            get { return timePenalization; }
         }
 
         public int NoTutoringNoBlockErrorPenalization
         {
-            get { return int.Parse(ConfigurationManager.AppSettings["NoTutoringNoBlockErrorPenalization"]); }
+            get { return noTutoringNoBlockErrorPenalization; }
         }
 
         public int TutoringBlockErrorPenalization
         {
-            get { return int.Parse(ConfigurationManager.AppSettings["TutoringBlockErrorPenalization"]); }
+            get { return tutoringBlockErrorPenalization; }
         }
 
         public int TutoringNoBlockErrorPenalization
         {
-            get { return int.Parse(ConfigurationManager.AppSettings["TutoringNoBlockErrorPenalization"]); }
+            get { return tutoringNoBlockErrorPenalization; }
         }
 
         public string ASSConString
         {
-            get { return ConfigurationManager.AppSettings["ASSConString"]; }
+            get { return assConString; }
         }
 
         public string BDDConString
         {
-            get { return ConfigurationManager.AppSettings["BDDConString"]; }
+            get { return bddConString; }
+        }
+
+        public double NoTutoringEventConfidenceThreshold
+        {
+            get { return noTutoringEventConfidenceThreshold; }
+        }
+
+        public double LowDetailTutoringEventConfidenceThreshold
+        {
+            get { return lowDetailTutoringEventConfidenceThreshold; }
+        }
+
+        public double MediumDetailTutoringEventConfidenceThreshold
+        {
+            get { return mediumDetailTutoringEventConfidenceThreshold; }
+        }
+        
+        public DefaultTutorConfig()
+        {
+            InitFromSystemConfig();
+        }
+        
+        public DefaultTutorConfig(ITutorConfig config, Dictionary<string, string> overrideValues)
+        {
+            InitFromTutorConfig(config);
+            InitFromDictionary(overrideValues);
+        }
+        
+        public DefaultTutorConfig(Dictionary<string, string> values)
+        {
+            InitFromDictionary(values);
+        }
+
+        private void InitFromSystemConfig()
+        {
+            initialColumn = int.Parse(ConfigurationManager.AppSettings["initialColumn"]);
+            finalColumn = int.Parse(ConfigurationManager.AppSettings["finalColumn"]);
+            initialRow = int.Parse(ConfigurationManager.AppSettings["initialRow"]);
+            ontologyPath = ConfigurationManager.AppSettings["ontologyPath"];
+            logsPath = ConfigurationManager.AppSettings["logsPath"];
+            domainConfigurationPath = ConfigurationManager.AppSettings["domainConfigurationPath"];
+            worldConfigurationPath = ConfigurationManager.AppSettings["worldConfigurationPath"];
+            timePenalization = int.Parse(ConfigurationManager.AppSettings["TimePenalization"]);
+            noTutoringNoBlockErrorPenalization = int.Parse(ConfigurationManager.AppSettings["NoTutoringNoBlockErrorPenalization"]);
+            tutoringBlockErrorPenalization = int.Parse(ConfigurationManager.AppSettings["TutoringBlockErrorPenalization"]);
+            tutoringNoBlockErrorPenalization = int.Parse(ConfigurationManager.AppSettings["TutoringNoBlockErrorPenalization"]);
+            assConString = ConfigurationManager.AppSettings["ASSConString"];
+            bddConString = ConfigurationManager.AppSettings["BDDConString"];
+            noTutoringEventConfidenceThreshold = double.Parse(ConfigurationManager.AppSettings["NoTutoringEventConfidenceThreshold"]);
+            lowDetailTutoringEventConfidenceThreshold = double.Parse(ConfigurationManager.AppSettings["LowDetailTutoringEventConfidenceThreshold"]);
+            mediumDetailTutoringEventConfidenceThreshold = double.Parse(ConfigurationManager.AppSettings["MediumDetailTutoringEventConfidenceThreshold"]);
+        }
+        
+        private void InitFromTutorConfig(ITutorConfig config)
+        {
+            initialColumn = config.InitialColumn;
+            finalColumn = config.FinalColumn;
+            initialRow = config.InitialRow;
+            ontologyPath = config.OntologyPath;
+            logsPath = config.LogsPath;
+            domainConfigurationPath = config.DomainConfigurationPath;
+            worldConfigurationPath = config.WorldConfigurationPath;
+            timePenalization = config.TimePenalization;
+            noTutoringNoBlockErrorPenalization = config.NoTutoringNoBlockErrorPenalization;
+            tutoringBlockErrorPenalization = config.TutoringBlockErrorPenalization;
+            tutoringNoBlockErrorPenalization = config.TutoringNoBlockErrorPenalization;
+            assConString = config.ASSConString;
+            bddConString = config.BDDConString;
+            noTutoringEventConfidenceThreshold = config.NoTutoringEventConfidenceThreshold;
+            lowDetailTutoringEventConfidenceThreshold = config.LowDetailTutoringEventConfidenceThreshold;
+            mediumDetailTutoringEventConfidenceThreshold = config.MediumDetailTutoringEventConfidenceThreshold;
+        }
+
+        private void InitFromDictionary(Dictionary<string, string> values)
+        {
+            string initialColumn;
+            string finalColumn;
+            string initialRow;
+            string ontologyPath;
+            string logsPath;
+            string domainConfigurationPath;
+            string worldConfigurationPath;
+            string timePenalization;
+            string noTutoringNoBlockErrorPenalization;
+            string tutoringBlockErrorPenalization;
+            string tutoringNoBlockErrorPenalization;
+            string assConString;
+            string bddConString;
+            string noTutoringEventConfidenceThreshold;
+            string lowDetailTutoringEventConfidenceThreshold;
+            string mediumDetailTutoringEventConfidenceThreshold;
+
+            if (values.TryGetValue("InitialColumn", out initialColumn))
+            {
+                this.initialColumn = int.Parse(initialColumn);
+            }
+
+            if (values.TryGetValue("FinalColumn", out finalColumn))
+            {
+                this.finalColumn = int.Parse(finalColumn);
+            }
+
+            if (values.TryGetValue("InitialRow", out initialRow))
+            {
+                this.initialRow = int.Parse(initialRow);
+            }
+
+            if (values.TryGetValue("OntologyPath", out ontologyPath))
+            {
+                this.ontologyPath = ontologyPath;
+            }
+
+            if (values.TryGetValue("LogsPath", out logsPath))
+            {
+                this.logsPath = logsPath;
+            }
+
+            if (values.TryGetValue("DomainConfigurationPath", out domainConfigurationPath))
+            {
+                this.domainConfigurationPath = domainConfigurationPath;
+            }
+
+            if (values.TryGetValue("WorldConfigurationPath", out worldConfigurationPath))
+            {
+                this.worldConfigurationPath = worldConfigurationPath;
+            }
+
+            if (values.TryGetValue("TimePenalization", out timePenalization))
+            {
+                this.timePenalization = int.Parse(timePenalization);
+            }
+
+            if (values.TryGetValue("NoTutoringNoBlockErrorPenalization",
+                                    out noTutoringNoBlockErrorPenalization))
+            {
+                this.noTutoringNoBlockErrorPenalization = int.Parse(noTutoringNoBlockErrorPenalization);
+            }
+
+            if (values.TryGetValue("TutoringBlockErrorPenalization", out tutoringBlockErrorPenalization))
+            {
+                this.tutoringBlockErrorPenalization = int.Parse(tutoringBlockErrorPenalization);
+            }
+
+            if (values.TryGetValue("TutoringNoBlockErrorPenalization", out tutoringNoBlockErrorPenalization))
+            {
+                this.tutoringNoBlockErrorPenalization = int.Parse(tutoringNoBlockErrorPenalization);
+            }
+
+            if (values.TryGetValue("ASSConString", out assConString))
+            {
+                this.assConString = assConString;
+            }
+
+            if (values.TryGetValue("InitialColumn", out bddConString))
+            {
+                this.bddConString = bddConString;
+            }
+
+            if (values.TryGetValue("NoTutoringEventConfidenceThreshold", out noTutoringEventConfidenceThreshold))
+            {
+                this.noTutoringEventConfidenceThreshold = double.Parse(noTutoringEventConfidenceThreshold);
+            }
+
+            if (values.TryGetValue("LowDetailTutoringEventConfidenceThreshold", out lowDetailTutoringEventConfidenceThreshold))
+            {
+                this.lowDetailTutoringEventConfidenceThreshold = double.Parse(lowDetailTutoringEventConfidenceThreshold);
+            }
+
+            if (values.TryGetValue("MediumDetailTutoringEventConfidenceThreshold", out mediumDetailTutoringEventConfidenceThreshold))
+            {
+                this.mediumDetailTutoringEventConfidenceThreshold = double.Parse(mediumDetailTutoringEventConfidenceThreshold);
+            }
         }
     }
 }
