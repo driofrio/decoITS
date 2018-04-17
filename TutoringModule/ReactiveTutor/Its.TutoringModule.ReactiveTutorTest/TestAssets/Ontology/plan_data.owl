@@ -1,0 +1,1866 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:knowledge_object="http://www.owl-ontologies.com/knowledge_object.owl#"
+    xmlns:student_profile="http://www.owl-ontologies.com/student_profile.owl#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns="http://www.owl-ontologies.com/plan_data.owl"
+    xmlns:student_information="http://www.owl-ontologies.com/student_information#"
+    xmlns:student_state="http://www.owl-ontologies.com/student_state.owl#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:student_trace="http://www.owl-ontologies.com/student_trace.owl#">
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.owl-ontologies.com/student_information#"/>
+  </owl:Ontology>
+  <owl:Ontology rdf:about="file:///Users/Diego/Documents/workspace/ITS/Exes/LoadLogsBiotech/bin/Debug/">
+    <owl:imports rdf:resource="http://www.owl-ontologies.com/student_information#"/>
+  </owl:Ontology>
+  <owl:Ontology rdf:about="file:///Users/Diego/Documents/workspace/ITS/Exes/TestSBP/bin/Debug/">
+    <owl:imports rdf:resource="http://www.owl-ontologies.com/student_information#"/>
+  </owl:Ontology>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t59_PopulusPost2016">
+    <student_trace:belongsToPlan>
+      <knowledge_object:Plan rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016">
+        <knowledge_object:descriptorObject>PopulusPost2016</knowledge_object:descriptorObject>
+        <knowledge_object:idObject>PopulusPost2016</knowledge_object:idObject>
+      </knowledge_object:Plan>
+    </student_trace:belongsToPlan>
+    <knowledge_object:descriptorObject>entregarmezclaligacion</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t59_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf0crearLog_PopulusPre2016">
+    <student_trace:belongsToPlan>
+      <knowledge_object:Plan rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016">
+        <knowledge_object:descriptorObject>PopulusPre2016</knowledge_object:descriptorObject>
+        <knowledge_object:idObject>PopulusPre2016</knowledge_object:idObject>
+      </knowledge_object:Plan>
+    </student_trace:belongsToPlan>
+    <knowledge_object:descriptorObject>crearLog</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f0crearLog_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t25_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>soltarbandejapoyataprimeravez</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t25_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t41_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>agregaroligonucleicoder</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t41_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t61_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>soltartubonevera</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t61_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t38_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>entregarchopo</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t38_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t22_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>tomarantibioticocloranfenicol</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t22_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t58_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>amplificarfragmento</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t58_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t26_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>soltarbandejapoyataprimeravez</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t26_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t19_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>agergaretilenglicol</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t19_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t26_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>bloquearautoclave</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t26_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t27_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>entregarboteeppendorf</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t27_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t35_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>agregaroligonucleicoizq</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t35_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t44_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>agregarplasmidomirna</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t44_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t57_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>cerrarpcr</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t57_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf0t5_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>releerfundamentos</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f0t5_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t30_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>adjuntarpipetaamarilla</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t30_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t22_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>soltarbotellaagitador</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t22_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t44_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>agregarplasmidomirna</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t44_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t21_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>tomarantibioticogentamicina</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t21_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t56_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>soltarmezcla</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t56_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t28_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>entregarbotellaautoclavada</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t28_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t26_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>soltarbandejapoyata</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t26_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t39_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>agregarpolimerasa</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t39_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t11_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>tomarmgcl</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t11_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t58_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>amplificarfragmento</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t58_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t8_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>soltarvasoagitador</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t8_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t61_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>soltartubonevera</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t61_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t15_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>tomarenzimaligasa</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t15_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t5_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>entregarbandejahielo</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t5_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t17_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>tomarpolimerasa</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t17_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationentregarchopocrecido_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>entregarchopocrecido</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>entregarchopocrecido_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t14_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>ajustarph</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t14_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t58_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>amplificarfragmento</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t58_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t22_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>tomartampote</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t22_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t18_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>tomarplasmidomirna</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t18_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t49_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>agregartampote</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t49_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf0borrarFase_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>borrarFase</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f0borrarFase_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t38_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>agregarmgcl</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t38_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t1_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>entregarvaso</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t1_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t9_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>tomartamponligasa</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t9_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t19_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>tomarantibioticokanamicina</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t19_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t35_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>agregartamponligasa</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t35_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t3_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>releerprotocolo</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t3_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t20_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>tomarantibioticogentamicina</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t20_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationtomaragrobacterium_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>tomaragrobacterium</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>tomaragrobacterium_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t30_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>encendercabina</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t30_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t54_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>entregartubomezcla</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t54_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t43_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>soltarbandcrecimiento</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t43_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t6_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>llenarvasoconagua</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t6_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationtomaragrobacterium_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>tomaragrobacterium</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>tomaragrobacterium_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t2_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>releerfundamentos</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t2_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t15_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>tomarenzimaligasa</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t15_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t36_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>llenarbotes</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t36_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t37_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>agregartamponpolimerasa</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t37_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t31_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>adjuntarpipetaamarilla</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t31_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t7_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>desbloquearfregadero</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t7_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t29_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>enfriarbotella</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t29_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t33_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>agregariaa</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t33_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t59_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>entregarmezclapcr</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t59_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t10_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>tomartamponpolimerasa</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t10_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t34_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>entregarbandeja</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t34_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t33_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>agregaradnplasmidico</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t33_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf0t8_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>entregarguantes</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f0t8_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t5_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>entregarbandejahielo</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t5_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t45_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>agregarplasmidomirna</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t45_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t31_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>contartiempocabina</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t31_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf0t5_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>releerfundamentos</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f0t5_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t31_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>cargarpuntaamarilla</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t31_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t44_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>bloquearbasefitotron</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t44_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t45_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>agregarantibioticokanamicina</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t45_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t16_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>agregaragar</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t16_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t14_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>tomartamponpolimerasa</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t14_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t38_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>entregarchopo</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t38_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t40_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>agregaroligonucleicoizq</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t40_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t12_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>tomaroligonucleicoizq</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t12_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t7_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>tomaradnplasmidico</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t7_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t14_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>tomartamponpolimerasa</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t14_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t13_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>agregarsacarosa</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t13_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t16_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>tomartamponligasa</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t16_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t36_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>agregaroligonucleicoder</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t36_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t54_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>entregartubomezcla</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t54_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t14_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>tomaraguadestilada</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t14_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t38_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>agregarmgcl</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t38_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t9_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>bloquearagitador</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t9_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t28_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>soltarboteeppendorf</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t28_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t5_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>entregarbandejahielo</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t5_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t21_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>tomarantibioticogentamicina</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t21_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t23_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>tomarmezclapcr</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t23_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t2_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>releerfundamentos</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t2_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t29_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>enfriarbotella</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t29_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t37_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>agregaraguadestilada</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t37_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t12_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>agregarmys</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t12_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t56_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>soltarmezcla</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t56_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf0t2_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>bloquearpoyata</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f0t2_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t4_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>calentartermobloque</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t4_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationBandejaBotes_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>BandejaBotes</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>BandejaBotes_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t42_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>agregartamponpolimerasa</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t42_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t1_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>entregarvaso</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t1_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t36_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>agregarenzimaligasa</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t36_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t30_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>encendercabina</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t30_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t45_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>crecerchopo</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t45_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t27_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>autoclavar</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t27_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf0t1_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>entregarbata</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f0t1_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t12_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>tomardntp</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t12_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t55_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>abrirpcr</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t55_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t3_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>releerprotocolo</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t3_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t30_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>entregarpipetaamarilla</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t30_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t17_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>tomarplasmido35s</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t17_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t23_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>movermezclaabotella</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t23_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t29_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>entregarpipetaamarilla</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t29_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t27_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>soltarbandejapoyata</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t27_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t47_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>agregarantibioticogentamicina</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t47_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t45_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>agregarplasmidomirna</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t45_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t49_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>agregarmgcl</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t49_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t31_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>cargarpuntaamarilla</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t31_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t59_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>entregarmezclapcr</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t59_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t29_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>entregarpipetaamarilla</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t29_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t50_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>agregarmezclapcr</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t50_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t57_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>cerrartermobloque</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t57_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationagregaragrobacterium_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>agregaragrobacterium</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>agregaragrobacterium_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t52_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>finmezcla</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t52_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t12_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>tomardntp</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t12_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t13_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>agregarsacarosa</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t13_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t21_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>tomarantibioticocloranfenicol</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t21_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t60_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>guardarpcr</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t60_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t43_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>agregartamponligasa</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t43_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t11_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>encenderagitador</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t11_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t15_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>desbloquearphmetro</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t15_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t25_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>insetarbotellaenautoclave</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t25_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t60_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>guardarligacion</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t60_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t43_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>agregarplasmido35s</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t43_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t40_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>cortarplanta</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t40_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t41_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>adjuntarbandeja</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t41_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t33_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>iniciarmezcla</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t33_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationagregaragarosa_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>agregaragarosa</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>agregaragarosa_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t49_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>agregarmgcl</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t49_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t12_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>agregarmys</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t12_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t10_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>tomartamponpolimerasa</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t10_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t39_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>agregardntp</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t39_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t24_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>agregariaa</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t24_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t18_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>agegarcaseina</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t18_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t50_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>agregariaafrombandeja</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t50_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t21_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>tomarantibioticocloranfenicol</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t21_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t28_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>sacartuboligacion</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t28_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t47_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>agregarantibioticocloranfenicol</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t47_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t40_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>agregarpolimerasa</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t40_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t48_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>agregartampote</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t48_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t59_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>entregarmezclaligacion</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t59_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t53_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>soltarpipetaamarilla</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t53_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t32_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>iniciarmezcla</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t32_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t55_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>abrirpcr</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t55_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t33_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>iniciarmezcla</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t33_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t27_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>soltarbandejapoyata</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t27_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t34_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>agregaradn</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t34_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t28_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>entregarbotellaautoclavada</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t28_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t34_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>entregarbandeja</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t34_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t19_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>tomarplasmidomirna</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t19_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t40_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>agregarpolimerasa</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t40_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t55_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>abrirtermobloque</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t55_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t61_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>soltartubonevera</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t61_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf0t8_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>entregarguantes</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f0t8_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t14_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>tomaraguadestilada</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t14_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t23_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>tomarmezclapcr</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t23_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t35_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>soltarbandeja</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t35_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t2_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>releerfundamentos</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t2_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf0crearLog_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>crearLog</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f0crearLog_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf0t6_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>releerprotocolo</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f0t6_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t16_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>tomartamponligasa</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t16_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t47_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>agregarantibioticogentamicina</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t47_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t16_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>tomardntp</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t16_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t26_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>bloquearautoclave</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t26_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf0t3_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>leerfundamentos</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f0t3_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t6_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>adjuntarbandejahielo</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t6_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t43_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>soltarbandcrecimiento</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t43_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t11_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>tomaraguadestilada</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t11_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t34_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>agregaradn</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t34_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t24_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>agregariaa</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t24_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t61_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>soltartubonevera</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t61_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t28_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>sacartuboligacion</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t28_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t15_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>desbloquearphmetro</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t15_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t46_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>agregarantibioticogentamicina</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t46_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t7_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>desbloquearfregadero</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t7_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationentregarchopocrecido_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>entregarchopocrecido</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>entregarchopocrecido_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t13_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>tomarpolimerasa</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t13_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t32_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>iniciarmezcla</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t32_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t37_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>agregaraguadestilada</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t37_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t32_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>cargarpuntaamarilla</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t32_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t38_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>agregardntp</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t38_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t32_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>cargarpuntaamarilla</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t32_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t16_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>agregaragar</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t16_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t38_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>agregardntp</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t38_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t24_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>desbloquearagitador</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t24_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf0t4_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>leerprotocolo</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f0t4_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t8_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>tomarmezclapcr</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t8_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t51_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>agregariaafrombandeja</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t51_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t8_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>tomarmezclapcr</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t8_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t40_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>agregaroligonucleicoizq</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t40_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t42_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>agregarenzimaligasa</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t42_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t4_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>soltarvasofregadero</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t4_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t17_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>agregarbisacrilamida</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t17_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t19_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>tomarplasmidomirna</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t19_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t50_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>agregariaafrombandeja</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t50_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationentregarpipetaazul_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>entregarpipetaazul</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>entregarpipetaazul_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t11_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>tomaraguadestilada</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t11_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t25_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>tomarmezclaligacion</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t25_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t37_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>esterilizar</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t37_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t31_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>adjuntarpipetaamarilla</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t31_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t33_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>agregaradnplasmidico</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t33_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf0t7_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>lavarsemanos</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f0t7_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t13_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>tomaroligonucleicoder</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t13_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t48_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>agregarantibioticocloranfenicol</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t48_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t9_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>bloquearagitador</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t9_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t46_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>agregarantibioticokanamicina</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t46_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t30_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>adjuntarpipetaamarilla</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t30_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t20_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>apagaragitador</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t20_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t46_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>fincrecimiento</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t46_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t31_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>contartiempocabina</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t31_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t24_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>agregariaa</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t24_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t34_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>agregarmezclapcr</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t34_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t29_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>sacartuboeppendorf</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t29_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t21_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>entregarbotella</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t21_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t8_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>tomaroligonucleicoizq</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t8_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t22_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>tomarantibioticocloranfenicol</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t22_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationentregarpipetaazul_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>entregarpipetaazul</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>entregarpipetaazul_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t41_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>agregaraguadestilada</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t41_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationentregarTaza_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>entregarTaza</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>entregarTaza_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t3_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>releerprotocolo</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t3_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t7_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>tomaradn</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t7_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t34_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>agregarmezclapcr</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t34_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t17_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>tomarplasmido35s</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t17_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t10_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>bloquearphmetro</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t10_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t5_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>bloquearfregadero</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t5_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t39_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>agregardntp</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t39_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t27_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>autoclavar</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t27_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t3_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>releerprotocolo</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t3_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t42_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>apagarcabina</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t42_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t10_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>bloquearphmetro</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t10_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t41_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>agregaroligonucleicoder</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t41_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t53_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>soltarpipetaamarilla</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t53_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t5_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>entregarbandejahielo</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t5_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t58_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>amplificarfragmento</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t58_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t30_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>entregarpipetaamarilla</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t30_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t20_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>apagaragitador</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t20_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t32_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>soltarbotellacabina</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t32_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t17_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>tomarpolimerasa</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t17_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t15_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>tomarmgcl</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t15_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t23_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>movermezclaabotella</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t23_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t22_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>soltarbotellaagitador</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t22_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t16_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>tomardntp</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t16_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t25_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>soltarbandejapoyataprimeravez</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t25_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t52_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>finmezcla</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t52_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t46_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>agregarantibioticokanamicina</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t46_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t50_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>agregarmezclapcr</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t50_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t43_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>agregarplasmido35s</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t43_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t24_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>desbloquearagitador</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t24_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t48_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>agregarantibioticocloranfenicol</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t48_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t35_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>agregartamponligasa</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t35_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t18_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>agegarcaseina</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t18_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t53_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>soltarpipetaamarilla</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t53_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t2_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>releerfundamentos</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t2_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t20_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>tomarantibioticokanamicina</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t20_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t13_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>tomarpolimerasa</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t13_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t55_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>abrirtermobloque</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t55_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t56_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>soltarmezcla</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t56_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t33_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>agregariaa</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t33_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t41_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>adjuntarbandeja</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t41_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t45_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>agregarantibioticokanamicina</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t45_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t9_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>tomaroligonucleicoder</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t9_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t6_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>adjuntarbandejahielo</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t6_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t27_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>entregarboteeppendorf</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t27_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t36_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>agregarenzimaligasa</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t36_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t57_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>cerrarpcr</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t57_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t5_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>bloquearfregadero</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t5_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t6_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>adjuntarbandejahielo</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t6_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t1_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>encendertermobloque</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t1_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf0t3_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>leerfundamentos</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f0t3_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf0borrarFase_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>borrarFase</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f0borrarFase_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t51_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>agregarmezclaligacion</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t51_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t20_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>tomarantibioticogentamicina</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t20_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationagregaragrobacterium_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>agregaragrobacterium</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>agregaragrobacterium_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t48_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>agregartampote</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t48_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t19_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>agergaretilenglicol</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t19_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t17_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>agregarbisacrilamida</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t17_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t25_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>insetarbotellaenautoclave</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t25_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t42_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>agregarenzimaligasa</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t42_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t23_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>tomartampote</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t23_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t44_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>agregarplasmido35s</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t44_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf0t2_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>bloquearpoyata</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f0t2_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t10_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>tomarenzimaligasa</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t10_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t14_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>ajustarph</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t14_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t52_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>finmezcla</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t52_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t1_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>encenderpcr</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t1_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t4_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>calentartermobloque</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t4_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t46_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>agregarantibioticogentamicina</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t46_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t2_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>releerfundamentos</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t2_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t53_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>soltarpipetaamarilla</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t53_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t4_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>soltarvasofregadero</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t4_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t28_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>soltarboteeppendorf</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t28_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t46_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>fincrecimiento</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t46_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t49_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>agregartampote</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t49_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t9_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>tomaroligonucleicoder</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t9_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t51_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>agregariaafrombandeja</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t51_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t47_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>agregarantibioticocloranfenicol</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t47_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t35_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>soltarbandeja</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t35_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t60_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>guardarpcr</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t60_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t18_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>tomarplasmido35s</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t18_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t4_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>calentartermobloque</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t4_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t11_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>encenderagitador</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t11_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t36_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>llenarbotes</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t36_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t24_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>agregariaa</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t24_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t37_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>esterilizar</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t37_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t42_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>apagarcabina</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t42_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t40_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>cortarplanta</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t40_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t7_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>tomaradn</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t7_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t15_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>tomarmgcl</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t15_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t8_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>tomaroligonucleicoizq</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t8_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t44_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>agregarplasmido35s</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t44_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t22_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>tomartampote</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t22_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t57_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>cerrartermobloque</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t57_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t39_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>soltarchopocabina</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t39_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t7_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>tomaradnplasmidico</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t7_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t12_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>tomaroligonucleicoizq</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t12_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t1_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>encendertermobloque</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t1_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t6_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>adjuntarbandejahielo</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t6_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t60_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>guardarligacion</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t60_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t26_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>soltarbandejapoyata</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t26_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t6_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>llenarvasoconagua</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t6_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t52_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>finmezcla</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t52_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t35_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>agregaroligonucleicoizq</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t35_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t45_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>crecerchopo</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t45_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t56_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>soltarmezcla</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t56_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t1_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>encenderpcr</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t1_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t23_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>tomartampote</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t23_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf0t6_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>releerprotocolo</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f0t6_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t9_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>tomartamponligasa</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t9_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t18_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>tomarplasmido35s</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t18_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t39_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>soltarchopocabina</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t39_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t42_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>agregartamponpolimerasa</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t42_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t44_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>bloquearbasefitotron</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t44_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf0t4_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>leerprotocolo</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f0t4_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t39_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>agregarpolimerasa</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t39_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t29_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>sacartuboeppendorf</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t29_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t19_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>tomarantibioticokanamicina</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t19_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t26_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>soltarbandejapoyataprimeravez</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t26_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t3_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>releerprotocolo</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t3_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t11_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>tomarmgcl</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t11_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t10_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>tomarenzimaligasa</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t10_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t4_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>calentartermobloque</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t4_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf0t7_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>lavarsemanos</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f0t7_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t8_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>soltarvasoagitador</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t8_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t25_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>tomarmezclaligacion</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t25_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t37_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>agregartamponpolimerasa</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t37_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf0t1_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>entregarbata</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f0t1_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t13_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>tomaroligonucleicoder</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t13_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t32_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>soltarbotellacabina</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t32_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t36_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>agregaroligonucleicoder</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t36_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t18_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>tomarplasmidomirna</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t18_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t3_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>releerprotocolo</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t3_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t20_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>tomarantibioticokanamicina</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t20_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t54_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>entregartubomezcla</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t54_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t51_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>agregarmezclaligacion</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t51_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t41_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>agregaraguadestilada</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t41_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t2_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>releerfundamentos</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t2_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf2t43_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>agregartamponligasa</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f2t43_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf1t21_PopulusPost2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPost2016"/>
+    <knowledge_object:descriptorObject>entregarbotella</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f1t21_PopulusPost2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+  <knowledge_object:Punctual_Action rdf:about="http://www.owl-ontologies.com/knowledge_object.owl#ActionAplicationf3t54_PopulusPre2016">
+    <student_trace:belongsToPlan rdf:resource="http://www.owl-ontologies.com/knowledge_object.owl#DomainPopulusPre2016"/>
+    <knowledge_object:descriptorObject>entregartubomezcla</knowledge_object:descriptorObject>
+    <knowledge_object:idObject>f3t54_PopulusPre2016</knowledge_object:idObject>
+  </knowledge_object:Punctual_Action>
+</rdf:RDF>

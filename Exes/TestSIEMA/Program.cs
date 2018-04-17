@@ -41,9 +41,13 @@ namespace TestSIEMA
             string relatedObject = "SeleccionPractica";
             Dictionary<string, List<string>> messages;
             List<string> errors;
+            
+            Console.WriteLine("Before validation: " + DateTime.Now.ToString("hh:mm:ss.fff"));
 
             int codigoFinalizacion = tutor.Validate(actionName, domain,
                 studentKey, relatedObject, out errors);
+            
+            Console.WriteLine("After validation: " + DateTime.Now.ToString("hh:mm:ss.fff"));
             
             Console.WriteLine ("Return Code: " + codigoFinalizacion);
             Console.WriteLine ("Errors: ");
@@ -52,6 +56,8 @@ namespace TestSIEMA
             }
 
             messages = tutor.GetTutorMessages(actionName, domain, studentKey);
+            
+            Console.WriteLine("After get messages: " + DateTime.Now.ToString("hh:mm:ss.fff"));
 
             foreach (string key in messages.Keys) {
                 Console.WriteLine (key + ":");
