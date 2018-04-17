@@ -136,7 +136,7 @@ namespace Its.TutoringModule.Common
 		private void LoadDomain (string key)
 		{
 			//Creates the domain from ExpertoControl.
-			_expertControl.CreateDomain (key);
+			_expertControl.CreateDomainIfDoesntExist(key);
 			//Loads domain logs for this domain.
 			_studentControl.GetDomainLogsFromOntology(_expertControl.GetDomainActions(key), _expertControl.OtherErrors, _worldControl[key].WorldErrors);
 		}
@@ -305,7 +305,15 @@ namespace Its.TutoringModule.Common
 		public void ResetPractice (string domainName, string studentKey)
 		{
 			//Resets the practice.
-			_studentControl.ResetPractice (domainName, studentKey);
+			try
+			{
+				_studentControl.ResetPractice (domainName, studentKey);
+			}
+			catch (Exception e)
+			{
+				Console.WriteLine(e);
+				// Either domain or student with such key doesn't exist
+			}
 		}
 
 	    /// <summary>

@@ -103,6 +103,22 @@ namespace Its.ExpertModule
 			//Returns the result.
 			return domain;
 		}
+		
+		/// <summary>
+		/// Creates the domain.
+		/// </summary>
+		/// <param name="domainKey">Domain key.</param>
+		public DomainActions CreateDomainIfDoesntExist (string domainKey)
+		{
+			if (!_domainActionsList.ContainsKey(domainKey))
+			{
+				return CreateDomain(domainKey);
+			}
+			else
+			{
+				return _domainActionsList[domainKey];
+			}
+		}
 
 		/// <summary>
 		/// Gets the messages.
