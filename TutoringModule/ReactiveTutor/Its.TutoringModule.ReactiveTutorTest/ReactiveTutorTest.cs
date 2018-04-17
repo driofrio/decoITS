@@ -272,5 +272,119 @@ namespace Its.TutoringModule.ReactiveTutorTest
             Assert.AreEqual(1, errors.Count);
             Assert.AreEqual("action2", errors[0]);
         }
+        
+        [Test]
+        public void TestSeqDependency()
+        {
+            // Arrange
+            string domainName = "SeqDependency";
+            InitTest(domainName);
+            
+            TutorFactory tf = TutorFactory.Instance();
+            ITutor tutor = tf.CreateReactiveTutor(domainName, config);
+
+            string studentKey = "1";
+            
+            // Clean any previous test run logs from memory
+            tutor.ResetPractice(domainName, studentKey);
+            
+            // Act
+            // Assert
+
+            int code;
+            List<string> errors;
+            Dictionary<string, List<string>> messages;
+
+            // action1
+            code = tutor.Validate("action1", domainName, studentKey, "obj", out errors);
+            Assert.AreEqual(1, code);
+            Assert.AreEqual(0, errors.Count);
+            messages = tutor.GetTutorMessages("action1", domainName, studentKey);
+            Assert.AreEqual(2, messages.Keys.Count);
+            Assert.AreEqual("action1", messages["confirmation"][0]);
+            Assert.AreEqual("action2", messages["tutor"][0]);
+            
+            // action2
+            code = tutor.Validate("action2", domainName, studentKey, "obj", out errors);
+            Assert.AreEqual(1, code);
+            Assert.AreEqual(0, errors.Count);
+            messages = tutor.GetTutorMessages("action2", domainName, studentKey);
+            Assert.AreEqual(2, messages.Keys.Count);
+            Assert.AreEqual("action2", messages["confirmation"][0]);
+            Assert.AreEqual("action3", messages["tutor"][0]);
+            
+            // action3
+            code = tutor.Validate("action3", domainName, studentKey, "obj", out errors);
+            Assert.AreEqual(1, code);
+            Assert.AreEqual(0, errors.Count);
+            messages = tutor.GetTutorMessages("action3", domainName, studentKey);
+            Assert.AreEqual(2, messages.Keys.Count);
+            Assert.AreEqual("action3", messages["confirmation"][0]);
+            Assert.AreEqual("action4", messages["tutor"][0]);
+            
+            // action4
+            code = tutor.Validate("action4", domainName, studentKey, "obj", out errors);
+            Assert.AreEqual(1, code);
+            Assert.AreEqual(0, errors.Count);
+            messages = tutor.GetTutorMessages("action4", domainName, studentKey);
+            Assert.AreEqual(1, messages.Keys.Count);
+            Assert.AreEqual("action4", messages["confirmation"][0]);
+        }
+        
+        [Test]
+        public void TestSeqDependencyError()
+        {
+            // Arrange
+            string domainName = "SeqDependency";
+            InitTest(domainName);
+            
+            TutorFactory tf = TutorFactory.Instance();
+            ITutor tutor = tf.CreateReactiveTutor(domainName, config);
+
+            string studentKey = "1";
+            
+            // Clean any previous test run logs from memory
+            tutor.ResetPractice(domainName, studentKey);
+            
+            // Act
+            // Assert
+
+            int code;
+            List<string> errors;
+            Dictionary<string, List<string>> messages;
+
+            // action1
+            code = tutor.Validate("action1", domainName, studentKey, "obj", out errors);
+            Assert.AreEqual(1, code);
+            Assert.AreEqual(0, errors.Count);
+            messages = tutor.GetTutorMessages("action1", domainName, studentKey);
+            Assert.AreEqual(2, messages.Keys.Count);
+            Assert.AreEqual("action1", messages["confirmation"][0]);
+            Assert.AreEqual("action2", messages["tutor"][0]);
+            
+            // action3
+            code = tutor.Validate("action3", domainName, studentKey, "obj", out errors);
+            Assert.AreEqual(1, code);
+            Assert.AreEqual(0, errors.Count);
+            messages = tutor.GetTutorMessages("action3", domainName, studentKey);
+            Assert.AreEqual(2, messages.Keys.Count);
+            Assert.AreEqual("action3", messages["confirmation"][0]);
+            Assert.AreEqual("action4", messages["tutor"][0]);
+            
+            // action2
+            code = tutor.Validate("action2", domainName, studentKey, "obj", out errors);
+            Assert.AreEqual(1, code);
+            Assert.AreEqual(0, errors.Count);
+            messages = tutor.GetTutorMessages("action2", domainName, studentKey);
+            Assert.AreEqual(2, messages.Keys.Count);
+            Assert.AreEqual("action2", messages["confirmation"][0]);
+            Assert.AreEqual("action3", messages["tutor"][0]);
+            
+            // action4
+            code = tutor.Validate("action4", domainName, studentKey, "obj", out errors);
+            Assert.AreEqual(0, code);
+            Assert.AreEqual(1, errors.Count);
+            Assert.AreEqual("action2order", errors[0]);
+        }
     }
 }
