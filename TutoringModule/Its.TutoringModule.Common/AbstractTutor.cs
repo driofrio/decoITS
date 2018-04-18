@@ -311,7 +311,7 @@ namespace Its.TutoringModule.Common
 			}
 			catch (Exception e)
 			{
-				Console.WriteLine(e);
+				//Console.WriteLine(e);
 				// Either domain or student with such key doesn't exist
 			}
 		}

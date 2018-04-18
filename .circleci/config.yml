@@ -1,0 +1,13 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: ribakov/workspace:2017.3.0p2
+    steps:
+      - checkout
+      - run:
+          name: Build
+          command: xbuild
+      - run:
+          name: Test Reactive Tutor
+          command: nunit3-console ./TutoringModule/ReactiveTutor/Its.TutoringModule.ReactiveTutorTest/bin/Debug/Its.TutoringModule.ReactiveTutorTest.dll --noresult
