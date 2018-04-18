@@ -6,8 +6,11 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Fetch dependencies
+          command: nuget restore SolucionTutor.sln
+      - run:
           name: Build
-          command: xbuild
+          command: msbuild
       - run:
           name: Test Reactive Tutor
           command: nunit3-console ./TutoringModule/ReactiveTutor/Its.TutoringModule.ReactiveTutorTest/bin/Debug/Its.TutoringModule.ReactiveTutorTest.dll --noresult
