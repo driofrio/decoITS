@@ -228,13 +228,9 @@ namespace Its.ExpertModule
 				//Returns the value.
 				return 0;
 			}
-			//Checks whether the action has already done.
-			var oQuery = 
-				from o in studentLog.Logs
-					where o.Action.Equals(action) && o.Error == null
-				select o.Action;
-			//Whether the action with the given name has just done previously.
-			if (oQuery.ToList().Count != 0) {
+
+			if (studentLog.HasPerformedActionWithoutError(action))
+			{
 				//Checks if the action can be repeated.
 				if (action.IsRepetitive == false) {
 					//Get the error.
@@ -311,14 +307,9 @@ namespace Its.ExpertModule
 					//Check if the action validate the phase errors.
 					if (action.ValidateErrors) {
 						//Gets all errors done by the user previously.
-						var errQuery = 
-							from o in studentLog.Logs
-								where o.Action.Phase == studentLog.CurrentPhase
-							select o.Error;
 						//Adds errors into the list that will be returned.
-						foreach (Error e in errQuery.ToList()) {
-							if (e != null)
-								outputError.Add (e);
+						foreach (Error e in studentLog.GetErrorsInCurrentPhase()) {
+							outputError.Add (e);
 						}
 					}
 					//Checks if the action change the current phase.
@@ -500,14 +491,9 @@ namespace Its.ExpertModule
 				//Check if the action validate the phase errors.
 				if (action.ValidateErrors) {
 					//Gets all errors done by the user previously.
-					var errQuery = 
-						from o in studentLog.Logs
-							where o.Action.Phase == studentLog.CurrentPhase
-						select o.Error;
 					//Adds errors into the list that will be returned.
-					foreach (Error e in errQuery.ToList()) {
-						if (e != null)
-							outputError.Add (e);
+					foreach (Error e in studentLog.GetErrorsInCurrentPhase()) {
+						outputError.Add (e);
 					}
 				}
 				//Checks if the action change the current phase.
