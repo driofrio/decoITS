@@ -94,8 +94,7 @@ namespace Its.StudentModule
 			CorrectiveActionLog log = new CorrectiveActionLog (action, wasApplied, errorsFixed);
 			//Adds the log into the StudentLog.
 			studentLog.AddLog (log);
-			//Saves the log into the ontology.
-			ONTOLOGY.AddCorrectiveActionLogIntoOnto(log, student, domain);
+			studentLog.AddToLogBuffer(log);
 
 			//Creates a path.
 			string path = _domainPath.Replace ('\\', Path.DirectorySeparatorChar) + "Logs" + Path.DirectorySeparatorChar
@@ -149,8 +148,7 @@ namespace Its.StudentModule
 			NoCorrectiveActionLog log = new NoCorrectiveActionLog (action, wasApplied);
 			//Adds the log into the StudentLog.
 			studentLog.AddLog (log);
-			//Saves the log into the ontology.
-			ONTOLOGY.AddNoCorrectiveActionLogIntoOnto(log, student, domain);
+			studentLog.AddToLogBuffer(log);
 
 			//Creates a path.
 			string path = _domainPath.Replace ('\\', Path.DirectorySeparatorChar) + "Logs" + Path.DirectorySeparatorChar
@@ -190,8 +188,7 @@ namespace Its.StudentModule
 			MinTimeErrorLog log = new MinTimeErrorLog (action, wasApplied, time);
 			//Adds the log into the StudentLog.
 			studentLog.AddLog (log);
-			//Saves the log into the ontology.
-			ONTOLOGY.AddMinTimeErrorLogIntoOnto(log, student, domain);
+			studentLog.AddToLogBuffer(log);
 
 
 			//Creates a path.
@@ -232,8 +229,7 @@ namespace Its.StudentModule
 			MaxTimeErrorLog log = new MaxTimeErrorLog (action, wasApplied, time);
 			//Adds the log into the StudentLog.
 			studentLog.AddLog (log);
-			//Saves the log into the ontology.
-			ONTOLOGY.AddMaxTimeErrorLogIntoOnto(log, student, domain);
+			studentLog.AddToLogBuffer(log);
 
 			//Creates a path.
 			string path = _domainPath.Replace ('\\', Path.DirectorySeparatorChar) + "Logs" + Path.DirectorySeparatorChar
@@ -272,8 +268,7 @@ namespace Its.StudentModule
 			OtherErrorLog log = new OtherErrorLog (action, wasApplied, error);
 			//Adds the log into the StudentLog.
 			studentLog.AddLog (log);
-			//Saves the log into the ontology.
-			ONTOLOGY.AddOtherErrorLogIntoOnto(log, student, domain);
+			studentLog.AddToLogBuffer(log);
 
 			//Creates a path.
 			string path = _domainPath.Replace ('\\', Path.DirectorySeparatorChar) + "Logs" + Path.DirectorySeparatorChar
@@ -313,8 +308,7 @@ namespace Its.StudentModule
 			WorldErrorLog log = new WorldErrorLog (action, wasApplied, error, type);
 			//Adds the log into the StudentLog.
 			studentLog.AddLog (log);
-			//Saves the log into the ontology.
-			ONTOLOGY.AddWorldErrorLogIntoOnto(log, student, domain);
+			studentLog.AddToLogBuffer(log);
 
 			//Creates a path.
 			string path = _domainPath.Replace ('\\', Path.DirectorySeparatorChar) + "Logs" + Path.DirectorySeparatorChar
@@ -359,8 +353,7 @@ namespace Its.StudentModule
 			DepErrorLog log = new DepErrorLog (action, wasApplied,failedDependence, isOrderError);
 			//Adds the log into the StudentLog.
 			studentLog.AddLog (log);
-			//Saves the log into the ontology.
-			ONTOLOGY.AddDepErrorLogIntoOnto(log, student, domain);
+			studentLog.AddToLogBuffer(log);
 
 			//Creates a path.
 			string path = _domainPath.Replace ('\\', Path.DirectorySeparatorChar) + "Logs" + Path.DirectorySeparatorChar
@@ -400,8 +393,7 @@ namespace Its.StudentModule
 			IncompErrorLog log = new IncompErrorLog (action, wasApplied, failedIncomp);
 			//Adds the log into the StudentLog.
 			studentLog.AddLog (log);
-			//Saves the log into the ontology.
-			ONTOLOGY.AddIncompErrorLogIntoOnto(log, student, domain);
+			studentLog.AddToLogBuffer(log);
 
 			//Creates a path.
 			string path = _domainPath.Replace ('\\', Path.DirectorySeparatorChar) + "Logs" + Path.DirectorySeparatorChar
@@ -602,30 +594,35 @@ namespace Its.StudentModule
 				throw new ArgumentException ("There is not any DomainLog with the given domain.");
 			//Gets the StudentLog.
 			StudentLog studentLog = domainLog.GetStudentLog (student.Key);
+			bool persist = false;
 
-			foreach (LogEntry log in studentLog.LastActionLogs)
+			// First, update ontology model with all log entries without writing each update to disk
+			foreach (LogEntry log in studentLog.ActionLogBuffer)
 			{	
 				if (log.GetType () == typeof(NoCorrectiveActionLog))
-					ONTOLOGY.AddNoCorrectiveActionLogIntoOnto(log, student, domain);
+					ONTOLOGY.AddNoCorrectiveActionLogIntoOnto(log, student, domain, persist);
 				else if (log.GetType () == typeof(CorrectiveActionLog))
-					ONTOLOGY.AddCorrectiveActionLogIntoOnto(log, student, domain);
+					ONTOLOGY.AddCorrectiveActionLogIntoOnto(log, student, domain, persist);
 				else if (log.GetType () == typeof(NoPlanAllowedActionLog))
-					ONTOLOGY.AddNoPlanAllowedActionLogIntoOnto(log, student, domain);
+					ONTOLOGY.AddNoPlanAllowedActionLogIntoOnto(log, student, domain, persist);
 				else if (log.GetType () == typeof(OtherErrorLog))
-					ONTOLOGY.AddOtherErrorLogIntoOnto(log, student, domain);
+					ONTOLOGY.AddOtherErrorLogIntoOnto(log, student, domain, persist);
 				else if (log.GetType () == typeof(DepErrorLog))
-					ONTOLOGY.AddDepErrorLogIntoOnto(log, student, domain);
+					ONTOLOGY.AddDepErrorLogIntoOnto(log, student, domain, persist);
 				else if (log.GetType () == typeof(IncompErrorLog))
-					ONTOLOGY.AddIncompErrorLogIntoOnto(log, student, domain);
+					ONTOLOGY.AddIncompErrorLogIntoOnto(log, student, domain, persist);
 				else if (log.GetType () == typeof(WorldErrorLog))
-					ONTOLOGY.AddWorldErrorLogIntoOnto(log, student, domain);
+					ONTOLOGY.AddWorldErrorLogIntoOnto(log, student, domain, persist);
 				else if (log.GetType () == typeof(MinTimeErrorLog))
-					ONTOLOGY.AddMinTimeErrorLogIntoOnto(log, student, domain);
+					ONTOLOGY.AddMinTimeErrorLogIntoOnto(log, student, domain, persist);
 				else if (log.GetType () == typeof(MaxTimeErrorLog))
-					ONTOLOGY.AddMaxTimeErrorLogIntoOnto(log, student, domain);
+					ONTOLOGY.AddMaxTimeErrorLogIntoOnto(log, student, domain, persist);
 			}
+			
+			// Write all updates to file in one go
+			ONTOLOGY.SaveStudentTraceOnto(domain.Key, student.Key);
 
-			studentLog.LastActionLogs.Clear();
+			studentLog.ActionLogBuffer.Clear();
 		}
 	}
 }

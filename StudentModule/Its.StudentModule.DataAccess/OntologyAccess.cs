@@ -295,7 +295,7 @@ namespace Its.StudentModule.DataAccess
 		/// Adds the log into the ontology.
 		/// </summary>
 		/// <param name="log">Log.</param>
-		public void AddNoCorrectiveActionLogIntoOnto (LogEntry logEntry, Student student, DomainActions domain)
+		public void AddNoCorrectiveActionLogIntoOnto (LogEntry logEntry, Student student, DomainActions domain, bool persist = true)
 		{
 			NoCorrectiveActionLog log = (NoCorrectiveActionLog) logEntry;
 			
@@ -386,21 +386,9 @@ namespace Its.StudentModule.DataAccess
 			actionTrace.addLiteral (p, t);
 
 			//Saves into disk.
-			string path = _logsPath + domain.Key + Path.DirectorySeparatorChar;
-			//Determine whether the directory exists. If the directory does not exist, it will be created.
-			if (!Directory.Exists(path)) {
-				Directory.CreateDirectory(path);
-			}
-			//Specifies the file path.
-			string file = path + student.Key + ".owl";
-			//Saves the logs into files.
-			using (BufferedWriter bw = new BufferedWriter (new OutputStreamWriter(new FileOutputStream(file), "UTF-8"))) {
-				string b = "file:" + file;
-				//using (OntModel ontTmp = ModelFactory.createOntologyModel (OntModelSpec.OWL_DL_MEM, null)) {
-				//ontTmp = _ontologyModel;
-				ontM.write (bw, "RDF/XML-ABBREV", b);
-				//}
-				bw.close ();
+			if (persist)
+			{
+				SaveStudentTraceOnto(domain.Key, student.Key);
 			}
 		}
 
@@ -408,7 +396,7 @@ namespace Its.StudentModule.DataAccess
 		/// Adds the log into onto.
 		/// </summary>
 		/// <param name="log">Log.</param>
-		public void AddCorrectiveActionLogIntoOnto (LogEntry logEntry, Student student, DomainActions domain)
+		public void AddCorrectiveActionLogIntoOnto (LogEntry logEntry, Student student, DomainActions domain, bool persist = true)
 		{
 			CorrectiveActionLog log = (CorrectiveActionLog) logEntry;
 			
@@ -535,21 +523,9 @@ namespace Its.StudentModule.DataAccess
 			actionTrace.addLiteral (p, t);
 
 			//Saves into disk.
-			string path = _logsPath + domain.Key + Path.DirectorySeparatorChar;
-			//Determine whether the directory exists. If the directory does not exist, it will be created.
-			if (!Directory.Exists(path)) {
-				Directory.CreateDirectory(path);
-			}
-			//Specifies the file path.
-			string file = path + student.Key + ".owl";
-			//Saves the logs into files.
-			using (BufferedWriter bw = new BufferedWriter (new OutputStreamWriter(new FileOutputStream(file), "UTF-8"))) {
-				string b = "file:" + file;
-				//using (OntModel ontTmp = ModelFactory.createOntologyModel (OntModelSpec.OWL_DL_MEM, null)) {
-				//ontTmp = _ontologyModel;
-				ontM.write (bw, "RDF/XML-ABBREV", b);
-				//}
-				bw.close ();
+			if (persist)
+			{
+				SaveStudentTraceOnto(domain.Key, student.Key);
 			}
 		}
 
@@ -557,7 +533,7 @@ namespace Its.StudentModule.DataAccess
 		/// Adds the log into onto.
 		/// </summary>
 		/// <param name="log">Log.</param>
-		public void AddNoPlanAllowedActionLogIntoOnto (LogEntry logEntry, Student student, DomainActions domain)
+		public void AddNoPlanAllowedActionLogIntoOnto (LogEntry logEntry, Student student, DomainActions domain, bool persist = true)
 		{
 			NoPlanAllowedActionLog log = (NoPlanAllowedActionLog) logEntry;
 			
@@ -684,21 +660,9 @@ namespace Its.StudentModule.DataAccess
 			actionTrace.addLiteral (p, t);
 
 			//Saves into disk.
-			string path = _logsPath + domain.Key + Path.DirectorySeparatorChar;
-			//Determine whether the directory exists. If the directory does not exist, it will be created.
-			if (!Directory.Exists(path)) {
-				Directory.CreateDirectory(path);
-			}
-			//Specifies the file path.
-			string file = path + student.Key + ".owl";
-			//Saves the logs into files.
-			using (BufferedWriter bw = new BufferedWriter (new OutputStreamWriter(new FileOutputStream(file), "UTF-8"))) {
-				string b = "file:" + file;
-				//using (OntModel ontTmp = ModelFactory.createOntologyModel (OntModelSpec.OWL_DL_MEM, null)) {
-				//ontTmp = _ontologyModel;
-				ontM.write (bw, "RDF/XML-ABBREV", b);
-				//}
-				bw.close ();
+			if (persist)
+			{
+				SaveStudentTraceOnto(domain.Key, student.Key);
 			}
 		}
 
@@ -706,7 +670,7 @@ namespace Its.StudentModule.DataAccess
 		/// Adds the log into onto.
 		/// </summary>
 		/// <param name="log">Log.</param>
-		public void AddDepErrorLogIntoOnto (LogEntry logEntry, Student student, DomainActions domain)
+		public void AddDepErrorLogIntoOnto (LogEntry logEntry, Student student, DomainActions domain, bool persist = true)
 		{
 			DepErrorLog log = (DepErrorLog) logEntry;
 			
@@ -868,21 +832,9 @@ namespace Its.StudentModule.DataAccess
 			actionTrace.addLiteral (p, t);
 
 			//Saves into disk.
-			string path = _logsPath + domain.Key + Path.DirectorySeparatorChar;
-			//Determine whether the directory exists. If the directory does not exist, it will be created.
-			if (!Directory.Exists(path)) {
-				Directory.CreateDirectory(path);
-			}
-			//Specifies the file path.
-			string file = path + student.Key + ".owl";
-			//Saves the logs into files.
-			using (BufferedWriter bw = new BufferedWriter (new OutputStreamWriter(new FileOutputStream(file), "UTF-8"))) {
-				string b = "file:" + file;
-				//using (OntModel ontTmp = ModelFactory.createOntologyModel (OntModelSpec.OWL_DL_MEM, null)) {
-				//ontTmp = _ontologyModel;
-				ontM.write (bw, "RDF/XML-ABBREV", b);
-				//}
-				bw.close ();
+			if (persist)
+			{
+				SaveStudentTraceOnto(domain.Key, student.Key);
 			}
 		}
 
@@ -890,7 +842,7 @@ namespace Its.StudentModule.DataAccess
 		/// Adds the log into onto.
 		/// </summary>
 		/// <param name="log">Log.</param>
-		public void AddIncompErrorLogIntoOnto (LogEntry logEntry, Student student, DomainActions domain)
+		public void AddIncompErrorLogIntoOnto (LogEntry logEntry, Student student, DomainActions domain, bool persist = true)
 		{
 			IncompErrorLog log = (IncompErrorLog) logEntry;
 			
@@ -1048,21 +1000,9 @@ namespace Its.StudentModule.DataAccess
 			actionTrace.addLiteral (p, t);
 
 			//Saves into disk.
-			string path = _logsPath + domain.Key + Path.DirectorySeparatorChar;
-			//Determine whether the directory exists. If the directory does not exist, it will be created.
-			if (!Directory.Exists(path)) {
-				Directory.CreateDirectory(path);
-			}
-			//Specifies the file path.
-			string file = path + student.Key + ".owl";
-			//Saves the logs into files.
-			using (BufferedWriter bw = new BufferedWriter (new OutputStreamWriter(new FileOutputStream(file), "UTF-8"))) {
-				string b = "file:" + file;
-				//using (OntModel ontTmp = ModelFactory.createOntologyModel (OntModelSpec.OWL_DL_MEM, null)) {
-				//ontTmp = _ontologyModel;
-				ontM.write (bw, "RDF/XML-ABBREV", b);
-				//}
-				bw.close ();
+			if (persist)
+			{
+				SaveStudentTraceOnto(domain.Key, student.Key);
 			}
 		}
 
@@ -1070,7 +1010,7 @@ namespace Its.StudentModule.DataAccess
 		/// Adds the log into onto.
 		/// </summary>
 		/// <param name="log">Log.</param>
-		public void AddMinTimeErrorLogIntoOnto (LogEntry logEntry, Student student, DomainActions domain)
+		public void AddMinTimeErrorLogIntoOnto (LogEntry logEntry, Student student, DomainActions domain, bool persist = true)
 		{
 			MinTimeErrorLog log = (MinTimeErrorLog) logEntry;
 			
@@ -1228,21 +1168,9 @@ namespace Its.StudentModule.DataAccess
 			actionTrace.addLiteral (p, t);
 
 			//Saves into disk.
-			string path = _logsPath + domain.Key + Path.DirectorySeparatorChar;
-			//Determine whether the directory exists. If the directory does not exist, it will be created.
-			if (!Directory.Exists(path)) {
-				Directory.CreateDirectory(path);
-			}
-			//Specifies the file path.
-			string file = path + student.Key + ".owl";
-			//Saves the logs into files.
-			using (BufferedWriter bw = new BufferedWriter (new OutputStreamWriter(new FileOutputStream(file), "UTF-8"))) {
-				string b = "file:" + file;
-				//using (OntModel ontTmp = ModelFactory.createOntologyModel (OntModelSpec.OWL_DL_MEM, null)) {
-				//ontTmp = _ontologyModel;
-				ontM.write (bw, "RDF/XML-ABBREV", b);
-				//}
-				bw.close ();
+			if (persist)
+			{
+				SaveStudentTraceOnto(domain.Key, student.Key);
 			}
 		}
 
@@ -1250,7 +1178,7 @@ namespace Its.StudentModule.DataAccess
 		/// Adds the log into onto.
 		/// </summary>
 		/// <param name="log">Log.</param>
-		public void AddMaxTimeErrorLogIntoOnto (LogEntry logEntry, Student student, DomainActions domain)
+		public void AddMaxTimeErrorLogIntoOnto (LogEntry logEntry, Student student, DomainActions domain, bool persist = true)
 		{
 			MaxTimeErrorLog log = (MaxTimeErrorLog) logEntry;
 			
@@ -1408,21 +1336,9 @@ namespace Its.StudentModule.DataAccess
 			actionTrace.addLiteral (p, t);
 
 			//Saves into disk.
-			string path = _logsPath + domain.Key + Path.DirectorySeparatorChar;
-			//Determine whether the directory exists. If the directory does not exist, it will be created.
-			if (!Directory.Exists(path)) {
-				Directory.CreateDirectory(path);
-			}
-			//Specifies the file path.
-			string file = path + student.Key + ".owl";
-			//Saves the logs into files.
-			using (BufferedWriter bw = new BufferedWriter (new OutputStreamWriter(new FileOutputStream(file), "UTF-8"))) {
-				string b = "file:" + file;
-				//using (OntModel ontTmp = ModelFactory.createOntologyModel (OntModelSpec.OWL_DL_MEM, null)) {
-				//ontTmp = _ontologyModel;
-				ontM.write (bw, "RDF/XML-ABBREV", b);
-				//}
-				bw.close ();
+			if (persist)
+			{
+				SaveStudentTraceOnto(domain.Key, student.Key);
 			}
 		}
 
@@ -1430,7 +1346,7 @@ namespace Its.StudentModule.DataAccess
 		/// Adds the log into onto.
 		/// </summary>
 		/// <param name="log">Log.</param>
-		public void AddWorldErrorLogIntoOnto (LogEntry logEntry, Student student, DomainActions domain)
+		public void AddWorldErrorLogIntoOnto (LogEntry logEntry, Student student, DomainActions domain, bool persist = true)
 		{
 			WorldErrorLog log = (WorldErrorLog) logEntry;
 			
@@ -1604,24 +1520,13 @@ namespace Its.StudentModule.DataAccess
 			actionTrace.addLiteral (p, t);
 
 			//Saves into disk.
-			string path = _logsPath + domain.Key + Path.DirectorySeparatorChar;
-			//Determine whether the directory exists. If the directory does not exist, it will be created.
-			if (!Directory.Exists(path)) {
-				Directory.CreateDirectory(path);
+			if (persist)
+			{
+				SaveStudentTraceOnto(domain.Key, student.Key);
 			}
-			//Specifies the file path.
-			string file = path + student.Key + ".owl";
-			//Saves the logs into files.
-			using (BufferedWriter bw = new BufferedWriter (new OutputStreamWriter(new FileOutputStream(file), "UTF-8"))) {
-				string b = "file:" + file;
-				//using (OntModel ontTmp = ModelFactory.createOntologyModel (OntModelSpec.OWL_DL_MEM, null)) {
-				//ontTmp = _ontologyModel;
-				ontM.write (bw, "RDF/XML-ABBREV", b);
-				//}
-				bw.close ();
-			}
-			//Specifies the file.
-			file = _ontologyPath + "world_error.owl";
+
+			//Update world error log at all times.
+			string file = _ontologyPath + "world_error.owl";
 			//Saves world error data into a file.
 			using (BufferedWriter bw = new BufferedWriter (new OutputStreamWriter(new FileOutputStream(file), "UTF-8"))) {
 				string b = "file:" + file;
@@ -1636,7 +1541,7 @@ namespace Its.StudentModule.DataAccess
 		/// Adds the log into onto.
 		/// </summary>
 		/// <param name="log">Log.</param>
-		public void AddOtherErrorLogIntoOnto (LogEntry logEntry, Student student, DomainActions domain)
+		public void AddOtherErrorLogIntoOnto (LogEntry logEntry, Student student, DomainActions domain, bool persist = true)
 		{
 			OtherErrorLog log = (OtherErrorLog) logEntry;
 			
@@ -1783,21 +1688,9 @@ namespace Its.StudentModule.DataAccess
 			actionTrace.addLiteral (p, t);
 
 			//Saves into disk.
-			string path = _logsPath + domain.Key + Path.DirectorySeparatorChar;
-			//Determine whether the directory exists. If the directory does not exist, it will be created.
-			if (!Directory.Exists(path)) {
-				Directory.CreateDirectory(path);
-			}
-			//Specifies the file path.
-			string file = path + student.Key + ".owl";
-			//Saves the logs into files.
-			using (BufferedWriter bw = new BufferedWriter (new OutputStreamWriter(new FileOutputStream(file), "UTF-8"))) {
-				string b = "file:" + file;
-				//using (OntModel ontTmp = ModelFactory.createOntologyModel (OntModelSpec.OWL_DL_MEM, null)) {
-				//ontTmp = _ontologyModel;
-				ontM.write (bw, "RDF/XML-ABBREV", b);
-				//}
-				bw.close ();
+			if (persist)
+			{
+				SaveStudentTraceOnto(domain.Key, student.Key);
 			}
 		}
 
@@ -2355,6 +2248,31 @@ namespace Its.StudentModule.DataAccess
 			
 			//Returns the list.
 			return logs;
+		}
+
+		public void SaveStudentTraceOnto(string domainKey, string studentKey)
+		{
+			OntModel ontM = _logModels[domainKey + "-" + studentKey];
+			
+			string path = _logsPath + domainKey + Path.DirectorySeparatorChar;
+			//Determine whether the directory exists. If the directory does not exist, it will be created.
+			if (!Directory.Exists(path))
+			{
+				Directory.CreateDirectory(path);
+			}
+
+			//Specifies the file path.
+			string file = path + studentKey + ".owl";
+			//Saves the logs into files.
+			using (BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file), "UTF-8")))
+			{
+				string b = "file:" + file;
+				//using (OntModel ontTmp = ModelFactory.createOntologyModel (OntModelSpec.OWL_DL_MEM, null)) {
+				//ontTmp = _ontologyModel;
+				ontM.write(bw, "RDF/XML-ABBREV", b);
+				//}
+				bw.close();
+			}
 		}
 	}
 }

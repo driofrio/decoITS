@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Its.ExpertModule.ObjectModel;
+using Its.TutoringModule.ReactiveTutor.ObjectModel;
 
 namespace Its.StudentModule.ObjectModel
 {
@@ -51,16 +53,16 @@ namespace Its.StudentModule.ObjectModel
 			}
 		}
 		/// <summary>
-		/// Logs produced by last user action. Not written to ontology until StudentControl.FlushLastActionLogs() method is called
+		/// Logs produced by last user action(s). Not written to ontology until StudentControl.FlushLastActionLogs() method is called
 		/// </summary>
-		private List<LogEntry> _lastActionLogs;
+		private List<LogEntry> _actionLogBuffer;
 		/// <summary>
 		/// Gets logs produced by last user action.
 		/// </summary>
 		/// <value>The logs.</value>
-		public List<LogEntry> LastActionLogs {
+		public List<LogEntry> ActionLogBuffer {
 			get {
-				return _lastActionLogs.OrderBy(p=>p.DateLog).ToList<LogEntry>();
+				return _actionLogBuffer.OrderBy(p=>p.DateLog).ToList<LogEntry>();
 			}
 		}
 		/// <summary>
@@ -93,7 +95,7 @@ namespace Its.StudentModule.ObjectModel
 			this._key = student.Key;
 			this._owner = student;
 			this._logs = new List<LogEntry> ();
-			this._lastActionLogs = new List<LogEntry>();
+			this._actionLogBuffer = new List<LogEntry>();
 		}
 
 		public StudentLog (Student student, List<LogEntry> logs)
@@ -101,7 +103,7 @@ namespace Its.StudentModule.ObjectModel
 			this._key = student.Key;
 			this._owner = student;
 			this._logs = logs;
-			this._lastActionLogs = new List<LogEntry>();
+			this._actionLogBuffer = new List<LogEntry>();
 		}
 
 		/// <summary>
@@ -112,6 +114,16 @@ namespace Its.StudentModule.ObjectModel
 		{
 			//Adds the log into the list.
 			this._logs.Add (log);
+		}
+		
+		/// <summary>
+		/// Adds the log to the buffer that will be flushed to disk at a later stage.
+		/// </summary>
+		/// <param name="log">Log.</param>
+		public void AddToLogBuffer(LogEntry log)
+		{
+			//Adds the log into the list.
+			this._actionLogBuffer.Add (log);
 		}
 
 		/// <summary>
@@ -199,6 +211,45 @@ namespace Its.StudentModule.ObjectModel
 				return true;
 			else
 				return false;
+		}
+		
+		/// <summary>
+		/// Checks whether student has already SUCCESSFULLY performed given action (without committing an error)
+		/// </summary>
+		public bool HasPerformedActionWithoutError(ActionAplication action)
+		{
+			bool found = false;
+
+			for (int i = 0; i < _logs.Count; i++)
+			{
+				LogEntry log = _logs[i];
+				if (log.Action.Equals(action) && log.Error == null)
+				{
+					found = true;
+					break;
+				}
+			}
+
+			return found;
+		}
+		
+		/// <summary>
+		/// Checks whether student has already SUCCESSFULLY performed given action (without committing an error)
+		/// </summary>
+		public List<Error> GetErrorsInCurrentPhase()
+		{
+			List<Error> errors = new List<Error>();
+
+			for (int i = 0; i < _logs.Count; i++)
+			{
+				LogEntry log = _logs[i];
+				if (log.Action.Phase == CurrentPhase && log.Error != null)
+				{
+					errors.Add(log.Error);
+				}
+			}
+
+			return errors;
 		}
 	}
 }
