@@ -386,5 +386,92 @@ namespace Its.TutoringModule.ReactiveTutorTest
             Assert.AreEqual(1, errors.Count);
             Assert.AreEqual("action2order", errors[0]);
         }
+        
+        [Test]
+        public void TestComplexDependency()
+        {
+            // Arrange
+            string domainName = "ComplexDependency";
+            InitTest(domainName);
+            
+            // Act
+            TutorFactory tf = TutorFactory.Instance();
+            ITutor tutor = tf.CreateReactiveTutor(domainName, config);
+
+            // Assert
+            Assert.True(true, "Exceptions were thrown while parsing domain config spreadsheet.");
+        }
+        
+        [Test]
+        public void TestComplexDependency_DuplicateDepActionKeys()
+        {
+            // Arrange
+            string domainName = "ComplexDependency_DuplicateDepActionKeys";
+            InitTest(domainName);
+            
+            TutorFactory tf = TutorFactory.Instance();
+            bool noExceptions = true;
+
+            // Act
+            try
+            {
+                ITutor tutor = tf.CreateReactiveTutor(domainName, config);
+            }
+            catch (ArgumentException e)
+            {
+                noExceptions = false;
+            }
+            
+            // Assert
+            Assert.False(noExceptions, "Exceptions should be thrown to indicate duplicate dependency action keys.");
+        }
+        
+        [Test]
+        public void TestDuplicateActionKeys()
+        {
+            // Arrange
+            string domainName = "DuplicateActionKeys";
+            InitTest(domainName);
+            
+            TutorFactory tf = TutorFactory.Instance();
+            bool noExceptions = true;
+
+            // Act
+            try
+            {
+                ITutor tutor = tf.CreateReactiveTutor(domainName, config);
+            }
+            catch (ArgumentException e)
+            {
+                noExceptions = false;
+            }
+            
+            // Assert
+            Assert.False(noExceptions, "Exceptions should be thrown to indicate duplicate action keys.");
+        }
+        
+        [Test]
+        public void TestInvalidActionKeys()
+        {
+            // Arrange
+            string domainName = "InvalidActionKeys";
+            InitTest(domainName);
+            
+            TutorFactory tf = TutorFactory.Instance();
+            bool noExceptions = true;
+
+            // Act
+            try
+            {
+                ITutor tutor = tf.CreateReactiveTutor(domainName, config);
+            }
+            catch (ArgumentException e)
+            {
+                noExceptions = false;
+            }
+            
+            // Assert
+            Assert.False(noExceptions, "Exceptions should be thrown to indicate invalid action keys.");
+        }
     }
 }

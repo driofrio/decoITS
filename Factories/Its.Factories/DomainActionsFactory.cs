@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using Its.ExpertModule.DataAccess;
 using Its.ExpertModule.Exceptions;
 using Its.ExpertModule.ObjectModel;
@@ -159,6 +160,22 @@ namespace Its.Factories
 					SimpleDependence sDep;
 					//Gets the first simple dependence.
 					string sDepStr = dependencies.First.Value;
+					
+					// *** Throw an error if exact same action dependency is used multiple times in the dependency string ***
+					// 
+					// Although below code seems to handle scenarios like [f0t0-(f0t1-f0t2-f0t1)], where
+					// dependency f0t1 is used twice by finding previously created dependency and adding _suffix,
+					// for the benefit of Collective Student Model tutor and Error Prevention Messages,
+					// requirement was added to ensure that any repeating actions are deduplicated by adding .suffix.
+					// 
+					// So a valid format of the above mentioned dependency string would be:  [f0t0-(f0t1-f0t2-f0t1.abc)]
+					// This shold prevent below code from ever entering "if (queryDep1.Count () > 0)" branch and always create
+					// new dependencies
+					if (depContainer.ContainsKey(sDepStr))
+					{
+						throw new ArgumentException("Duplicate action key \"" + sDepStr + "\" found in dependency string. Deduplicate it by adding suffix using \".\" character, for example: \"" + sDepStr + ".123\"");
+					}
+					
 					//Gets the first error.
 					string err = errorMessages.First.Value;
 					//Obtains the error information.
@@ -237,10 +254,21 @@ namespace Its.Factories
 						error = new Error (_genErrorKey.ToString(), errMsg, b);
 						//Increase the generator.
 						_genErrorKey++;
+						
+						// Check if dependency string is repeated in the context of the current action dependence and hence
+						// has a suffix "_x" to differentiate between repeating action dependencies
+						// (for exampl, [f0t0-(f0t1-f0t2-f0t1.1)])
+						string depActionKey = sDepStr;
+						int underscoreIndex = sDepStr.IndexOf(".");
+						if (underscoreIndex != -1)
+						{
+							depActionKey = sDepStr.Substring(0, underscoreIndex);
+						}
+						
 						//Searchs the ActionAplication in the container.
 						var queryAct = 
 							from o in actContainer
-							where o.Key == (sDepStr)
+							where o.Key == (depActionKey)
 							select o;
 						//Creates a new instance of SimpleDependence.
 						sDep = new SimpleDependence (sDepStr, queryAct.First (), error);
@@ -481,6 +509,22 @@ namespace Its.Factories
 					SimpleDependence sDep;
 					//Gets the first simple dependence.
 					string sDepStr = dependencies.First.Value;
+					
+					// *** Throw an error if exact same action dependency is used multiple times in the dependency string ***
+					// 
+					// Although below code seems to handle scenarios like [f0t0-(f0t1-f0t2-f0t1)], where
+					// dependency f0t1 is used twice by finding previously created dependency and adding _suffix,
+					// for the benefit of Collective Student Model tutor and Error Prevention Messages,
+					// requirement was added to ensure that any repeating actions are deduplicated by adding .suffix.
+					// 
+					// So a valid format of the above mentioned dependency string would be:  [f0t0-(f0t1-f0t2-f0t1.abc)]
+					// This shold prevent below code from ever entering "if (queryDep1.Count () > 0)" branch and always create
+					// new dependencies
+					if (depContainer.ContainsKey(sDepStr))
+					{
+						throw new ArgumentException("Duplicate action key \"" + sDepStr + "\" found in dependency string. Deduplicate it by adding suffix using \".\" character, for example: \"" + sDepStr + ".123\"");
+					}
+					
 					//Gets the first error.
 					string err = errorMessages.First.Value;
 					//Obtains the error information.
@@ -565,10 +609,21 @@ namespace Its.Factories
 						error = new Error (_genErrorKey.ToString(), errMsg, b);
 						//Increase the generator.
 						_genErrorKey++;
+						
+						// Check if dependency string is repeated in the context of the current action dependence and hence
+						// has a suffix "_x" to differentiate between repeating action dependencies
+						// (for exampl, [f0t0-(f0t1-f0t2-f0t1.1)])
+						string depActionKey = sDepStr;
+						int underscoreIndex = sDepStr.IndexOf(".");
+						if (underscoreIndex != -1)
+						{
+							depActionKey = sDepStr.Substring(0, underscoreIndex);
+						}
+						
 						//Searchs the ActionAplication in the container.
 						var queryAct = 
 							from o in actContainer
-							where o.Key == (sDepStr)
+							where o.Key == (depActionKey)
 							select o;
 						//Creates a new instance of SimpleDependence.
 						sDep = new SimpleDependence (sDepStr, queryAct.First (), error);
@@ -748,12 +803,14 @@ namespace Its.Factories
 			_genErrorMsgKey = 0;
 			_genErrorKey = 0;
 			//Creates temporary containers.
-			Dictionary<string, Dependence> depContainer = new Dictionary<string, Dependence> ();
+			// Commented out by Ivan Ribakov on 23/04/2018. depContainer initialisation moved inside loop lower in the code.			
+			// Dictionary<string, Dependence> depContainer = new Dictionary<string, Dependence> ();
 			Dictionary<string, ErrorMessage> errMsgContainer = new Dictionary<string, ErrorMessage> ();
 			//Obtains the actions information.
 			List<object[]> actionsInformation = ACTION_ACCESS.GetActions (domainKey);
 			//Creates the ActionAplication list which will be used to create the DomainAction instance.
 			List<ActionAplication> actions = new List<ActionAplication> ();
+			HashSet<string> actionKeys = new HashSet<string>();
 			//Auxiliar Dictionary in which it will be saved the ActionAplication key as the key, 
 			//and the string array with the possible next actions keys.
 			Dictionary<string, string[]> possibleNextActionsCont = new Dictionary<string, string[]> ();
@@ -763,12 +820,34 @@ namespace Its.Factories
 			//Auxiliar Dictionary in which it will be saved the ActionAplication key as the key, 
 			//and the string array with the incompatibilities errors.
 			Dictionary<string, string[]> incompErrorCont = new Dictionary<string, string[]> ();
+
+			string forbiddenActionKeySymbols = ".";
+			
 			//Creates all ActionAplication using action information list.
 			foreach (object[] o in actionsInformation) {
+				
+				//Creates temporary containers.
+				Dictionary<string, Dependence> depContainer = new Dictionary<string, Dependence> ();
+				
 				//Obtains the phase.
 				int phase = int.Parse (o [0].ToString ());
+				
 				//Obtains the key.
 				string key = o [1].ToString ();
+				if (key.IndexOfAny(forbiddenActionKeySymbols.ToCharArray()) != -1)
+				{
+					throw new ArgumentException ("Invalid action key value \"" + key +"\". Action key must not contain any of the following characters: \"" + forbiddenActionKeySymbols + "\"");
+				}
+
+				if (!actionKeys.Contains(key))
+				{
+					actionKeys.Add(key);
+				}
+				else
+				{
+					throw new ArgumentException ("Duplicate action key found: \"" + key +"\".");
+				}
+				
 				//Obtains the name.
 				string name = o [2].ToString ();
 				//Obtains the description.
