@@ -106,6 +106,8 @@ namespace Its.TutoringModule.CMTutor.EPM.PathFind
                     return new List<PathInfo>();
                 }
             }
+
+            return pathsToTargets;
         }
 
         public Dictionary<string, double> AddPathConfidenceByTarget(List<PathInfo> paths)
