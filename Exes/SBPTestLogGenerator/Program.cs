@@ -25,7 +25,11 @@ namespace SBPTestLogGenerator
                     new Group(new string[] {"6"}, new string[] {"Start", "t6", "t6", "t7", "t8"}),
                     new Group(new string[] {"7", "8"}, new string[] {"Start", "t6", "t7", "t9", "t8"}),
                     new Group(new string[] {"9", "10"}, new string[] {"Start", "t6", "t7", "t10", "t8"})
-                }}
+                }},
+                // Loop t11-t12-t13
+                { 3, new List<Group>() {
+                    new Group(new string[] {"11", "12", "13", "14", "15"}, new string[] {"Start", "t11", "t12", "t13", "t11", "t12", "t13", "t14", "t15"})
+                }},
             };
 
             GenerateLogs(clusters);
@@ -74,9 +78,9 @@ namespace SBPTestLogGenerator
                 Directory.Delete(config.LogsPath, true);
             }
 
-            if (Directory.Exists(config.DomainConfigurationPath + "/Logs"))
+            if (Directory.Exists(config.DomainConfigurationPath + "Logs"))
             {
-                Directory.Delete(config.DomainConfigurationPath + "/Logs", true);
+                Directory.Delete(config.DomainConfigurationPath + "Logs", true);
             }
         }
     }
