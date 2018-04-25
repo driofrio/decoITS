@@ -77,27 +77,27 @@ namespace Its.TutoringModule.CMTutor.SBP.OM
 
 			if (log.GetType ().BaseType == typeof(ActionLog)) {
 				state = new CorrectState (area, log.Action, log.GetType () == typeof(CorrectiveActionLog));
-				newState = new Node<State.State,Event.Event> (log.Action.Key+"_"+area.ToString(), log.Action.Description, state);
+				newState = new Node<State.State,Event.Event> (GetStateKey(log.Action.Key, area), log.Action.Description, state);
 			} else if (log.GetType () == typeof(DepErrorLog)) {
 				Dependence fail = ((DepErrorLog)log).FailedDependence;
 				state = new DependenceErrorState (area, fail);
-				newState = new Node<State.State,Event.Event> (log.Action.Key + "_" + fail.Key+"_"+area.ToString(), log.Action.Description, state);
+				newState = new Node<State.State,Event.Event> (GetStateKey(log.Action.Key, fail.Key, area), log.Action.Description, state);
 			} else if (log.GetType () == typeof(IncompErrorLog)) {
 				Incompatibility fail = ((IncompErrorLog)log).FailedIncompatibility;
 				state = new IncompatibilityErrorState (area, fail);
-				newState = new Node<State.State,Event.Event> (log.Action.Key + "_" + fail.Key+"_"+area.ToString(), log.Action.Description, state);
+				newState = new Node<State.State,Event.Event> (GetStateKey(log.Action.Key, fail.Key, area), log.Action.Description, state);
 			} else if (log.GetType ().BaseType == typeof(TimeErrorLog)) {
 				Error fail = (log.GetType () == typeof(MinTimeErrorLog)) ? log.Action.MinTimeError : log.Action.MaxTimeError;
 				state = new TimeErrorState (area, ((TimeErrorLog)log).Time, fail);
-				newState = new Node<State.State,Event.Event> (log.Action.Key + "_" + fail.Key+"_"+area.ToString(), log.Action.Description, state);
+				newState = new Node<State.State,Event.Event> (GetStateKey(log.Action.Key, fail.Key, area), log.Action.Description, state);
 			} else if (log.GetType () == typeof(WorldErrorLog)) {
 				Error fail = ((WorldErrorLog)log).ErrorAssociated;
 				state = new WorldErrorState (area, fail, ((WorldErrorLog)log).Type);
-				newState = new Node<State.State,Event.Event> (log.Action.Key + "_" + fail.Key+"_"+area.ToString(), log.Action.Description, state);
+				newState = new Node<State.State,Event.Event> (GetStateKey(log.Action.Key, fail.Key, area), log.Action.Description, state);
 			} else if (log.GetType () == typeof(OtherErrorLog)) {
 				Error fail = ((OtherErrorLog)log).ErrorAssociated;
 				state = new OtherErrorState (area, fail);
-				newState = new Node<State.State,Event.Event> (log.Action.Key + "_" + fail.Key+"_"+area.ToString(), log.Action.Description, state);
+				newState = new Node<State.State,Event.Event> (GetStateKey(log.Action.Key, fail.Key, area), log.Action.Description, state);
 			}
 				
 			Node<State.State,Event.Event> tempState = null;
@@ -156,24 +156,76 @@ namespace Its.TutoringModule.CMTutor.SBP.OM
 		{
 			string stateKey = "";
 			if (log.GetType ().BaseType == typeof(ActionLog)) {
-				stateKey = log.Action.Key+"_"+area.ToString();
+				stateKey = GetStateKey(log.Action.Key, area);
 			} else if (log.GetType () == typeof(DepErrorLog)) {
 				Dependence fail = ((DepErrorLog)log).FailedDependence;
-				stateKey = log.Action.Key + "_" + fail.Key+"_"+area.ToString();
+				stateKey = GetStateKey(log.Action.Key, fail.Key, area);
 			} else if (log.GetType () == typeof(IncompErrorLog)) {
 				Incompatibility fail = ((IncompErrorLog)log).FailedIncompatibility;
-				stateKey = log.Action.Key + "_" + fail.Key+"_"+area.ToString();
+				stateKey = GetStateKey(log.Action.Key, fail.Key, area);
 			} else if (log.GetType ().BaseType == typeof(TimeErrorLog)) {
 				Error fail = (log.GetType () == typeof(MinTimeErrorLog)) ? log.Action.MinTimeError : log.Action.MaxTimeError;
-				stateKey = log.Action.Key + "_" + fail.Key+"_"+area.ToString();
+				stateKey = GetStateKey(log.Action.Key, fail.Key, area);
 			} else if (log.GetType () == typeof(WorldErrorLog)) {
 				Error fail = ((WorldErrorLog)log).ErrorAssociated;
-				stateKey = log.Action.Key + "_" + fail.Key+"_"+area.ToString();
+				stateKey = GetStateKey(log.Action.Key, fail.Key, area);
 			} else if (log.GetType () == typeof(OtherErrorLog)) {
 				Error fail = ((OtherErrorLog)log).ErrorAssociated;
-				stateKey = log.Action.Key + "_" + fail.Key+"_"+area.ToString();
+				stateKey = GetStateKey(log.Action.Key, fail.Key, area);
 			}
 			return stateKey;
+		}
+		
+		/// <summary>
+		/// Returns the ID of the node that this Arc leads to. Unfortunately it is not possible to obtain this information using
+		/// only Node object as it is missing the information about the action performed.
+		/// </summary>
+		/// <returns></returns>
+		public string GetInStateKey(Arc<State.State, Event.Event> transition)
+		{
+			ActionAplication action = transition.Specification.ActionExecuted;
+			
+			State.State toState = transition.NodeIn.Specification;
+			Area area = toState.Area;
+			
+			string stateKey = "";
+
+			if (toState.GetType() == typeof(CorrectState))
+			{
+				stateKey = GetStateKey(action.Key, area);
+			} else if (toState.GetType() == typeof(DependenceErrorState))
+			{
+				string errorKey = ((DependenceErrorState) toState).DependenceFailed.Key;
+				stateKey = GetStateKey(action.Key, errorKey, area);
+			} else if (toState.GetType() == typeof(IncompatibilityErrorState))
+			{
+				string errorKey = ((IncompatibilityErrorState) toState).IncompatibilityFailed.Key;
+				stateKey = GetStateKey(action.Key, errorKey, area);
+			} else if (toState.GetType() == typeof(TimeErrorState))
+			{
+				string errorKey = ((TimeErrorState) toState).ErrorAssociated.Key;
+				stateKey = GetStateKey(action.Key, errorKey, area);
+			} else if (toState.GetType() == typeof(WorldErrorState))
+			{
+				string errorKey = ((WorldErrorState) toState).ErrorAssociated.Key;
+				stateKey = GetStateKey(action.Key, errorKey, area);
+			} else if (toState.GetType() == typeof(OtherErrorState))
+			{
+				string errorKey = ((OtherErrorState) toState).ErrorAssociated.Key;
+				stateKey = GetStateKey(action.Key, errorKey, area);
+			}
+
+			return stateKey;
+		}
+
+		private string GetStateKey(string actionKey, Area area)
+		{
+			return actionKey + "_" + area.ToString();
+		}
+		
+		private string GetStateKey(string actionKey, string errorKey, Area area)
+		{
+			return actionKey + "_" + errorKey + "_" + area.ToString();
 		}
 
 		/// <summary>

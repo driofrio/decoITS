@@ -95,6 +95,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Its.TutoringModule.CMTutor.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SBPTestLogGenerator", "Exes\SBPTestLogGenerator\SBPTestLogGenerator.csproj", "{8B09976A-012F-4798-8883-CBCF3938C8A0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Its.TutoringModule.CMTutor.EPM.PathFind", "TutoringModule\CollectiveModelTutor\ErrorPreventionMessages\Its.TutoringModule.CMTutor.EPM.PathFind\Its.TutoringModule.CMTutor.EPM.PathFind.csproj", "{27060F73-E576-4B76-9D20-2CFE3548F268}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -233,6 +235,10 @@ Global
 		{8B09976A-012F-4798-8883-CBCF3938C8A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8B09976A-012F-4798-8883-CBCF3938C8A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8B09976A-012F-4798-8883-CBCF3938C8A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27060F73-E576-4B76-9D20-2CFE3548F268}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27060F73-E576-4B76-9D20-2CFE3548F268}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27060F73-E576-4B76-9D20-2CFE3548F268}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27060F73-E576-4B76-9D20-2CFE3548F268}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{053D479C-7695-452A-ABFF-237300DB84AE} = {34E53C64-6F04-4A28-90F5-EEC20EF344DF}
@@ -274,5 +280,6 @@ Global
 		{F457B242-2734-47D9-A6DC-66B532FB4578} = {253CC56A-7AD6-4A0F-9401-19630353E052}
 		{73B0FD4D-E951-430F-A16B-CEB3C4AA292C} = {F457B242-2734-47D9-A6DC-66B532FB4578}
 		{8B09976A-012F-4798-8883-CBCF3938C8A0} = {2690DD43-ED44-4785-8E50-CADD040CE7CB}
+		{27060F73-E576-4B76-9D20-2CFE3548F268} = {F457B242-2734-47D9-A6DC-66B532FB4578}
 	EndGlobalSection
 EndGlobal
