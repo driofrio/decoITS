@@ -65,13 +65,16 @@ namespace Its.TutoringModule.CMTutor.EPM
 				// Skipping first (header) row
 				if (row >= 1)
 				{
-					string stateKey 				= record[0] == null ? "" : record[0].ToString();
-					string messageString			= record[1] == null ? "" : record[1].ToString();
+					string stateKey 			= record[0] == null ? "" : record[0].ToString();
+					string lowDetailMessage		= record[1] == null ? "" : record[1].ToString();
+					string mediumDetailMessage	= record[2] == null ? "" : record[2].ToString();
+					string highDetailMessage	= record[3] == null ? "" : record[3].ToString();
 
 					// Store message object
-					if (!String.IsNullOrEmpty(stateKey) && !String.IsNullOrEmpty(messageString))
+					if (!String.IsNullOrEmpty(stateKey) && !String.IsNullOrEmpty(lowDetailMessage) && 
+					    !String.IsNullOrEmpty(mediumDetailMessage) && !String.IsNullOrEmpty(highDetailMessage))
 					{
-						ErrorPreventionMessage message = new ErrorPreventionMessage(stateKey, messageString);
+						ErrorPreventionMessage message = new ErrorPreventionMessage(stateKey, lowDetailMessage, mediumDetailMessage, highDetailMessage);
 						_messagesByDomain[domainName].Add(message);
 					}
 					else
