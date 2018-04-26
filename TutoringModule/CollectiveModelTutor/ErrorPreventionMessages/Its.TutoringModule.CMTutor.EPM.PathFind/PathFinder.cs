@@ -126,5 +126,23 @@ namespace Its.TutoringModule.CMTutor.EPM.PathFind
 
             return targetNodePathConfidenceSum;
         }
+
+        public Dictionary<string, double> FindPathsAboveThreshold(string fromNodeKey, HashSet<string> targetNodeKeys,
+            double pathConfThreshold)
+        {
+            Dictionary<string, double> results = new Dictionary<string, double>();
+            List<PathInfo> allPathsToTargets = Find(fromNodeKey, targetNodeKeys, pathConfThreshold);
+            Dictionary<string, double> totalPathConfidencesByTarget = AddPathConfidenceByTarget(allPathsToTargets);
+
+            foreach (string key in totalPathConfidencesByTarget.Keys)
+            {
+                if (totalPathConfidencesByTarget[key] >= pathConfThreshold)
+                {
+                    results.Add(key, totalPathConfidencesByTarget[key]);
+                }
+            }
+
+            return results;
+        }
     }
 }

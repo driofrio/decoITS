@@ -144,6 +144,13 @@ namespace Its.TutoringModule.CMTutor.SBP
 			PredictiveStudentModel model = GetModel(domainKey, cluMet);
 			return model.GetNextProbableCorrectEvent(studentKey);
 		}
+		
+		public Node<State, Event> GetLastState(string domainKey, ClusterMethod cluMet, string studentKey)
+		{
+			PredictiveStudentModel model = GetModel(domainKey, cluMet);
+			StudentsCluster cluster = model.FindStudentCluster(studentKey);
+			return cluster.GetLastState(studentKey);
+		}
 
 		/// <summary>
 		/// Gets the support value for the last state corresponding to last performed action
@@ -169,6 +176,20 @@ namespace Its.TutoringModule.CMTutor.SBP
 			PredictiveStudentModel model = GetModel(domainKey, cluMet);
 			StudentsCluster cluster = model.FindStudentCluster(studentKey);
 			return cluster.GetEventConfidence(evt);
+		}
+
+		public List<Node<State, Event>> GetAllREStatesAboveThreshold(string domainKey, ClusterMethod cluMet, string studentKey, double supportThreshold)
+		{
+			PredictiveStudentModel model = GetModel(domainKey, cluMet);
+			StudentsCluster cluster = model.FindStudentCluster(studentKey);
+			return cluster.GetAllREStatesAboveThreshold(supportThreshold); 
+		}
+
+		public StudentActionsModel GetStudentActionsModel(string domainKey, ClusterMethod, string studentKey)
+		{
+			PredictiveStudentModel model = GetModel(domainKey, cluMet);
+			StudentsCluster cluster = model.FindStudentCluster(studentKey);
+			return cluster.StudentActionsModel;
 		}
 
 		/// <summary>

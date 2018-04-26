@@ -366,6 +366,12 @@ namespace Its.TutoringModule.CMTutor.SBP.OM
 			return _studentEvents[StudentKey];
 		}
 
+		public Node<State.State, Event.Event> GetLastState(string studentKey)
+		{
+			DataRow dr = _studentStates.Rows.Find (studentKey);
+			return (Node<State.State, Event.Event>) dr["LastState"];
+		}
+
 		/// <summary>
 		/// Gets the next most probable event.
 		/// </summary>
@@ -391,9 +397,7 @@ namespace Its.TutoringModule.CMTutor.SBP.OM
 		/// <param name="studentKey">Student key.</param>
 		public double GetLastStateSupport(string studentKey)
 		{
-			DataRow dr = _studentStates.Rows.Find (studentKey);
-			Node<State.State, Event.Event> lastState = (Node<State.State, Event.Event>) dr["LastState"];
-			return _studentActionsModel.GetStateSupport(lastState, NumberOfStudents);
+			return _studentActionsModel.GetStateSupport(GetLastState(studentKey), NumberOfStudents);
 		}
 
 		public List<Arc<State.State, Event.Event>> GetAllNextEvents(string studentKey)
@@ -414,6 +418,21 @@ namespace Its.TutoringModule.CMTutor.SBP.OM
 		public double GetEventConfidence(Arc<State.State, Event.Event> evt)
 		{
 			return _studentActionsModel.GetEventConfidence(evt);
+		}
+		
+		public List<Node<State.State, Event.Event>> GetAllREStatesAboveThreshold(double supportThreshold)
+		{
+			List<Node<State.State, Event.Event>> results = new List<Node<State.State, Event.Event>>();
+			List<Node<State.State, Event.Event>> reStates = _studentActionsModel.GetStatesByArea(Area.RelevantErrors);
+			foreach (Node<State.State, Event.Event> state in reStates)
+			{
+				if (_studentActionsModel.GetStateSupport(state, NumberOfStudents) >= supportThreshold)
+				{
+					results.Add(state);
+				}
+			}
+			
+			return results;
 		}
 			
 		/// <summary>

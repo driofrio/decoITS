@@ -19,5 +19,9 @@
         int TutoringNoBlockErrorPenalization { get; }
         string ASSConString { get; }
         string BDDConString { get; }
+        double NoErrorPreventionSupportThreshold { get; }
+        double NoErrorPreventionConfidenceThreshold { get; }
+        double LowDetailErrorPreventionConfidenceThreshold { get; }
+        double MediumDetailErrorPreventionConfidenceThreshold { get; }
     }
 }

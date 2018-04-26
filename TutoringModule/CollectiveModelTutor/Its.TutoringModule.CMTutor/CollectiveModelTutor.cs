@@ -4,6 +4,8 @@ using Its.ExpertModule;
 using Its.ExpertModule.ObjectModel;
 using Its.StudentModule;
 using Its.StudentModule.ObjectModel;
+using Its.TutoringModule.CMTutor.EPM;
+using Its.TutoringModule.CMTutor.EPM.PathFind;
 using Its.TutoringModule.CMTutor.SBP;
 using Its.TutoringModule.CMTutor.SBP.OM;
 using Its.TutoringModule.CMTutor.SBP.OM.Event;
@@ -28,16 +30,19 @@ namespace Its.TutoringModule.CMTutor
         private static readonly ClusterMethod CLUSTER_METHOD = ClusterMethod.EventsByZone;
         
         private StudentBehaviorPredictorControl sbpControl;
+        private EPMController epmController;
         
         public CollectiveModelTutor(string domainKey, ITutorConfig config, bool master) : base(domainKey, config, master)
         {
             sbpControl = StudentBehaviorPredictorControl.Instance(_config);
+            epmController = new EPMController(config.DomainConfigurationPath, domainKey);
         }
 
-        public CollectiveModelTutor(string ontologyPath, string logsPath, string expertConfPath, string worldConfPath, Dictionary<string, WorldControl> worldControl, ExpertControl expertControl, StudentControl studentControl, ITutorConfig config, bool master)
+        public CollectiveModelTutor(string domainKey, string ontologyPath, string logsPath, string expertConfPath, string worldConfPath, Dictionary<string, WorldControl> worldControl, ExpertControl expertControl, StudentControl studentControl, ITutorConfig config, bool master)
             : base(ontologyPath, logsPath, expertConfPath, worldConfPath, worldControl, expertControl, studentControl, config, master)
         {
             sbpControl = StudentBehaviorPredictorControl.Instance(_config);
+            epmController = new EPMController(config.DomainConfigurationPath, domainKey);
         }
 
         public bool HasSupportForAction(string actionName, string domainName, string studentKey)
@@ -68,10 +73,13 @@ namespace Its.TutoringModule.CMTutor
             // 1. Obtain tutor messages for zones of proximal development (ZDP)
             if (ZDPTutoringNeeded(domainName, studentKey))
             {
-                ZDPTutoring(actionName, domainName, studentKey, out tutorMessages);
+                ZDPTutoring(actionName, domainName, studentKey, ref tutorMessages);
             }
 
-            // 2. Obtain error prevention messages for most probable next action
+            // 2.1 Obtain relevant error prevention messages for probable errors
+            GetRelevantErrorPreventionMessages(actionName, domainName, studentKey, ref errorPreventionMessages);
+            
+            // 2.2 Obtain irrelevant error prevention messages for probable errors
             
             // 3. Add messages to the dictionary depending on the validation result
             
@@ -81,9 +89,51 @@ namespace Its.TutoringModule.CMTutor
             return messages;
         }
 
-        private void ZDPTutoring(string actionName, string domainName, string studentKey, out List<TutorMessage> tutorMessages)
+        private void GetRelevantErrorPreventionMessages(string actionName, string domainName, string studentKey,
+            ref List<TutorMessage> errorPreventionMessages)
         {
-            tutorMessages = new List<TutorMessage>();
+            Node<State, Event> lastState = sbpControl.GetLastState(domainName, CLUSTER_METHOD, studentKey);
+            
+            // Get all relevant error states with sufficient support
+            List<Node<State, Event>> reStates = sbpControl.GetAllREStatesAboveThreshold(domainName, CLUSTER_METHOD,
+                studentKey, _config.NoErrorPreventionSupportThreshold);
+            
+            // Compute path confidences from last state to the relevant error states
+            // a) futher restrict target error states by checking which have error prevention messages configured
+            // b) find paths and compute total path confidence
+            HashSet<string> reStateKeys = new HashSet<string>();
+            foreach (Node<State, Event> node in reStates)
+            {
+                if (epmController.HasMessageForState(node.Key))
+                {
+                    reStateKeys.Add(node.Key);
+                }
+            }
+            
+            PathFinder pf = new PathFinder(sbpControl.GetStudentActionsModel(domainName, CLUSTER_METHOD, studentKey));
+            Dictionary<string, double> reStatePathConfidences =
+                pf.FindPathsAboveThreshold(lastState.Key, reStateKeys, _config.NoErrorPreventionConfidenceThreshold); 
+
+            // Add messages of the right level of detail to the output container
+            foreach (string targetStateKey in reStatePathConfidences.Keys)
+            {
+                if (reStatePathConfidences[targetStateKey] >= _config.LowDetailErrorPreventionConfidenceThreshold)
+                {
+                    errorPreventionMessages.Add(new TutorMessage(0, epmController.GetMessageForState(targetStateKey).LowDetailMessage));
+                } else if (reStatePathConfidences[targetStateKey] < _config.LowDetailErrorPreventionConfidenceThreshold &&
+                           reStatePathConfidences[targetStateKey] >= _config.MediumDetailErrorPreventionConfidenceThreshold)
+                {
+                    errorPreventionMessages.Add(new TutorMessage(0, epmController.GetMessageForState(targetStateKey).MediumDetailMessage));
+                }
+                else if (reStatePathConfidences[targetStateKey] < _config.MediumDetailErrorPreventionConfidenceThreshold)
+                {
+                    errorPreventionMessages.Add(new TutorMessage(0, epmController.GetMessageForState(targetStateKey).HighDetailMessage));
+                }
+            }
+        }
+
+        private void ZDPTutoring(string actionName, string domainName, string studentKey, ref List<TutorMessage> tutorMessages)
+        {
             if (ZDPTutoringNeeded(domainName, studentKey))
             {
                 Arc<State, Event> nextEvent = sbpControl.GetNextProbableCorrectEvent(domainName, CLUSTER_METHOD, studentKey);

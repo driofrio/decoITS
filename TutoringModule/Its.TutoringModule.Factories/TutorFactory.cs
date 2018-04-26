@@ -55,7 +55,7 @@ namespace Its.TutoringModule.Factories
             studentControl.GetDomainLogsFromOntology(expertControl.GetDomainActions(domainKey), expertControl.OtherErrors, worldControlDict[domainKey].WorldErrors);
             
             Tutor rTutor = new Tutor(ontologyPath, logsPath, expertConfPath, worldConfPath, worldControlDict, expertControl, studentControl, config, false);
-            CollectiveModelTutor cmTutor = new CollectiveModelTutor(ontologyPath, logsPath, expertConfPath, worldConfPath, worldControlDict, expertControl, studentControl, config, false);
+            CollectiveModelTutor cmTutor = new CollectiveModelTutor(domainKey, ontologyPath, logsPath, expertConfPath, worldConfPath, worldControlDict, expertControl, studentControl, config, false);
             TutoringCoordinator tc = new TutoringCoordinator(rTutor, cmTutor, ontologyPath, logsPath, expertConfPath, worldConfPath, worldControlDict, expertControl, studentControl, config);
 
             return tc;

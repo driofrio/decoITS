@@ -78,6 +78,14 @@
       <Project>{D710A525-2C06-4F1A-94C0-4CC79E07A604}</Project>
       <Name>Its.TutoringModule.ReactiveTutor.OM</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ErrorPreventionMessages\Its.TutoringModule.CMTutor.EPM.PathFind\Its.TutoringModule.CMTutor.EPM.PathFind.csproj">
+      <Project>{27060f73-e576-4b76-9d20-2cfe3548f268}</Project>
+      <Name>Its.TutoringModule.CMTutor.EPM.PathFind</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ErrorPreventionMessages\Its.TutoringModule.CMTutor.EPM\Its.TutoringModule.CMTutor.EPM.csproj">
+      <Project>{73b0fd4d-e951-430f-a16b-ceb3c4aa292c}</Project>
+      <Name>Its.TutoringModule.CMTutor.EPM</Name>
+    </ProjectReference>
     <ProjectReference Include="..\StudentBehaviourPredictor\Its.TutoringModule.CMTutor.SBP.OM\Its.TutoringModule.CMTutor.SBP.OM.csproj">
       <Project>{9DD64010-4EFB-4813-9CA5-628C96EAFB14}</Project>
       <Name>Its.TutoringModule.CMTutor.SBP.OM</Name>
