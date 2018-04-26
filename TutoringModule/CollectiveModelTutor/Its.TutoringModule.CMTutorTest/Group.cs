@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace SBPTestLogGenerator
+namespace Its.TutoringModule.CMTutorTest
 {
     /// <summary>
     /// Defines a group of students via a sequence of actions that they should perform and IDs of the students belonging to this group

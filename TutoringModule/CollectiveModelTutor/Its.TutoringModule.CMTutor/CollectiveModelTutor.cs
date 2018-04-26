@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using System.Runtime.Remoting.Contexts;
 using Its.ExpertModule;
 using Its.ExpertModule.ObjectModel;
@@ -34,14 +35,14 @@ namespace Its.TutoringModule.CMTutor
         
         public CollectiveModelTutor(string domainKey, ITutorConfig config, bool master) : base(domainKey, config, master)
         {
-            sbpControl = StudentBehaviorPredictorControl.Instance(_config);
+            InitModel(domainKey, CLUSTER_METHOD, true, true);
             epmController = new EPMController(config.DomainConfigurationPath, domainKey);
         }
 
         public CollectiveModelTutor(string domainKey, string ontologyPath, string logsPath, string expertConfPath, string worldConfPath, Dictionary<string, WorldControl> worldControl, ExpertControl expertControl, StudentControl studentControl, ITutorConfig config, bool master)
             : base(ontologyPath, logsPath, expertConfPath, worldConfPath, worldControl, expertControl, studentControl, config, master)
         {
-            sbpControl = StudentBehaviorPredictorControl.Instance(_config);
+            InitModel(domainKey, CLUSTER_METHOD, true, true);
             epmController = new EPMController(config.DomainConfigurationPath, domainKey);
         }
 
@@ -274,6 +275,27 @@ namespace Its.TutoringModule.CMTutor
             }
 
             return message;
+        }
+        
+        private void InitModel(string strDomainName, ClusterMethod cluMet, bool includeNoPlanActions, bool inPhases)
+        {
+            string ontologyPath = _config.OntologyPath.Replace('\\', Path.DirectorySeparatorChar);
+            string logsPath = _config.LogsPath.Replace('\\', Path.DirectorySeparatorChar);
+            string expertConfPath = _config.DomainConfigurationPath.Replace('\\', Path.DirectorySeparatorChar);
+            int initialCol = _config.InitialColumn;
+            int intialRow = _config.InitialRow;
+            
+            ExpertControl expert = ExpertControl.Instance(ontologyPath, logsPath, expertConfPath, initialCol, intialRow);
+            DomainActions domain = expert.GetDomainActions(strDomainName);
+            if (domain == null)
+            {
+                domain = expert.CreateDomain(strDomainName);
+            }
+
+            WorldControl world = WorldControl.Instance(ontologyPath, logsPath);
+            DomainLog logs = StudentControl.Instance(ontologyPath, logsPath, expertConfPath).GetDomainLogsFromOntology(domain, expert.OtherErrors, world.WorldErrors);
+            sbpControl = StudentBehaviorPredictorControl.Instance(_config);
+            sbpControl.AddModel(logs, cluMet, includeNoPlanActions, inPhases);
         }
     }
 }

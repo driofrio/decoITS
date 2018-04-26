@@ -46,6 +46,8 @@
   <ItemGroup>
     <Compile Include="CMTutorTest.cs" />
     <Compile Include="ErrorPreventionMessageTest.cs" />
+    <Compile Include="Group.cs" />
+    <Compile Include="LogGenerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -63,9 +65,33 @@
     <Folder Include="TestAssets\WorldConf" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\ExpertModule\Its.ExpertModule.ObjectModel\Its.ExpertModule.OM.csproj">
+      <Project>{8b928308-3d38-4cf5-8352-162a23f9a5ea}</Project>
+      <Name>Its.ExpertModule.OM</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\ExpertModule\Its.ExpertModule\Its.ExpertModule.csproj">
+      <Project>{053d479c-7695-452a-abff-237300db84ae}</Project>
+      <Name>Its.ExpertModule</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\StudentModule\Its.StudentModule.ObjectModel\Its.StudentModule.OM.csproj">
+      <Project>{eeed4fbb-9fca-46c9-927a-765f7bc05666}</Project>
+      <Name>Its.StudentModule.OM</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\StudentModule\Its.StudentModule\Its.StudentModule.csproj">
+      <Project>{c407248f-9674-45d8-b58f-72a2684555ab}</Project>
+      <Name>Its.StudentModule</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\Utils\Its.Utils.Config\Its.Utils.Config.csproj">
       <Project>{B7413821-72A0-4104-B19F-44E0C8FD18A2}</Project>
       <Name>Its.Utils.Config</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Utils\Its.Utils.Math\Its.Utils.Math.csproj">
+      <Project>{39c82212-9961-42ee-8030-686514ab7b92}</Project>
+      <Name>Its.Utils.Math</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\WorldModule\Its.WorldModule\Its.WorldModule.csproj">
+      <Project>{44a3a108-f052-4126-a905-4adec242e7e9}</Project>
+      <Name>Its.WorldModule</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Its.TutoringModule.Common\Its.TutoringModule.Common.csproj">
       <Project>{3EFB63FF-6405-42C2-A615-0FBB56F4BDF2}</Project>
@@ -74,6 +100,18 @@
     <ProjectReference Include="..\..\Its.TutoringModule.Factories\Its.TutoringModule.Factories.csproj">
       <Project>{DAB77C55-8965-4A4B-B2A7-73D74059A63C}</Project>
       <Name>Its.TutoringModule.Factories</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ReactiveTutor\Its.TutoringModule.ReactiveTutor.OM\Its.TutoringModule.ReactiveTutor.OM.csproj">
+      <Project>{d710a525-2c06-4f1a-94c0-4cc79e07a604}</Project>
+      <Name>Its.TutoringModule.ReactiveTutor.OM</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\StudentBehaviourPredictor\Its.TutoringModule.CMTutor.SBP.OM\Its.TutoringModule.CMTutor.SBP.OM.csproj">
+      <Project>{9dd64010-4efb-4813-9ca5-628c96eafb14}</Project>
+      <Name>Its.TutoringModule.CMTutor.SBP.OM</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\StudentBehaviourPredictor\Its.TutoringModule.CMTutor.SBP\Its.TutoringModule.CMTutor.SBP.csproj">
+      <Project>{69e607fe-1c1c-4e48-a0e9-8585d15ccae6}</Project>
+      <Name>Its.TutoringModule.CMTutor.SBP</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
