@@ -196,7 +196,7 @@ namespace Its.TutoringModule.CMTutor.SBP.OM
 				dr ["LastState"] = _studentActionsModel.InitState;
 				dr ["VectorEventCount"] = 0;
 			} else {
-				object[] dr=new object[4];
+				object[] dr=new object[5];
 				dr [0] = studentKey;
 				dr [1] = _studentActionsModel.InitState;
 				dr [2] = 0;
