@@ -185,7 +185,7 @@ namespace Its.TutoringModule.CMTutor.SBP
 			return cluster.GetAllREStatesAboveThreshold(supportThreshold); 
 		}
 
-		public StudentActionsModel GetStudentActionsModel(string domainKey, ClusterMethod, string studentKey)
+		public StudentActionsModel GetStudentActionsModel(string domainKey, ClusterMethod cluMet, string studentKey)
 		{
 			PredictiveStudentModel model = GetModel(domainKey, cluMet);
 			StudentsCluster cluster = model.FindStudentCluster(studentKey);

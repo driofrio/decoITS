@@ -119,15 +119,15 @@ namespace Its.TutoringModule.CMTutor
             {
                 if (reStatePathConfidences[targetStateKey] >= _config.LowDetailErrorPreventionConfidenceThreshold)
                 {
-                    errorPreventionMessages.Add(new TutorMessage(0, epmController.GetMessageForState(targetStateKey).LowDetailMessage));
+                    errorPreventionMessages.Add(new TutorMessage(targetStateKey + "_lowDetail", epmController.GetMessageForState(targetStateKey).LowDetailMessage));
                 } else if (reStatePathConfidences[targetStateKey] < _config.LowDetailErrorPreventionConfidenceThreshold &&
                            reStatePathConfidences[targetStateKey] >= _config.MediumDetailErrorPreventionConfidenceThreshold)
                 {
-                    errorPreventionMessages.Add(new TutorMessage(0, epmController.GetMessageForState(targetStateKey).MediumDetailMessage));
+                    errorPreventionMessages.Add(new TutorMessage(targetStateKey + "_mediumDetail", epmController.GetMessageForState(targetStateKey).MediumDetailMessage));
                 }
                 else if (reStatePathConfidences[targetStateKey] < _config.MediumDetailErrorPreventionConfidenceThreshold)
                 {
-                    errorPreventionMessages.Add(new TutorMessage(0, epmController.GetMessageForState(targetStateKey).HighDetailMessage));
+                    errorPreventionMessages.Add(new TutorMessage(targetStateKey + "_highDetail", epmController.GetMessageForState(targetStateKey).HighDetailMessage));
                 }
             }
         }
