@@ -675,11 +675,12 @@ namespace Its.ExpertModule
 					//Calls the dependence check method.
 					result = CheckSeqComplexDependencies ((SeqComplexDependence)d, actionKey, studentLog, domain, ref errors);
 					//Checks the result of the call.
-					if (result == 0) {
-						//Adds the dependence into the list.
+					if (result == 0 || result == -1) {
 						errors.Add (d);
-						//Breacks the loop.
-						break;
+						if (result == 0)
+						{
+							break;	
+						}
 					}
 				} else if (d.GetType () == typeof(SimpleDependence)) {
 					//Converts the Dependence to SimpleDependence.
@@ -706,6 +707,7 @@ namespace Its.ExpertModule
 								} else {
 									//The result will be -1.
 									result = -1;
+									errors.Add (dep);
 								}
 							} else {
 								//Checks if the dependence blocks or not.
@@ -719,6 +721,7 @@ namespace Its.ExpertModule
 								} else {
 									//The result will be -1.
 									result = -1;
+									errors.Add (d);
 								}
 							}
 						} else {
@@ -733,6 +736,7 @@ namespace Its.ExpertModule
 							} else {
 								//The result will be -1.
 								result = -1;
+								errors.Add (d);
 							}
 						}
 					} else {
@@ -853,6 +857,7 @@ namespace Its.ExpertModule
 								} else {
 									//The result will be -1.
 									result = -1;
+									errors.Add (dep);
 								}
 							} else {
 								//Checks if the dependence blocks or not.
@@ -866,6 +871,7 @@ namespace Its.ExpertModule
 								} else {
 									//The result will be -1.
 									result = -1;
+									errors.Add (dep);
 								}
 							}
 						} else {
@@ -880,6 +886,7 @@ namespace Its.ExpertModule
 							} else {
 								//The result will be -1.
 								result = -1;
+								errors.Add (dep);
 							}
 						}
 					} else {
