@@ -21,7 +21,7 @@
         string BDDConString { get; }
         double NoErrorPreventionSupportThreshold { get; }
         double NoErrorPreventionConfidenceThreshold { get; }
-        double LowDetailErrorPreventionConfidenceThreshold { get; }
         double MediumDetailErrorPreventionConfidenceThreshold { get; }
+        double HighDetailErrorPreventionConfidenceThreshold { get; }
     }
 }

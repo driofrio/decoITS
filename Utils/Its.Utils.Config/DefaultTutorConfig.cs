@@ -23,7 +23,7 @@ namespace Its.Utils.Config
         private double mediumDetailTutoringEventConfidenceThreshold;
         private double noErrorPreventionSupportThreshold;
         private double noErrorPreventionConfidenceThreshold;
-        private double lowDetailErrorPreventionConfidenceThreshold;
+        private double highDetailErrorPreventionConfidenceThreshold;
         private double mediumDetailErrorPreventionConfidenceThreshold;
         
         public int InitialColumn
@@ -116,9 +116,9 @@ namespace Its.Utils.Config
             get { return noErrorPreventionConfidenceThreshold; }
         }
         
-        public double LowDetailErrorPreventionConfidenceThreshold
+        public double HighDetailErrorPreventionConfidenceThreshold
         {
-            get { return lowDetailErrorPreventionConfidenceThreshold; }
+            get { return highDetailErrorPreventionConfidenceThreshold; }
         }
         
         public double MediumDetailErrorPreventionConfidenceThreshold
@@ -162,7 +162,7 @@ namespace Its.Utils.Config
             mediumDetailTutoringEventConfidenceThreshold = double.Parse(ConfigurationManager.AppSettings["MediumDetailTutoringEventConfidenceThreshold"]);
             noErrorPreventionSupportThreshold = double.Parse(ConfigurationManager.AppSettings["NoErrorPreventionSupportThreshold"]);
             noErrorPreventionConfidenceThreshold = double.Parse(ConfigurationManager.AppSettings["NoErrorPreventionConfidenceThreshold"]);
-            lowDetailErrorPreventionConfidenceThreshold = double.Parse(ConfigurationManager.AppSettings["LowDetailErrorPreventionConfidenceThreshold"]);
+            highDetailErrorPreventionConfidenceThreshold = double.Parse(ConfigurationManager.AppSettings["HighDetailErrorPreventionConfidenceThreshold"]);
             mediumDetailErrorPreventionConfidenceThreshold = double.Parse(ConfigurationManager.AppSettings["MediumDetailErrorPreventionConfidenceThreshold"]);
         }
         
@@ -186,7 +186,7 @@ namespace Its.Utils.Config
             mediumDetailTutoringEventConfidenceThreshold = config.MediumDetailTutoringEventConfidenceThreshold;
             noErrorPreventionSupportThreshold = config.NoErrorPreventionSupportThreshold;
             noErrorPreventionConfidenceThreshold = config.NoErrorPreventionConfidenceThreshold;
-            lowDetailErrorPreventionConfidenceThreshold = config.LowDetailErrorPreventionConfidenceThreshold;
+            highDetailErrorPreventionConfidenceThreshold = config.HighDetailErrorPreventionConfidenceThreshold;
             mediumDetailErrorPreventionConfidenceThreshold = config.MediumDetailErrorPreventionConfidenceThreshold;
         }
 
@@ -210,7 +210,7 @@ namespace Its.Utils.Config
             string mediumDetailTutoringEventConfidenceThreshold;
             string noErrorPreventionSupportThreshold;
             string noErrorPreventionConfidenceThreshold;
-            string lowDetailErrorPreventionConfidenceThreshold;
+            string highDetailErrorPreventionConfidenceThreshold;
             string mediumDetailErrorPreventionConfidenceThreshold;
 
             if (values.TryGetValue("InitialColumn", out initialColumn))
@@ -304,9 +304,9 @@ namespace Its.Utils.Config
                 this.noErrorPreventionConfidenceThreshold = double.Parse(noErrorPreventionConfidenceThreshold);
             }
             
-            if (values.TryGetValue("LowDetailErrorPreventionConfidenceThreshold", out lowDetailErrorPreventionConfidenceThreshold))
+            if (values.TryGetValue("LowDetailErrorPreventionConfidenceThreshold", out highDetailErrorPreventionConfidenceThreshold))
             {
-                this.lowDetailErrorPreventionConfidenceThreshold = double.Parse(lowDetailErrorPreventionConfidenceThreshold);
+                this.highDetailErrorPreventionConfidenceThreshold = double.Parse(highDetailErrorPreventionConfidenceThreshold);
             }
             
             if (values.TryGetValue("MediumDetailErrorPreventionConfidenceThreshold", out mediumDetailErrorPreventionConfidenceThreshold))

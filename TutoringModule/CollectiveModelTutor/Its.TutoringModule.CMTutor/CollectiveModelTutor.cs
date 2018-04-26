@@ -117,17 +117,35 @@ namespace Its.TutoringModule.CMTutor
             // Add messages of the right level of detail to the output container
             foreach (string targetStateKey in reStatePathConfidences.Keys)
             {
-                if (reStatePathConfidences[targetStateKey] >= _config.LowDetailErrorPreventionConfidenceThreshold)
+                // Conf = 1
+                // 
+                //     Error is likely to be made, provide high detail prevention message
+                // 
+                // [High Detail Threshold]
+                // 
+                //     Mistake is probable, give medium detail prevention message
+                // 
+                // [Medium Detail Threshold]
+                // 
+                //     Mistake could be made, give low detail prevention message
+                //
+                // [No Error Prevention Threshold]
+                //
+                //     Below error prevention threshold, error is extremely unlikely to be made, don't provide any messages
+                //
+                // Conf = 0
+                if (reStatePathConfidences[targetStateKey] >= _config.HighDetailErrorPreventionConfidenceThreshold)
                 {
-                    errorPreventionMessages.Add(new TutorMessage(targetStateKey + "_lowDetail", epmController.GetMessageForState(targetStateKey).LowDetailMessage));
-                } else if (reStatePathConfidences[targetStateKey] < _config.LowDetailErrorPreventionConfidenceThreshold &&
+                    errorPreventionMessages.Add(new TutorMessage(targetStateKey + "_highDetail", epmController.GetMessageForState(targetStateKey).HighDetailMessage));
+                    
+                } else if (reStatePathConfidences[targetStateKey] < _config.HighDetailErrorPreventionConfidenceThreshold &&
                            reStatePathConfidences[targetStateKey] >= _config.MediumDetailErrorPreventionConfidenceThreshold)
                 {
                     errorPreventionMessages.Add(new TutorMessage(targetStateKey + "_mediumDetail", epmController.GetMessageForState(targetStateKey).MediumDetailMessage));
                 }
                 else if (reStatePathConfidences[targetStateKey] < _config.MediumDetailErrorPreventionConfidenceThreshold)
                 {
-                    errorPreventionMessages.Add(new TutorMessage(targetStateKey + "_highDetail", epmController.GetMessageForState(targetStateKey).HighDetailMessage));
+                    errorPreventionMessages.Add(new TutorMessage(targetStateKey + "_lowDetail", epmController.GetMessageForState(targetStateKey).LowDetailMessage));
                 }
             }
         }
@@ -144,6 +162,23 @@ namespace Its.TutoringModule.CMTutor
 
                 TutorMessage message = null;
 
+                // Conf = 1
+                //
+                //     Student is extremely likely to make correct action so don't provide any tutoring
+                //
+                // [No Tutoring Conf Threshold]
+                //
+                //     Student is probably going to make correct action so provide a generic (low detail) tutoring message
+                //
+                // [Low Detail Threshold]
+                //
+                //     Student maybe is going to make a correct action so provide a medium detail tutoring message
+                //
+                // [Medium Detail Threshold]
+                //
+                //     Student is unlikely to make next correct action so provide a high detail tutoring message
+                //
+                // Conf = 0  
                 if (noTutoringThreshold >= conf && conf > lowDetailThreshold)
                 {
                     // low detail message
