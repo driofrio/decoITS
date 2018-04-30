@@ -229,382 +229,196 @@ namespace Its.ExpertModule
 				return 0;
 			}
 
-			if (studentLog.HasPerformedActionWithoutError(action))
+			if (studentLog.HasPerformedActionWithoutError(action) && !action.IsRepetitive)
 			{
-				//Checks if the action can be repeated.
-				if (action.IsRepetitive == false) {
-					//Get the error.
-					Error error = _otherErrors["actionalreadyperformed"];
+				//Get the error.
+				Error error = _otherErrors["actionalreadyperformed"];
+				//Creates the log.
+				_instanceStudentControl.CreateOtherErrorLog(action, domain, student, false, error);
+				//Adds the error to the answer param.
+				outputError.Add(error);
+				//Returns the value.
+				return 0;
+			}
+
+			//Gets action dependence.
+			ComplexDependence actionDependence = action.Dependence;
+			//Creates an auxiliar variable.
+			int resultCheckDependence = 0;
+			//Creates an auxiliar list in which will be saved the dependencies with errors.
+			List<Dependence> dependenceErrors = new List<Dependence>();
+			//Checks if the action has a dependence.
+			if (actionDependence != null) {
+				//Checks the dependence type.
+				if (actionDependence.GetType () == typeof(SeqComplexDependence))
+					resultCheckDependence = CheckSeqComplexDependencies ((SeqComplexDependence)actionDependence, action.Key, 
+						studentLog, domain, ref dependenceErrors);
+				else if (actionDependence.GetType () == typeof(OptComplexDependence))
+					resultCheckDependence = CheckOptComplexDependencies ((OptComplexDependence)actionDependence, action.Key, 
+						studentLog, domain, ref dependenceErrors);
+				//Checks the result.
+				if (resultCheckDependence == 0) {
 					//Creates the log.
-					_instanceStudentControl.CreateOtherErrorLog(action, domain,student, false, error);
+					_instanceStudentControl.CreateDepErrorLog (action, domain, student, false,
+						dependenceErrors.Last ());
 					//Adds the error to the answer param.
-					outputError.Add(error);
+					outputError.Add (dependenceErrors.Last ().DependenceError);
 					//Returns the value.
 					return 0;
-				} else {
-					//Gets action dependence.
-					ComplexDependence actionDependence = action.Dependence;
-					//Creates an auxiliar variable.
-					int resultCheckDependence = 0;
-					//Creates an auxiliar list in which will be saved the dependencies with errors.
-					List<Dependence> dependenceErrors = new List<Dependence>();
-					//Checks if the action has a dependence.
-					if (actionDependence != null) {
-						//Checks the dependence type.
-						if (actionDependence.GetType () == typeof(SeqComplexDependence))
-							resultCheckDependence = CheckSeqComplexDependencies ((SeqComplexDependence)actionDependence, action.Key, 
-								studentLog, domain, ref dependenceErrors);
-						else if (actionDependence.GetType () == typeof(OptComplexDependence))
-							resultCheckDependence = CheckOptComplexDependencies ((OptComplexDependence)actionDependence, action.Key, 
-								studentLog, domain, ref dependenceErrors);
-						//Checks the result.
-						if (resultCheckDependence == 0) {
-							//Creates the log.
-							_instanceStudentControl.CreateDepErrorLog (action, domain, student, false,
-								dependenceErrors.Last ());
-							//Adds the error to the answer param.
-							outputError.Add (dependenceErrors.Last ().DependenceError);
-							//Returns the value.
-							return 0;
-						} else if (resultCheckDependence == -1) {
-							//Sets the result.
-							result = -1;
-							//Creates a log for each dependence with an error.
-							foreach (Dependence d in dependenceErrors) {
-								//Creates the log.
-								_instanceStudentControl.CreateDepErrorLog (action, domain, student, false,
-									d);
-							}
-						}
-					}
-					//Checks if there are any incompatibility.
-					if (action.Incompatibilities != null) {
-						//Checks if an incompatibility of the action exist.
-						foreach (Incompatibility i in action.Incompatibilities) {
-							//Checks if the incompatibility was done before the action
-							if (_instanceStudentControl.CheckLogActionOrder (domainKey, studentKey, 
-								   i.IncompatibilityAction.Key, action.Key)) {
-								//Checks if the incompatibility blocks.
-								if (i.IncompatibilityError.IsBlock) {
-									//Creates the log.
-									_instanceStudentControl.CreateIncompErrorLog (action, domain, student, false, i);
-									//Adds the error to the answer param.
-									outputError.Add (i.IncompatibilityError);
-									//Returns the value.
-									return 0;
-								} else {
-									//Creates the log.
-									_instanceStudentControl.CreateIncompErrorLog (action, domain, student, false, i);
-									//Sets the result.
-									result = -1;
-								}
-							}
-						}
-					}
-					//Checks if the action blocks the object.
-					if (action.LockObj)
-						blockObject = true;
-					//Check if the action validate the phase errors.
-					if (action.ValidateErrors) {
-						//Gets all errors done by the user previously.
-						//Adds errors into the list that will be returned.
-						foreach (Error e in studentLog.GetErrorsInCurrentPhase()) {
-							outputError.Add (e);
-						}
-					}
-					//Checks if the action change the current phase.
-					if (action.InitPhase)
-						studentLog.CurrentPhase += 1;
-					//Checks if the action has minimun and/or maximun time.
-					if (action.MinTime > 0) {
-						//Creates a thread to control the minimun timer.
-						Thread minTimerThread = new Thread (new ParameterizedThreadStart(MinTimer));
-						//Checks if student has an entry.
-						if (_minTimerController.ContainsKey (student.Key)) {
-							//Checks if a entry for the specific action already exists.
-							if (_minTimerController.TryGetValue (student.Key, out dic)) {
-								if (dic.ContainsKey (action.Key)) {
-									//Get the error.
-									Error error = _otherErrors ["actionalreadyperformed"];
-									//Creates the log.
-									_instanceStudentControl.CreateOtherErrorLog (action, domain, student, false, error);
-									//Adds the error to the answer param.
-									outputError.Add (error);
-									//Returns the value.
-									return 0;
-								} else {
-									//Adds a new entry to the dictionary.
-									if (_minTimerController.TryGetValue (student.Key, out dic))
-										dic.Add (action.Key, minTimerThread);
-								}
-							}
-						} else {
-							//Adds a new entry to the dictionary.
-							_minTimerController.Add(student.Key, new Dictionary<string, Thread>());
-							//Adds the thread to the dictionary.
-							//Adds a new entry to the dictionary.
-								if (_minTimerController.TryGetValue(student.Key, out dic))
-									dic.Add (action.Key, minTimerThread);
-						}
-						//Starts the thread.
-						ArrayList param = new ArrayList();
-						param.Add (minTimerThread);
-						param.Add (action);
-						param.Add (domain);
-						param.Add (student);
-						minTimerThread.Start (param);
-					}
-					if (action.MaxTime > 0) {
-						//Creates a thread to control the minimun timer.
-						Thread maxTimerThread = new Thread (new ParameterizedThreadStart(MaxTimer));
-						//Checks if student has an entry.
-						if (_maxTimerController.ContainsKey (student.Key)) {
-							//Checks if a entry for the specific action already exists.
-							if (_maxTimerController.TryGetValue (student.Key, out dic)) {
-								if (dic.ContainsKey (action.Key)) {
-									//Get the error.
-									Error error = _otherErrors ["actionalreadyperformed"];
-									//Creates the log.
-									_instanceStudentControl.CreateOtherErrorLog (action, domain, student, false, error);
-									//Adds the error to the answer param.
-									outputError.Add (error);
-									//Returns the value.
-									return 0;
-								} else {
-									//Adds a new entry to the dictionary.
-									if (_maxTimerController.TryGetValue (student.Key, out dic))
-										dic.Add (action.Key, maxTimerThread);
-								}
-							}
-						} else {
-							//Adds a new entry to the dictionary.
-							_maxTimerController.Add(student.Key, new Dictionary<string, Thread>());
-							//Adds the thread to the dictionary.
-							//Adds a new entry to the dictionary.
-							if (_maxTimerController.TryGetValue(student.Key, out dic))
-								dic.Add (action.Key, maxTimerThread);
-						}
-
-						//Creates a thread to control the maximun timer.
-						maxTimerThread = new Thread (new ParameterizedThreadStart(MaxTimer));
-						//Starts the thread.
-						ArrayList param = new ArrayList();
-						param.Add (maxTimerThread);
-						param.Add (action);
-						param.Add (student);
-						param.Add (action.MaxTime);
-						//Starts the thread.
-						maxTimerThread.Start (param);
-					}
-					//At this moment, the action has been successful. Then, the action will be registered.
-					if (!action.CorrectiveAction && action.MinTime <= 0)
-						_instanceStudentControl.CreateNoCorrectiveActionLog (action, domain, student, true);
-					//Gets the previous action.
-					ActionAplication previousAction = domain.GetPreviousAction(action.Key);
-					//Checks if this is the first action done by the student.
-					if (previousAction != null) {
-						//Creates an auxiliar variable that will not use.
-						Thread t;
-						Dictionary<string, Thread> maxTDic;
-						//Checks if the previous action created a maximun timer.
-						if (_maxTimerController.TryGetValue (studentLog.Owner.Key, out maxTDic)) {
-							if (!maxTDic.TryGetValue (previousAction.Key, out t) && previousAction.MaxTime > 0) {
-								//Generates a max time error.
-								_instanceStudentControl.CreateMaxTimeErrorLog (previousAction, domain, studentLog.Owner, false, previousAction.MaxTime);
-								//Checks if the dependence blocks or not.
-								if (previousAction.MaxTimeError.IsBlock) {
-									//The result will be zero.
-									result = 0;
-									//Adds the dependence into the list.
-									outputError.Add (previousAction.MaxTimeError);
-								} else {
-									//The result will be -1.
-									result = -1;
-								}
-							}
-						}
-					}
-				}
-			} else {
-				//Gets action dependence.
-				ComplexDependence actionDependence = action.Dependence;
-				//Creates an auxiliar variable.
-				int resultCheckDependence = 0;
-				//Creates an auxiliar list in which will be saved the dependencies with errors.
-				List<Dependence> dependenceErrors = new List<Dependence>();
-				//Checks if the action has a dependence.
-				if (actionDependence != null) {
-					//Checks the dependence type.
-					if (actionDependence.GetType () == typeof(SeqComplexDependence))
-						resultCheckDependence = CheckSeqComplexDependencies ((SeqComplexDependence)actionDependence, action.Key, 
-							studentLog, domain, ref dependenceErrors);
-					else if (actionDependence.GetType () == typeof(OptComplexDependence))
-						resultCheckDependence = CheckOptComplexDependencies ((OptComplexDependence)actionDependence, action.Key, 
-							studentLog, domain, ref dependenceErrors);
-					//Checks the result.
-					if (resultCheckDependence == 0) {
+				} else if (resultCheckDependence == -1) {
+					//Sets the result.
+					result = -1;
+					//Creates a log for each dependence with an error.
+					foreach (Dependence d in dependenceErrors) {
 						//Creates the log.
 						_instanceStudentControl.CreateDepErrorLog (action, domain, student, false,
-							dependenceErrors.Last ());
-						//Adds the error to the answer param.
-						outputError.Add (dependenceErrors.Last ().DependenceError);
-						//Returns the value.
-						return 0;
-					} else if (resultCheckDependence == -1) {
-						//Sets the result.
-						result = -1;
-						//Creates a log for each dependence with an error.
-						foreach (Dependence d in dependenceErrors) {
+							d);
+					}
+				}
+			}
+			//Checks if there are any incompatibility.
+			if (action.Incompatibilities != null) {
+				//Checks if an incompatibility of the action exist.
+				foreach (Incompatibility i in action.Incompatibilities) {
+					//Checks if the incompatibility was done before the action
+					if (_instanceStudentControl.CheckLogActionOrder (domainKey, studentKey, 
+						   i.IncompatibilityAction.Key, action.Key)) {
+						//Checks if the incompatibility blocks.
+						if (i.IncompatibilityError.IsBlock) {
 							//Creates the log.
-							_instanceStudentControl.CreateDepErrorLog (action, domain, student, false,
-								d);
+							_instanceStudentControl.CreateIncompErrorLog (action, domain, student, false, i);
+							//Adds the error to the answer param.
+							outputError.Add (i.IncompatibilityError);
+							//Returns the value.
+							return 0;
+						} else {
+							//Creates the log.
+							_instanceStudentControl.CreateIncompErrorLog (action, domain, student, false, i);
+							//Sets the result.
+							result = -1;
 						}
 					}
 				}
-				//Checks if there are any incompatibility.
-				if (action.Incompatibilities != null) {
-					//Checks if an incompatibility of the action exist.
-					foreach (Incompatibility i in action.Incompatibilities) {
-						//Checks if the incompatibility was done before the action
-						if (_instanceStudentControl.CheckLogActionOrder (domainKey, studentKey, 
-							   i.IncompatibilityAction.Key, action.Key)) {
-							//Checks if the incompatibility blocks.
-							if (i.IncompatibilityError.IsBlock) {
-								//Creates the log.
-								_instanceStudentControl.CreateIncompErrorLog (action, domain, student, false, i);
-								//Adds the error to the answer param.
-								outputError.Add (i.IncompatibilityError);
-								//Returns the value.
-								return 0;
-							} else {
-								//Creates the log.
-								_instanceStudentControl.CreateIncompErrorLog (action, domain, student, false, i);
-								//Sets the result.
-								result = -1;
-							}
+			}
+			//Checks if the action blocks the object.
+			if (action.LockObj)
+				blockObject = true;
+			//Check if the action validate the phase errors.
+			if (action.ValidateErrors) {
+				//Gets all errors done by the user previously.
+				//Adds errors into the list that will be returned.
+				foreach (Error e in studentLog.GetErrorsInCurrentPhase()) {
+					outputError.Add (e);
+				}
+			}
+			//Checks if the action change the current phase.
+			if (action.InitPhase)
+				studentLog.CurrentPhase += 1;
+			//Checks if the action has minimun and/or maximun time.
+			if (action.MinTime > 0) {
+				//Creates a thread to control the minimun timer.
+				Thread minTimerThread = new Thread (new ParameterizedThreadStart(MinTimer));
+				//Checks if student has an entry.
+				if (_minTimerController.ContainsKey (student.Key)) {
+					//Checks if a entry for the specific action already exists.
+					if (_minTimerController.TryGetValue (student.Key, out dic)) {
+						if (dic.ContainsKey (action.Key)) {
+							//Get the error.
+							Error error = _otherErrors ["actionalreadyperformed"];
+							//Creates the log.
+							_instanceStudentControl.CreateOtherErrorLog (action, domain, student, false, error);
+							//Adds the error to the answer param.
+							outputError.Add (error);
+							//Returns the value.
+							return 0;
+						} else {
+							//Adds a new entry to the dictionary.
+							if (_minTimerController.TryGetValue (student.Key, out dic))
+								dic.Add (action.Key, minTimerThread);
 						}
 					}
+				} else {
+					//Adds a new entry to the dictionary.
+					_minTimerController.Add(student.Key, new Dictionary<string, Thread>());
+					//Adds the thread to the dictionary.
+					//Adds a new entry to the dictionary.
+					if (_minTimerController.TryGetValue(student.Key, out dic))
+						dic.Add (action.Key, minTimerThread);
 				}
-				//Checks if the action blocks the object.
-				if (action.LockObj)
-					blockObject = true;
-				//Check if the action validate the phase errors.
-				if (action.ValidateErrors) {
-					//Gets all errors done by the user previously.
-					//Adds errors into the list that will be returned.
-					foreach (Error e in studentLog.GetErrorsInCurrentPhase()) {
-						outputError.Add (e);
-					}
-				}
-				//Checks if the action change the current phase.
-				if (action.InitPhase)
-					studentLog.CurrentPhase += 1;
-				//Checks if the action has minimun and/or maximun time.
-				if (action.MinTime > 0) {
-					//Creates a thread to control the minimun timer.
-					Thread minTimerThread = new Thread (new ParameterizedThreadStart(MinTimer));
-					//Checks if student has an entry.
-					if (_minTimerController.ContainsKey (student.Key)) {
-						//Checks if a entry for the specific action already exists.
-						if (_minTimerController.TryGetValue (student.Key, out dic)) {
-							if (dic.ContainsKey (action.Key)) {
-								//Get the error.
-								Error error = _otherErrors ["actionalreadyperformed"];
-								//Creates the log.
-								_instanceStudentControl.CreateOtherErrorLog (action, domain, student, false, error);
-								//Adds the error to the answer param.
-								outputError.Add (error);
-								//Returns the value.
-								return 0;
-							} else {
-								//Adds a new entry to the dictionary.
-								if (_minTimerController.TryGetValue (student.Key, out dic))
-									dic.Add (action.Key, minTimerThread);
-							}
+				//Starts the thread.
+				ArrayList param = new ArrayList();
+				param.Add (minTimerThread);
+				param.Add (action);
+				param.Add (domain);
+				param.Add (student);
+				minTimerThread.Start (param);
+			}
+			if (action.MaxTime > 0) {
+				//Creates a thread to control the minimun timer.
+				Thread maxTimerThread = new Thread (new ParameterizedThreadStart(MaxTimer));
+				//Checks if student has an entry.
+				if (_maxTimerController.ContainsKey (student.Key)) {
+					//Checks if a entry for the specific action already exists.
+					if (_maxTimerController.TryGetValue (student.Key, out dic)) {
+						if (dic.ContainsKey (action.Key)) {
+							//Get the error.
+							Error error = _otherErrors ["actionalreadyperformed"];
+							//Creates the log.
+							_instanceStudentControl.CreateOtherErrorLog (action, domain, student, false, error);
+							//Adds the error to the answer param.
+							outputError.Add (error);
+							//Returns the value.
+							return 0;
+						} else {
+							//Adds a new entry to the dictionary.
+							if (_maxTimerController.TryGetValue (student.Key, out dic))
+								dic.Add (action.Key, maxTimerThread);
 						}
-					} else {
-						//Adds a new entry to the dictionary.
-						_minTimerController.Add(student.Key, new Dictionary<string, Thread>());
-						//Adds the thread to the dictionary.
-						//Adds a new entry to the dictionary.
-						if (_minTimerController.TryGetValue(student.Key, out dic))
-							dic.Add (action.Key, minTimerThread);
 					}
-					//Starts the thread.
-					ArrayList param = new ArrayList();
-					param.Add (minTimerThread);
-					param.Add (action);
-					param.Add (domain);
-					param.Add (student);
-					minTimerThread.Start (param);
+				} else {
+					//Adds a new entry to the dictionary.
+					_maxTimerController.Add(student.Key, new Dictionary<string, Thread>());
+					//Adds the thread to the dictionary.
+					//Adds a new entry to the dictionary.
+					if (_maxTimerController.TryGetValue(student.Key, out dic))
+						dic.Add (action.Key, maxTimerThread);
 				}
-				if (action.MaxTime > 0) {
-					//Creates a thread to control the minimun timer.
-					Thread maxTimerThread = new Thread (new ParameterizedThreadStart(MaxTimer));
-					//Checks if student has an entry.
-					if (_maxTimerController.ContainsKey (student.Key)) {
-						//Checks if a entry for the specific action already exists.
-						if (_maxTimerController.TryGetValue (student.Key, out dic)) {
-							if (dic.ContainsKey (action.Key)) {
-								//Get the error.
-								Error error = _otherErrors ["actionalreadyperformed"];
-								//Creates the log.
-								_instanceStudentControl.CreateOtherErrorLog (action, domain, student, false, error);
-								//Adds the error to the answer param.
-								outputError.Add (error);
-								//Returns the value.
-								return 0;
-							} else {
-								//Adds a new entry to the dictionary.
-								if (_maxTimerController.TryGetValue (student.Key, out dic))
-									dic.Add (action.Key, maxTimerThread);
-							}
-						}
-					} else {
-						//Adds a new entry to the dictionary.
-						_maxTimerController.Add(student.Key, new Dictionary<string, Thread>());
-						//Adds the thread to the dictionary.
-						//Adds a new entry to the dictionary.
-						if (_maxTimerController.TryGetValue(student.Key, out dic))
-							dic.Add (action.Key, maxTimerThread);
-					}
 
-					//Creates a thread to control the maximun timer.
-					maxTimerThread = new Thread (new ParameterizedThreadStart(MaxTimer));
-					//Starts the thread.
-					ArrayList param = new ArrayList();
-					param.Add (maxTimerThread);
-					param.Add (action);
-					param.Add (student);
-					param.Add (action.MaxTime);
-					//Starts the thread.
-					maxTimerThread.Start (param);
-				}
-				//At this moment, the action has been successful. Then, the action will be registered.
-				if (!action.CorrectiveAction && action.MinTime <= 0)
-					_instanceStudentControl.CreateNoCorrectiveActionLog (action, domain, student, true);
-				//Gets the previous action.
-				ActionAplication previousAction = domain.GetPreviousAction(action.Key);
-				//Checks if this is the first action done by the student.
-				if (previousAction != null) {
-					//Creates an auxiliar variable that will not use.
-					Thread t;
-					Dictionary<string, Thread> maxTDic;
-					//Checks if the previous action created a maximun timer.
-					if (_maxTimerController.TryGetValue (studentLog.Owner.Key, out maxTDic)) {
-						if (!maxTDic.TryGetValue (previousAction.Key, out t)  && previousAction.MaxTime > 0) {
-							//Generates a max time error.
-							_instanceStudentControl.CreateMaxTimeErrorLog (previousAction, domain, studentLog.Owner, false, previousAction.MaxTime);
-							//Checks if the dependence blocks or not.
-							if (previousAction.MaxTimeError.IsBlock) {
-								//The result will be zero.
-								result = 0;
-								//Adds the dependence into the list.
-								outputError.Add (previousAction.MaxTimeError);
-							} else {
-								//The result will be -1.
-								result = -1;
-							}
+				//Creates a thread to control the maximun timer.
+				maxTimerThread = new Thread (new ParameterizedThreadStart(MaxTimer));
+				//Starts the thread.
+				ArrayList param = new ArrayList();
+				param.Add (maxTimerThread);
+				param.Add (action);
+				param.Add (student);
+				param.Add (action.MaxTime);
+				//Starts the thread.
+				maxTimerThread.Start (param);
+			}
+			//At this moment, the action has been successful. Then, the action will be registered.
+			if (!action.CorrectiveAction && action.MinTime <= 0)
+				_instanceStudentControl.CreateNoCorrectiveActionLog (action, domain, student, true);
+			//Gets the previous action.
+			ActionAplication previousAction = domain.GetPreviousAction(action.Key);
+			//Checks if this is the first action done by the student.
+			if (previousAction != null) {
+				//Creates an auxiliar variable that will not use.
+				Thread t;
+				Dictionary<string, Thread> maxTDic;
+				//Checks if the previous action created a maximun timer.
+				if (_maxTimerController.TryGetValue (studentLog.Owner.Key, out maxTDic)) {
+					if (!maxTDic.TryGetValue (previousAction.Key, out t)  && previousAction.MaxTime > 0) {
+						//Generates a max time error.
+						_instanceStudentControl.CreateMaxTimeErrorLog (previousAction, domain, studentLog.Owner, false, previousAction.MaxTime);
+						//Checks if the dependence blocks or not.
+						if (previousAction.MaxTimeError.IsBlock) {
+							//The result will be zero.
+							result = 0;
+							//Adds the dependence into the list.
+							outputError.Add (previousAction.MaxTimeError);
+						} else {
+							//The result will be -1.
+							result = -1;
 						}
 					}
 				}
