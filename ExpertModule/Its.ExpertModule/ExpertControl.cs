@@ -13,6 +13,8 @@ namespace Its.ExpertModule
 {
 	public class ExpertControl
 	{
+		private delegate int ValidationStep(ActionAplication action, DomainActions domain, Student student, ref List<LogEntry> logs);
+		
 		/// <summary>
 		/// The instance.
 		/// </summary>
@@ -172,26 +174,15 @@ namespace Its.ExpertModule
 		public int ActionValidation (string actionName, string domainKey, string studentKey, string objName,
 			out List<Error> outputError, out bool blockObject)
 		{
-			/*
-			 * 1. Comprobar previa ejecución de la acción y si esta es repetitiva. Error si no es repetitiva.
-			 * 2. Comprobar dependencias.
-			 * 		2.1. Si es bloqueante, se notifica error.
-			 * 		2.2. Si no es bloqueante, se guarda el error.
-			 * 3. Comprobar incompatibilidades.
-			 * 4. Comprobar si la acción debe mostrar todos los mensajes cometidos previamente.
-			 */
 			//Creates a variable with the result to return.
 			int result = 1;
-			//Sets the value of blockObject to a default value.
 			blockObject = false;
-			//Gets the DomainActions.
+			
 			DomainActions domain = _domainActionsList [domainKey];
-			//Gets the Student.
 			Student student = _instanceStudentControl.GetStudent (studentKey);
-			//Gets the StudentLog of the given student for the specific domain.
 			StudentLog studentLog;
-			//Creates an auxiliar variable.
 			Dictionary<string, Thread> dic;
+			
 			try {
 				studentLog = _instanceStudentControl.GetStudentLog (domainKey, studentKey);
 			} catch (ArgumentException e) {
@@ -208,9 +199,10 @@ namespace Its.ExpertModule
 				}
 			}
 
-			//Searchs and gets the action with the actionName given.
 			ActionAplication action = null;
 			outputError = new List<Error> ();
+
+			//Searchs and gets the action with the actionName given.
 			var actQuery = 
 				from o in domain.Actions
 					where o.Name == actionName && o.Phase == studentLog.CurrentPhase
@@ -221,88 +213,100 @@ namespace Its.ExpertModule
 			} else {
 				//Get the error.
 				Error error = _otherErrors["actionnotfound"];
-				//Creates the log.
-				_instanceStudentControl.CreateOtherErrorLog(action, domain, student, false, error);
-				//Adds the error to the answer param.
+				LogEntry log = StudentControl.CreateOtherErrorLog(action, false, error);
+				_instanceStudentControl.AddLog(domain, student, log);
 				outputError.Add(error);
-				//Returns the value.
+
 				return 0;
 			}
-
-			if (studentLog.HasPerformedActionWithoutError(action) && !action.IsRepetitive)
+			
+			// Creating action log entry. Entry is created before futher validation is performed in order to
+			// ensure that action log appears before non-blocking errors in the ontology (important for predictive student model)
+			//
+			// Currently only NoCorrective Action log is supported.
+			// TODO: Consider what will happen to predictive student model automaton if action has MinTime and will be created later.	
+			LogEntry actionLog = null;
+			if (!action.CorrectiveAction && action.MinTime <= 0)
 			{
-				//Get the error.
-				Error error = _otherErrors["actionalreadyperformed"];
-				//Creates the log.
-				_instanceStudentControl.CreateOtherErrorLog(action, domain, student, false, error);
-				//Adds the error to the answer param.
-				outputError.Add(error);
-				//Returns the value.
-				return 0;
+				actionLog = StudentControl.CreateNoCorrectiveActionLog (action, true);
+				Thread.Sleep(10);
 			}
 
-			//Gets action dependence.
-			ComplexDependence actionDependence = action.Dependence;
-			//Creates an auxiliar variable.
-			int resultCheckDependence = 0;
-			//Creates an auxiliar list in which will be saved the dependencies with errors.
-			List<Dependence> dependenceErrors = new List<Dependence>();
-			//Checks if the action has a dependence.
-			if (actionDependence != null) {
-				//Checks the dependence type.
-				if (actionDependence.GetType () == typeof(SeqComplexDependence))
-					resultCheckDependence = CheckSeqComplexDependencies ((SeqComplexDependence)actionDependence, action.Key, 
-						studentLog, domain, ref dependenceErrors);
-				else if (actionDependence.GetType () == typeof(OptComplexDependence))
-					resultCheckDependence = CheckOptComplexDependencies ((OptComplexDependence)actionDependence, action.Key, 
-						studentLog, domain, ref dependenceErrors);
-				//Checks the result.
-				if (resultCheckDependence == 0) {
-					//Creates the log.
-					_instanceStudentControl.CreateDepErrorLog (action, domain, student, false,
-						dependenceErrors.Last ());
-					//Adds the error to the answer param.
-					outputError.Add (dependenceErrors.Last ().DependenceError);
-					//Returns the value.
-					return 0;
-				} else if (resultCheckDependence == -1) {
-					//Sets the result.
+			// Define validation steps
+			List<ValidationStep> steps = new List<ValidationStep>()
+			{
+				ValidateActionNotPerformed,
+				ValidateActionDependencies,
+				ValidateActionIncompatibilities,
+				InitActionTimers,
+				ValidateActionMaxTimer
+			};
+
+			List<LogEntry> logs = new List<LogEntry>();
+			
+			// Execute validation steps
+			foreach (ValidationStep step in steps)
+			{
+				List<LogEntry> stepLogs = new List<LogEntry>();
+				
+				int stepResult = step(action, domain, student, ref stepLogs);
+				
+				if (stepResult == 0)
+				{
+					// If blocking error was encountered, don't perform futher checks and log current blocking error.
+					// Blocking error log has priority over any previously encountered error logs.
+					result = 0;
+					logs = stepLogs;
+					break;
+				} else if (stepResult == -1)
+				{
 					result = -1;
-					//Creates a log for each dependence with an error.
-					foreach (Dependence d in dependenceErrors) {
-						//Creates the log.
-						_instanceStudentControl.CreateDepErrorLog (action, domain, student, false,
-							d);
-					}
+					logs.AddRange(stepLogs);
 				}
 			}
-			//Checks if there are any incompatibility.
-			if (action.Incompatibilities != null) {
-				//Checks if an incompatibility of the action exist.
-				foreach (Incompatibility i in action.Incompatibilities) {
-					//Checks if the incompatibility was done before the action
-					if (_instanceStudentControl.CheckLogActionOrder (domainKey, studentKey, 
-						   i.IncompatibilityAction.Key, action.Key)) {
-						//Checks if the incompatibility blocks.
-						if (i.IncompatibilityError.IsBlock) {
-							//Creates the log.
-							_instanceStudentControl.CreateIncompErrorLog (action, domain, student, false, i);
-							//Adds the error to the answer param.
-							outputError.Add (i.IncompatibilityError);
-							//Returns the value.
-							return 0;
-						} else {
-							//Creates the log.
-							_instanceStudentControl.CreateIncompErrorLog (action, domain, student, false, i);
-							//Sets the result.
-							result = -1;
-						}
-					}
+
+			// Update logs dependending on validation outcome
+			if (result == 0)
+			{
+				// Blocking error: Only log last error (presumably the blocking one)
+				LogEntry lastLog = logs.Last();
+				_instanceStudentControl.AddLog(domain, student, lastLog);
+				
+				// Update outputErrors container with blocking error message
+				if (lastLog.GetType() == typeof(MaxTimeErrorLog))
+				{
+					ActionAplication previousAction = domain.GetPreviousAction(action.Key);
+					outputError.Add(previousAction.MaxTimeError);
+				}
+				else
+				{
+					outputError.Add(lastLog.Error);
+				}
+				
+			} else if (result == -1)
+			{
+				// Non-blokcing error(s): add all logs (action + error)
+				if (actionLog != null)
+				{
+					_instanceStudentControl.AddLog(domain, student, actionLog);
+				}
+				
+				_instanceStudentControl.AddLog(domain, student, logs);
+			} else if (result == 1)
+			{
+				// Correct action - only capture action log
+				if (actionLog != null)
+				{
+					_instanceStudentControl.AddLog(domain, student, actionLog);
 				}
 			}
+			
 			//Checks if the action blocks the object.
 			if (action.LockObj)
-				blockObject = true;
+			{
+				blockObject = true;	
+			}
+			
 			//Check if the action validate the phase errors.
 			if (action.ValidateErrors) {
 				//Gets all errors done by the user previously.
@@ -311,120 +315,13 @@ namespace Its.ExpertModule
 					outputError.Add (e);
 				}
 			}
+			
 			//Checks if the action change the current phase.
 			if (action.InitPhase)
-				studentLog.CurrentPhase += 1;
-			//Checks if the action has minimun and/or maximun time.
-			if (action.MinTime > 0) {
-				//Creates a thread to control the minimun timer.
-				Thread minTimerThread = new Thread (new ParameterizedThreadStart(MinTimer));
-				//Checks if student has an entry.
-				if (_minTimerController.ContainsKey (student.Key)) {
-					//Checks if a entry for the specific action already exists.
-					if (_minTimerController.TryGetValue (student.Key, out dic)) {
-						if (dic.ContainsKey (action.Key)) {
-							//Get the error.
-							Error error = _otherErrors ["actionalreadyperformed"];
-							//Creates the log.
-							_instanceStudentControl.CreateOtherErrorLog (action, domain, student, false, error);
-							//Adds the error to the answer param.
-							outputError.Add (error);
-							//Returns the value.
-							return 0;
-						} else {
-							//Adds a new entry to the dictionary.
-							if (_minTimerController.TryGetValue (student.Key, out dic))
-								dic.Add (action.Key, minTimerThread);
-						}
-					}
-				} else {
-					//Adds a new entry to the dictionary.
-					_minTimerController.Add(student.Key, new Dictionary<string, Thread>());
-					//Adds the thread to the dictionary.
-					//Adds a new entry to the dictionary.
-					if (_minTimerController.TryGetValue(student.Key, out dic))
-						dic.Add (action.Key, minTimerThread);
-				}
-				//Starts the thread.
-				ArrayList param = new ArrayList();
-				param.Add (minTimerThread);
-				param.Add (action);
-				param.Add (domain);
-				param.Add (student);
-				minTimerThread.Start (param);
-			}
-			if (action.MaxTime > 0) {
-				//Creates a thread to control the minimun timer.
-				Thread maxTimerThread = new Thread (new ParameterizedThreadStart(MaxTimer));
-				//Checks if student has an entry.
-				if (_maxTimerController.ContainsKey (student.Key)) {
-					//Checks if a entry for the specific action already exists.
-					if (_maxTimerController.TryGetValue (student.Key, out dic)) {
-						if (dic.ContainsKey (action.Key)) {
-							//Get the error.
-							Error error = _otherErrors ["actionalreadyperformed"];
-							//Creates the log.
-							_instanceStudentControl.CreateOtherErrorLog (action, domain, student, false, error);
-							//Adds the error to the answer param.
-							outputError.Add (error);
-							//Returns the value.
-							return 0;
-						} else {
-							//Adds a new entry to the dictionary.
-							if (_maxTimerController.TryGetValue (student.Key, out dic))
-								dic.Add (action.Key, maxTimerThread);
-						}
-					}
-				} else {
-					//Adds a new entry to the dictionary.
-					_maxTimerController.Add(student.Key, new Dictionary<string, Thread>());
-					//Adds the thread to the dictionary.
-					//Adds a new entry to the dictionary.
-					if (_maxTimerController.TryGetValue(student.Key, out dic))
-						dic.Add (action.Key, maxTimerThread);
-				}
-
-				//Creates a thread to control the maximun timer.
-				maxTimerThread = new Thread (new ParameterizedThreadStart(MaxTimer));
-				//Starts the thread.
-				ArrayList param = new ArrayList();
-				param.Add (maxTimerThread);
-				param.Add (action);
-				param.Add (student);
-				param.Add (action.MaxTime);
-				//Starts the thread.
-				maxTimerThread.Start (param);
-			}
-			//At this moment, the action has been successful. Then, the action will be registered.
-			if (!action.CorrectiveAction && action.MinTime <= 0)
-				_instanceStudentControl.CreateNoCorrectiveActionLog (action, domain, student, true);
-			//Gets the previous action.
-			ActionAplication previousAction = domain.GetPreviousAction(action.Key);
-			//Checks if this is the first action done by the student.
-			if (previousAction != null) {
-				//Creates an auxiliar variable that will not use.
-				Thread t;
-				Dictionary<string, Thread> maxTDic;
-				//Checks if the previous action created a maximun timer.
-				if (_maxTimerController.TryGetValue (studentLog.Owner.Key, out maxTDic)) {
-					if (!maxTDic.TryGetValue (previousAction.Key, out t)  && previousAction.MaxTime > 0) {
-						//Generates a max time error.
-						_instanceStudentControl.CreateMaxTimeErrorLog (previousAction, domain, studentLog.Owner, false, previousAction.MaxTime);
-						//Checks if the dependence blocks or not.
-						if (previousAction.MaxTimeError.IsBlock) {
-							//The result will be zero.
-							result = 0;
-							//Adds the dependence into the list.
-							outputError.Add (previousAction.MaxTimeError);
-						} else {
-							//The result will be -1.
-							result = -1;
-						}
-					}
-				}
+			{
+				studentLog.CurrentPhase += 1;	
 			}
 
-			//Returns.
 			return result;
 		}
 
@@ -442,7 +339,8 @@ namespace Its.ExpertModule
 			//Sleeps the thread during the time the action required.
 			Thread.Sleep (action.MinTime * 1000);
 			//Registers the action log.
-			_instanceStudentControl.CreateNoCorrectiveActionLog (action, domain, student, true);
+			LogEntry log = StudentControl.CreateNoCorrectiveActionLog (action, true);
+			_instanceStudentControl.AddLog(domain, student, log);
 			//Gets the thread and removes it.
 			Dictionary<string, Thread> minTDic;
 			if (_maxTimerController.TryGetValue (student.Key, out minTDic))
@@ -477,8 +375,8 @@ namespace Its.ExpertModule
 		/// <param name="action">Action.</param>
 		/// <param name="studentLog">Student log.</param>
 		/// <param name="errors">Errors.</param>
-		private int CheckOptComplexDependencies (OptComplexDependence complexDependence, string actionKey,
-			StudentLog studentLog, DomainActions domain, ref List<Dependence> errors)
+		private static int CheckOptComplexDependencies (OptComplexDependence complexDependence, string actionKey,
+			StudentLog studentLog, ref List<Dependence> errors, ref List<LogEntry> logs)
 		{
 			//Creates an auxiliar variable.
 			int result = 2;
@@ -487,7 +385,7 @@ namespace Its.ExpertModule
 				//Checks the dependence type.
 				if (d.GetType () == typeof(SeqComplexDependence)) {
 					//Calls the dependence check method.
-					result = CheckSeqComplexDependencies ((SeqComplexDependence)d, actionKey, studentLog, domain, ref errors);
+					result = CheckSeqComplexDependencies ((SeqComplexDependence)d, actionKey, studentLog, ref errors, ref logs);
 					//Checks the result of the call.
 					if (result == 0 || result == -1) {
 						errors.Add (d);
@@ -508,8 +406,7 @@ namespace Its.ExpertModule
 						//Checks if there is a timer for this action.
 						if (_minTimerController.TryGetValue (studentLog.Owner.Key, out dic)) {
 							if (dic.TryGetValue (dep.ActionDependence.Key, out t)) {
-								//Generates a min time error.
-								_instanceStudentControl.CreateMinTimeErrorLog (dep.ActionDependence, domain, studentLog.Owner, false, dep.ActionDependence.MinTime);
+								logs.Add(StudentControl.CreateMinTimeErrorLog (dep.ActionDependence, false, dep.ActionDependence.MinTime));
 								//Checks if the dependence blocks or not.
 								if (dep.ActionDependence.MinTimeError.IsBlock) {
 									//The result will be zero.
@@ -575,8 +472,8 @@ namespace Its.ExpertModule
 		/// <param name="actionKey">Action key.</param>
 		/// <param name="studentLog">Student log.</param>
 		/// <param name="errors">Errors.</param>
-		private int CheckSeqComplexDependencies (SeqComplexDependence complexDependence,string actionKey,
-			StudentLog studentLog, DomainActions domain, ref List<Dependence> errors)
+		private static int CheckSeqComplexDependencies (SeqComplexDependence complexDependence,string actionKey,
+			StudentLog studentLog, ref List<Dependence> errors, ref List<LogEntry> logs)
 		{
 			//Creates an auxiliar int variable.
 			int result = 2;
@@ -587,7 +484,7 @@ namespace Its.ExpertModule
 				//Checks the dependence type.
 				if (d.GetType () == typeof(OptComplexDependence)) {
 					//Calls the dependence check method.
-					result = CheckOptComplexDependencies ((OptComplexDependence)d, actionKey, studentLog, domain, ref errors);
+					result = CheckOptComplexDependencies ((OptComplexDependence)d, actionKey, studentLog, ref errors, ref logs);
 					//Checks the result of the call.
 					if (result == 0) {
 						//Adds the dependence into the list.
@@ -658,8 +555,7 @@ namespace Its.ExpertModule
 						//Checks if there is a timer for this action.
 						if (_minTimerController.TryGetValue (studentLog.Owner.Key, out dic)) {
 							if (dic.TryGetValue (dep.ActionDependence.Key, out t)) {
-								//Generates a min time error.
-								_instanceStudentControl.CreateMinTimeErrorLog (dep.ActionDependence, domain, studentLog.Owner, false, dep.ActionDependence.MinTime);
+								logs.Add(StudentControl.CreateMinTimeErrorLog (dep.ActionDependence, false, dep.ActionDependence.MinTime));
 								//Checks if the dependence blocks or not.
 								if (dep.ActionDependence.MinTimeError.IsBlock) {
 									//The result will be zero.
@@ -745,7 +641,7 @@ namespace Its.ExpertModule
 		/// <param name="dependence1">Dependence1.</param>
 		/// <param name="dependence2">Dependence2.</param>
 		/// <param name="studentLog">Student log.</param>
-		private bool CheckDependenceOrder (Dependence dependence1, Dependence dependence2, StudentLog studentLog)
+		private static bool CheckDependenceOrder (Dependence dependence1, Dependence dependence2, StudentLog studentLog)
 		{
 			//Creates the variable will be returned.
 			bool checkResult = false;
@@ -886,6 +782,192 @@ namespace Its.ExpertModule
 			}
 			
 			return value;
+		}
+
+		private int ValidateActionNotPerformed(ActionAplication action, DomainActions domain, Student student, ref List<LogEntry> logs)
+		{
+			int result = 1;
+			
+			StudentLog studentLog = _instanceStudentControl.GetStudentLog (domain.Key, student.Key);
+			
+			if (studentLog.HasPerformedActionWithoutError(action) && !action.IsRepetitive)
+			{
+				//Get the error.
+				Error error = _otherErrors["actionalreadyperformed"];
+				//Creates the log.
+				logs.Add(StudentControl.CreateOtherErrorLog(action, false, error));
+				result = 0;
+			}
+
+			return result;
+		}
+		
+		private int ValidateActionDependencies(ActionAplication action, DomainActions domain, Student student, ref List<LogEntry> logs)
+		{
+			int result = 1;
+			
+			StudentLog studentLog = _instanceStudentControl.GetStudentLog (domain.Key, student.Key);
+			
+			ComplexDependence actionDependence = action.Dependence;
+			int resultCheckDependence = 0;
+			List<Dependence> dependenceErrors = new List<Dependence>();
+			
+			if (actionDependence != null) {
+
+				if (actionDependence.GetType () == typeof(SeqComplexDependence))
+					resultCheckDependence = CheckSeqComplexDependencies ((SeqComplexDependence)actionDependence, action.Key, 
+						studentLog, ref dependenceErrors, ref logs);
+				else if (actionDependence.GetType () == typeof(OptComplexDependence))
+					resultCheckDependence = CheckOptComplexDependencies ((OptComplexDependence)actionDependence, action.Key, 
+						studentLog, ref dependenceErrors, ref logs);
+				
+				if (resultCheckDependence == 0) {
+					logs.Add(StudentControl.CreateDepErrorLog (action, false, dependenceErrors.Last ()));
+					result = 0;
+				} else if (resultCheckDependence == -1) {
+					foreach (Dependence d in dependenceErrors) {
+						logs.Add(StudentControl.CreateDepErrorLog (action, false, d));
+					}
+					result = -1;
+				}
+			}
+
+			return result;
+		}
+		
+		private int ValidateActionIncompatibilities(ActionAplication action, DomainActions domain, Student student, ref List<LogEntry> logs)
+		{
+			int result = 1;
+			
+			StudentLog studentLog = _instanceStudentControl.GetStudentLog (domain.Key, student.Key);
+			
+			if (action.Incompatibilities != null) {
+				foreach (Incompatibility i in action.Incompatibilities) {
+					if (studentLog.CheckActionOrder(i.IncompatibilityAction.Key, action.Key)) {
+						logs.Add(StudentControl.CreateIncompErrorLog (action, false, i));
+						if (i.IncompatibilityError.IsBlock) {
+							result = 0;
+							break;
+						} else {
+							result = -1;
+						}
+					}
+				}
+			}
+
+			return result;
+		}
+		
+		private int InitActionTimers(ActionAplication action, DomainActions domain, Student student, ref List<LogEntry> logs)
+		{
+			int result = 1;
+
+			Dictionary<string, Thread> dic;
+			
+			if (action.MinTime > 0) {
+				//Creates a thread to control the minimun timer.
+				Thread minTimerThread = new Thread (new ParameterizedThreadStart(MinTimer));
+				//Checks if student has an entry.
+				if (_minTimerController.ContainsKey (student.Key)) {
+					//Checks if a entry for the specific action already exists.
+					if (_minTimerController.TryGetValue (student.Key, out dic)) {
+						if (dic.ContainsKey (action.Key)) {
+							Error error = _otherErrors ["actionalreadyperformed"];
+							logs.Add(StudentControl.CreateOtherErrorLog (action, false, error));
+							return 0;
+						} else {
+							//Adds a new entry to the dictionary.
+							if (_minTimerController.TryGetValue (student.Key, out dic))
+								dic.Add (action.Key, minTimerThread);
+						}
+					}
+				} else {
+					//Adds a new entry to the dictionary.
+					_minTimerController.Add(student.Key, new Dictionary<string, Thread>());
+					//Adds the thread to the dictionary.
+					//Adds a new entry to the dictionary.
+					if (_minTimerController.TryGetValue(student.Key, out dic))
+						dic.Add (action.Key, minTimerThread);
+				}
+				//Starts the thread.
+				ArrayList param = new ArrayList();
+				param.Add (minTimerThread);
+				param.Add (action);
+				param.Add (domain);
+				param.Add (student);
+				minTimerThread.Start (param);
+			}
+			
+			if (action.MaxTime > 0) {
+				//Creates a thread to control the minimun timer.
+				Thread maxTimerThread = new Thread (new ParameterizedThreadStart(MaxTimer));
+				//Checks if student has an entry.
+				if (_maxTimerController.ContainsKey (student.Key)) {
+					//Checks if a entry for the specific action already exists.
+					if (_maxTimerController.TryGetValue (student.Key, out dic)) {
+						if (dic.ContainsKey (action.Key)) {
+							Error error = _otherErrors ["actionalreadyperformed"];
+							logs.Add(StudentControl.CreateOtherErrorLog (action, false, error));
+							return 0;
+						} else {
+							//Adds a new entry to the dictionary.
+							if (_maxTimerController.TryGetValue (student.Key, out dic))
+								dic.Add (action.Key, maxTimerThread);
+						}
+					}
+				} else {
+					//Adds a new entry to the dictionary.
+					_maxTimerController.Add(student.Key, new Dictionary<string, Thread>());
+					//Adds the thread to the dictionary.
+					//Adds a new entry to the dictionary.
+					if (_maxTimerController.TryGetValue(student.Key, out dic))
+						dic.Add (action.Key, maxTimerThread);
+				}
+
+				//Creates a thread to control the maximun timer.
+				maxTimerThread = new Thread (new ParameterizedThreadStart(MaxTimer));
+				//Starts the thread.
+				ArrayList param = new ArrayList();
+				param.Add (maxTimerThread);
+				param.Add (action);
+				param.Add (student);
+				param.Add (action.MaxTime);
+				//Starts the thread.
+				maxTimerThread.Start (param);
+			}
+			
+			return result;
+		}
+		
+		private int ValidateActionMaxTimer(ActionAplication action, DomainActions domain, Student student, ref List<LogEntry> logs)
+		{
+			int result = 1;
+			
+			StudentLog studentLog = _instanceStudentControl.GetStudentLog (domain.Key, student.Key);
+			
+			//Gets the previous action.
+			ActionAplication previousAction = domain.GetPreviousAction(action.Key);
+			//Checks if this is the first action done by the student.
+			if (previousAction != null) {
+				//Creates an auxiliar variable that will not use.
+				Thread t;
+				Dictionary<string, Thread> maxTDic;
+				//Checks if the previous action created a maximun timer.
+				if (_maxTimerController.TryGetValue (studentLog.Owner.Key, out maxTDic)) {
+					if (!maxTDic.TryGetValue (previousAction.Key, out t)  && previousAction.MaxTime > 0) {
+						//Generates a max time error.
+						logs.Add(StudentControl.CreateMaxTimeErrorLog (previousAction, false, previousAction.MaxTime));
+						//Checks if the dependence blocks or not.
+						if (previousAction.MaxTimeError.IsBlock) {
+							result = 0;
+						} else {
+							result = -1;
+						}
+					}
+				}
+			}
+			
+			return result;
 		}
 	}
 }

@@ -117,6 +117,16 @@ namespace Its.StudentModule.ObjectModel
 		}
 		
 		/// <summary>
+		/// Adds the log.
+		/// </summary>
+		/// <param name="logs">Logs.</param>
+		public void AddLog (List<LogEntry> logs)
+		{
+			//Adds the log into the list.
+			this._logs.AddRange(logs);
+		}
+		
+		/// <summary>
 		/// Adds the log to the buffer that will be flushed to disk at a later stage.
 		/// </summary>
 		/// <param name="log">Log.</param>
@@ -124,6 +134,16 @@ namespace Its.StudentModule.ObjectModel
 		{
 			//Adds the log into the list.
 			this._actionLogBuffer.Add (log);
+		}
+		
+		/// <summary>
+		/// Adds the log to the buffer that will be flushed to disk at a later stage.
+		/// </summary>
+		/// <param name="logs">Logs.</param>
+		public void AddToLogBuffer(List<LogEntry> logs)
+		{
+			//Adds the log into the list.
+			this._actionLogBuffer.AddRange(logs);
 		}
 
 		/// <summary>

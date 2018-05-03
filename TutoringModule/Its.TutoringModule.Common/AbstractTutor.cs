@@ -185,7 +185,8 @@ namespace Its.TutoringModule.Common
 			    //Gets the domain.
 			    DomainActions domain = _expertControl.GetDomainActions (domainName);
 			    //Registers the error.
-			    _studentControl.CreateWorldErrorLog (action, domain, student, false, worldError, "objectblocked");
+			    LogEntry log = StudentControl.CreateWorldErrorLog (action, false, worldError, "objectblocked");
+			    _studentControl.AddLog(domain, student, log);
 			    //Adds the error into the list.
 			    errorMessages = new List<string>();
 			    errorMessages.Add(worldError.Message.Message);
@@ -277,7 +278,8 @@ namespace Its.TutoringModule.Common
 				//Gets the student with the given key.
 				Student student = _studentControl.GetStudent(studentKey);
 				//Generates the world error log.
-				_studentControl.CreateWorldErrorLog(action, domain, student, false, worldError, type);
+				LogEntry log = StudentControl.CreateWorldErrorLog(action, false, worldError, type);
+				_studentControl.AddLog(domain, student, log);
 				//Returns the world error message.
 				return worldError.Message.Message;
 			} else {

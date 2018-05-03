@@ -71,7 +71,49 @@ namespace Its.StudentModule
 			}
 		}
 
-		/// <summary>
+		public static LogEntry CreateCorrectiveActionLog(ActionAplication action, bool wasApplied, bool errorsFixed)
+		{
+			return new CorrectiveActionLog (action, wasApplied, errorsFixed);
+		}
+
+		public static LogEntry CreateNoCorrectiveActionLog(ActionAplication action, bool wasApplied)
+		{
+			return new NoCorrectiveActionLog(action, wasApplied);
+		}
+
+		public static LogEntry CreateMinTimeErrorLog(ActionAplication action, bool wasApplied, int time)
+		{
+			return new MinTimeErrorLog(action, wasApplied, time);
+		}
+
+		public static LogEntry CreateMaxTimeErrorLog(ActionAplication action, bool wasApplied, int time)
+		{
+			return new MaxTimeErrorLog(action, wasApplied, time);
+		}
+
+		public static LogEntry CreateOtherErrorLog(ActionAplication action, bool wasApplied, Error error)
+		{
+			return new OtherErrorLog(action, wasApplied, error);
+		}
+
+		public static LogEntry CreateWorldErrorLog(ActionAplication action, bool wasApplied, Error error, string type)
+		{
+			return new WorldErrorLog(action, wasApplied, error, type);
+		}
+
+		public static LogEntry CreateDepErrorLog(ActionAplication action, bool wasApplied, Dependence failedDependence)
+		{
+			bool isOrderError = failedDependence.GetType() == typeof(SeqComplexDependence);
+
+			return new DepErrorLog(action, wasApplied, failedDependence, isOrderError);
+		}
+
+		public static LogEntry CreateIncompErrorLog(ActionAplication action, bool wasApplied, Incompatibility failedIncomp)
+		{
+			return new IncompErrorLog(action, wasApplied, failedIncomp);
+		}
+
+/*		/// <summary>
 		/// Creates the corrective action log.
 		/// </summary>
 		/// <param name="action">Action.</param>
@@ -108,21 +150,6 @@ namespace Its.StudentModule
 				sw.WriteLine (log.TxtLogString());
 			}
 		}
-
-		/*public void MultiplyLogs(int mult, DomainActions domain){
-			int countStudents = _instance._students.Count;
-			int maxStudent = countStudents * mult;
-			DomainLog domTemp = _domainLogs [domain.Key];
-			int j = 1;
-			for (int i = _instance._students.Count; i < maxStudent; i++) {
-				Student stdTemp = _students [j.ToString ()];
-				_domainLogs [domain.Key].AddStudentLog (stdTemp, domTemp.GetStudentLog (stdTemp.Key));
-				if (j <= countStudents)
-					j++;
-				else
-					j = 1;
-			}
-		}*/
 
 		/// <summary>
 		/// Creates the no corrective action log.
@@ -400,7 +427,7 @@ namespace Its.StudentModule
 				sw.WriteLine (log.TxtLogString());
 			}
 		}
-
+*/
 		/// <summary>
 		/// Creates the domain log.
 		/// </summary>
@@ -571,6 +598,46 @@ namespace Its.StudentModule
 		{
 			//Resets the log of the student.
 			GetStudentLog (domainName, studentKey).ResetLog ();
+		}
+
+		/// <summary>
+		/// Adds LogEntry to student log and to buffer that will be flushed to file (ontology xml)
+		/// upon calling FlushLastActionLogs()
+		/// </summary>
+		/// <param name="domainName">Domain name.</param>
+		/// <param name="studentKey">Student key.</param>
+		/// <param name="logEntry">Log entry.</param>
+		public void AddLog(DomainActions domain, Student student, LogEntry logEntry)
+		{
+			//Gets the domainLog.
+			DomainLog domainLog;
+			if (!_domainLogs.TryGetValue (domain.Key, out domainLog))
+				throw new ArgumentException ("There is not any DomainLog with the given domain.");
+			//Gets the StudentLog.
+			StudentLog studentLog = domainLog.GetStudentLog (student.Key);
+			
+			studentLog.AddLog(logEntry);
+			studentLog.AddToLogBuffer(logEntry);
+		}
+		
+		/// <summary>
+		/// Adds list of LogEntry objects to student log and to buffer that will be flushed to file (ontology xml)
+		/// upon calling FlushLastActionLogs()
+		/// </summary>
+		/// <param name="domainName">Domain name.</param>
+		/// <param name="studentKey">Student key.</param>
+		/// <param name="logEntries">List of Log entry objects.</param>
+		public void AddLog(DomainActions domain, Student student, List<LogEntry> logEntries)
+		{
+			//Gets the domainLog.
+			DomainLog domainLog;
+			if (!_domainLogs.TryGetValue (domain.Key, out domainLog))
+				throw new ArgumentException ("There is not any DomainLog with the given domain.");
+			//Gets the StudentLog.
+			StudentLog studentLog = domainLog.GetStudentLog (student.Key);
+			
+			studentLog.AddLog(logEntries);
+			studentLog.AddToLogBuffer(logEntries);
 		}
 		
 		/// <summary>
