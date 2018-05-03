@@ -11,7 +11,7 @@ namespace Its.StudentModule.ObjectModel
 	/// <summary>
 	/// This class will contain all log information.
 	/// </summary>
-	public class LogEntry
+	public abstract class LogEntry
 	{
 		/// <summary>
 		/// Boolean that denotes if this action was applied or not.
@@ -108,6 +108,12 @@ namespace Its.StudentModule.ObjectModel
 				return tempError;
 			}
 		}
+
+		/// <summary>
+		/// Method to build Log-specific text string that is stored in .txt log file
+		/// </summary>
+		/// <returns>LogEntry's string representation</returns>
+		abstract public string TxtLogString();
 	}
 }
 

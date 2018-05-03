@@ -105,8 +105,7 @@ namespace Its.StudentModule
 			}
 			//Copies the log into a txt file.
 			using (StreamWriter sw = File.AppendText (path + student.Key + ".txt")) {
-				string text = action.Key + " " + action.Name + " " + log.DateLog.ToString();
-				sw.WriteLine (text);
+				sw.WriteLine (log.TxtLogString());
 			}
 		}
 
@@ -159,8 +158,7 @@ namespace Its.StudentModule
 			}
 			//Copies the log into a txt file.
 			using (StreamWriter sw = File.AppendText (path + student.Key + ".txt")) {
-				string text = action.Key + " " + action.Name + " " + log.DateLog.ToString();
-				sw.WriteLine (text);
+				sw.WriteLine (log.TxtLogString());
 			}
 		}
 
@@ -200,8 +198,7 @@ namespace Its.StudentModule
 			}
 			//Copies the log into a txt file.
 			using (StreamWriter sw = File.AppendText (path + student.Key + ".txt")) {
-				string text = action.Key + " " + action.Name + " MinTimeError " + action.MinTimeError.Message.Message + " " + log.DateLog.ToString();
-				sw.WriteLine (text);
+				sw.WriteLine (log.TxtLogString());
 			}
 		}
 
@@ -240,8 +237,7 @@ namespace Its.StudentModule
 			}
 			//Copies the log into a txt file.
 			using (StreamWriter sw = File.AppendText (path + student.Key + ".txt")) {
-				string text = action.Key + " " + action.Name + " MaxTimeError " + action.MaxTimeError.Message.Message + " " + log.DateLog.ToString();
-				sw.WriteLine (text);
+				sw.WriteLine (log.TxtLogString());
 			}
 		}
 
@@ -279,8 +275,7 @@ namespace Its.StudentModule
 			}
 			//Copies the log into a txt file.
 			using (StreamWriter sw = File.AppendText (path + student.Key + ".txt")) {
-				string text = action.Key + " " + action.Name + " OtherError " + error.Message.Message + " " + log.DateLog.ToString();
-				sw.WriteLine (text);
+				sw.WriteLine (log.TxtLogString());
 			}
 		}
 
@@ -319,8 +314,7 @@ namespace Its.StudentModule
 			}
 			//Copies the log into a txt file.
 			using (StreamWriter sw = File.AppendText (path + student.Key + ".txt")) {
-				string text = action.Key + " " + action.Name + " WorldError " + error.Message.Message + " " + log.DateLog.ToString();
-				sw.WriteLine (text);
+				sw.WriteLine (log.TxtLogString());
 			}
 		}
 
@@ -364,8 +358,7 @@ namespace Its.StudentModule
 			}
 			//Copies the log into a txt file.
 			using (StreamWriter sw = File.AppendText (path + student.Key + ".txt")) {
-				string text = action.Key + " " + action.Name + " DependenceError " + failedDependence.DependenceError.Message.Message + " " + log.DateLog.ToString();
-				sw.WriteLine (text);
+				sw.WriteLine (log.TxtLogString());
 			}
 		}
 
@@ -404,8 +397,7 @@ namespace Its.StudentModule
 			}
 			//Copies the log into a txt file.
 			using (StreamWriter sw = File.AppendText (path + student.Key + ".txt")) {
-				string text = action.Key + " " + action.Name + " IncompatibilityError " + failedIncomp.IncompatibilityError.Message.Message + " " + log.DateLog.ToString();
-				sw.WriteLine (text);
+				sw.WriteLine (log.TxtLogString());
 			}
 		}
 

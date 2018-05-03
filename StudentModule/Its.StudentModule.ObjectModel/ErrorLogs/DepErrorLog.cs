@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.InteropServices.WindowsRuntime;
 using Its.ExpertModule.ObjectModel;
 
 namespace Its.StudentModule.ObjectModel
@@ -67,6 +68,12 @@ namespace Its.StudentModule.ObjectModel
 		{
 			this._failedDependence = failedDependence;
 			this._isOrderError = isOrderError;
+		}
+
+		public override string TxtLogString()
+		{
+			return Action.Key + " " + Action.Name + " DependenceError " + FailedDependence.DependenceError.Message.Message +
+			       " " + DateLog.ToString();
 		}
 	}
 }

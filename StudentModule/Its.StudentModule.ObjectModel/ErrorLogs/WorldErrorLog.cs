@@ -68,6 +68,11 @@ namespace Its.StudentModule.ObjectModel
 			this._errorAssociated = errorAssociated;
 			this._type = type;
 		}
+
+		public override string TxtLogString()
+		{
+			return Action.Key + " " + Action.Name + " WorldError " + Error.Message.Message + " " + DateLog.ToString();
+		}
 	}
 }
 

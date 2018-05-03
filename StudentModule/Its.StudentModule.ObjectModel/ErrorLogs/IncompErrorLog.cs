@@ -49,6 +49,11 @@ namespace Its.StudentModule.ObjectModel
 		{
 			this._failedIncompatibility = incompatibility;
 		}
+
+		public override string TxtLogString()
+		{
+			return Action.Key + " " + Action.Name + " IncompatibilityError " + FailedIncompatibility.IncompatibilityError.Message.Message + " " + DateLog.ToString();
+		}
 	}
 }
 

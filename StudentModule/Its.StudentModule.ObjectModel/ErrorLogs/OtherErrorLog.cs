@@ -44,6 +44,11 @@ namespace Its.StudentModule.ObjectModel
 		{
 			this._errorAssociated = errorAssociated;
 		}
+
+		public override string TxtLogString()
+		{
+			return Action.Key + " " + Action.Name + " OtherError " + Error.Message.Message + " " + DateLog.ToString();
+		}
 	}
 }
 

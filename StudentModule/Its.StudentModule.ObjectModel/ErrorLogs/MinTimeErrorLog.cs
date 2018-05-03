@@ -34,6 +34,11 @@ namespace Its.StudentModule.ObjectModel
 			DateTime date, int time) : base (action,  wasApplied, date, time)
 		{
 		}
+
+		public override string TxtLogString()
+		{
+			return Action.Key + " " + Action.Name + " MinTimeError " + Action.MinTimeError.Message.Message + " " + DateLog.ToString();
+		}
 	}
 }
 

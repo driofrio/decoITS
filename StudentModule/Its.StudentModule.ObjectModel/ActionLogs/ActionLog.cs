@@ -10,7 +10,7 @@ namespace Its.StudentModule.ObjectModel
 	/// <summary>
 	/// This class will contain a correct executed action log.
 	/// </summary>
-	public class ActionLog : LogEntry
+	public abstract class ActionLog : LogEntry
 	{
 		/// <summary>
 		/// Initializes a new instance of the <see cref="Its.StudentModule.ObjectModel.ActionLog"/> class.
@@ -31,6 +31,11 @@ namespace Its.StudentModule.ObjectModel
 		protected ActionLog ( ActionAplication action, bool wasApplied,
 			DateTime date) : base (action, wasApplied, date)
 		{
+		}
+		
+		public override string TxtLogString()
+		{
+			return Action.Key + " " + Action.Name + " " + DateLog.ToString();
 		}
 	}
 }

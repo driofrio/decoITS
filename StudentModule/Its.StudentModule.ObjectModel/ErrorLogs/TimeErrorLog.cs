@@ -10,7 +10,7 @@ namespace Its.StudentModule.ObjectModel
 	/// <summary>
 	/// This class will contain a time error log.
 	/// </summary>
-	public class TimeErrorLog : ErrorLog
+	public abstract class TimeErrorLog : ErrorLog
 	{
 
 		/// <summary>
