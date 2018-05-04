@@ -46,8 +46,7 @@
   <ItemGroup>
     <Compile Include="CMTutorTest.cs" />
     <Compile Include="ErrorPreventionMessageTest.cs" />
-    <Compile Include="Group.cs" />
-    <Compile Include="LogGenerator.cs" />
+    <Compile Include="Util.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

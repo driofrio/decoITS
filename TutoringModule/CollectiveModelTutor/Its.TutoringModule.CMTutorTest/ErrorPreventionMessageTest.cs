@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using Its.ExpertModule;
 using Its.ExpertModule.ObjectModel;
@@ -8,15 +9,11 @@ using Its.StudentModule;
 using Its.StudentModule.ObjectModel;
 using Its.TutoringModule.CMTutor.SBP;
 using Its.TutoringModule.CMTutor.SBP.OM;
-using Its.TutoringModule.CMTutor.SBP.OM.Event;
-using Its.TutoringModule.CMTutor.SBP.OM.State;
 using Its.TutoringModule.Common;
 using Its.TutoringModule.Factories;
 using Its.Utils.Config;
-using Its.Utils.Math;
 using Its.WorldModule;
 using NUnit.Framework;
-using NUnit.Framework.Constraints;
 
 namespace Its.TutoringModule.CMTutorTest
 {
@@ -73,26 +70,47 @@ namespace Its.TutoringModule.CMTutorTest
         }
         
         [Test]
-        public void TestDomain1Graph1PathFinding()
+        public void TestDomain1Graph1()
         {
             //                           [Graph 1]
-            //
-            //   10               10                 7
-            //+-----+          +-----+      7     +-----+
-            //|     |    10    |     +------------>     |           3
-            //| (0) +----------> (1) |            | (2) +--------------------+
-            //|     |          |     |     +------+     |                    |
-            //+-----+          +--+--+     |      +---+-+                    |
-            //                    |      3 |          |                      |       Correct Flow
-            //+-------------------------------------------------------------------------------------+
-            //                    |        |        1 |                      |       Relevant Errors
-            //                  3 |     +--v--+       |      +-----+        +v----+
-            //                    |     |     |       +------>     |    7   |     |
-            //                    +-----> (4) |              | (5) +--------> (3) |
-            //                          |     +-------------->     |        |     |
-            //                          +-----+      6       +-----+        +-----+
-            //                             6                    7              10
+            //                                                3     +-----+
+            //                                           +---------->     |
+            //                                           |          | (3) |
+            //                                        +--+--+       |     |
+            //                                 7      |     |       +-----+
+            //                           +------------> (2) |
+            //                           |            |     |
+            //      +-----+           +--+--+         ++--+-+       +-----+
+            //      |     |    10     |     |          |  |    1    |     |    1
+            //      |(Ini)+-----------> (1) |         3|  +---------> (5) +--------+
+            //      |     |           |     |          |            |     |        |
+            //      +-----+           +--+--+         +v----+       +-----+        |
+            //                           |            |     |                      |
+            //                           +------------> (4) |                      |
+            //                                 3      |     |                      |
+            //                                        +--+--+                      |
+            //                                           |                         |
+            //                                          6|                         |    Correct Flow
+            //+----------------------------------------------------------------------------------------+
+            //                                           |                         |    Relevant Errors
+            //                                           |                         |
+            //                                        +--v--+        +-----+       |
+            //                                        | ERR |   6    |     |       |
+            //                                        |(4_3)+--------> (5) |       |
+            //                                        |     |        |     |       |
+            //                                        +-----+        +--+--+       |
+            //                                                          |          |
+            //                                                          |          |
+            //                                                         6|          |
+            //                                        +-----+           |       +--v--+
+            //                                        |     |           +-------> ERR |
+            //                                        | (3) |        7          |(5_3)|
+            //                                        |     <-------------------+     |
+            //                                        +-----+                   +-----+
 
+
+            // Below test validates that sequence of actions defined by GroupConfig objects below
+            // indeed result in the graph as shown above.
             
             // Arrange
             string domainName = "Domain1";
@@ -104,101 +122,143 @@ namespace Its.TutoringModule.CMTutorTest
             List<Group> groupConfig = new List<Group>()
             {
                 //                         Students            Actions
-//                new Group(new string[] {"1", "2", "3"}, new string[] {"t1", "t2", "t3"}),
+                new Group(new string[] {"1", "2", "3"}, new string[] {"t1", "t2", "t3"}),
                 new Group(new string[] {"4"}, new string[] {"t1", "t2", "t5", "t3"}),
-//                new Group(new string[] {"5", "6", "7"}, new string[] {"t1", "t2", "t4", "t5", "t3"}),
-//                new Group(new string[] {"8", "9", "10"}, new string[] {"t1", "t4", "t5", "t3"})
+                new Group(new string[] {"5", "6", "7"}, new string[] {"t1", "t2", "t4", "t5", "t3"}),
+                new Group(new string[] {"8", "9", "10"}, new string[] {"t1", "t4", "t5", "t3"})
             };
             
-            LogGenerator.GenerateLogs(generatorTutor, domainName, "obj", groupConfig);
-
-            ClusterMethod cluMet = ClusterMethod.NoClusters;
-            InitModel(config, domainName, cluMet, true, true);
-
+            Util.GenerateLogs(generatorTutor, domainName, "obj", groupConfig);
             
-            // Act
-            StudentBehaviorPredictorControl sbpControl = StudentBehaviorPredictorControl.Instance(config);
-//            string fromState = "f0t1";
-//            List<string> errorStates = new List<Group>() {"f"}
 
+            ///////////////////////
+            //
+            // Act
+            //
+            ///////////////////////
+            
+            // Init predictive model
+            ClusterMethod cluMet = ClusterMethod.NoClusters;
+            Util.InitModel(config, domainName, cluMet, true, true);
+            StudentBehaviorPredictorControl sbpControl = StudentBehaviorPredictorControl.Instance(config);
+            
+            
+            ////////////////////////
+            //
+            //     Assert
+            //
+            ////////////////////////
+            
             PredictiveStudentModel model = sbpControl.GetModel(domainName, ClusterMethod.NoClusters);
             StudentsCluster cluster = model.GetCluster(0);
             StudentActionsModel sam = cluster.StudentActionsModel;
-            List<Node<State, Event>> reStates = sam.GetStatesByArea(Area.RelevantErrors);
-            List<Node<State, Event>> ieStates = sam.GetStatesByArea(Area.IrrelevantErrors);
-            List<Node<State, Event>> correctStates = sam.GetStatesByArea(Area.CorrectFlow);
 
-
-            Console.WriteLine("CF: " + correctStates.Count);
-            foreach (Node<State, Event> node in correctStates)
-            {
-                Console.WriteLine(node.Key);
-            }
-            Console.WriteLine("RE: " + reStates.Count);
-            foreach (Node<State, Event> node in reStates)
-            {
-                Console.WriteLine(node.Key);
-            }
-            Console.WriteLine("IE: " + ieStates.Count);
-            foreach (Node<State, Event> node in ieStates)
-            {
-                Console.WriteLine(node.Key);
-            }
-            Console.WriteLine("---------------------------");
+            Assert.AreEqual(4, sam.GetStatesByArea(Area.RelevantErrors).Count());
+            Assert.AreEqual(0, sam.GetStatesByArea(Area.IrrelevantErrors).Count());
+            Assert.AreEqual(6, sam.GetStatesByArea(Area.CorrectFlow).Count());
             
-
-            // Assert
-
-//            int code;
-//            List<string> errors;
-//            Dictionary<string, List<string>> messages;
-//
-//            // action1
-//            code = tutor.Validate("action1", domainName, studentKey, "obj", out errors);
-//            Assert.AreEqual(1, code);
-//            Assert.AreEqual(0, errors.Count);
-//            messages = tutor.GetTutorMessages("action1", domainName, studentKey);
-//            Assert.AreEqual(2, messages.Keys.Count);
-//            Assert.AreEqual("action1", messages["confirmation"][0]);
-//            Assert.AreEqual("action2", messages["tutor"][0]);
-//            
-//            // action2
-//            // Bug present in displaying confirmation message - control flag in spreadsheet is currently ignored
-//            code = tutor.Validate("action2", domainName, studentKey, "obj", out errors);
-//            Assert.AreEqual(1, code);
-//            Assert.AreEqual(0, errors.Count);
-//            messages = tutor.GetTutorMessages("action2", domainName, studentKey);
-//            Assert.AreEqual(2, messages.Keys.Count);
-//            Assert.AreEqual("action2", messages["confirmation"][0]);
-//            Assert.AreEqual("action3", messages["tutor"][0]);
-//            
-//            // action3
-//            code = tutor.Validate("action3", domainName, studentKey, "obj", out errors);
-//            Assert.AreEqual(1, code);
-//            Assert.AreEqual(0, errors.Count);
-//            messages = tutor.GetTutorMessages("action3", domainName, studentKey);
-//            Assert.AreEqual(1, messages.Keys.Count);
-//            Assert.AreEqual("action3", messages["confirmation"][0]);
+            
+            List<string> studentNodeKeys;
+              
+            ///////////////////////
+            //     STUDENT 1
+            ///////////////////////
+            studentNodeKeys = Util.GetStudentNodeKeyListInSequence(cluster, "1");
+            Assert.AreEqual(3, studentNodeKeys.Count());
+            Assert.AreEqual("f0t1_CorrectFlow", studentNodeKeys[0]);
+            Assert.AreEqual("f0t2_CorrectFlow", studentNodeKeys[1]);
+            Assert.AreEqual("f0t3_CorrectFlow", studentNodeKeys[2]);
+            
+            
+            ///////////////////////
+            //     STUDENT 4
+            ///////////////////////
+            studentNodeKeys = Util.GetStudentNodeKeyListInSequence(cluster, "4");
+            Assert.AreEqual(5, studentNodeKeys.Count());
+            Assert.AreEqual("f0t1_CorrectFlow", studentNodeKeys[0]);
+            Assert.AreEqual("f0t2_CorrectFlow", studentNodeKeys[1]);
+            Assert.AreEqual("f0t5_CorrectFlow", studentNodeKeys[2]);
+            Assert.AreEqual("f0t5_f0t3_RelevantErrors", studentNodeKeys[3]);
+            Assert.AreEqual("f0t3_RelevantErrors", studentNodeKeys[4]);
+            
+            
+            ///////////////////////
+            //     STUDENT 5
+            ///////////////////////
+            studentNodeKeys = Util.GetStudentNodeKeyListInSequence(cluster, "5");
+            Assert.AreEqual(7, studentNodeKeys.Count());
+            Assert.AreEqual("f0t1_CorrectFlow", studentNodeKeys[0]);
+            Assert.AreEqual("f0t2_CorrectFlow", studentNodeKeys[1]);
+            Assert.AreEqual("f0t4_CorrectFlow", studentNodeKeys[2]);
+            Assert.AreEqual("f0t4_f0t3_RelevantErrors", studentNodeKeys[3]);
+            Assert.AreEqual("f0t5_RelevantErrors", studentNodeKeys[4]);
+            Assert.AreEqual("f0t5_f0t3_RelevantErrors", studentNodeKeys[5]);
+            Assert.AreEqual("f0t3_RelevantErrors", studentNodeKeys[6]);
+            
+            
+            ///////////////////////
+            //     STUDENT 8
+            ///////////////////////
+            studentNodeKeys = Util.GetStudentNodeKeyListInSequence(cluster, "8");
+            Assert.AreEqual(6, studentNodeKeys.Count());
+            Assert.AreEqual("f0t1_CorrectFlow", studentNodeKeys[0]);
+            Assert.AreEqual("f0t4_CorrectFlow", studentNodeKeys[1]);
+            Assert.AreEqual("f0t4_f0t3_RelevantErrors", studentNodeKeys[2]);
+            Assert.AreEqual("f0t5_RelevantErrors", studentNodeKeys[3]);
+            Assert.AreEqual("f0t5_f0t3_RelevantErrors", studentNodeKeys[4]);
+            Assert.AreEqual("f0t3_RelevantErrors", studentNodeKeys[5]);
         }
         
-        private void InitModel(ITutorConfig config, string strDomainName, ClusterMethod cluMet, bool includeNoPlanActions, bool inPhases)
+        [Test]
+        public void TestDomain1Graph1PathFinding()
         {
-            string ontologyPath = config.OntologyPath.Replace('\\', Path.DirectorySeparatorChar);
-            string logsPath = config.LogsPath.Replace('\\', Path.DirectorySeparatorChar);
-            string expertConfPath = config.DomainConfigurationPath.Replace('\\', Path.DirectorySeparatorChar);
-            int initialCol = config.InitialColumn;
-            int intialRow = config.InitialRow;
+            // Below test uses Domain1 Graph1 to validate PathFinding algorithm
             
-            ExpertControl expert = ExpertControl.Instance(ontologyPath, logsPath, expertConfPath, initialCol, intialRow);
-            DomainActions domain = expert.GetDomainActions(strDomainName);
-            if (domain == null)
-            {
-                domain = expert.CreateDomain(strDomainName);
-            }
+            // Arrange
+            string domainName = "Domain1";
+            InitTest(domainName);
+            
+            TutorFactory tf = TutorFactory.Instance();
+            ITutor generatorTutor = tf.CreateReactiveTutor(domainName, config);
 
-            WorldControl world = WorldControl.Instance(ontologyPath, logsPath);
-            DomainLog logs = StudentControl.Instance(ontologyPath, logsPath, expertConfPath).GetDomainLogsFromOntology(domain, expert.OtherErrors, world.WorldErrors);
-            StudentBehaviorPredictorControl.Instance(config).AddModel(logs, cluMet, includeNoPlanActions, inPhases);
+            List<Group> groupConfig = new List<Group>()
+            {
+                //                         Students            Actions
+                new Group(new string[] {"1", "2", "3"}, new string[] {"t1", "t2", "t3"}),
+                new Group(new string[] {"4"}, new string[] {"t1", "t2", "t5", "t3"}),
+                new Group(new string[] {"5", "6", "7"}, new string[] {"t1", "t2", "t4", "t5", "t3"}),
+                new Group(new string[] {"8", "9", "10"}, new string[] {"t1", "t4", "t5", "t3"})
+            };
+            
+            Util.GenerateLogs(generatorTutor, domainName, "obj", groupConfig);
+            
+
+            ///////////////////////
+            //
+            // Act
+            //
+            ///////////////////////
+            
+            // Init predictive model
+            ClusterMethod cluMet = ClusterMethod.NoClusters;
+            Util.InitModel(config, domainName, cluMet, true, true);
+            StudentBehaviorPredictorControl sbpControl = StudentBehaviorPredictorControl.Instance(config);
+            
+            
+            ////////////////////////
+            //
+            //     Assert
+            //
+            ////////////////////////
+            
+            PredictiveStudentModel model = sbpControl.GetModel(domainName, ClusterMethod.NoClusters);
+            StudentsCluster cluster = model.GetCluster(0);
+            StudentActionsModel sam = cluster.StudentActionsModel;
+
+            Assert.AreEqual(4, sam.GetStatesByArea(Area.RelevantErrors).Count());
+            Assert.AreEqual(0, sam.GetStatesByArea(Area.IrrelevantErrors).Count());
+            Assert.AreEqual(6, sam.GetStatesByArea(Area.CorrectFlow).Count());
+            
         }
     }
 }
