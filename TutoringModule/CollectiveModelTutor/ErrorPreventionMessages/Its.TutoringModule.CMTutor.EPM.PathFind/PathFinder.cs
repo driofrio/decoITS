@@ -121,7 +121,7 @@ namespace Its.TutoringModule.CMTutor.EPM.PathFind
                     targetNodePathConfidenceSum.Add(path.ToNodeKey, 0);
                 }
                 
-                targetNodePathConfidenceSum.Add(path.ToNodeKey, targetNodePathConfidenceSum[path.ToNodeKey] + path.PathConfidence);
+                targetNodePathConfidenceSum[path.ToNodeKey] = targetNodePathConfidenceSum[path.ToNodeKey] + path.PathConfidence;
             }
 
             return targetNodePathConfidenceSum;
@@ -131,7 +131,8 @@ namespace Its.TutoringModule.CMTutor.EPM.PathFind
             double pathConfThreshold)
         {
             Dictionary<string, double> results = new Dictionary<string, double>();
-            List<PathInfo> allPathsToTargets = Find(fromNodeKey, targetNodeKeys, pathConfThreshold);
+//            List<PathInfo> allPathsToTargets = Find(fromNodeKey, targetNodeKeys, pathConfThreshold);
+            List<PathInfo> allPathsToTargets = Find(fromNodeKey, targetNodeKeys);
             Dictionary<string, double> totalPathConfidencesByTarget = AddPathConfidenceByTarget(allPathsToTargets);
 
             foreach (string key in totalPathConfidencesByTarget.Keys)

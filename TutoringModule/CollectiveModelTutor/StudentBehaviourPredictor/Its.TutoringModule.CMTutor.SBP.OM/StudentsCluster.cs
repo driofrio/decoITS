@@ -420,6 +420,11 @@ namespace Its.TutoringModule.CMTutor.SBP.OM
 			return _studentActionsModel.GetEventConfidence(evt);
 		}
 		
+		/// <summary>
+		/// Returns ALL STATES from relevant error zone
+		/// </summary>
+		/// <param name="supportThreshold"></param>
+		/// <returns></returns>
 		public List<Node<State.State, Event.Event>> GetAllREStatesAboveThreshold(double supportThreshold)
 		{
 			List<Node<State.State, Event.Event>> results = new List<Node<State.State, Event.Event>>();
@@ -427,6 +432,27 @@ namespace Its.TutoringModule.CMTutor.SBP.OM
 			foreach (Node<State.State, Event.Event> state in reStates)
 			{
 				if (_studentActionsModel.GetStateSupport(state, NumberOfStudents) >= supportThreshold)
+				{
+					results.Add(state);
+				}
+			}
+			
+			return results;
+		}
+		
+		/// <summary>
+		/// Returns all ERROR STATES from relevant error zone
+		/// </summary>
+		/// <param name="supportThreshold"></param>
+		/// <returns></returns>
+		public List<Node<State.State, Event.Event>> GetAllREErrorStatesAboveThreshold(double supportThreshold)
+		{
+			List<Node<State.State, Event.Event>> results = new List<Node<State.State, Event.Event>>();
+			List<Node<State.State, Event.Event>> reStates = _studentActionsModel.GetStatesByArea(Area.RelevantErrors);
+			foreach (Node<State.State, Event.Event> state in reStates)
+			{
+				if (state.Specification.GetType() != typeof(CorrectState) && 
+				    _studentActionsModel.GetStateSupport(state, NumberOfStudents) >= supportThreshold)
 				{
 					results.Add(state);
 				}

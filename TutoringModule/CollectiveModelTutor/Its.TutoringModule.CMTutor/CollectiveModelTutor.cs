@@ -96,7 +96,7 @@ namespace Its.TutoringModule.CMTutor
             Node<State, Event> lastState = sbpControl.GetLastState(domainName, CLUSTER_METHOD, studentKey);
             
             // Get all relevant error states with sufficient support
-            List<Node<State, Event>> reStates = sbpControl.GetAllREStatesAboveThreshold(domainName, CLUSTER_METHOD,
+            List<Node<State, Event>> reStates = sbpControl.GetAllREErrorStatesAboveThreshold(domainName, CLUSTER_METHOD,
                 studentKey, _config.NoErrorPreventionSupportThreshold);
             
             // Compute path confidences from last state to the relevant error states
@@ -113,7 +113,7 @@ namespace Its.TutoringModule.CMTutor
             
             PathFinder pf = new PathFinder(sbpControl.GetStudentActionsModel(domainName, CLUSTER_METHOD, studentKey));
             Dictionary<string, double> reStatePathConfidences =
-                pf.FindPathsAboveThreshold(lastState.Key, reStateKeys, _config.NoErrorPreventionConfidenceThreshold); 
+                pf.FindPathsAboveThreshold(lastState.Key, reStateKeys, _config.NoErrorPreventionConfidenceThreshold);
 
             // Add messages of the right level of detail to the output container
             foreach (string targetStateKey in reStatePathConfidences.Keys)
@@ -144,7 +144,8 @@ namespace Its.TutoringModule.CMTutor
                 {
                     errorPreventionMessages.Add(new TutorMessage(targetStateKey + "_mediumDetail", epmController.GetMessageForState(targetStateKey).MediumDetailMessage));
                 }
-                else if (reStatePathConfidences[targetStateKey] < _config.MediumDetailErrorPreventionConfidenceThreshold)
+                else if (reStatePathConfidences[targetStateKey] < _config.MediumDetailErrorPreventionConfidenceThreshold &&
+                         reStatePathConfidences[targetStateKey] >= _config.NoErrorPreventionConfidenceThreshold)
                 {
                     errorPreventionMessages.Add(new TutorMessage(targetStateKey + "_lowDetail", epmController.GetMessageForState(targetStateKey).LowDetailMessage));
                 }
