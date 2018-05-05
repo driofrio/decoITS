@@ -16,7 +16,7 @@ namespace Its.Factories
 		/// <summary>
 		/// The ontology.
 		/// </summary>
-		private static OntologyAccess ONTOLOGY; //= OntologyAccess.Instance;
+		private OntologyAccess ONTOLOGY; //= OntologyAccess.Instance;
 		/// <summary>
 		/// The instance.
 		/// </summary>

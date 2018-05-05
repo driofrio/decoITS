@@ -1,10 +1,13 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Its.ExpertModule;
 using Its.ExpertModule.ObjectModel;
+using Its.Factories;
 using Its.StudentModule;
+using Its.StudentModule.DataAccess;
 using Its.StudentModule.ObjectModel;
 using Its.TutoringModule.CMTutor.SBP;
 using Its.TutoringModule.CMTutor.SBP.OM;
@@ -43,6 +46,8 @@ namespace Its.TutoringModule.CMTutorTest
     
     public class Util
     {
+        public const double DOUBLE_PRECISION = 0.0001; 
+        
         public static void GenerateLogs(ITutor tutor, string domainName, string objectName, List<Group> groupConfiguration)
         {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
@@ -108,6 +113,20 @@ namespace Its.TutoringModule.CMTutorTest
             WorldControl world = WorldControl.Instance(ontologyPath, logsPath);
             DomainLog logs = StudentControl.Instance(ontologyPath, logsPath, expertConfPath).GetDomainLogsFromOntology(domain, expert.OtherErrors, world.WorldErrors);
             StudentBehaviorPredictorControl.Instance(config).AddModel(logs, cluMet, includeNoPlanActions, inPhases);
+        }
+        
+        public static void DestroyModel()
+        {
+            DomainLogFactory.DisposeInstance();   
+            DomainActionsFactory.DisposeInstance();
+            StudentFactory.DisposeInstance();
+            
+            StudentBehaviorPredictorControl.DisposeInstance();
+            
+            OntologyAccess.DisposeInstance();
+            ExpertControl.DisposeInstance();
+            WorldControl.DisposeInstance();
+            StudentControl.DisposeInstance();
         }
     }
 }

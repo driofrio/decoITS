@@ -72,57 +72,58 @@ namespace Its.StudentModule.DataAccess
 		/// <summary>
 		/// The ontology model in which it will be saved student information.
 		/// </summary>
-		private static OntModel _studentDataModel;
+		private OntModel _studentDataModel;
 		/// <summary>
 		/// The ontology model in which it will be worked with domain and action information.
 		/// </summary>
-		private static OntModel _domainDataModel;
+		private OntModel _domainDataModel;
 		/// <summary>
 		/// The other data model.
 		/// </summary>
-		private static OntModel _otherDataModel;
+		private OntModel _otherDataModel;
 		/// <summary>
 		/// The world data model.
 		/// </summary>
-		private static OntModel _worldDataModel;
+		private OntModel _worldDataModel;
 		/// <summary>
 		/// The general ontology model.
 		/// </summary>
-		private static OntModel _ontModel;
+		private OntModel _ontModel;
 		/// <summary>
 		/// The student ontology.
 		/// </summary>
-		private static Ontology _studentOnto;
+		private Ontology _studentOnto;
 		/// <summary>
 		/// The domain ontology.
 		/// </summary>
-		private static Ontology _domainOnto;
+		private Ontology _domainOnto;
 		/// <summary>
 		/// The other ontology.
 		/// </summary>
-		private static Ontology _otherOnto;
+		private Ontology _otherOnto;
 		/// <summary>
 		/// The world ontology.
 		/// </summary>
-		private static Ontology _worldOnto;
+		private Ontology _worldOnto;
 		/// <summary>
 		/// The ont models.
 		/// </summary>
-		private static Dictionary<string, OntModel> _logModels = new Dictionary<string, OntModel>();
+		private Dictionary<string, OntModel> _logModels;
 		/// <summary>
 		/// The ontology path.
 		/// </summary>
-		private static string _ontologyPath;
+		private string _ontologyPath;
 		/// <summary>
 		/// The logs path.
 		/// </summary>
-		private static string _logsPath;
+		private string _logsPath;
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="Its.Student.DataAccess.OntologyAccess"/> class.
 		/// </summary>
 		private OntologyAccess (string ontologyPath, string logsPath)
 		{
+			_logModels = new Dictionary<string, OntModel>();
 			//Creates an ontology model empty instance.
 			_studentDataModel = ModelFactory.createOntologyModel ();
 			//Creates an ontology model empty instance.
@@ -2272,6 +2273,12 @@ namespace Its.StudentModule.DataAccess
 				ontM.write(bw, "RDF/XML-ABBREV", b);
 				//}
 				bw.close();
+			}
+		}
+		
+		public static void DisposeInstance() {
+			if (_instance != null) {
+				_instance = null;
 			}
 		}
 	}

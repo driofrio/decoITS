@@ -20,7 +20,7 @@ namespace Its.StudentModule
 		/// <summary>
 		/// The ontology.
 		/// </summary>
-		private static OntologyAccess ONTOLOGY; //= OntologyAccess.Instance;
+		private OntologyAccess ONTOLOGY; //= OntologyAccess.Instance;
 		/// <summary>
 		/// The instance.
 		/// </summary>
@@ -28,7 +28,7 @@ namespace Its.StudentModule
 		/// <summary>
 		/// The instance domain log factory.
 		/// </summary>
-		private static DomainLogFactory _instanceDomainLogFactory;
+		private DomainLogFactory _instanceDomainLogFactory;
 		/// <summary>
 		/// Gets the instance.
 		/// </summary>

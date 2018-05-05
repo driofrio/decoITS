@@ -22,7 +22,7 @@ namespace Its.ExpertModule
 		/// <summary>
 		/// The instance domain actions factory.
 		/// </summary>
-		private static DomainActionsFactory _instanceDomainActionsFactory;
+		private DomainActionsFactory _instanceDomainActionsFactory;
 		/// <summary>
 		/// The instance student control.
 		/// </summary>

@@ -20,7 +20,7 @@ namespace Its.Factories
 		/// <summary>
 		/// The ONTOLOG.
 		/// </summary>
-		private static OntologyAccess ONTOLOGY; //= OntologyAccess.Instance;
+		private OntologyAccess ONTOLOGY; //= OntologyAccess.Instance;
 		/// <summary>
 		/// LogFactory singleton instance.
 		/// </summary>
@@ -212,6 +212,12 @@ namespace Its.Factories
 
 			//Returns the DomainLog.
 			return domainLog;
+		}
+		
+		public static void DisposeInstance() {
+			if (_instance != null) {
+				_instance = null;
+			}
 		}
 	}
 }

@@ -21,7 +21,7 @@ namespace Its.WorldModule
 		/// <summary>
 		/// The ONTOLOGY.
 		/// </summary>
-		private static OntologyAccess ONTOLOGY; //= OntologyAccess.Instance;
+		private OntologyAccess ONTOLOGY; //= OntologyAccess.Instance;
 		/// <summary>
 		/// The world objects.
 		/// </summary>

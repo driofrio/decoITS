@@ -23,11 +23,11 @@ namespace Its.Factories
 		/// <summary>
 		/// The ontology.
 		/// </summary>
-		private static OntologyAccess ONTOLOGY;// = OntologyAccess.Instance;
+		private OntologyAccess ONTOLOGY;// = OntologyAccess.Instance;
 		/// <summary>
 		/// The action access.
 		/// </summary>
-		private static ActionAccess ACTION_ACCESS; //= ActionAccess.Instance;
+		private ActionAccess ACTION_ACCESS; //= ActionAccess.Instance;
 		/// <summary>
 		/// The DomainActionsFactory singleton instance.
 		/// </summary>
@@ -1246,6 +1246,12 @@ namespace Its.Factories
 			}
 
 			return tutorMsg;
+		}
+		
+		public static void DisposeInstance() {
+			if (_instance != null) {
+				_instance = null;
+			}
 		}
 	}
 }
