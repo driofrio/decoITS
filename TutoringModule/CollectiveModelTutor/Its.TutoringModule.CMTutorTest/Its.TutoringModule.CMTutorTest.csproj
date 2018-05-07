@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Its.TutoringModule.CMTutorTest</RootNamespace>
     <AssemblyName>Its.TutoringModule.CMTutorTest</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
@@ -72,6 +72,14 @@
       <Project>{053d479c-7695-452a-abff-237300db84ae}</Project>
       <Name>Its.ExpertModule</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\Factories\Its.Factories\Its.Factories.csproj">
+      <Project>{f61f36ff-7ab3-4027-bd01-74f3528ed088}</Project>
+      <Name>Its.Factories</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\StudentModule\Its.StudentModule.DataAccess\Its.StudentModule.DA.csproj">
+      <Project>{b16d75e5-fec4-4f6e-bbac-4f004f0581c4}</Project>
+      <Name>Its.StudentModule.DA</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\StudentModule\Its.StudentModule.ObjectModel\Its.StudentModule.OM.csproj">
       <Project>{eeed4fbb-9fca-46c9-927a-765f7bc05666}</Project>
       <Name>Its.StudentModule.OM</Name>
@@ -103,6 +111,10 @@
     <ProjectReference Include="..\..\ReactiveTutor\Its.TutoringModule.ReactiveTutor.OM\Its.TutoringModule.ReactiveTutor.OM.csproj">
       <Project>{d710a525-2c06-4f1a-94c0-4cc79e07a604}</Project>
       <Name>Its.TutoringModule.ReactiveTutor.OM</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ErrorPreventionMessages\Its.TutoringModule.CMTutor.EPM.PathFind\Its.TutoringModule.CMTutor.EPM.PathFind.csproj">
+      <Project>{27060f73-e576-4b76-9d20-2cfe3548f268}</Project>
+      <Name>Its.TutoringModule.CMTutor.EPM.PathFind</Name>
     </ProjectReference>
     <ProjectReference Include="..\StudentBehaviourPredictor\Its.TutoringModule.CMTutor.SBP.OM\Its.TutoringModule.CMTutor.SBP.OM.csproj">
       <Project>{9dd64010-4efb-4813-9ca5-628c96eafb14}</Project>
