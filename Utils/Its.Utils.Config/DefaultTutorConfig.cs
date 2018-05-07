@@ -25,6 +25,8 @@ namespace Its.Utils.Config
         private double noErrorPreventionConfidenceThreshold;
         private double highDetailErrorPreventionConfidenceThreshold;
         private double mediumDetailErrorPreventionConfidenceThreshold;
+        private double noErrorPreventionIEConfidenceThreshold;
+        private double noErrorPreventionIERepetitionThreshold;
         
         public int InitialColumn
         {
@@ -126,6 +128,16 @@ namespace Its.Utils.Config
             get { return mediumDetailErrorPreventionConfidenceThreshold; }
         }
         
+        public double NoErrorPreventionIEConfidenceThreshold
+        {
+            get { return noErrorPreventionIEConfidenceThreshold; }
+        }
+        
+        public double NoErrorPreventionIERepetitionThreshold
+        {
+            get { return noErrorPreventionIERepetitionThreshold; }
+        }
+        
         public DefaultTutorConfig()
         {
             InitFromSystemConfig();
@@ -164,6 +176,8 @@ namespace Its.Utils.Config
             noErrorPreventionConfidenceThreshold = double.Parse(ConfigurationManager.AppSettings["NoErrorPreventionConfidenceThreshold"]);
             highDetailErrorPreventionConfidenceThreshold = double.Parse(ConfigurationManager.AppSettings["HighDetailErrorPreventionConfidenceThreshold"]);
             mediumDetailErrorPreventionConfidenceThreshold = double.Parse(ConfigurationManager.AppSettings["MediumDetailErrorPreventionConfidenceThreshold"]);
+            noErrorPreventionIEConfidenceThreshold = double.Parse(ConfigurationManager.AppSettings["NoErrorPreventionIEConfidenceThreshold"]);
+            noErrorPreventionIERepetitionThreshold = double.Parse(ConfigurationManager.AppSettings["NoErrorPreventionIERepetitionThreshold"]);
         }
         
         private void InitFromTutorConfig(ITutorConfig config)
@@ -188,6 +202,8 @@ namespace Its.Utils.Config
             noErrorPreventionConfidenceThreshold = config.NoErrorPreventionConfidenceThreshold;
             highDetailErrorPreventionConfidenceThreshold = config.HighDetailErrorPreventionConfidenceThreshold;
             mediumDetailErrorPreventionConfidenceThreshold = config.MediumDetailErrorPreventionConfidenceThreshold;
+            noErrorPreventionIEConfidenceThreshold = config.NoErrorPreventionIEConfidenceThreshold;
+            noErrorPreventionIERepetitionThreshold = config.NoErrorPreventionIERepetitionThreshold;
         }
 
         private void InitFromDictionary(Dictionary<string, string> values)
@@ -212,6 +228,8 @@ namespace Its.Utils.Config
             string noErrorPreventionConfidenceThreshold;
             string highDetailErrorPreventionConfidenceThreshold;
             string mediumDetailErrorPreventionConfidenceThreshold;
+            string noErrorPreventionIEConfidenceThreshold;
+            string noErrorPreventionIERepetitionThreshold;
 
             if (values.TryGetValue("InitialColumn", out initialColumn))
             {
@@ -312,6 +330,16 @@ namespace Its.Utils.Config
             if (values.TryGetValue("MediumDetailErrorPreventionConfidenceThreshold", out mediumDetailErrorPreventionConfidenceThreshold))
             {
                 this.mediumDetailErrorPreventionConfidenceThreshold = double.Parse(mediumDetailErrorPreventionConfidenceThreshold);
+            }
+            
+            if (values.TryGetValue("NoErrorPreventionIEConfidenceThreshold", out noErrorPreventionIEConfidenceThreshold))
+            {
+                this.noErrorPreventionIEConfidenceThreshold = double.Parse(noErrorPreventionIEConfidenceThreshold);
+            }
+            
+            if (values.TryGetValue("NoErrorPreventionIERepetitionThreshold", out noErrorPreventionIERepetitionThreshold))
+            {
+                this.noErrorPreventionIERepetitionThreshold = double.Parse(noErrorPreventionIERepetitionThreshold);
             }
         }
     }

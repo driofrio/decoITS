@@ -415,6 +415,14 @@ namespace Its.TutoringModule.CMTutor.SBP.OM
 			return events;
 		}
 		
+		public List<Arc<State.State, Event.Event>> GetNextIEAreaEventsAboveThreshold(string studentKey, double threshold)
+		{
+			List<Arc<State.State, Event.Event>> events = this.GetAllNextEvents(studentKey);
+			events = _studentActionsModel.SelectIEAreaEvents(events);
+			events = _studentActionsModel.SelectEventsAboveConfidenceThreshold(events, threshold);
+			return events;
+		}
+		
 		public double GetEventConfidence(Arc<State.State, Event.Event> evt)
 		{
 			return _studentActionsModel.GetEventConfidence(evt);

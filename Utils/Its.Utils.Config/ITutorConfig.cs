@@ -23,5 +23,7 @@
         double NoErrorPreventionConfidenceThreshold { get; }
         double MediumDetailErrorPreventionConfidenceThreshold { get; }
         double HighDetailErrorPreventionConfidenceThreshold { get; }
+        double NoErrorPreventionIEConfidenceThreshold { get; }
+        double NoErrorPreventionIERepetitionThreshold { get; }
     }
 }

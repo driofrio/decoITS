@@ -646,6 +646,24 @@ namespace Its.TutoringModule.CMTutor.SBP.OM
 		}
 		
 		/// <summary>
+		/// Select events that lead to states in Irrelevant Error area of automaton.
+		/// </summary>
+		/// <returns>Irrelevant Error events.</returns>
+		/// <param name="events">Events to filter.</param>
+		public List<Arc<State.State, Event.Event>> SelectIEAreaEvents(List<Arc<State.State, Event.Event>> events)
+		{
+			List<Arc<State.State, Event.Event>> ieEvents = new List<Arc<State.State, Event.Event>>();
+			foreach (Arc<State.State, Event.Event> evt in events)
+			{
+				if (evt.NodeOut.Specification.Area == Area.IrrelevantErrors) {
+					ieEvents.Add(evt);
+				}
+			}
+
+			return ieEvents;
+		}
+		
+		/// <summary>
 		/// Select events with confidence above given threshold.
 		/// </summary>
 		/// <returns>Events with confidence above given threshold.</returns>

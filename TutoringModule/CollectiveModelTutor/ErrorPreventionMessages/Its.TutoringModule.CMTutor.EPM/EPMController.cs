@@ -25,6 +25,11 @@ namespace Its.TutoringModule.CMTutor.EPM
         {
             return _messages.ContainsKey(stateKey);
         }
+        
+        public bool HasHighDetailMessageForState(string stateKey)
+        {
+            return _messages.ContainsKey(stateKey) && !String.IsNullOrEmpty(_messages[stateKey].HighDetailMessage);
+        }
 
         public ErrorPreventionMessage GetMessageForState(string stateKey)
         {

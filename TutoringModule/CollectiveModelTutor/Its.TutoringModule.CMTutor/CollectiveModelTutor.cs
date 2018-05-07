@@ -81,6 +81,7 @@ namespace Its.TutoringModule.CMTutor
             GetRelevantErrorPreventionMessages(actionName, domainName, studentKey, ref errorPreventionMessages);
             
             // 2.2 Obtain irrelevant error prevention messages for probable errors
+            GetIrrelevantErrorPreventionMessages(actionName, domainName, studentKey, ref errorPreventionMessages);
             
             // 3. Add messages to the dictionary depending on the validation result
             
@@ -88,6 +89,32 @@ namespace Its.TutoringModule.CMTutor
             AddTutorMessages(ref messages, tutorMessages);
 
             return messages;
+        }
+        
+        private void GetIrrelevantErrorPreventionMessages(string actionName, string domainName, string studentKey,
+            ref List<TutorMessage> errorPreventionMessages)
+        {
+            Node<State, Event> lastState = sbpControl.GetLastState(domainName, CLUSTER_METHOD, studentKey);
+            
+            // Get all irrelevant error events with sufficient confidence
+            List<Arc<State, Event>> ieAreaEvents = sbpControl.GetNextIEAreaEventsAboveThreshold(domainName, CLUSTER_METHOD,
+                studentKey, _config.NoErrorPreventionIEConfidenceThreshold);
+            
+            foreach (Arc<State, Event> evt in ieAreaEvents)
+            {
+                Node<State, Event> ieState = evt.NodeIn;
+                // ToDo: ensure that irrelevant error states have unique keys to be able to diffirentiate between different instances of the same error.
+                if (epmController.HasMessageForState(ieState.Key))
+                {
+                    errorPreventionMessages.Add(new TutorMessage(ieState.Key + "_lowDetail", epmController.GetMessageForState(ieState.Key).LowDetailMessage));
+                }
+            }
+
+            if (lastState.Specification.Area == Area.IrrelevantErrors &&
+                epmController.HasHighDetailMessageForState(lastState.Key))
+            {
+                // ToDo: calculate "umbral_repetir_error", Diego Riofrio PhD thesis, chapter 8.5, Algorithm 6, section "Prevencion de errores irrelevantes".
+            }
         }
 
         private void GetRelevantErrorPreventionMessages(string actionName, string domainName, string studentKey,

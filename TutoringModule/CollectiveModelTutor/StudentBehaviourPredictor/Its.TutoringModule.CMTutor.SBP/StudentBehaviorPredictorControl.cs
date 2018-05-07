@@ -171,6 +171,13 @@ namespace Its.TutoringModule.CMTutor.SBP
 			return cluster.GetNextCorrectEventsAboveThreshold(studentKey, threshold); 
 		}
 		
+		public List<Arc<State, Event>> GetNextIEAreaEventsAboveThreshold(string domainKey, ClusterMethod cluMet, string studentKey, double threshold)
+		{
+			PredictiveStudentModel model = GetModel(domainKey, cluMet);
+			StudentsCluster cluster = model.FindStudentCluster(studentKey);
+			return cluster.GetNextIEAreaEventsAboveThreshold(studentKey, threshold); 
+		}
+		
 		public double GetEventConfidence(string domainKey, ClusterMethod cluMet, string studentKey, Arc<State, Event> evt)
 		{
 			PredictiveStudentModel model = GetModel(domainKey, cluMet);
