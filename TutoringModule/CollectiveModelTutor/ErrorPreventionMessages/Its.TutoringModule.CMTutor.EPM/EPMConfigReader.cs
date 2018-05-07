@@ -71,17 +71,8 @@ namespace Its.TutoringModule.CMTutor.EPM
 					string highDetailMessage	= record[3] == null ? "" : record[3].ToString();
 
 					// Store message object
-					if (!String.IsNullOrEmpty(stateKey) && !String.IsNullOrEmpty(lowDetailMessage) && 
-					    !String.IsNullOrEmpty(mediumDetailMessage) && !String.IsNullOrEmpty(highDetailMessage))
-					{
-						ErrorPreventionMessage message = new ErrorPreventionMessage(stateKey, lowDetailMessage, mediumDetailMessage, highDetailMessage);
-						_messagesByDomain[domainName].Add(message);
-					}
-					else
-					{
-						ArgumentException argEx = new ArgumentException ("Invalid Error Prevention message config in " + filePath + " at row " + row);
-						throw argEx;
-					}
+					ErrorPreventionMessage message = new ErrorPreventionMessage(stateKey, lowDetailMessage, mediumDetailMessage, highDetailMessage);
+					_messagesByDomain[domainName].Add(message);
 					
 					//Advances the index.
 					row++;
