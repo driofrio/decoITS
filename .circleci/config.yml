@@ -18,3 +18,73 @@ jobs:
       - run:
           name: Test Collective Model Tutor
           command: nunit3-console ./TutoringModule/CollectiveModelTutor/Its.TutoringModule.CMTutorTest/bin/Debug/Its.TutoringModule.CMTutorTest.dll --noresult
+
+####################################################################
+#
+# Alternative setup using Circle CI Workflows.
+# Can leverage parallel workflows to execute tests in parallel
+# Only worth considering if build times exceed 4-5min 
+#
+####################################################################
+
+# defaults: &defaults
+#   working_directory: /tmp/decoITS
+#   docker:
+#     - image: ribakov/workspace:2017.3.0p2
+
+# version: 2
+# jobs:
+#   checkout_code:
+#     <<: *defaults
+#     working_directory: /tmp
+#     steps:
+#       - checkout:
+#           path: decoITS
+#       - persist_to_workspace:
+#           root: /tmp
+#           paths:
+#             - decoITS
+
+#   build:
+#     <<: *defaults
+#     steps:
+#       - attach_workspace:
+#           at: /tmp
+#       - run:
+#           name: Fetch dependencies
+#           command: nuget restore SolucionTutor.sln
+#       - run:
+#           name: Build
+#           # Stopped using msbuild due to issues with copying NuGet dependencies into test projects
+#           command: xbuild
+#       - persist_to_workspace:
+#           root: /tmp
+#           paths:
+#             - decoITS
+
+#   test:
+#     <<: *defaults
+#     parallelism: 2
+#     steps:
+#       - attach_workspace:
+#           # Must be absolute path or relative path from working_directory
+#           at: /tmp
+#       - run:
+#           name: Test Reactive Tutor
+#           command: nunit3-console ./TutoringModule/ReactiveTutor/Its.TutoringModule.ReactiveTutorTest/bin/Debug/Its.TutoringModule.ReactiveTutorTest.dll --noresult
+#       - run:
+#           name: Test Collective Model Tutor
+#           command: nunit3-console ./TutoringModule/CollectiveModelTutor/Its.TutoringModule.CMTutorTest/bin/Debug/Its.TutoringModule.CMTutorTest.dll --noresult
+
+
+# workflows:
+#   version: 2
+#   commit_workflow:
+#     jobs:
+#       - checkout_code
+#       - build:
+#           requires:
+#             - checkout_code
+#       - test:
+#           requires:
+#             - build
