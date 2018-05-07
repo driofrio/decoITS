@@ -10,7 +10,8 @@ jobs:
           command: nuget restore SolucionTutor.sln
       - run:
           name: Build
-          command: msbuild
+          # Stopped using msbuild due to issues with copying NuGet dependencies into test projects
+          command: xbuild
       - run:
           name: Test Reactive Tutor
           command: nunit3-console ./TutoringModule/ReactiveTutor/Its.TutoringModule.ReactiveTutorTest/bin/Debug/Its.TutoringModule.ReactiveTutorTest.dll --noresult
