@@ -64,6 +64,14 @@ namespace Its.TutoringModule.CMTutor
         
         protected override Dictionary<string, List<string>> GetTutoringStrategyMessages(string actionName, string domainName, string studentKey)
         {
+            // If this instance of CMTutor is master instance, that means that HasSupportForAction() will no be invoked
+            // since there is no TutoringCoordinator. Thus, make sure that student model is updated with student action,
+            // before proceeding.
+            if (_master)
+            {
+                UpdateModel(actionName, domainName, studentKey);
+            }
+            
             List<TutorMessage> tutorMessages = new List<TutorMessage>();
             List<TutorMessage> errorPreventionMessages = new List<TutorMessage>();
             string okMessage;
@@ -87,6 +95,7 @@ namespace Its.TutoringModule.CMTutor
             
             AddConfirmationMessage(ref messages, okMessage);
             AddTutorMessages(ref messages, tutorMessages);
+            AddErrorPreventionMessages(ref messages, errorPreventionMessages);
 
             return messages;
         }
@@ -183,50 +192,65 @@ namespace Its.TutoringModule.CMTutor
         {
             if (ZDPTutoringNeeded(domainName, studentKey))
             {
-                Arc<State, Event> nextEvent = sbpControl.GetNextProbableCorrectEvent(domainName, CLUSTER_METHOD, studentKey);
-                double conf = sbpControl.GetEventConfidence(domainName, CLUSTER_METHOD, studentKey, nextEvent);
-                double noTutoringThreshold = _config.NoTutoringEventConfidenceThreshold;
-                double lowDetailThreshold = _config.LowDetailTutoringEventConfidenceThreshold;
-                double mediumDetailThreshold = _config.MediumDetailTutoringEventConfidenceThreshold;
-
-                TutorMessage message = null;
-
-                // Conf = 1
-                //
-                //     Student is extremely likely to make correct action so don't provide any tutoring
-                //
-                // [No Tutoring Conf Threshold]
-                //
-                //     Student is probably going to make correct action so provide a generic (low detail) tutoring message
-                //
-                // [Low Detail Threshold]
-                //
-                //     Student maybe is going to make a correct action so provide a medium detail tutoring message
-                //
-                // [Medium Detail Threshold]
-                //
-                //     Student is unlikely to make next correct action so provide a high detail tutoring message
-                //
-                // Conf = 0  
-                if (noTutoringThreshold >= conf && conf > lowDetailThreshold)
+                // Use possible next actions as configured in Domain XLSX to restrict ZDP Tutoring
+                ActionAplication action = _expertControl.GetDomainActions(domainName).GetActionByName(actionName);
+                HashSet<string> possibleNextActions = new HashSet<string>();
+                if (action.PossibleNextActions != null)
                 {
-                    // low detail message
-                    message = GetCollectiveModelTutorMessage(actionName, domainName, studentKey, TutorMessageLevel.LowDetailMessage);
-                }
-                else if (lowDetailThreshold >= conf && conf > mediumDetailThreshold)
-                {
-                    // medium detail message
-                    message = GetCollectiveModelTutorMessage(actionName, domainName, studentKey, TutorMessageLevel.MediumDetailMessage);
-                }
-                else if (mediumDetailThreshold >= conf)
-                {
-                    // high detail message
-                    message = GetCollectiveModelTutorMessage(actionName, domainName, studentKey, TutorMessageLevel.HighDetailMessage);
-                }
-
-                if (message != null)
-                {
-                    tutorMessages.Add(message);
+                    foreach (ActionAplication possibleNextAction in action.PossibleNextActions)
+                    {
+                        possibleNextActions.Add(possibleNextAction.Key);
+                    }
+    
+                    Arc<State, Event> nextEvent = sbpControl.GetNextProbableCorrectEvent(domainName, CLUSTER_METHOD, studentKey, possibleNextActions);
+                    if (nextEvent != null)
+                    {
+                        ActionAplication nextAction = ((CorrectState) nextEvent.NodeIn.Specification).Action;
+                        double conf = sbpControl.GetEventConfidence(domainName, CLUSTER_METHOD, studentKey, nextEvent);
+                        double noTutoringThreshold = _config.NoTutoringEventConfidenceThreshold;
+                        double lowDetailThreshold = _config.LowDetailTutoringEventConfidenceThreshold;
+                        double mediumDetailThreshold = _config.MediumDetailTutoringEventConfidenceThreshold;
+        
+                        TutorMessage message = null;
+        
+                        // Conf = 1
+                        //
+                        //     Student is extremely likely to make correct action so don't provide any tutoring
+                        //
+                        // [No Tutoring Conf Threshold]
+                        //
+                        //     Student is probably going to make correct action so provide a generic (low detail) tutoring message
+                        //
+                        // [Low Detail Threshold]
+                        //
+                        //     Student maybe is going to make a correct action so provide a medium detail tutoring message
+                        //
+                        // [Medium Detail Threshold]
+                        //
+                        //     Student is unlikely to make next correct action so provide a high detail tutoring message
+                        //
+                        // Conf = 0  
+                        if (noTutoringThreshold >= conf && conf > lowDetailThreshold)
+                        {
+                            // low detail message
+                            message = GetCollectiveModelTutorMessage(nextAction.Name, domainName, studentKey, TutorMessageLevel.LowDetailMessage);
+                        }
+                        else if (lowDetailThreshold >= conf && conf > mediumDetailThreshold)
+                        {
+                            // medium detail message
+                            message = GetCollectiveModelTutorMessage(nextAction.Name, domainName, studentKey, TutorMessageLevel.MediumDetailMessage);
+                        }
+                        else if (mediumDetailThreshold >= conf)
+                        {
+                            // high detail message
+                            message = GetCollectiveModelTutorMessage(nextAction.Name, domainName, studentKey, TutorMessageLevel.HighDetailMessage);
+                        }
+        
+                        if (message != null)
+                        {
+                            tutorMessages.Add(message);
+                        }    
+                    }   
                 }
             }
         }

@@ -386,8 +386,8 @@ namespace Its.TutoringModule.CMTutor.SBP.OM
 		/// </summary>
 		/// <returns>The next probable event.</returns>
 		/// <param name="studentKey">Student key.</param>
-		public Arc<State.State,Event.Event> GetNextProbableCorrectEvent(string studentKey){
-			return _studentActionsModel.GetNextProbableCorrectEvent ((Node<State.State,Event.Event>)_studentStates.Rows.Find (studentKey) [1]);
+		public Arc<State.State,Event.Event> GetNextProbableCorrectEvent(string studentKey, HashSet<string> possibleNextActions){
+			return _studentActionsModel.GetNextProbableCorrectEvent ((Node<State.State,Event.Event>)_studentStates.Rows.Find (studentKey) [1], possibleNextActions);
 		}
 
 		/// <summary>

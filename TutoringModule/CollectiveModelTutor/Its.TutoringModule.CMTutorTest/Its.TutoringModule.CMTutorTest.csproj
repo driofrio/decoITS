@@ -44,6 +44,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CMTutorTest.cs" />
     <Compile Include="ErrorPreventionMessageTest.cs" />
     <Compile Include="Util.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -59,7 +60,6 @@
     <Content Include="TestAssets\WorldConf\NpcManagerMapping\.DS_Store" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="TestAssets\Logs" />
     <Folder Include="TestAssets\WorldConf" />
   </ItemGroup>
   <ItemGroup>

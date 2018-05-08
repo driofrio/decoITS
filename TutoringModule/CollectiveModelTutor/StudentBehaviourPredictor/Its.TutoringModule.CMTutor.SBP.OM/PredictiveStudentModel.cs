@@ -1276,9 +1276,9 @@ namespace Its.TutoringModule.CMTutor.SBP.OM
 		/// </summary>
 		/// <returns>The next most probable correct event.</returns>
 		/// <param name="studentKey">Student key.</param>
-		public Arc<State.State,Event.Event> GetNextProbableCorrectEvent(string studentKey){
+		public Arc<State.State,Event.Event> GetNextProbableCorrectEvent(string studentKey, HashSet<string> possibleNextActions){
 			StudentsCluster cluster = FindStudentCluster (studentKey);
-			Arc<State.State,Event.Event> nextEvent = cluster.GetNextProbableCorrectEvent (studentKey);
+			Arc<State.State,Event.Event> nextEvent = cluster.GetNextProbableCorrectEvent (studentKey, possibleNextActions);
 			return nextEvent;
 		}
 

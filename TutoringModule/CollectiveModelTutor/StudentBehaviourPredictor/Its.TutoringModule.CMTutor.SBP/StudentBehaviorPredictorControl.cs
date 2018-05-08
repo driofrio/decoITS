@@ -139,10 +139,10 @@ namespace Its.TutoringModule.CMTutor.SBP
 		/// <returns>The next most probable CORRECT event.</returns>
 		/// <param name="domainKey">Domain key.</param>
 		/// <param name="studentKey">Student key.</param>
-		public Arc<State,Event> GetNextProbableCorrectEvent(string domainKey, ClusterMethod cluMet, string studentKey)
+		public Arc<State,Event> GetNextProbableCorrectEvent(string domainKey, ClusterMethod cluMet, string studentKey, HashSet<string> possibleNextActions)
 		{
 			PredictiveStudentModel model = GetModel(domainKey, cluMet);
-			return model.GetNextProbableCorrectEvent(studentKey);
+			return model.GetNextProbableCorrectEvent(studentKey, possibleNextActions);
 		}
 		
 		public Node<State, Event> GetLastState(string domainKey, ClusterMethod cluMet, string studentKey)

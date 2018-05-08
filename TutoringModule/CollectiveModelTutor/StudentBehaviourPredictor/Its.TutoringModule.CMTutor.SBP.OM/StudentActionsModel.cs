@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Its.ExpertModule;
 using Its.ExpertModule.ObjectModel;
 using Its.StudentModule.ObjectModel;
 using Its.TutoringModule.CMTutor.SBP.Exceptions;
@@ -541,13 +542,25 @@ namespace Its.TutoringModule.CMTutor.SBP.OM
 		/// </summary>
 		/// <returns>The next most probable correct event.</returns>
 		/// <param name="lastLog">Last log.</param>
-		public Arc<State.State,Event.Event> GetNextProbableCorrectEvent(Node<State.State,Event.Event> lastState){
+		public Arc<State.State,Event.Event> GetNextProbableCorrectEvent(Node<State.State,Event.Event> lastState, HashSet<string> possibleNextActions){
 			long maxFrequency = 0;
 			Arc<State.State,Event.Event> mostFrequentEvent = null;
-			List<Arc<State.State, Event.Event>> correctEvents = lastState.OutArcs.Values.ToList();
-			correctEvents = SelectCorrectEvents(correctEvents);
+			List<Arc<State.State, Event.Event>> possibleCorrectEvents = new List<Arc<State.State, Event.Event>>();
+			
+			List<Arc<State.State, Event.Event>> events = lastState.OutArcs.Values.ToList();
+			events = SelectCorrectEvents(events);
 
-			return GetMostProbableEvent(correctEvents);
+			// Ensure that only actions allowed by domain specification (XLSX file, column "Possible next actions") are considered
+			foreach (Arc<State.State, Event.Event> transition in events)
+			{
+				if (possibleNextActions.Contains(((CorrectState) transition.NodeIn.Specification).Action.Key))
+				{
+					possibleCorrectEvents.Add(transition);
+				}
+			}
+			
+
+			return GetMostProbableEvent(possibleCorrectEvents);
 		}
 		
 		/// <summary>
@@ -671,8 +684,6 @@ namespace Its.TutoringModule.CMTutor.SBP.OM
 		public List<Arc<State.State, Event.Event>> SelectEventsAboveConfidenceThreshold(List<Arc<State.State, Event.Event>> events, double threshold)
 		{
 			List<Arc<State.State, Event.Event>> selectedEvents = new List<Arc<State.State, Event.Event>>();
-			List<Arc<State.State, Event.Event>> eventsNorm = events.Where(x => x.Specification.GetType() == typeof(NormalEvent)).ToList();
-			List<Arc<State.State, Event.Event>> eventsVect = events.Where(x => x.Specification.GetType() == typeof(VectorEvent)).ToList();
 			
 			foreach (Arc<State.State, Event.Event> arc in events)
 			{

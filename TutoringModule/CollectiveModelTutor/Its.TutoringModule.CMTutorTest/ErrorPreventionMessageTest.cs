@@ -18,7 +18,6 @@ using NUnit.Framework;
 namespace Its.TutoringModule.CMTutorTest
 {
     [TestFixture]
-    [Parallelizable(ParallelScope.Self)]
     public class ErrorPreventionMessageTest
     {   
         private static ITutorConfig config;
@@ -42,17 +41,6 @@ namespace Its.TutoringModule.CMTutorTest
             };
             
             config = new DefaultTutorConfig(template, settings);
-            
-            // Wipe any previous logs if present
-            if (Directory.Exists(config.LogsPath))
-            {
-                Directory.Delete(config.LogsPath, true);
-            }
-
-            if (Directory.Exists(config.DomainConfigurationPath + "/Logs"))
-            {
-                Directory.Delete(config.DomainConfigurationPath + "/Logs", true);
-            }
         }
         
         public void InitTest(string domainName)

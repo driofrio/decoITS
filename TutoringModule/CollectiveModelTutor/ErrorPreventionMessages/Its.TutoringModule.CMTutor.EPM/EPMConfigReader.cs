@@ -73,10 +73,10 @@ namespace Its.TutoringModule.CMTutor.EPM
 					// Store message object
 					ErrorPreventionMessage message = new ErrorPreventionMessage(stateKey, lowDetailMessage, mediumDetailMessage, highDetailMessage);
 					_messagesByDomain[domainName].Add(message);
-					
-					//Advances the index.
-					row++;
 				}
+				
+				//Advances the index.
+				row++;
 			}
 
 			//Closes the FileStream.

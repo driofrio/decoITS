@@ -17,12 +17,7 @@ namespace Its.TutoringModule.CMTutor.EPM.PathFind
         }
             
         /// <summary>
-        /// Find path in the automaton between a single start node and one or many destination nodes.
-        /// If more than one path exists, priority is given to the paths with higher path confidence,
-        /// i.e. paths that students are more likely to take.
-        ///
-        /// BFS is used to explore the graph and pathConfThreshold parameter is used to stop algorithm early if sum of
-        /// all path confidences in the graph is below threshold (path confidence will keep shrinking as it is multiplied with values (0; 1] at every step).
+        /// Find path in the automaton between a single start node and one or many destination nodes. BFS is used to explore the graph.
         /// </summary>
         /// <param name="fromNode"></param>
         /// <param name="targetNodes"></param>
@@ -31,27 +26,16 @@ namespace Its.TutoringModule.CMTutor.EPM.PathFind
         /// List of PathInfo objects that contain info about destination nodes that paths could be found to and
         /// maximum possible path confidence.
         /// </returns>
-        public List<PathInfo> Find(string fromNodeKey, HashSet<string> targetNodeKeys, double pathConfThreshold)
+        public List<PathInfo> Find(string fromNodeKey, HashSet<string> targetNodeKeys)
         {
             // Init the finder                        
             PathInfo p = new PathInfo(fromNodeKey, fromNodeKey, 0, 1);
             Queue<PathInfo> toExplore = new Queue<PathInfo>();
             toExplore.Enqueue(p);
 
-            List<PathInfo> pathsToTargets = ExplorePaths(toExplore, targetNodeKeys, pathConfThreshold);
+            List<PathInfo> pathsToTargets = ExplorePaths(toExplore, targetNodeKeys);
 
             return pathsToTargets;
-        }
-        
-        /// <summary>
-        /// Generic version of the path finding implementation that does NOT use total path confidence threshold to abort the search early.
-        /// </summary>
-        /// <param name="fromNodeKey"></param>
-        /// <param name="targetNodeKeys"></param>
-        /// <returns></returns>
-        public List<PathInfo> Find(string fromNodeKey, HashSet<string> targetNodeKeys)
-        {
-            return Find(fromNodeKey, targetNodeKeys, 0);
         }
 
         /// <summary>
@@ -61,7 +45,7 @@ namespace Its.TutoringModule.CMTutor.EPM.PathFind
         /// <param name="targetNodeKeys"></param>
         /// <param name="pathConfThreshold"></param>
         /// <returns></returns>
-        private List<PathInfo> ExplorePaths(Queue<PathInfo> toExplore, HashSet<string> targetNodeKeys, double pathConfThreshold)
+        private List<PathInfo> ExplorePaths(Queue<PathInfo> toExplore, HashSet<string> targetNodeKeys)
         {
             double allPathConfidenceSum = 1;
             List<PathInfo> pathsToTargets = new List<PathInfo>();
@@ -97,13 +81,6 @@ namespace Its.TutoringModule.CMTutor.EPM.PathFind
                     {
                         pathsToTargets.Add(updatedPath);
                     }
-                }
-
-                // Check total Confidence agains threshold
-                if (allPathConfidenceSum < pathConfThreshold)
-                {
-                    // Stop exploring and return empty list
-                    return new List<PathInfo>();
                 }
             }
 

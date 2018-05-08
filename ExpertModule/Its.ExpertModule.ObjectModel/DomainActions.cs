@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using Its.Utils.StringUtils;
 
 namespace Its.ExpertModule.ObjectModel
@@ -157,6 +158,22 @@ namespace Its.ExpertModule.ObjectModel
 			foreach (ActionAplication a in _actions) {
 				if (a.Key == actionKey) {
 					result = true;
+					break;
+				}
+			}
+
+			//Returns the result.
+			return result;
+		}
+
+		public ActionAplication GetActionByName(string actionName)
+		{
+			//Creates an auxiliar variable.
+			ActionAplication result = null;
+			//Seearchs if there is an action with the given key.
+			foreach (ActionAplication a in _actions) {
+				if (a.Name == actionName) {
+					result = a;
 					break;
 				}
 			}
