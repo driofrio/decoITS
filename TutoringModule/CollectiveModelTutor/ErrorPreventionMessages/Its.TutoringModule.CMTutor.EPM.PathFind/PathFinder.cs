@@ -17,7 +17,11 @@ namespace Its.TutoringModule.CMTutor.EPM.PathFind
         }
             
         /// <summary>
-        /// Find path in the automaton between a single start node and one or many destination nodes. BFS is used to explore the graph.
+        /// Find path in the automaton between a single start node and one or many destination nodes.
+        /// BFS is used to explore the graph.
+        ///
+        /// If graph conntains cycles, infinite loops are prevented by keeping track inside of PathInfo object which
+        /// transitions have already been followed
         /// </summary>
         /// <param name="fromNode"></param>
         /// <param name="targetNodes"></param>
@@ -65,21 +69,31 @@ namespace Its.TutoringModule.CMTutor.EPM.PathFind
                 // Create + enqueue PathInfo for all transitions
                 foreach (Arc<State, Event> transition in node.OutArcs.Values)
                 {
-                    string nextNodeKey = model.GetInStateKey(transition);
-                    Node<State, Event> nextNode = model.GetState(nextNodeKey);
-                    int length = pathInfo.PathLength + 1;
-                    double newPathConfidence = pathInfo.PathConfidence * model.GetEventConfidence(transition);
-                    
-                    // Replace old path condifence with the sum of confidences of all child paths
-                    allPathConfidenceSum += newPathConfidence;
-                    
-                    PathInfo updatedPath = new PathInfo(pathInfo.FromNodeKey, nextNodeKey, length, newPathConfidence);
-                    toExplore.Enqueue(updatedPath);
-                    
-                    // check if next node is one of the targets
-                    if (targetNodeKeys.Contains(nextNodeKey))
+                    if (pathInfo.Visited(transition.Key.ToString()))
                     {
-                        pathsToTargets.Add(updatedPath);
+                        continue;
+                    }
+                    else
+                    {
+                        string nextNodeKey = model.GetInStateKey(transition);
+                        Node<State, Event> nextNode = model.GetState(nextNodeKey);
+                        int length = pathInfo.PathLength + 1;
+                        double newPathConfidence = pathInfo.PathConfidence * model.GetEventConfidence(transition);
+                    
+                        // Replace old path condifence with the sum of confidences of all child paths
+                        allPathConfidenceSum += newPathConfidence;
+
+                        // Create new pathInfo object to be queued
+                        HashSet<string> trace = new HashSet<string>(pathInfo.Trace);
+                        trace.Add(transition.Key.ToString());
+                        PathInfo updatedPath = new PathInfo(pathInfo.FromNodeKey, nextNodeKey, length, newPathConfidence, trace);
+                        toExplore.Enqueue(updatedPath);
+                    
+                        // Check if next node is one of the targets
+                        if (targetNodeKeys.Contains(nextNodeKey))
+                        {
+                            pathsToTargets.Add(updatedPath);
+                        }   
                     }
                 }
             }
