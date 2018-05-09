@@ -30,14 +30,14 @@ namespace Its.TutoringModule.CMTutor.EPM.PathFind
         /// List of PathInfo objects that contain info about destination nodes that paths could be found to and
         /// maximum possible path confidence.
         /// </returns>
-        public List<PathInfo> Find(string fromNodeKey, HashSet<string> targetNodeKeys)
+        public List<PathInfo> Find(string fromNodeKey, HashSet<string> targetNodeKeys, int searchDepth)
         {
             // Init the finder                        
             PathInfo p = new PathInfo(fromNodeKey, fromNodeKey, 0, 1);
             Queue<PathInfo> toExplore = new Queue<PathInfo>();
             toExplore.Enqueue(p);
 
-            List<PathInfo> pathsToTargets = ExplorePaths(toExplore, targetNodeKeys);
+            List<PathInfo> pathsToTargets = ExplorePaths(toExplore, targetNodeKeys, searchDepth);
 
             return pathsToTargets;
         }
@@ -49,7 +49,7 @@ namespace Its.TutoringModule.CMTutor.EPM.PathFind
         /// <param name="targetNodeKeys"></param>
         /// <param name="pathConfThreshold"></param>
         /// <returns></returns>
-        private List<PathInfo> ExplorePaths(Queue<PathInfo> toExplore, HashSet<string> targetNodeKeys)
+        private List<PathInfo> ExplorePaths(Queue<PathInfo> toExplore, HashSet<string> targetNodeKeys, int searchDepth)
         {
             double allPathConfidenceSum = 1;
             List<PathInfo> pathsToTargets = new List<PathInfo>();
@@ -69,15 +69,23 @@ namespace Its.TutoringModule.CMTutor.EPM.PathFind
                 // Create + enqueue PathInfo for all transitions
                 foreach (Arc<State, Event> transition in node.OutArcs.Values)
                 {
-                    if (pathInfo.Visited(transition.Key.ToString()))
-                    {
-                        continue;
-                    }
-                    else
+                    if (!pathInfo.Visited(transition.Key.ToString()))
                     {
                         string nextNodeKey = model.GetInStateKey(transition);
                         Node<State, Event> nextNode = model.GetState(nextNodeKey);
-                        int length = pathInfo.PathLength + 1;
+                        int length = pathInfo.PathLength;
+                        
+                        // Only count correct states to determine search depth (prevents depth inflation by multiple errors states attached to a single action)
+                        if (nextNode.Specification.GetType() == typeof(CorrectState))
+                        {
+                            length += 1;
+                        }
+
+                        if (length > searchDepth)
+                        {
+                            continue;
+                        }
+                        
                         double newPathConfidence = pathInfo.PathConfidence * model.GetEventConfidence(transition);
                     
                         // Replace old path condifence with the sum of confidences of all child paths
@@ -119,11 +127,10 @@ namespace Its.TutoringModule.CMTutor.EPM.PathFind
         }
 
         public Dictionary<string, double> FindPathsAboveThreshold(string fromNodeKey, HashSet<string> targetNodeKeys,
-            double pathConfThreshold)
+            double pathConfThreshold, int searchDepth)
         {
             Dictionary<string, double> results = new Dictionary<string, double>();
-//            List<PathInfo> allPathsToTargets = Find(fromNodeKey, targetNodeKeys, pathConfThreshold);
-            List<PathInfo> allPathsToTargets = Find(fromNodeKey, targetNodeKeys);
+            List<PathInfo> allPathsToTargets = Find(fromNodeKey, targetNodeKeys, searchDepth);
             Dictionary<string, double> totalPathConfidencesByTarget = AddPathConfidenceByTarget(allPathsToTargets);
 
             foreach (string key in totalPathConfidencesByTarget.Keys)

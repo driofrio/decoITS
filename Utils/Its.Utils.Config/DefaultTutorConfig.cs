@@ -27,6 +27,7 @@ namespace Its.Utils.Config
         private double mediumDetailErrorPreventionConfidenceThreshold;
         private double noErrorPreventionIEConfidenceThreshold;
         private double noErrorPreventionIERepetitionThreshold;
+        private int errorPreventionSearchDepthLimit;
         
         public int InitialColumn
         {
@@ -138,6 +139,11 @@ namespace Its.Utils.Config
             get { return noErrorPreventionIERepetitionThreshold; }
         }
         
+        public int ErrorPreventionSearchDepthLimit
+        {
+            get { return errorPreventionSearchDepthLimit; }
+        }
+        
         public DefaultTutorConfig()
         {
             InitFromSystemConfig();
@@ -178,6 +184,7 @@ namespace Its.Utils.Config
             mediumDetailErrorPreventionConfidenceThreshold = double.Parse(ConfigurationManager.AppSettings["MediumDetailErrorPreventionConfidenceThreshold"]);
             noErrorPreventionIEConfidenceThreshold = double.Parse(ConfigurationManager.AppSettings["NoErrorPreventionIEConfidenceThreshold"]);
             noErrorPreventionIERepetitionThreshold = double.Parse(ConfigurationManager.AppSettings["NoErrorPreventionIERepetitionThreshold"]);
+            errorPreventionSearchDepthLimit = int.Parse(ConfigurationManager.AppSettings["ErrorPreventionSearchDepthLimit"]);
         }
         
         private void InitFromTutorConfig(ITutorConfig config)
@@ -204,6 +211,7 @@ namespace Its.Utils.Config
             mediumDetailErrorPreventionConfidenceThreshold = config.MediumDetailErrorPreventionConfidenceThreshold;
             noErrorPreventionIEConfidenceThreshold = config.NoErrorPreventionIEConfidenceThreshold;
             noErrorPreventionIERepetitionThreshold = config.NoErrorPreventionIERepetitionThreshold;
+            errorPreventionSearchDepthLimit = config.ErrorPreventionSearchDepthLimit;
         }
 
         private void InitFromDictionary(Dictionary<string, string> values)
@@ -230,6 +238,7 @@ namespace Its.Utils.Config
             string mediumDetailErrorPreventionConfidenceThreshold;
             string noErrorPreventionIEConfidenceThreshold;
             string noErrorPreventionIERepetitionThreshold;
+            string errorPreventionSearchDepthLimit;
 
             if (values.TryGetValue("InitialColumn", out initialColumn))
             {
@@ -340,6 +349,11 @@ namespace Its.Utils.Config
             if (values.TryGetValue("NoErrorPreventionIERepetitionThreshold", out noErrorPreventionIERepetitionThreshold))
             {
                 this.noErrorPreventionIERepetitionThreshold = double.Parse(noErrorPreventionIERepetitionThreshold);
+            }
+            
+            if (values.TryGetValue("ErrorPreventionSearchDepthLimit", out errorPreventionSearchDepthLimit))
+            {
+                this.errorPreventionSearchDepthLimit = int.Parse(errorPreventionSearchDepthLimit);
             }
         }
     }

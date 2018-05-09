@@ -149,7 +149,7 @@ namespace Its.TutoringModule.CMTutor
             
             PathFinder pf = new PathFinder(sbpControl.GetStudentActionsModel(domainName, CLUSTER_METHOD, studentKey));
             Dictionary<string, double> reStatePathConfidences =
-                pf.FindPathsAboveThreshold(lastState.Key, reStateKeys, _config.NoErrorPreventionConfidenceThreshold);
+                pf.FindPathsAboveThreshold(lastState.Key, reStateKeys, _config.NoErrorPreventionConfidenceThreshold, _config.ErrorPreventionSearchDepthLimit);
 
             // Add messages of the right level of detail to the output container
             foreach (string targetStateKey in reStatePathConfidences.Keys)

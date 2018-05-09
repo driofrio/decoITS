@@ -25,5 +25,6 @@
         double HighDetailErrorPreventionConfidenceThreshold { get; }
         double NoErrorPreventionIEConfidenceThreshold { get; }
         double NoErrorPreventionIERepetitionThreshold { get; }
+        int ErrorPreventionSearchDepthLimit { get; }
     }
 }

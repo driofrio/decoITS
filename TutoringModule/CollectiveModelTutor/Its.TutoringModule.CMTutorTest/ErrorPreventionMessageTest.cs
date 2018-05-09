@@ -278,7 +278,7 @@ namespace Its.TutoringModule.CMTutorTest
             // Check probable errors from Initial State
             PathFinder pf = new PathFinder(sam);
             Dictionary<string, double> reStatePathConfidences =
-                pf.FindPathsAboveThreshold(initState.Key, reStateKeys, noErrorPreventionConfidenceThreshold);
+                pf.FindPathsAboveThreshold(initState.Key, reStateKeys, noErrorPreventionConfidenceThreshold, 10);
             
             Assert.AreEqual(2, reStatePathConfidences.Count);
             Assert.That(reStatePathConfidences["f0t4_f0t3_RelevantErrors"], Is.EqualTo(0.6).Within(Util.DOUBLE_PRECISION));
@@ -511,13 +511,13 @@ namespace Its.TutoringModule.CMTutorTest
             // Check probable errors from Initial State
             PathFinder pf = new PathFinder(sam);
             Dictionary<string, double> reStatePathConfidences =
-                pf.FindPathsAboveThreshold(initState.Key, reStateKeys, noErrorPreventionConfidenceThreshold);
+                pf.FindPathsAboveThreshold(initState.Key, reStateKeys, noErrorPreventionConfidenceThreshold, 10);
             
             Assert.AreEqual(1, reStatePathConfidences.Count);
             Assert.That(reStatePathConfidences["f0t4_f0t3_RelevantErrors"], Is.EqualTo(0.6).Within(Util.DOUBLE_PRECISION));
             
             // Check probable errors from f0t4_CorrectFlow
-            reStatePathConfidences = pf.FindPathsAboveThreshold("f0t4_CorrectFlow", reStateKeys, noErrorPreventionConfidenceThreshold);
+            reStatePathConfidences = pf.FindPathsAboveThreshold("f0t4_CorrectFlow", reStateKeys, noErrorPreventionConfidenceThreshold, 10);
             
             Assert.AreEqual(2, reStatePathConfidences.Count);
             Assert.That(reStatePathConfidences["f0t4_f0t3_RelevantErrors"], Is.EqualTo(1).Within(Util.DOUBLE_PRECISION));
