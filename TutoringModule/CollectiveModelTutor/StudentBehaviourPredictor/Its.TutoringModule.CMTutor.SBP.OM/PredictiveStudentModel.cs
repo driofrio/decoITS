@@ -1232,6 +1232,7 @@ namespace Its.TutoringModule.CMTutor.SBP.OM
 				long tmpFrequency = 0;
 				Node<State.State,Event.Event> previousState = tmpcluster.StudentActionsModel.InitState;
 				foreach (Node<State.State,Event.Event> tmpState in studentNodes) {
+					// ToDo: Fix the algorithm. Need to sum event frequency values from tmpCluster, NOT studentNodes 
 					if (tmpState != default(Node<State.State,Event.Event>))
 						tmpFrequency += tmpState.Specification.EventFrequency;
 					previousState = tmpState;
