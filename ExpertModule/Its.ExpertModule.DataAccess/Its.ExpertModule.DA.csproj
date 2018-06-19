@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -30,6 +30,10 @@
     <ConsolePause>false</ConsolePause>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ExcelDataReader, Version=3.4.0.0, Culture=neutral, PublicKeyToken=93517dbe6a4012fa">
+      <HintPath>..\..\packages\ExcelDataReader.3.4.0\lib\net20\ExcelDataReader.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="ICSharpCode.SharpZipLib">
@@ -48,9 +52,6 @@
     </Reference>
     <Reference Include="ExcelApi">
       <HintPath>..\..\packages\NetOffice.Excel.1.7.3.0\lib\net35\ExcelApi.dll</HintPath>
-    </Reference>
-    <Reference Include="Excel">
-      <HintPath>..\..\packages\ExcelDataReader.2.1.2.3\lib\net20\Excel.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

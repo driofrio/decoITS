@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
-using Excel;
+using ExcelDataReader;
 //using Excel = NetOffice.ExcelApi;
 
 namespace Its.ExpertModule.DataAccess

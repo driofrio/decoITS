@@ -244,15 +244,7 @@ namespace Its.TutoringModule.Common
 		public void CreateStudent (string key, string name, string middleName, string surname, string lastName)
 		{
 			//Creates the student with the given information.
-            try
-            {
-                _studentControl.CreateStudent(key, name, middleName, surname, lastName);
-            }
-            catch
-            {
-                throw new Exception();
-            }
-			
+			_studentControl.CreateStudent(key, name, middleName, surname, lastName);			
 		}
 
 		/// <summary>
