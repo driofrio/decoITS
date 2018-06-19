@@ -11,7 +11,7 @@ using Its.TutoringModule.CMTutor.SBP.OM.State;
 using Its.TutoringModule.ReactiveTutor.ObjectModel;
 using Its.Utils.Config;
 using Its.Utils.Math;
-using Microsoft.AnalysisServices.AdomdClient;
+//using Microsoft.AnalysisServices.AdomdClient;
 using weka.clusterers;
 using weka.core;
 using weka.filters.unsupervised.attribute;
@@ -288,7 +288,7 @@ namespace Its.TutoringModule.CMTutor.SBP.OM
 			return studentByCluster;
 		}
 
-		private Dictionary<ClusterStudentDataRow, int> ClusterBySequences (DomainLog domainLog, bool includeNoPlanActions, bool inPhases, out List<int> numbersOfClusters)
+		/*private Dictionary<ClusterStudentDataRow, int> ClusterBySequences (DomainLog domainLog, bool includeNoPlanActions, bool inPhases, out List<int> numbersOfClusters)
 		{
 			SaveSequencesBDD (domainLog, includeNoPlanActions, inPhases);
             AdomdConnection con = new AdomdConnection(_config.ASSConString);
@@ -341,7 +341,7 @@ namespace Its.TutoringModule.CMTutor.SBP.OM
 				}
 			}
 			return studentByCluster;
-		}
+		}*/
 
 		private void SaveSequencesBDD(DomainLog domainLog, bool includeNoPlanActions, bool inPhases)
         {
@@ -450,9 +450,9 @@ namespace Its.TutoringModule.CMTutor.SBP.OM
 			case ClusterMethod.ErrorsAndTime:
 				studentByCluster = ClusterByErrorsTime (domainLog, includeNoPlanActions, out numbersOfClusters);
 				break;
-			case ClusterMethod.Sequences:
-				studentByCluster = ClusterBySequences (domainLog, includeNoPlanActions, inPhases, out numbersOfClusters);
-				break;
+//			case ClusterMethod.Sequences:
+//				studentByCluster = ClusterBySequences (domainLog, includeNoPlanActions, inPhases, out numbersOfClusters);
+//				break;
 			case ClusterMethod.Errors:
 				studentByCluster = ClusterByErrors (domainLog, includeNoPlanActions, out numbersOfClusters);
 				break;
@@ -1035,9 +1035,9 @@ namespace Its.TutoringModule.CMTutor.SBP.OM
 			case ClusterMethod.EventsByZone:
 				cluMatch = MatchClusterByEventsZone (studentLogs, includeNoPlanActions);
 				break;
-			case ClusterMethod.Sequences:
-				cluMatch = MatchClusterBySequences (studentLogs.Owner.Key, inPhases, domainKey);
-				break;
+//			case ClusterMethod.Sequences:
+//				cluMatch = MatchClusterBySequences (studentLogs.Owner.Key, inPhases, domainKey);
+//				break;
 			}
 
 			if (cluMatch == null) {
@@ -1117,7 +1117,7 @@ namespace Its.TutoringModule.CMTutor.SBP.OM
 			return cluMatch;
 		}
 
-		private StudentsCluster MatchClusterBySequences(string studentKey, bool inPhases, string domainKey)
+		/*private StudentsCluster MatchClusterBySequences(string studentKey, bool inPhases, string domainKey)
         {
 			AdomdConnection con = new AdomdConnection (_config.ASSConString);
 			con.Open ();
@@ -1140,7 +1140,7 @@ namespace Its.TutoringModule.CMTutor.SBP.OM
 			con.Close ();
 			return _clusters [int.Parse (dtlogstemp.Rows [0].ItemArray [0].ToString ().Split(' ')[1])];
 
-		}
+		}*/
 		private StudentsClusterByEventsZone MatchClusterByEventsZone(StudentLog studentLogs, bool includeNoPlanActions){
 			StudentsClusterByEventsZone cluMatch = null;
 			Node<State.State, Event.Event> initState = new Node<State.State, Event.Event> ("initState", "", new CorrectState (Area.CorrectFlow, null, false, 1, 1));
