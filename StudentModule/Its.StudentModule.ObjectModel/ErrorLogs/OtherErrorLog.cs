@@ -1,6 +1,6 @@
 ﻿using System;
 using Its.ExpertModule.ObjectModel;
-using Its.TutoringModule.TutoringCoordinator.ReactiveTutor.ObjectModel;
+using Its.TutoringModule.ReactiveTutor.ObjectModel;
 
 namespace Its.StudentModule.ObjectModel
 {
@@ -43,6 +43,11 @@ namespace Its.StudentModule.ObjectModel
 			DateTime date, Error errorAssociated)  : base (action, wasApplied, date)
 		{
 			this._errorAssociated = errorAssociated;
+		}
+
+		public override string TxtLogString()
+		{
+			return Action.Key + " " + Action.Name + " OtherError " + Error.Message.Message + " " + DateLog.ToString();
 		}
 	}
 }

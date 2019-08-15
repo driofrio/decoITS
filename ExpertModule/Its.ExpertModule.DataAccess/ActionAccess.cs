@@ -1,10 +1,9 @@
 ﻿using System;
-using System.IO;
 using System.Collections.Generic;
-using Excel;
-//using Excel = NetOffice.ExcelApi;
 using System.Data;
-using System.Configuration;
+using System.IO;
+using ExcelDataReader;
+//using Excel = NetOffice.ExcelApi;
 
 namespace Its.ExpertModule.DataAccess
 {
@@ -24,10 +23,10 @@ namespace Its.ExpertModule.DataAccess
 		/// Gets the instance.
 		/// </summary>
 		/// <value>The instance.</value>
-		public static ActionAccess Instance (string confPath){
+		public static ActionAccess Instance (string confPath, int initialCol, int initialRow){
 			//get {
 			if (_instance == null)
-				_instance = new ActionAccess (confPath);
+				_instance = new ActionAccess (confPath, initialCol, initialRow);
 
 			return _instance;
 			//}
@@ -48,11 +47,11 @@ namespace Its.ExpertModule.DataAccess
 		/// <summary>
 		/// Initializes a new instance of the <see cref="Its.Expert.DataAccess.ActionAccess"/> class.
 		/// </summary>
-		public ActionAccess (string confPath)
+		public ActionAccess (string confPath, int initialCol, int initialRow)
 		{
 			//Obtains the research parameters from AppSettings.
-			_initialColumn = int.Parse (ConfigurationManager.AppSettings ["initialColumn"]);
-			_initialRow = int.Parse (ConfigurationManager.AppSettings ["initialRow"]);
+			_initialColumn = initialCol;
+			_initialRow = initialRow;
 			//Obtains the configuration path from AppSettings.
 			_confPath = confPath;//ConfigurationManager.AppSettings ["domainConfigurationPath"].ToString();
 			//_confPath = _confPath.Replace ('\\', Path.DirectorySeparatorChar);
@@ -76,7 +75,7 @@ namespace Its.ExpertModule.DataAccess
 			filePath = _confPath + Path.DirectorySeparatorChar + domainKey + ".xlsx";
 			//Checks if the file exists.
 			if (!File.Exists (filePath)) {
-				ArgumentException argEx = new System.ArgumentException ("There is not a file with the given name.", "domainKey");
+				ArgumentException argEx = new ArgumentException ("There is not a file with the given name.", "domainKey");
 				throw argEx;
 			}
 			//Creates a FileStream to open the file.
@@ -108,7 +107,10 @@ namespace Its.ExpertModule.DataAccess
 						record [18] == null ? "" : record [18].ToString (), //Validate errors. 17
 						record [19] == null ? "" : record [19].ToString (), //Init phase. 18
 						record [20] == null ? "" : record [20].ToString (), //Object name. 19
-						record [21] == null ? "" : record [21].ToString () //In Phase. 20
+						record [21] == null ? "" : record [21].ToString (), //In Phase. 20
+						record [22] == null ? "" : record [22].ToString (), //Support threshold. 21
+						record [23] == null ? "" : record [23].ToString (), //Is Checkpoint?. 22
+						record [24] == null ? "" : record [24].ToString () //Collective Model Tutor messages. 23
 					};
 
 					//Adds the action information into the list which will be returned.

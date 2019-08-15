@@ -1,18 +1,17 @@
 ﻿using System;
-using System.IO;
 using System.Collections.Generic;
-using System.Globalization;
+using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
+using com.hp.hpl.jena.datatypes.xsd;
 using com.hp.hpl.jena.ontology;
 using com.hp.hpl.jena.rdf.model;
-using com.hp.hpl.jena.datatypes.xsd;
-using org.apache.log4j;
+using Its.ExpertModule.ObjectModel;
+using Its.StudentModule.ObjectModel;
+using Its.TutoringModule.ReactiveTutor.ObjectModel;
 using java.io;
 using java.util;
-using com.hp.hpl.jena.util;
-using Its.StudentModule.ObjectModel;
-using Its.ExpertModule.ObjectModel;
-using Its.TutoringModule.TutoringCoordinator.ReactiveTutor.ObjectModel;
+using File = System.IO.File;
 
 namespace Its.StudentModule.DataAccess
 {
@@ -73,57 +72,58 @@ namespace Its.StudentModule.DataAccess
 		/// <summary>
 		/// The ontology model in which it will be saved student information.
 		/// </summary>
-		private static OntModel _studentDataModel;
+		private OntModel _studentDataModel;
 		/// <summary>
 		/// The ontology model in which it will be worked with domain and action information.
 		/// </summary>
-		private static OntModel _domainDataModel;
+		private OntModel _domainDataModel;
 		/// <summary>
 		/// The other data model.
 		/// </summary>
-		private static OntModel _otherDataModel;
+		private OntModel _otherDataModel;
 		/// <summary>
 		/// The world data model.
 		/// </summary>
-		private static OntModel _worldDataModel;
+		private OntModel _worldDataModel;
 		/// <summary>
 		/// The general ontology model.
 		/// </summary>
-		private static OntModel _ontModel;
+		private OntModel _ontModel;
 		/// <summary>
 		/// The student ontology.
 		/// </summary>
-		private static Ontology _studentOnto;
+		private Ontology _studentOnto;
 		/// <summary>
 		/// The domain ontology.
 		/// </summary>
-		private static Ontology _domainOnto;
+		private Ontology _domainOnto;
 		/// <summary>
 		/// The other ontology.
 		/// </summary>
-		private static Ontology _otherOnto;
+		private Ontology _otherOnto;
 		/// <summary>
 		/// The world ontology.
 		/// </summary>
-		private static Ontology _worldOnto;
+		private Ontology _worldOnto;
 		/// <summary>
 		/// The ont models.
 		/// </summary>
-		private static Dictionary<string, OntModel> _logModels = new Dictionary<string, OntModel>();
+		private Dictionary<string, OntModel> _logModels;
 		/// <summary>
 		/// The ontology path.
 		/// </summary>
-		private static string _ontologyPath;
+		private string _ontologyPath;
 		/// <summary>
 		/// The logs path.
 		/// </summary>
-		private static string _logsPath;
+		private string _logsPath;
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="Its.Student.DataAccess.OntologyAccess"/> class.
 		/// </summary>
 		private OntologyAccess (string ontologyPath, string logsPath)
 		{
+			_logModels = new Dictionary<string, OntModel>();
 			//Creates an ontology model empty instance.
 			_studentDataModel = ModelFactory.createOntologyModel ();
 			//Creates an ontology model empty instance.
@@ -181,36 +181,36 @@ namespace Its.StudentModule.DataAccess
 
 			_otherDataModel.read ("http://www.owl-ontologies.com/knowledge_object.owl/other_error.owl");
 			}catch(System.Security.Cryptography.CryptographicException e){}*/
-			java.io.InputStream fe;
+			InputStream fe;
 
 			try{
-			if (System.IO.File.Exists (_ontologyPath + "other_error.owl")) {
-				fe = new java.io.FileInputStream (_ontologyPath + "other_error.owl");
-				_otherDataModel.read (new java.io.InputStreamReader (fe, "UTF-8"), "");
+			if (File.Exists (_ontologyPath + "other_error.owl")) {
+				fe = new FileInputStream (_ontologyPath + "other_error.owl");
+				_otherDataModel.read (new InputStreamReader (fe, "UTF-8"), "");
 				fe.close ();
 			}
-			}catch(System.Security.Cryptography.CryptographicException e){}
+			}catch(CryptographicException e){}
 
-			if (System.IO.File.Exists (_ontologyPath + "world_error.owl")) {
-				fe = new java.io.FileInputStream (_ontologyPath + "world_error.owl");
-				_worldDataModel.read (new java.io.InputStreamReader (fe, "UTF-8"), "");
+			if (File.Exists (_ontologyPath + "world_error.owl")) {
+				fe = new FileInputStream (_ontologyPath + "world_error.owl");
+				_worldDataModel.read (new InputStreamReader (fe, "UTF-8"), "");
 				fe.close ();
 			}
 
 			//_worldDataModel.read ("file:" + _ontologyPath + "world_error.owl");
 
-			if (System.IO.File.Exists (_ontologyPath + "student_data.owl")) {
-				fe = new java.io.FileInputStream (_ontologyPath + "student_data.owl");
-				_studentDataModel.read (new java.io.InputStreamReader (fe, "UTF-8"), "");
+			if (File.Exists (_ontologyPath + "student_data.owl")) {
+				fe = new FileInputStream (_ontologyPath + "student_data.owl");
+				_studentDataModel.read (new InputStreamReader (fe, "UTF-8"), "");
 				fe.close ();
 			}
 			/*if (System.IO.File.Exists(_ontologyPath + "student_data.owl")) {
 				//Loads the student information.
 				_studentDataModel.read ("file:" + _ontologyPath + "student_data.owl");
 			}*/
-			if (System.IO.File.Exists (_ontologyPath + "plan_data.owl")) {
-				fe = new java.io.FileInputStream (_ontologyPath + "plan_data.owl");
-				_domainDataModel.read (new java.io.InputStreamReader (fe, "UTF-8"), "");
+			if (File.Exists (_ontologyPath + "plan_data.owl")) {
+				fe = new FileInputStream (_ontologyPath + "plan_data.owl");
+				_domainDataModel.read (new InputStreamReader (fe, "UTF-8"), "");
 				fe.close ();
 			}
 			/*if (System.IO.File.Exists(_ontologyPath + "plan_data.owl")) {
@@ -232,13 +232,13 @@ namespace Its.StudentModule.DataAccess
 			_domainDataModel.setNsPrefix ("knowledge_object", "http://www.owl-ontologies.com/knowledge_object.owl#");
 			_domainDataModel.setNsPrefix ("", "http://www.owl-ontologies.com/plan_data.owl");
 			//Checks if the log path exists.
-			if (System.IO.Directory.Exists(_logsPath)) {
+			if (Directory.Exists(_logsPath)) {
 				//Gets all subdirectories.
-				string[] directories = System.IO.Directory.GetDirectories(_logsPath);
+				string[] directories = Directory.GetDirectories(_logsPath);
 				//Loads all owl files from subdirectories.
 				foreach (string p in directories) {
 					//Gets the files in the directory p.
-					string[] files = System.IO.Directory.GetFiles(p);
+					string[] files = Directory.GetFiles(p, "*.owl");
 					//Obtains the Domain key.
 					string domainKey = p.Replace(_logsPath, "");
 					domainKey = domainKey.Replace(Path.DirectorySeparatorChar.ToString(), "");
@@ -268,9 +268,9 @@ namespace Its.StudentModule.DataAccess
 			Ontology ontoTemp = oTemp.createOntology ("");
 			//Imports the ontology resource given by ontology URI.
 			ontoTemp.addImport (oTemp.createResource (STUDENT_INFORMATION_URI));
-			if (System.IO.File.Exists (_logsPath + domainKey + Path.DirectorySeparatorChar + studentKey + ".owl")) {
-				java.io.FileInputStream fe = new java.io.FileInputStream (_logsPath + domainKey + Path.DirectorySeparatorChar + studentKey + ".owl");
-				oTemp.read (new java.io.InputStreamReader (fe, "UTF-8"), "");
+			if (File.Exists (_logsPath + domainKey + Path.DirectorySeparatorChar + studentKey + ".owl")) {
+				FileInputStream fe = new FileInputStream (_logsPath + domainKey + Path.DirectorySeparatorChar + studentKey + ".owl");
+				oTemp.read (new InputStreamReader (fe, "UTF-8"), "");
 				fe.close ();
 			}
 			/*if (System.IO.File.Exists (_logsPath + domainKey + Path.DirectorySeparatorChar + studentKey + ".owl")) {
@@ -296,8 +296,10 @@ namespace Its.StudentModule.DataAccess
 		/// Adds the log into the ontology.
 		/// </summary>
 		/// <param name="log">Log.</param>
-		public void AddLogIntoOnto (NoCorrectiveActionLog log, Student student, DomainActions domain) 
+		public void AddNoCorrectiveActionLogIntoOnto (LogEntry logEntry, Student student, DomainActions domain, bool persist = true)
 		{
+			NoCorrectiveActionLog log = (NoCorrectiveActionLog) logEntry;
+			
 			//Creates a auxiliar variable.
 			OntModel ontM;
 			//Selects the ontology model with the specific domain and student
@@ -378,28 +380,16 @@ namespace Its.StudentModule.DataAccess
 			ontM.add (stmt);
 			//Sets the initialTime property of Action_Trace resource and adds the value.
 			p = ontM.getProperty (STUDENT_TRACE_URI + "initialTime");
-			java.util.Calendar date = new java.util.GregorianCalendar ();
+			Calendar date = new GregorianCalendar ();
 			date.set (log.DateLog.Year, log.DateLog.Month-1, log.DateLog.Day, log.DateLog.Hour, log.DateLog.Minute, log.DateLog.Second);
-			date.set (java.util.Calendar.MILLISECOND, log.DateLog.Millisecond);
+			date.set (Calendar.MILLISECOND, log.DateLog.Millisecond);
 			XSDDateTime t = new XSDDateTime (date);
 			actionTrace.addLiteral (p, t);
 
 			//Saves into disk.
-			string path = _logsPath + domain.Key + Path.DirectorySeparatorChar;
-			//Determine whether the directory exists. If the directory does not exist, it will be created.
-			if (!Directory.Exists(path)) {
-				Directory.CreateDirectory(path);
-			}
-			//Specifies the file path.
-			string file = path + student.Key + ".owl";
-			//Saves the logs into files.
-			using (BufferedWriter bw = new BufferedWriter (new OutputStreamWriter(new FileOutputStream(file), "UTF-8"))) {
-				string b = "file:" + file;
-				//using (OntModel ontTmp = ModelFactory.createOntologyModel (OntModelSpec.OWL_DL_MEM, null)) {
-				//ontTmp = _ontologyModel;
-				ontM.write (bw, "RDF/XML-ABBREV", b);
-				//}
-				bw.close ();
+			if (persist)
+			{
+				SaveStudentTraceOnto(domain.Key, student.Key);
 			}
 		}
 
@@ -407,8 +397,10 @@ namespace Its.StudentModule.DataAccess
 		/// Adds the log into onto.
 		/// </summary>
 		/// <param name="log">Log.</param>
-		public void AddLogIntoOnto (CorrectiveActionLog log, Student student, DomainActions domain) 
+		public void AddCorrectiveActionLogIntoOnto (LogEntry logEntry, Student student, DomainActions domain, bool persist = true)
 		{
+			CorrectiveActionLog log = (CorrectiveActionLog) logEntry;
+			
 			//Creates a auxiliar variable.
 			OntModel ontM;
 			//Selects the ontology model with the specific domain and student
@@ -525,28 +517,16 @@ namespace Its.StudentModule.DataAccess
 			ontM.add (stmt);
 			//Sets the initialTime property of Action_Trace resource and adds the value.
 			p = ontM.getProperty (STUDENT_TRACE_URI + "initialTime");
-			java.util.Calendar date = new java.util.GregorianCalendar ();
+			Calendar date = new GregorianCalendar ();
 			date.set (log.DateLog.Year, log.DateLog.Month-1, log.DateLog.Day, log.DateLog.Hour, log.DateLog.Minute, log.DateLog.Second);
-			date.set (java.util.Calendar.MILLISECOND, log.DateLog.Millisecond);
+			date.set (Calendar.MILLISECOND, log.DateLog.Millisecond);
 			XSDDateTime t = new XSDDateTime (date);
 			actionTrace.addLiteral (p, t);
 
 			//Saves into disk.
-			string path = _logsPath + domain.Key + Path.DirectorySeparatorChar;
-			//Determine whether the directory exists. If the directory does not exist, it will be created.
-			if (!Directory.Exists(path)) {
-				Directory.CreateDirectory(path);
-			}
-			//Specifies the file path.
-			string file = path + student.Key + ".owl";
-			//Saves the logs into files.
-			using (BufferedWriter bw = new BufferedWriter (new OutputStreamWriter(new FileOutputStream(file), "UTF-8"))) {
-				string b = "file:" + file;
-				//using (OntModel ontTmp = ModelFactory.createOntologyModel (OntModelSpec.OWL_DL_MEM, null)) {
-				//ontTmp = _ontologyModel;
-				ontM.write (bw, "RDF/XML-ABBREV", b);
-				//}
-				bw.close ();
+			if (persist)
+			{
+				SaveStudentTraceOnto(domain.Key, student.Key);
 			}
 		}
 
@@ -554,8 +534,10 @@ namespace Its.StudentModule.DataAccess
 		/// Adds the log into onto.
 		/// </summary>
 		/// <param name="log">Log.</param>
-		public void AddLogIntoOnto (NoPlanAllowedActionLog log, Student student, DomainActions domain) 
+		public void AddNoPlanAllowedActionLogIntoOnto (LogEntry logEntry, Student student, DomainActions domain, bool persist = true)
 		{
+			NoPlanAllowedActionLog log = (NoPlanAllowedActionLog) logEntry;
+			
 			//Creates a auxiliar variable.
 			OntModel ontM;
 			//Selects the ontology model with the specific domain and student
@@ -672,28 +654,16 @@ namespace Its.StudentModule.DataAccess
 			ontM.add (stmt);
 			//Sets the initialTime property of Action_Trace resource and adds the value.
 			p = ontM.getProperty (STUDENT_TRACE_URI + "initialTime");
-			java.util.Calendar date = new java.util.GregorianCalendar ();
+			Calendar date = new GregorianCalendar ();
 			date.set (log.DateLog.Year, log.DateLog.Month-1, log.DateLog.Day, log.DateLog.Hour, log.DateLog.Minute, log.DateLog.Second);
-			date.set (java.util.Calendar.MILLISECOND, log.DateLog.Millisecond);
+			date.set (Calendar.MILLISECOND, log.DateLog.Millisecond);
 			XSDDateTime t = new XSDDateTime (date);
 			actionTrace.addLiteral (p, t);
 
 			//Saves into disk.
-			string path = _logsPath + domain.Key + Path.DirectorySeparatorChar;
-			//Determine whether the directory exists. If the directory does not exist, it will be created.
-			if (!Directory.Exists(path)) {
-				Directory.CreateDirectory(path);
-			}
-			//Specifies the file path.
-			string file = path + student.Key + ".owl";
-			//Saves the logs into files.
-			using (BufferedWriter bw = new BufferedWriter (new OutputStreamWriter(new FileOutputStream(file), "UTF-8"))) {
-				string b = "file:" + file;
-				//using (OntModel ontTmp = ModelFactory.createOntologyModel (OntModelSpec.OWL_DL_MEM, null)) {
-				//ontTmp = _ontologyModel;
-				ontM.write (bw, "RDF/XML-ABBREV", b);
-				//}
-				bw.close ();
+			if (persist)
+			{
+				SaveStudentTraceOnto(domain.Key, student.Key);
 			}
 		}
 
@@ -701,8 +671,10 @@ namespace Its.StudentModule.DataAccess
 		/// Adds the log into onto.
 		/// </summary>
 		/// <param name="log">Log.</param>
-		public void AddLogIntoOnto (DepErrorLog log, Student student, DomainActions domain)
+		public void AddDepErrorLogIntoOnto (LogEntry logEntry, Student student, DomainActions domain, bool persist = true)
 		{
+			DepErrorLog log = (DepErrorLog) logEntry;
+			
 			//Creates a auxiliar variable.
 			OntModel ontM;
 			//Selects the ontology model with the specific domain and student
@@ -854,28 +826,16 @@ namespace Its.StudentModule.DataAccess
 			ontM.add (stmt);
 			//Sets the initialTime property of Action_Trace resource and adds the value.
 			p = ontM.getProperty (STUDENT_TRACE_URI + "initialTime");
-			java.util.Calendar date = new java.util.GregorianCalendar ();
+			Calendar date = new GregorianCalendar ();
 			date.set (log.DateLog.Year, log.DateLog.Month-1, log.DateLog.Day, log.DateLog.Hour, log.DateLog.Minute, log.DateLog.Second);
-			date.set (java.util.Calendar.MILLISECOND, log.DateLog.Millisecond);
+			date.set (Calendar.MILLISECOND, log.DateLog.Millisecond);
 			XSDDateTime t = new XSDDateTime (date);
 			actionTrace.addLiteral (p, t);
 
 			//Saves into disk.
-			string path = _logsPath + domain.Key + Path.DirectorySeparatorChar;
-			//Determine whether the directory exists. If the directory does not exist, it will be created.
-			if (!Directory.Exists(path)) {
-				Directory.CreateDirectory(path);
-			}
-			//Specifies the file path.
-			string file = path + student.Key + ".owl";
-			//Saves the logs into files.
-			using (BufferedWriter bw = new BufferedWriter (new OutputStreamWriter(new FileOutputStream(file), "UTF-8"))) {
-				string b = "file:" + file;
-				//using (OntModel ontTmp = ModelFactory.createOntologyModel (OntModelSpec.OWL_DL_MEM, null)) {
-				//ontTmp = _ontologyModel;
-				ontM.write (bw, "RDF/XML-ABBREV", b);
-				//}
-				bw.close ();
+			if (persist)
+			{
+				SaveStudentTraceOnto(domain.Key, student.Key);
 			}
 		}
 
@@ -883,8 +843,10 @@ namespace Its.StudentModule.DataAccess
 		/// Adds the log into onto.
 		/// </summary>
 		/// <param name="log">Log.</param>
-		public void AddLogIntoOnto (IncompErrorLog log, Student student, DomainActions domain)
+		public void AddIncompErrorLogIntoOnto (LogEntry logEntry, Student student, DomainActions domain, bool persist = true)
 		{
+			IncompErrorLog log = (IncompErrorLog) logEntry;
+			
 			//Creates a auxiliar variable.
 			OntModel ontM;
 			//Selects the ontology model with the specific domain and student
@@ -1032,28 +994,16 @@ namespace Its.StudentModule.DataAccess
 			ontM.add (stmt);
 			//Sets the initialTime property of Action_Trace resource and adds the value.
 			p = ontM.getProperty (STUDENT_TRACE_URI + "initialTime");
-			java.util.Calendar date = new java.util.GregorianCalendar ();
+			Calendar date = new GregorianCalendar ();
 			date.set (log.DateLog.Year, log.DateLog.Month-1, log.DateLog.Day, log.DateLog.Hour, log.DateLog.Minute, log.DateLog.Second);
-			date.set (java.util.Calendar.MILLISECOND, log.DateLog.Millisecond);
+			date.set (Calendar.MILLISECOND, log.DateLog.Millisecond);
 			XSDDateTime t = new XSDDateTime (date);
 			actionTrace.addLiteral (p, t);
 
 			//Saves into disk.
-			string path = _logsPath + domain.Key + Path.DirectorySeparatorChar;
-			//Determine whether the directory exists. If the directory does not exist, it will be created.
-			if (!Directory.Exists(path)) {
-				Directory.CreateDirectory(path);
-			}
-			//Specifies the file path.
-			string file = path + student.Key + ".owl";
-			//Saves the logs into files.
-			using (BufferedWriter bw = new BufferedWriter (new OutputStreamWriter(new FileOutputStream(file), "UTF-8"))) {
-				string b = "file:" + file;
-				//using (OntModel ontTmp = ModelFactory.createOntologyModel (OntModelSpec.OWL_DL_MEM, null)) {
-				//ontTmp = _ontologyModel;
-				ontM.write (bw, "RDF/XML-ABBREV", b);
-				//}
-				bw.close ();
+			if (persist)
+			{
+				SaveStudentTraceOnto(domain.Key, student.Key);
 			}
 		}
 
@@ -1061,8 +1011,10 @@ namespace Its.StudentModule.DataAccess
 		/// Adds the log into onto.
 		/// </summary>
 		/// <param name="log">Log.</param>
-		public void AddLogIntoOnto (MinTimeErrorLog log, Student student, DomainActions domain)
+		public void AddMinTimeErrorLogIntoOnto (LogEntry logEntry, Student student, DomainActions domain, bool persist = true)
 		{
+			MinTimeErrorLog log = (MinTimeErrorLog) logEntry;
+			
 			//Creates a auxiliar variable.
 			OntModel ontM;
 			//Selects the ontology model with the specific domain and student
@@ -1210,28 +1162,16 @@ namespace Its.StudentModule.DataAccess
 			ontM.add (stmt);
 			//Sets the initialTime property of Action_Trace resource and adds the value.
 			p = ontM.getProperty (STUDENT_TRACE_URI + "initialTime");
-			java.util.Calendar date = new java.util.GregorianCalendar ();
+			Calendar date = new GregorianCalendar ();
 			date.set (log.DateLog.Year, log.DateLog.Month-1, log.DateLog.Day, log.DateLog.Hour, log.DateLog.Minute, log.DateLog.Second);
-			date.set (java.util.Calendar.MILLISECOND, log.DateLog.Millisecond);
+			date.set (Calendar.MILLISECOND, log.DateLog.Millisecond);
 			XSDDateTime t = new XSDDateTime (date);
 			actionTrace.addLiteral (p, t);
 
 			//Saves into disk.
-			string path = _logsPath + domain.Key + Path.DirectorySeparatorChar;
-			//Determine whether the directory exists. If the directory does not exist, it will be created.
-			if (!Directory.Exists(path)) {
-				Directory.CreateDirectory(path);
-			}
-			//Specifies the file path.
-			string file = path + student.Key + ".owl";
-			//Saves the logs into files.
-			using (BufferedWriter bw = new BufferedWriter (new OutputStreamWriter(new FileOutputStream(file), "UTF-8"))) {
-				string b = "file:" + file;
-				//using (OntModel ontTmp = ModelFactory.createOntologyModel (OntModelSpec.OWL_DL_MEM, null)) {
-				//ontTmp = _ontologyModel;
-				ontM.write (bw, "RDF/XML-ABBREV", b);
-				//}
-				bw.close ();
+			if (persist)
+			{
+				SaveStudentTraceOnto(domain.Key, student.Key);
 			}
 		}
 
@@ -1239,8 +1179,10 @@ namespace Its.StudentModule.DataAccess
 		/// Adds the log into onto.
 		/// </summary>
 		/// <param name="log">Log.</param>
-		public void AddLogIntoOnto (MaxTimeErrorLog log, Student student, DomainActions domain)
+		public void AddMaxTimeErrorLogIntoOnto (LogEntry logEntry, Student student, DomainActions domain, bool persist = true)
 		{
+			MaxTimeErrorLog log = (MaxTimeErrorLog) logEntry;
+			
 			//Creates a auxiliar variable.
 			OntModel ontM;
 			//Selects the ontology model with the specific domain and student
@@ -1388,28 +1330,16 @@ namespace Its.StudentModule.DataAccess
 			ontM.add (stmt);
 			//Sets the initialTime property of Action_Trace resource and adds the value.
 			p = ontM.getProperty (STUDENT_TRACE_URI + "initialTime");
-			java.util.Calendar date = new java.util.GregorianCalendar ();
+			Calendar date = new GregorianCalendar ();
 			date.set (log.DateLog.Year, log.DateLog.Month-1, log.DateLog.Day, log.DateLog.Hour, log.DateLog.Minute, log.DateLog.Second);
-			date.set (java.util.Calendar.MILLISECOND, log.DateLog.Millisecond);
+			date.set (Calendar.MILLISECOND, log.DateLog.Millisecond);
 			XSDDateTime t = new XSDDateTime (date);
 			actionTrace.addLiteral (p, t);
 
 			//Saves into disk.
-			string path = _logsPath + domain.Key + Path.DirectorySeparatorChar;
-			//Determine whether the directory exists. If the directory does not exist, it will be created.
-			if (!Directory.Exists(path)) {
-				Directory.CreateDirectory(path);
-			}
-			//Specifies the file path.
-			string file = path + student.Key + ".owl";
-			//Saves the logs into files.
-			using (BufferedWriter bw = new BufferedWriter (new OutputStreamWriter(new FileOutputStream(file), "UTF-8"))) {
-				string b = "file:" + file;
-				//using (OntModel ontTmp = ModelFactory.createOntologyModel (OntModelSpec.OWL_DL_MEM, null)) {
-				//ontTmp = _ontologyModel;
-				ontM.write (bw, "RDF/XML-ABBREV", b);
-				//}
-				bw.close ();
+			if (persist)
+			{
+				SaveStudentTraceOnto(domain.Key, student.Key);
 			}
 		}
 
@@ -1417,8 +1347,10 @@ namespace Its.StudentModule.DataAccess
 		/// Adds the log into onto.
 		/// </summary>
 		/// <param name="log">Log.</param>
-		public void AddLogIntoOnto (WorldErrorLog log, Student student, DomainActions domain)
+		public void AddWorldErrorLogIntoOnto (LogEntry logEntry, Student student, DomainActions domain, bool persist = true)
 		{
+			WorldErrorLog log = (WorldErrorLog) logEntry;
+			
 			//Creates a auxiliar variable.
 			OntModel ontM;
 			//Selects the ontology model with the specific domain and student
@@ -1582,31 +1514,20 @@ namespace Its.StudentModule.DataAccess
 			ontM.add (stmt);
 			//Sets the initialTime property of Action_Trace resource and adds the value.
 			p = ontM.getProperty (STUDENT_TRACE_URI + "initialTime");
-			java.util.Calendar date = new java.util.GregorianCalendar ();
+			Calendar date = new GregorianCalendar ();
 			date.set (log.DateLog.Year, log.DateLog.Month-1, log.DateLog.Day, log.DateLog.Hour, log.DateLog.Minute, log.DateLog.Second);
-			date.set (java.util.Calendar.MILLISECOND, log.DateLog.Millisecond);
+			date.set (Calendar.MILLISECOND, log.DateLog.Millisecond);
 			XSDDateTime t = new XSDDateTime (date);
 			actionTrace.addLiteral (p, t);
 
 			//Saves into disk.
-			string path = _logsPath + domain.Key + Path.DirectorySeparatorChar;
-			//Determine whether the directory exists. If the directory does not exist, it will be created.
-			if (!Directory.Exists(path)) {
-				Directory.CreateDirectory(path);
+			if (persist)
+			{
+				SaveStudentTraceOnto(domain.Key, student.Key);
 			}
-			//Specifies the file path.
-			string file = path + student.Key + ".owl";
-			//Saves the logs into files.
-			using (BufferedWriter bw = new BufferedWriter (new OutputStreamWriter(new FileOutputStream(file), "UTF-8"))) {
-				string b = "file:" + file;
-				//using (OntModel ontTmp = ModelFactory.createOntologyModel (OntModelSpec.OWL_DL_MEM, null)) {
-				//ontTmp = _ontologyModel;
-				ontM.write (bw, "RDF/XML-ABBREV", b);
-				//}
-				bw.close ();
-			}
-			//Specifies the file.
-			file = _ontologyPath + "world_error.owl";
+
+			//Update world error log at all times.
+			string file = _ontologyPath + "world_error.owl";
 			//Saves world error data into a file.
 			using (BufferedWriter bw = new BufferedWriter (new OutputStreamWriter(new FileOutputStream(file), "UTF-8"))) {
 				string b = "file:" + file;
@@ -1621,8 +1542,10 @@ namespace Its.StudentModule.DataAccess
 		/// Adds the log into onto.
 		/// </summary>
 		/// <param name="log">Log.</param>
-		public void AddLogIntoOnto (OtherErrorLog log, Student student, DomainActions domain)
+		public void AddOtherErrorLogIntoOnto (LogEntry logEntry, Student student, DomainActions domain, bool persist = true)
 		{
+			OtherErrorLog log = (OtherErrorLog) logEntry;
+			
 			//Creates a auxiliar variable.
 			OntModel ontM;
 			//Selects the ontology model with the specific domain and student
@@ -1759,28 +1682,16 @@ namespace Its.StudentModule.DataAccess
 			ontM.add (stmt);
 			//Sets the initialTime property of Action_Trace resource and adds the value.
 			p = ontM.getProperty (STUDENT_TRACE_URI + "initialTime");
-			java.util.Calendar date = new java.util.GregorianCalendar ();
+			Calendar date = new GregorianCalendar ();
 			date.set (log.DateLog.Year, log.DateLog.Month-1, log.DateLog.Day, log.DateLog.Hour, log.DateLog.Minute, log.DateLog.Second);
-			date.set (java.util.Calendar.MILLISECOND, log.DateLog.Millisecond);
+			date.set (Calendar.MILLISECOND, log.DateLog.Millisecond);
 			XSDDateTime t = new XSDDateTime (date);
 			actionTrace.addLiteral (p, t);
 
 			//Saves into disk.
-			string path = _logsPath + domain.Key + Path.DirectorySeparatorChar;
-			//Determine whether the directory exists. If the directory does not exist, it will be created.
-			if (!Directory.Exists(path)) {
-				Directory.CreateDirectory(path);
-			}
-			//Specifies the file path.
-			string file = path + student.Key + ".owl";
-			//Saves the logs into files.
-			using (BufferedWriter bw = new BufferedWriter (new OutputStreamWriter(new FileOutputStream(file), "UTF-8"))) {
-				string b = "file:" + file;
-				//using (OntModel ontTmp = ModelFactory.createOntologyModel (OntModelSpec.OWL_DL_MEM, null)) {
-				//ontTmp = _ontologyModel;
-				ontM.write (bw, "RDF/XML-ABBREV", b);
-				//}
-				bw.close ();
+			if (persist)
+			{
+				SaveStudentTraceOnto(domain.Key, student.Key);
 			}
 		}
 
@@ -2244,7 +2155,7 @@ namespace Its.StudentModule.DataAccess
 					//Gets the object.
 					XSDDateTime t = (XSDDateTime)stmtAux.getLiteral ().getValue();
 					//Gets the date.
-					java.util.Calendar cal = t.asCalendar ();
+					Calendar cal = t.asCalendar ();
 					//Transforms in a DateTime.
 					DateTime date = new DateTime (cal.get (1), cal.get (2)+1, cal.get (5), cal.get (11),
 						               cal.get (12), cal.get (13), cal.get (14));
@@ -2338,6 +2249,37 @@ namespace Its.StudentModule.DataAccess
 			
 			//Returns the list.
 			return logs;
+		}
+
+		public void SaveStudentTraceOnto(string domainKey, string studentKey)
+		{
+			OntModel ontM = _logModels[domainKey + "-" + studentKey];
+			
+			string path = _logsPath + domainKey + Path.DirectorySeparatorChar;
+			//Determine whether the directory exists. If the directory does not exist, it will be created.
+			if (!Directory.Exists(path))
+			{
+				Directory.CreateDirectory(path);
+			}
+
+			//Specifies the file path.
+			string file = path + studentKey + ".owl";
+			//Saves the logs into files.
+			using (BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file), "UTF-8")))
+			{
+				string b = "file:" + file;
+				//using (OntModel ontTmp = ModelFactory.createOntologyModel (OntModelSpec.OWL_DL_MEM, null)) {
+				//ontTmp = _ontologyModel;
+				ontM.write(bw, "RDF/XML-ABBREV", b);
+				//}
+				bw.close();
+			}
+		}
+		
+		public static void DisposeInstance() {
+			if (_instance != null) {
+				_instance = null;
+			}
 		}
 	}
 }

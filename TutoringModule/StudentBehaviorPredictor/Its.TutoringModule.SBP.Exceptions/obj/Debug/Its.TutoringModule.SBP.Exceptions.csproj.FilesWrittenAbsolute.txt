@@ -1,5 +1,0 @@
-/Users/Diego/Documents/workspace/ITS/TutoringModule/StudentBehaviorPredictor/Its.TutoringModule.SBP.Exceptions/obj/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
-/Users/Diego/Documents/workspace/ITS/TutoringModule/StudentBehaviorPredictor/Its.TutoringModule.SBP.Exceptions/bin/Debug/Its.TutoringModule.SBP.Exceptions.dll.mdb
-/Users/Diego/Documents/workspace/ITS/TutoringModule/StudentBehaviorPredictor/Its.TutoringModule.SBP.Exceptions/bin/Debug/Its.TutoringModule.SBP.Exceptions.dll
-/Users/Diego/Documents/workspace/ITS/TutoringModule/StudentBehaviorPredictor/Its.TutoringModule.SBP.Exceptions/obj/Debug/Its.TutoringModule.SBP.Exceptions.dll
-/Users/Diego/Documents/workspace/ITS/TutoringModule/StudentBehaviorPredictor/Its.TutoringModule.SBP.Exceptions/obj/Debug/Its.TutoringModule.SBP.Exceptions.dll.mdb

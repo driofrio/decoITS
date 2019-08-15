@@ -1,13 +1,11 @@
 ﻿using System;
-using System.IO;
-using System.Text;
-using System.Configuration;
 using System.Collections.Generic;
-using Its.StudentModule.ObjectModel;
-using Its.StudentModule.DataAccess;
+using System.IO;
 using Its.ExpertModule.ObjectModel;
 using Its.Factories;
-using Its.TutoringModule.TutoringCoordinator.ReactiveTutor.ObjectModel;
+using Its.StudentModule.DataAccess;
+using Its.StudentModule.ObjectModel;
+using Its.TutoringModule.ReactiveTutor.ObjectModel;
 
 namespace Its.StudentModule
 {
@@ -22,7 +20,7 @@ namespace Its.StudentModule
 		/// <summary>
 		/// The ontology.
 		/// </summary>
-		private static OntologyAccess ONTOLOGY; //= OntologyAccess.Instance;
+		private OntologyAccess ONTOLOGY; //= OntologyAccess.Instance;
 		/// <summary>
 		/// The instance.
 		/// </summary>
@@ -30,15 +28,15 @@ namespace Its.StudentModule
 		/// <summary>
 		/// The instance domain log factory.
 		/// </summary>
-		private static DomainLogFactory _instanceDomainLogFactory;
+		private DomainLogFactory _instanceDomainLogFactory;
 		/// <summary>
 		/// Gets the instance.
 		/// </summary>
 		/// <value>The instance.</value>
-		public static StudentControl Instance (string ontologyPath, string logsPath){
+		public static StudentControl Instance (string ontologyPath, string logsPath, string domainPath){
 			//get {
 				if (_instance == null)
-					_instance = new StudentControl (ontologyPath, logsPath);
+					_instance = new StudentControl (ontologyPath, logsPath, domainPath);
 
 				return _instance;
 			//}
@@ -51,18 +49,20 @@ namespace Its.StudentModule
 		/// The domain logs.
 		/// </summary>
 		private Dictionary<string, DomainLog> _domainLogs;
+		private string _domainPath;
 		/// <summary>
 		/// Initializes a new instance of the <see cref="Its.StudentModule.StudentControl"/> class.
 		/// </summary>
-		private StudentControl (string ontologyPath, string logsPath)
+		private StudentControl (string ontologyPath, string logsPath, string domainPath)
 		{
-			_instanceDomainLogFactory = Factories.DomainLogFactory.Instance (ontologyPath, logsPath);
+			_instanceDomainLogFactory = DomainLogFactory.Instance (ontologyPath, logsPath);
 
 			ONTOLOGY = OntologyAccess.Instance (ontologyPath, logsPath);
 			//Initializes the domainLogs dictionary.
 			this._domainLogs = new Dictionary<string, DomainLog> ();
 			//Creates all students from the ontology.
 			_students = StudentFactory.Instance(ontologyPath, logsPath).CreateStudents ();
+			_domainPath = domainPath;
 		}
 
 		public static void DisposeInstance() {
@@ -71,7 +71,49 @@ namespace Its.StudentModule
 			}
 		}
 
-		/// <summary>
+		public static LogEntry CreateCorrectiveActionLog(ActionAplication action, bool wasApplied, bool errorsFixed)
+		{
+			return new CorrectiveActionLog (action, wasApplied, errorsFixed);
+		}
+
+		public static LogEntry CreateNoCorrectiveActionLog(ActionAplication action, bool wasApplied)
+		{
+			return new NoCorrectiveActionLog(action, wasApplied);
+		}
+
+		public static LogEntry CreateMinTimeErrorLog(ActionAplication action, bool wasApplied, int time)
+		{
+			return new MinTimeErrorLog(action, wasApplied, time);
+		}
+
+		public static LogEntry CreateMaxTimeErrorLog(ActionAplication action, bool wasApplied, int time)
+		{
+			return new MaxTimeErrorLog(action, wasApplied, time);
+		}
+
+		public static LogEntry CreateOtherErrorLog(ActionAplication action, bool wasApplied, Error error)
+		{
+			return new OtherErrorLog(action, wasApplied, error);
+		}
+
+		public static LogEntry CreateWorldErrorLog(ActionAplication action, bool wasApplied, Error error, string type)
+		{
+			return new WorldErrorLog(action, wasApplied, error, type);
+		}
+
+		public static LogEntry CreateDepErrorLog(ActionAplication action, bool wasApplied, Dependence failedDependence)
+		{
+			bool isOrderError = failedDependence.GetType() == typeof(SeqComplexDependence);
+
+			return new DepErrorLog(action, wasApplied, failedDependence, isOrderError);
+		}
+
+		public static LogEntry CreateIncompErrorLog(ActionAplication action, bool wasApplied, Incompatibility failedIncomp)
+		{
+			return new IncompErrorLog(action, wasApplied, failedIncomp);
+		}
+
+/*		/// <summary>
 		/// Creates the corrective action log.
 		/// </summary>
 		/// <param name="action">Action.</param>
@@ -94,11 +136,10 @@ namespace Its.StudentModule
 			CorrectiveActionLog log = new CorrectiveActionLog (action, wasApplied, errorsFixed);
 			//Adds the log into the StudentLog.
 			studentLog.AddLog (log);
-			//Saves the log into the ontology.
-			ONTOLOGY.AddLogIntoOnto (log, student, domain);
+			studentLog.AddToLogBuffer(log);
 
 			//Creates a path.
-			string path = ConfigurationManager.AppSettings ["domainConfigurationPath"].Replace ('\\', Path.DirectorySeparatorChar) + "Logs" + Path.DirectorySeparatorChar
+			string path = _domainPath.Replace ('\\', Path.DirectorySeparatorChar) + "Logs" + Path.DirectorySeparatorChar
 				+ domain.Key + Path.DirectorySeparatorChar;
 			//Determine whether the directory exists. If the directory does not exist, it will be created.
 			if (!Directory.Exists(path)) {
@@ -106,25 +147,9 @@ namespace Its.StudentModule
 			}
 			//Copies the log into a txt file.
 			using (StreamWriter sw = File.AppendText (path + student.Key + ".txt")) {
-				string text = action.Key + " " + action.Name + " " + log.DateLog.ToString();
-				sw.WriteLine (text);
+				sw.WriteLine (log.TxtLogString());
 			}
 		}
-
-		/*public void MultiplyLogs(int mult, DomainActions domain){
-			int countStudents = _instance._students.Count;
-			int maxStudent = countStudents * mult;
-			DomainLog domTemp = _domainLogs [domain.Key];
-			int j = 1;
-			for (int i = _instance._students.Count; i < maxStudent; i++) {
-				Student stdTemp = _students [j.ToString ()];
-				_domainLogs [domain.Key].AddStudentLog (stdTemp, domTemp.GetStudentLog (stdTemp.Key));
-				if (j <= countStudents)
-					j++;
-				else
-					j = 1;
-			}
-		}*/
 
 		/// <summary>
 		/// Creates the no corrective action log.
@@ -149,11 +174,10 @@ namespace Its.StudentModule
 			NoCorrectiveActionLog log = new NoCorrectiveActionLog (action, wasApplied);
 			//Adds the log into the StudentLog.
 			studentLog.AddLog (log);
-			//Saves the log into the ontology.
-			ONTOLOGY.AddLogIntoOnto (log, student, domain);
+			studentLog.AddToLogBuffer(log);
 
 			//Creates a path.
-			string path = ConfigurationManager.AppSettings ["domainConfigurationPath"].Replace ('\\', Path.DirectorySeparatorChar) + "Logs" + Path.DirectorySeparatorChar
+			string path = _domainPath.Replace ('\\', Path.DirectorySeparatorChar) + "Logs" + Path.DirectorySeparatorChar
 				+ domain.Key + Path.DirectorySeparatorChar;
 			//Determine whether the directory exists. If the directory does not exist, it will be created.
 			if (!Directory.Exists(path)) {
@@ -161,8 +185,7 @@ namespace Its.StudentModule
 			}
 			//Copies the log into a txt file.
 			using (StreamWriter sw = File.AppendText (path + student.Key + ".txt")) {
-				string text = action.Key + " " + action.Name + " " + log.DateLog.ToString();
-				sw.WriteLine (text);
+				sw.WriteLine (log.TxtLogString());
 			}
 		}
 
@@ -190,12 +213,11 @@ namespace Its.StudentModule
 			MinTimeErrorLog log = new MinTimeErrorLog (action, wasApplied, time);
 			//Adds the log into the StudentLog.
 			studentLog.AddLog (log);
-			//Saves the log into the ontology.
-			ONTOLOGY.AddLogIntoOnto (log, student, domain);
+			studentLog.AddToLogBuffer(log);
 
 
 			//Creates a path.
-			string path = ConfigurationManager.AppSettings ["domainConfigurationPath"].Replace ('\\', Path.DirectorySeparatorChar) + "Logs" + Path.DirectorySeparatorChar
+			string path = _domainPath.Replace ('\\', Path.DirectorySeparatorChar) + "Logs" + Path.DirectorySeparatorChar
 				+ domain.Key + Path.DirectorySeparatorChar;
 			//Determine whether the directory exists. If the directory does not exist, it will be created.
 			if (!Directory.Exists(path)) {
@@ -203,8 +225,7 @@ namespace Its.StudentModule
 			}
 			//Copies the log into a txt file.
 			using (StreamWriter sw = File.AppendText (path + student.Key + ".txt")) {
-				string text = action.Key + " " + action.Name + " MinTimeError " + action.MinTimeError.Message.Message + " " + log.DateLog.ToString();
-				sw.WriteLine (text);
+				sw.WriteLine (log.TxtLogString());
 			}
 		}
 
@@ -232,11 +253,10 @@ namespace Its.StudentModule
 			MaxTimeErrorLog log = new MaxTimeErrorLog (action, wasApplied, time);
 			//Adds the log into the StudentLog.
 			studentLog.AddLog (log);
-			//Saves the log into the ontology.
-			ONTOLOGY.AddLogIntoOnto (log, student, domain);
+			studentLog.AddToLogBuffer(log);
 
 			//Creates a path.
-			string path = ConfigurationManager.AppSettings ["domainConfigurationPath"].Replace ('\\', Path.DirectorySeparatorChar) + "Logs" + Path.DirectorySeparatorChar
+			string path = _domainPath.Replace ('\\', Path.DirectorySeparatorChar) + "Logs" + Path.DirectorySeparatorChar
 				+ domain.Key + Path.DirectorySeparatorChar;
 			//Determine whether the directory exists. If the directory does not exist, it will be created.
 			if (!Directory.Exists(path)) {
@@ -244,8 +264,7 @@ namespace Its.StudentModule
 			}
 			//Copies the log into a txt file.
 			using (StreamWriter sw = File.AppendText (path + student.Key + ".txt")) {
-				string text = action.Key + " " + action.Name + " MaxTimeError " + action.MaxTimeError.Message.Message + " " + log.DateLog.ToString();
-				sw.WriteLine (text);
+				sw.WriteLine (log.TxtLogString());
 			}
 		}
 
@@ -272,11 +291,10 @@ namespace Its.StudentModule
 			OtherErrorLog log = new OtherErrorLog (action, wasApplied, error);
 			//Adds the log into the StudentLog.
 			studentLog.AddLog (log);
-			//Saves the log into the ontology.
-			ONTOLOGY.AddLogIntoOnto (log, student, domain);
+			studentLog.AddToLogBuffer(log);
 
 			//Creates a path.
-			string path = ConfigurationManager.AppSettings ["domainConfigurationPath"].Replace ('\\', Path.DirectorySeparatorChar) + "Logs" + Path.DirectorySeparatorChar
+			string path = _domainPath.Replace ('\\', Path.DirectorySeparatorChar) + "Logs" + Path.DirectorySeparatorChar
 			              + domain.Key + Path.DirectorySeparatorChar;
 			//Determine whether the directory exists. If the directory does not exist, it will be created.
 			if (!Directory.Exists(path)) {
@@ -284,8 +302,7 @@ namespace Its.StudentModule
 			}
 			//Copies the log into a txt file.
 			using (StreamWriter sw = File.AppendText (path + student.Key + ".txt")) {
-				string text = action.Key + " " + action.Name + " OtherError " + error.Message.Message + " " + log.DateLog.ToString();
-				sw.WriteLine (text);
+				sw.WriteLine (log.TxtLogString());
 			}
 		}
 
@@ -313,11 +330,10 @@ namespace Its.StudentModule
 			WorldErrorLog log = new WorldErrorLog (action, wasApplied, error, type);
 			//Adds the log into the StudentLog.
 			studentLog.AddLog (log);
-			//Saves the log into the ontology.
-			ONTOLOGY.AddLogIntoOnto (log, student, domain);
+			studentLog.AddToLogBuffer(log);
 
 			//Creates a path.
-			string path = ConfigurationManager.AppSettings ["domainConfigurationPath"].Replace ('\\', Path.DirectorySeparatorChar) + "Logs" + Path.DirectorySeparatorChar
+			string path = _domainPath.Replace ('\\', Path.DirectorySeparatorChar) + "Logs" + Path.DirectorySeparatorChar
 				+ domain.Key + Path.DirectorySeparatorChar;
 			//Determine whether the directory exists. If the directory does not exist, it will be created.
 			if (!Directory.Exists(path)) {
@@ -325,8 +341,7 @@ namespace Its.StudentModule
 			}
 			//Copies the log into a txt file.
 			using (StreamWriter sw = File.AppendText (path + student.Key + ".txt")) {
-				string text = action.Key + " " + action.Name + " WorldError " + error.Message.Message + " " + log.DateLog.ToString();
-				sw.WriteLine (text);
+				sw.WriteLine (log.TxtLogString());
 			}
 		}
 
@@ -359,11 +374,10 @@ namespace Its.StudentModule
 			DepErrorLog log = new DepErrorLog (action, wasApplied,failedDependence, isOrderError);
 			//Adds the log into the StudentLog.
 			studentLog.AddLog (log);
-			//Saves the log into the ontology.
-			ONTOLOGY.AddLogIntoOnto (log, student, domain);
+			studentLog.AddToLogBuffer(log);
 
 			//Creates a path.
-			string path = ConfigurationManager.AppSettings ["domainConfigurationPath"].Replace ('\\', Path.DirectorySeparatorChar) + "Logs" + Path.DirectorySeparatorChar
+			string path = _domainPath.Replace ('\\', Path.DirectorySeparatorChar) + "Logs" + Path.DirectorySeparatorChar
 				+ domain.Key + Path.DirectorySeparatorChar;
 			//Determine whether the directory exists. If the directory does not exist, it will be created.
 			if (!Directory.Exists(path)) {
@@ -371,8 +385,7 @@ namespace Its.StudentModule
 			}
 			//Copies the log into a txt file.
 			using (StreamWriter sw = File.AppendText (path + student.Key + ".txt")) {
-				string text = action.Key + " " + action.Name + " DependenceError " + failedDependence.DependenceError.Message.Message + " " + log.DateLog.ToString();
-				sw.WriteLine (text);
+				sw.WriteLine (log.TxtLogString());
 			}
 		}
 
@@ -400,11 +413,10 @@ namespace Its.StudentModule
 			IncompErrorLog log = new IncompErrorLog (action, wasApplied, failedIncomp);
 			//Adds the log into the StudentLog.
 			studentLog.AddLog (log);
-			//Saves the log into the ontology.
-			ONTOLOGY.AddLogIntoOnto (log, student, domain);
+			studentLog.AddToLogBuffer(log);
 
 			//Creates a path.
-			string path = ConfigurationManager.AppSettings ["domainConfigurationPath"].Replace ('\\', Path.DirectorySeparatorChar) + "Logs" + Path.DirectorySeparatorChar
+			string path = _domainPath.Replace ('\\', Path.DirectorySeparatorChar) + "Logs" + Path.DirectorySeparatorChar
 				+ domain.Key + Path.DirectorySeparatorChar;
 			//Determine whether the directory exists. If the directory does not exist, it will be created.
 			if (!Directory.Exists(path)) {
@@ -412,11 +424,10 @@ namespace Its.StudentModule
 			}
 			//Copies the log into a txt file.
 			using (StreamWriter sw = File.AppendText (path + student.Key + ".txt")) {
-				string text = action.Key + " " + action.Name + " IncompatibilityError " + failedIncomp.IncompatibilityError.Message.Message + " " + log.DateLog.ToString();
-				sw.WriteLine (text);
+				sw.WriteLine (log.TxtLogString());
 			}
 		}
-
+*/
 		/// <summary>
 		/// Creates the domain log.
 		/// </summary>
@@ -587,6 +598,90 @@ namespace Its.StudentModule
 		{
 			//Resets the log of the student.
 			GetStudentLog (domainName, studentKey).ResetLog ();
+		}
+
+		/// <summary>
+		/// Adds LogEntry to student log and to buffer that will be flushed to file (ontology xml)
+		/// upon calling FlushLastActionLogs()
+		/// </summary>
+		/// <param name="domainName">Domain name.</param>
+		/// <param name="studentKey">Student key.</param>
+		/// <param name="logEntry">Log entry.</param>
+		public void AddLog(DomainActions domain, Student student, LogEntry logEntry)
+		{
+			//Gets the domainLog.
+			DomainLog domainLog;
+			if (!_domainLogs.TryGetValue (domain.Key, out domainLog))
+				throw new ArgumentException ("There is not any DomainLog with the given domain.");
+			//Gets the StudentLog.
+			StudentLog studentLog = domainLog.GetStudentLog (student.Key);
+			
+			studentLog.AddLog(logEntry);
+			studentLog.AddToLogBuffer(logEntry);
+		}
+		
+		/// <summary>
+		/// Adds list of LogEntry objects to student log and to buffer that will be flushed to file (ontology xml)
+		/// upon calling FlushLastActionLogs()
+		/// </summary>
+		/// <param name="domainName">Domain name.</param>
+		/// <param name="studentKey">Student key.</param>
+		/// <param name="logEntries">List of Log entry objects.</param>
+		public void AddLog(DomainActions domain, Student student, List<LogEntry> logEntries)
+		{
+			//Gets the domainLog.
+			DomainLog domainLog;
+			if (!_domainLogs.TryGetValue (domain.Key, out domainLog))
+				throw new ArgumentException ("There is not any DomainLog with the given domain.");
+			//Gets the StudentLog.
+			StudentLog studentLog = domainLog.GetStudentLog (student.Key);
+			
+			studentLog.AddLog(logEntries);
+			studentLog.AddToLogBuffer(logEntries);
+		}
+		
+		/// <summary>
+		/// Writes log entries generated by last user action to ontology.
+		/// </summary>
+		/// <param name="domainName">Domain name.</param>
+		/// <param name="studentKey">Student key.</param>
+		public void FlushLastActionLogs (DomainActions domain, Student student)
+		{
+			//Gets the domainLog.
+			DomainLog domainLog;
+			if (!_domainLogs.TryGetValue (domain.Key, out domainLog))
+				throw new ArgumentException ("There is not any DomainLog with the given domain.");
+			//Gets the StudentLog.
+			StudentLog studentLog = domainLog.GetStudentLog (student.Key);
+			bool persist = false;
+
+			// First, update ontology model with all log entries without writing each update to disk
+			foreach (LogEntry log in studentLog.ActionLogBuffer)
+			{	
+				if (log.GetType () == typeof(NoCorrectiveActionLog))
+					ONTOLOGY.AddNoCorrectiveActionLogIntoOnto(log, student, domain, persist);
+				else if (log.GetType () == typeof(CorrectiveActionLog))
+					ONTOLOGY.AddCorrectiveActionLogIntoOnto(log, student, domain, persist);
+				else if (log.GetType () == typeof(NoPlanAllowedActionLog))
+					ONTOLOGY.AddNoPlanAllowedActionLogIntoOnto(log, student, domain, persist);
+				else if (log.GetType () == typeof(OtherErrorLog))
+					ONTOLOGY.AddOtherErrorLogIntoOnto(log, student, domain, persist);
+				else if (log.GetType () == typeof(DepErrorLog))
+					ONTOLOGY.AddDepErrorLogIntoOnto(log, student, domain, persist);
+				else if (log.GetType () == typeof(IncompErrorLog))
+					ONTOLOGY.AddIncompErrorLogIntoOnto(log, student, domain, persist);
+				else if (log.GetType () == typeof(WorldErrorLog))
+					ONTOLOGY.AddWorldErrorLogIntoOnto(log, student, domain, persist);
+				else if (log.GetType () == typeof(MinTimeErrorLog))
+					ONTOLOGY.AddMinTimeErrorLogIntoOnto(log, student, domain, persist);
+				else if (log.GetType () == typeof(MaxTimeErrorLog))
+					ONTOLOGY.AddMaxTimeErrorLogIntoOnto(log, student, domain, persist);
+			}
+			
+			// Write all updates to file in one go
+			ONTOLOGY.SaveStudentTraceOnto(domain.Key, student.Key);
+
+			studentLog.ActionLogBuffer.Clear();
 		}
 	}
 }

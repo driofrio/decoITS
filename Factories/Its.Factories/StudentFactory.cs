@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Its.StudentModule.DataAccess;
 using Its.StudentModule.ObjectModel;
 
@@ -16,7 +15,7 @@ namespace Its.Factories
 		/// <summary>
 		/// The ontology.
 		/// </summary>
-		private static OntologyAccess ONTOLOGY;
+		private OntologyAccess ONTOLOGY;
 		/// <summary>
 		/// The instance.
 		/// </summary>
@@ -60,6 +59,12 @@ namespace Its.Factories
 
 			//Returns the list.
 			return students;
+		}
+		
+		public static void DisposeInstance() {
+			if (_instance != null) {
+				_instance = null;
+			}
 		}
 	}
 }

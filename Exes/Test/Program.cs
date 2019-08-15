@@ -1,13 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
-using System.Collections.Generic;
-using Its.ExpertModule.ObjectModel;
 using Its.ExpertModule.DataAccess;
-using Its.TutoringModule.TutoringCoordinator.ReactiveTutor.ObjectModel;
+using Its.ExpertModule.ObjectModel;
+using Its.Factories;
 using Its.StudentModule.DataAccess;
 using Its.StudentModule.ObjectModel;
-using Its.Factories;
+using Its.TutoringModule.ReactiveTutor.ObjectModel;
+using Its.Utils.Config;
 
 namespace Its.Test
 {
@@ -15,9 +16,12 @@ namespace Its.Test
 	class MainClass
 	{
 		private static OntologyAccess ontology;
-		private static string ontologyPath = ConfigurationManager.AppSettings ["ontologyPath"].ToString ().Replace ('\\', Path.DirectorySeparatorChar);
-		private static string logsPath = ConfigurationManager.AppSettings ["logsPath"].ToString ().Replace ('\\', Path.DirectorySeparatorChar);
-		private static string expertConfPath = ConfigurationManager.AppSettings ["domainConfigurationPath"].Replace ('\\', Path.DirectorySeparatorChar);
+		private static ITutorConfig config = new DefaultTutorConfig();
+		private static string ontologyPath = config.OntologyPath.Replace ('\\', Path.DirectorySeparatorChar);
+		private static string logsPath = config.LogsPath.Replace ('\\', Path.DirectorySeparatorChar);
+		private static string expertConfPath = config.DomainConfigurationPath.Replace ('\\', Path.DirectorySeparatorChar);
+		private static int initialCol = config.InitialColumn;
+		private static int initialRow = config.InitialRow;
 
 		public static void pruebaNoCorrectiveActionLog ()
 		{
@@ -56,7 +60,7 @@ namespace Its.Test
 			NoCorrectiveActionLog noCorrectiveActionLog = new NoCorrectiveActionLog (action, true);
 			//Adds the log into the ontology.
 			Console.WriteLine ("Añadiendo log a la ontología...");
-			ontology.AddLogIntoOnto (noCorrectiveActionLog, student, domain);
+			ontology.AddNoCorrectiveActionLogIntoOnto(noCorrectiveActionLog, student, domain);
 
 			Console.WriteLine ("Escritura finalizada.");
 		}
@@ -98,7 +102,7 @@ namespace Its.Test
 			CorrectiveActionLog correctiveActionLog = new CorrectiveActionLog (action, true, true);
 			//Adds the log into the ontology.
 			Console.WriteLine ("Añadiendo log a la ontología...");
-			ontology.AddLogIntoOnto (correctiveActionLog, student, domain);
+			ontology.AddCorrectiveActionLogIntoOnto(correctiveActionLog, student, domain);
 
 			//Saves the ontology into disc.
 			Console.WriteLine ("Guardando ontología en disco...");
@@ -152,7 +156,8 @@ namespace Its.Test
 			Console.WriteLine ("Creando acción principal...");
 			ActionAplication action = new ActionAplication ("f01a32", 1, "Comer tarta", "Comerse la tarta fabricada.", 
 				                          new List<string> (new string[] { "Tarta" }), false, false, false, false, false,
-				                          complexDependence, null, false, true, null, "Tarta comida.", true, null, tutorMessage);
+				                          complexDependence, null, false, true, null, "Tarta comida.", true, null, tutorMessage,
+										  0, false, null, null, null);
 			//Creates the Domain.
 			Console.WriteLine ("Creando dominio de práctica...");
 			//Creates the actions list.
@@ -177,7 +182,7 @@ namespace Its.Test
 			DepErrorLog depErrorLog = new DepErrorLog (action, true, complexDependence, true);
 			//Adds the log into the ontology.
 			Console.WriteLine ("Añadiendo log a la ontología...");
-			ontology.AddLogIntoOnto (depErrorLog, student, domain);
+			ontology.AddDepErrorLogIntoOnto(depErrorLog, student, domain);
 
 			//Saves the ontology into disc.
 			Console.WriteLine ("Guardando ontología en disco...");
@@ -228,7 +233,7 @@ namespace Its.Test
 			WorldErrorLog worldErrorLog = new WorldErrorLog(action, true, error, "avataroutofrange");
 			//Adds the log into the ontology.
 			Console.WriteLine ("Añadiendo log a la ontología...");
-			ontology.AddLogIntoOnto (worldErrorLog, student, domain);
+			ontology.AddWorldErrorLogIntoOnto(worldErrorLog, student, domain);
 
 			//Saves the ontology into disc.
 			Console.WriteLine ("Guardando ontología en disco...");
@@ -266,7 +271,7 @@ namespace Its.Test
 		public static void pruebaActionAccess ()
 		{
 			Console.WriteLine ("Iniciando prueba...");
-			ActionAccess access = ActionAccess.Instance(expertConfPath);
+			ActionAccess access = ActionAccess.Instance(expertConfPath, initialCol, initialRow);
 
 			List<object[]> lObj = access.GetActions ("Tutorial");
 
@@ -421,7 +426,7 @@ namespace Its.Test
 
 			Console.WriteLine ("\nSe procede a ejecutar la prueba.");
 			Console.WriteLine ("Creando factoria...");
-			DomainActionsFactory factory = DomainActionsFactory.Instance(ontologyPath, logsPath, expertConfPath);
+			DomainActionsFactory factory = DomainActionsFactory.Instance(ontologyPath, logsPath, expertConfPath, initialCol, initialRow);
 			Console.WriteLine ("Creando el dominio...");
 			DomainActions domain = factory.CreateDomain (file);
 
@@ -523,13 +528,13 @@ namespace Its.Test
 			Console.WriteLine ("Iniciando prueba...");
 			//Creates the DomainAction.
 			Console.WriteLine ("Creando dominio de Tutorial...");
-			DomainActions domain = DomainActionsFactory.Instance(ontologyPath, logsPath, expertConfPath).CreateDomain ("Tutorial");
+			DomainActions domain = DomainActionsFactory.Instance(ontologyPath, logsPath, expertConfPath, initialCol, initialRow).CreateDomain ("Tutorial");
 			//Dictionary<string, DomainActions> domains = new Dictionary<string, DomainActions> ();
 			//domains.Add (domain.Key, domain);
 			//Creates the students.
 			Console.WriteLine ("Creando estudiantes...");
 			Dictionary<string, Student> students = new Dictionary<string, Student> ();
-			for (int i = 1; i <= Directory.GetFiles(ConfigurationManager.AppSettings ["logsPath"] +
+			for (int i = 1; i <= Directory.GetFiles(config.LogsPath +
 				Path.DirectorySeparatorChar + "Tutorial" + Path.DirectorySeparatorChar).Length; i++)
 				students.Add (i.ToString (), new Student (i.ToString (), i.ToString () + "a", i.ToString () + "b"));
 			//Creates the Error list.

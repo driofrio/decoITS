@@ -1,23 +1,21 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Globalization;
 using System.IO;
+using System.Linq;
+using Its.ExpertModule.ObjectModel;
+using Its.Factories;
 using Its.StudentModule.DataAccess;
 using Its.StudentModule.ObjectModel;
-using Its.ExpertModule.ObjectModel;
-using Its.TutoringModule.TutoringCoordinator.ReactiveTutor.ObjectModel;
-using System.Collections.Generic;
-using Its.Factories;
-using System.Linq;
-using System.Globalization;
-using System.Configuration;
-using System.Data;
-using Its.ExpertModule;
-using Its.WorldModule;
-using Its.StudentModule;
+using Its.TutoringModule.ReactiveTutor.ObjectModel;
+using Its.Utils.Config;
 
 namespace LoadLogsBiotech
 {
 	class MainClass
 	{
+		private static ITutorConfig config = new DefaultTutorConfig();
 
 		public static void Main (string[] args)
 		{
@@ -42,9 +40,11 @@ namespace LoadLogsBiotech
 			string tempmult = Console.ReadLine ();
 			mult = tempmult.Trim ().Length == 0 || tempmult.Trim ()=="0" ? 1 : int.Parse (tempmult);*/
 
-			string ontologyPath = ConfigurationManager.AppSettings ["ontologyPath"].ToString ().Replace ('\\', Path.DirectorySeparatorChar);
-			string logsPath = ConfigurationManager.AppSettings ["logsPath"].ToString ().Replace ('\\', Path.DirectorySeparatorChar);
-			string expertConfPath = ConfigurationManager.AppSettings ["domainConfigurationPath"].Replace ('\\', Path.DirectorySeparatorChar);
+			string ontologyPath = config.OntologyPath.Replace ('\\', Path.DirectorySeparatorChar);
+			string logsPath = config.LogsPath.Replace ('\\', Path.DirectorySeparatorChar);
+			string expertConfPath = config.DomainConfigurationPath.Replace ('\\', Path.DirectorySeparatorChar);
+			int initialCol = config.InitialColumn;
+			int initialRow = config.InitialRow;
 
 			/*if (iteration != "0") {
 				string ontologyPathvacia = ontologyPath;
@@ -61,7 +61,7 @@ namespace LoadLogsBiotech
 
 			DomainActions domain = null;
 			DomainActions domainVal = null;
-			DomainActionsFactory temp = DomainActionsFactory.Instance (ontologyPath, logsPath, expertConfPath);
+			DomainActionsFactory temp = DomainActionsFactory.Instance (ontologyPath, logsPath, expertConfPath, initialCol, initialRow);
 			domain = temp.CreateDomain (strDomainName);
 
 			/*Console.WriteLine ("Create Validation (y/n): ");
@@ -508,19 +508,19 @@ namespace LoadLogsBiotech
 
 					foreach (LogEntry log in stdLog.Logs) {
 						if (log.GetType () == typeof(NoCorrectiveActionLog))
-							ontology.AddLogIntoOnto ((NoCorrectiveActionLog)log, student, tmpDomain);
+							ontology.AddNoCorrectiveActionLogIntoOnto(log, student, tmpDomain);
 						else if (log.GetType () == typeof(NoPlanAllowedActionLog))
-							ontology.AddLogIntoOnto ((NoPlanAllowedActionLog)log, student, tmpDomain);
+							ontology.AddNoPlanAllowedActionLogIntoOnto(log, student, tmpDomain);
 						else if (log.GetType () == typeof(OtherErrorLog))
-							ontology.AddLogIntoOnto ((OtherErrorLog)log, student, tmpDomain);
+							ontology.AddOtherErrorLogIntoOnto(log, student, tmpDomain);
 						else if (log.GetType () == typeof(OtherErrorLog))
-							ontology.AddLogIntoOnto ((OtherErrorLog)log, student, tmpDomain);
+							ontology.AddOtherErrorLogIntoOnto(log, student, tmpDomain);
 						else if (log.GetType () == typeof(DepErrorLog))
-							ontology.AddLogIntoOnto ((DepErrorLog)log, student, tmpDomain);
+							ontology.AddDepErrorLogIntoOnto(log, student, tmpDomain);
 						else if (log.GetType () == typeof(IncompErrorLog))
-							ontology.AddLogIntoOnto ((IncompErrorLog)log, student, tmpDomain);
+							ontology.AddIncompErrorLogIntoOnto(log, student, tmpDomain);
 						else if (log.GetType () == typeof(WorldErrorLog))
-							ontology.AddLogIntoOnto ((WorldErrorLog)log, student, tmpDomain);
+							ontology.AddWorldErrorLogIntoOnto(log, student, tmpDomain);
 					}
 
 				}

@@ -1,5 +1,0 @@
-/Users/Diego/Documents/workspace/ITS/Factories/Its.Factories.Common/obj/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
-/Users/Diego/Documents/workspace/ITS/Factories/Its.Factories.Common/bin/Debug/Its.Factories.Common.dll.mdb
-/Users/Diego/Documents/workspace/ITS/Factories/Its.Factories.Common/bin/Debug/Its.Factories.Common.dll
-/Users/Diego/Documents/workspace/ITS/Factories/Its.Factories.Common/obj/Debug/Its.Factories.Common.dll
-/Users/Diego/Documents/workspace/ITS/Factories/Its.Factories.Common/obj/Debug/Its.Factories.Common.dll.mdb

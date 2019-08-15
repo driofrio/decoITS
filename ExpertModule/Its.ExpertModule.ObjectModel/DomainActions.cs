@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
+using Its.Utils.StringUtils;
 
 namespace Its.ExpertModule.ObjectModel
 {
@@ -82,9 +84,9 @@ namespace Its.ExpertModule.ObjectModel
 		public DomainActions (string key, string description, List<ActionAplication> actions, int estimatedTime)
 		{
 			//If the key parameter is null or empty or his contained is a blank, a exception is thrown.
-			if (String.IsNullOrWhiteSpace (key)) {  
+			if (StringUtils.IsNullOrWhiteSpace (key)) {  
 				//This argument exception says that the key param is not correct.
-				ArgumentException argEx = new System.ArgumentException ("The key parameter is not correct, " +
+				ArgumentException argEx = new ArgumentException ("The key parameter is not correct, " +
 				                          "it can neither be null or empty string nor his contained be blank.", "key");
 				throw argEx;
 			} else {
@@ -156,6 +158,22 @@ namespace Its.ExpertModule.ObjectModel
 			foreach (ActionAplication a in _actions) {
 				if (a.Key == actionKey) {
 					result = true;
+					break;
+				}
+			}
+
+			//Returns the result.
+			return result;
+		}
+
+		public ActionAplication GetActionByName(string actionName)
+		{
+			//Creates an auxiliar variable.
+			ActionAplication result = null;
+			//Seearchs if there is an action with the given key.
+			foreach (ActionAplication a in _actions) {
+				if (a.Name == actionName) {
+					result = a;
 					break;
 				}
 			}

@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DAB77C55-8965-4A4B-B2A7-73D74059A63C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Its.TutoringModule.Factories</RootNamespace>
+    <AssemblyName>Its.TutoringModule.Factories</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TutorFactory.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\ExpertModule\Its.ExpertModule.ObjectModel\Its.ExpertModule.OM.csproj">
+      <Project>{8b928308-3d38-4cf5-8352-162a23f9a5ea}</Project>
+      <Name>Its.ExpertModule.OM</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ExpertModule\Its.ExpertModule\Its.ExpertModule.csproj">
+      <Project>{053D479C-7695-452A-ABFF-237300DB84AE}</Project>
+      <Name>Its.ExpertModule</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\StudentModule\Its.StudentModule.ObjectModel\Its.StudentModule.OM.csproj">
+      <Project>{eeed4fbb-9fca-46c9-927a-765f7bc05666}</Project>
+      <Name>Its.StudentModule.OM</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\StudentModule\Its.StudentModule\Its.StudentModule.csproj">
+      <Project>{C407248F-9674-45D8-B58F-72A2684555AB}</Project>
+      <Name>Its.StudentModule</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Utils\Its.Utils.Config\Its.Utils.Config.csproj">
+      <Project>{B7413821-72A0-4104-B19F-44E0C8FD18A2}</Project>
+      <Name>Its.Utils.Config</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\WorldModule\Its.WorldModule\Its.WorldModule.csproj">
+      <Project>{44A3A108-F052-4126-A905-4ADEC242E7E9}</Project>
+      <Name>Its.WorldModule</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CollectiveModelTutor\Its.TutoringModule.CMTutor\Its.TutoringModule.CMTutor.csproj">
+      <Project>{E18AC5F1-D56D-4C2D-A2AE-AEADE455045E}</Project>
+      <Name>Its.TutoringModule.CMTutor</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Its.TutoringModule.Common\Its.TutoringModule.Common.csproj">
+      <Project>{3EFB63FF-6405-42C2-A615-0FBB56F4BDF2}</Project>
+      <Name>Its.TutoringModule.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ReactiveTutor\Its.TutoringModule.ReactiveTutor.OM\Its.TutoringModule.ReactiveTutor.OM.csproj">
+      <Project>{d710a525-2c06-4f1a-94c0-4cc79e07a604}</Project>
+      <Name>Its.TutoringModule.ReactiveTutor.OM</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ReactiveTutor\Its.TutoringModule.ReactiveTutor\Its.TutoringModule.ReactiveTutor.csproj">
+      <Project>{475B44CE-DB9B-4E90-94E8-F96C7567BA76}</Project>
+      <Name>Its.TutoringModule.ReactiveTutor</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TutoringCoordinator\Its.TutoringModule.TutoringCoordinator\Its.TutoringModule.TC.csproj">
+      <Project>{7FE32128-C2F9-481E-8D73-79A1875E15DB}</Project>
+      <Name>Its.TutoringModule.TC</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+         Other similar extension points exist, see Microsoft.Common.targets.
+    <Target Name="BeforeBuild">
+    </Target>
+    <Target Name="AfterBuild">
+    </Target>
+    -->
+</Project>

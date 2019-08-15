@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using Its.TutoringModule.TutoringCoordinator.ReactiveTutor.ObjectModel;
+using Its.TutoringModule.ReactiveTutor.ObjectModel;
+using Its.Utils.StringUtils;
 
 namespace Its.ExpertModule.ObjectModel
 {
@@ -318,6 +319,72 @@ namespace Its.ExpertModule.ObjectModel
 				return _tutorMsg;
 			}
 		}
+		/// <summary>
+		/// Amount of support that this action needs to have by Collective Student Model
+		/// in order to provide Collective Model Tutor feedback.
+		/// </summary>
+		private double _supportThreshold;
+		/// <summary>
+		/// Gets the SupportThreshold flag.
+		/// </summary>
+		/// <value>Boolean to indicate whether current action is a checkpoint for student reclustering.</value>
+		public double SupportThreshold {
+			get {
+				return _supportThreshold;
+			}
+		}
+		/// <summary>
+		/// Whether action represents a checkpoint for student reclustering in Collective Student Model tutoring strategy.
+		/// </summary>
+		private bool _isCheckpoint;
+		/// <summary>
+		/// Gets the IsCheckpoint flag.
+		/// </summary>
+		/// <value>Boolean to indicate whether current action is a checkpoint for student reclustering.</value>
+		public bool IsCheckpoint {
+			get {
+				return _isCheckpoint;
+			}
+		}
+		/// <summary>
+		/// The low-detail (most generic) tutor message for Collective Student Model tutor.
+		/// </summary>
+		private TutorMessage _tutorMsgLowDetail;
+		/// <summary>
+		/// Gets the tutor message.
+		/// </summary>
+		/// <value>The tutor message.</value>
+		public TutorMessage TutorMsgLowDetail {
+			get {
+				return _tutorMsgLowDetail;
+			}
+		}
+		/// <summary>
+		/// The medium-detail tutor message for Collective Student Model tutor.
+		/// </summary>
+		private TutorMessage _tutorMsgMediumDetail;
+		/// <summary>
+		/// Gets the tutor message.
+		/// </summary>
+		/// <value>The tutor message.</value>
+		public TutorMessage TutorMsgMediumDetail {
+			get {
+				return _tutorMsgMediumDetail;
+			}
+		}
+		/// <summary>
+		/// The high-detail (most detailed) tutor message for Collective Student Model tutor.
+		/// </summary>
+		private TutorMessage _tutorMsgHighDetail;
+		/// <summary>
+		/// Gets the tutor message.
+		/// </summary>
+		/// <value>The tutor message.</value>
+		public TutorMessage TutorMsgHighDetail {
+			get {
+				return _tutorMsgHighDetail;
+			}
+		}
 		 
 
 		/// <summary>
@@ -353,23 +420,24 @@ namespace Its.ExpertModule.ObjectModel
 		public ActionAplication (string key, int phase, string name, string description, List<string> objectName, bool lockObj, 
 			bool unlockObj, bool isRepetitive, bool initPhase, bool validatePhaseErrors, ComplexDependence dependence, 
 			List<Incompatibility> incompatibilities, bool correctiveAction, bool noPlanAction, List<Error> errorsToCorrect,
-			string okMessage, bool showOkMessage, List<ActionAplication> possibleNextActions, TutorMessage tutorMessage)
+			string okMessage, bool showOkMessage, List<ActionAplication> possibleNextActions, TutorMessage tutorMessage,
+			double supportThreshold, bool isCheckpoint, TutorMessage tutorMsgLowDetail, TutorMessage tutorMsgMediumDetail, TutorMessage tutorMsgHighDetail)
 		{
 			//If the key parameter is null or empty or his contained is a blank, a exception is thrown.
-			if (String.IsNullOrWhiteSpace (key)) {  
+			if (StringUtils.IsNullOrWhiteSpace (key)) {  
 				//This argument exception says that the key param is not correct.
-				ArgumentException argEx = new System.ArgumentException ("The key parameter is not correct, " +
+				ArgumentException argEx = new ArgumentException ("The key parameter is not correct, " +
 					"it can neither be null or empty string nor his contained be blank.", "key");
 				throw argEx;
 			} else if (lockObj == true && unlockObj == true) {
 				//This argument exception says that an action cannot lock and unlock an object.
-				ArgumentException argEx = new System.ArgumentException ("The lockObj and unlockObj parameters are not correct, " +
+				ArgumentException argEx = new ArgumentException ("The lockObj and unlockObj parameters are not correct, " +
 					"An action cannot lock and unlock an object at the same time.", "lockObj");
 				throw argEx;
 			} else if (correctiveAction == true && (errorsToCorrect.Count < 1 || errorsToCorrect == null)) {
 				//This argument exception says that an action cannot be corrective and do not have any error in the
 				//associated list.
-				ArgumentException argEx = new System.ArgumentException ("A corrective action must have an error list associated, " +
+				ArgumentException argEx = new ArgumentException ("A corrective action must have an error list associated, " +
 					"This list must be neither empty nor null.", "errorsToCorrect");
 				throw argEx;
 			} else {
@@ -396,6 +464,11 @@ namespace Its.ExpertModule.ObjectModel
 				this._showOkMessage = showOkMessage;
 				this._possibleNextActions = possibleNextActions;
 				this._tutorMsg = tutorMessage;
+				this._supportThreshold = supportThreshold;
+				this._isCheckpoint = isCheckpoint;
+				this._tutorMsgLowDetail = tutorMsgLowDetail;
+				this._tutorMsgMediumDetail = tutorMsgMediumDetail;
+				this._tutorMsgHighDetail = tutorMsgHighDetail;
 			}
 		}
 
@@ -440,23 +513,24 @@ namespace Its.ExpertModule.ObjectModel
 			bool unlockObj, bool isRepetitive, bool initPhase, bool validatePhaseErrors,
 			ComplexDependence dependence, List<Incompatibility> incompatibilities, bool correctiveAction, bool noPlanAction,
 			List<Error> errorsToCorrect, string okMessage, bool showOkMessage, List<ActionAplication> possibleNextActions,
-			TutorMessage tutorMessage, int minTime, Error minTimeError, int maxTime = 0, Error maxTimeError = null)
+			TutorMessage tutorMessage, int minTime, Error minTimeError, int maxTime = 0, Error maxTimeError = null,
+			double supportThreshold = 0, bool isCheckpoint = false, TutorMessage tutorMsgLowDetail = null, TutorMessage tutorMsgMediumDetail = null, TutorMessage tutorMsgHighDetail = null)
 		{
 			//If the key parameter is null or empty or his contained is a blank, a exception is thrown.
-			if (String.IsNullOrWhiteSpace (key)) {  
+			if (StringUtils.IsNullOrWhiteSpace (key)) {  
 				//This argument exception says that the key param is not correct.
-				ArgumentException argEx = new System.ArgumentException ("The key parameter is not correct, " +
+				ArgumentException argEx = new ArgumentException ("The key parameter is not correct, " +
 					"it can neither be null or empty string nor his contained be blank.", "key");
 				throw argEx;
 			} else if (lockObj == true && unlockObj == true) {
 				//This argument exception says that an action cannot lock and unlock an object.
-				ArgumentException argEx = new System.ArgumentException ("The lockObj and unlockObj parameters are not correct, " +
+				ArgumentException argEx = new ArgumentException ("The lockObj and unlockObj parameters are not correct, " +
 				                          "An action cannot lock and unlock an object at the same time.", "lockObj");
 				throw argEx;
 			} else if (correctiveAction == true && (errorsToCorrect.Count < 1 || errorsToCorrect == null)) {
 				//This argument exception says that an action cannot be corrective and do not have any error in the
 				//associated list.
-				ArgumentException argEx = new System.ArgumentException ("A corrective action must have an error list associated, " +
+				ArgumentException argEx = new ArgumentException ("A corrective action must have an error list associated, " +
 				                          "This list must be neither empty nor null.", "errorsToCorrect");
 				throw argEx;
 			} else {
@@ -483,6 +557,11 @@ namespace Its.ExpertModule.ObjectModel
 				this._minTimeError = minTimeError;
 				this._maxTime = maxTime;
 				this._maxTimeError = maxTimeError;
+				this._supportThreshold = supportThreshold;
+				this._isCheckpoint = isCheckpoint;
+				this._tutorMsgLowDetail = tutorMsgLowDetail;
+				this._tutorMsgMediumDetail = tutorMsgMediumDetail;
+				this._tutorMsgHighDetail = tutorMsgHighDetail;
 			}
 		}
 

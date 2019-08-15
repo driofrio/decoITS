@@ -1,6 +1,5 @@
 ﻿using System;
 using Its.ExpertModule.ObjectModel;
-using Its.TutoringModule.TutoringCoordinator.ReactiveTutor.ObjectModel;
 
 namespace Its.StudentModule.ObjectModel
 {
@@ -11,7 +10,7 @@ namespace Its.StudentModule.ObjectModel
 	/// <summary>
 	/// This class will contain an error log.
 	/// </summary>
-	public class ErrorLog : LogEntry
+	public abstract class ErrorLog : LogEntry
 	{
 		/// <summary>
 		/// Initializes a new instance of the <see cref="Its.StudentModule.ObjectModel.ErrorLog"/> class.

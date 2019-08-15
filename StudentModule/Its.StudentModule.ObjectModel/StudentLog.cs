@@ -1,6 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using Its.ExpertModule.ObjectModel;
+using Its.TutoringModule.ReactiveTutor.ObjectModel;
 
 namespace Its.StudentModule.ObjectModel
 {
@@ -52,6 +53,19 @@ namespace Its.StudentModule.ObjectModel
 			}
 		}
 		/// <summary>
+		/// Logs produced by last user action(s). Not written to ontology until StudentControl.FlushLastActionLogs() method is called
+		/// </summary>
+		private List<LogEntry> _actionLogBuffer;
+		/// <summary>
+		/// Gets logs produced by last user action.
+		/// </summary>
+		/// <value>The logs.</value>
+		public List<LogEntry> ActionLogBuffer {
+			get {
+				return _actionLogBuffer.OrderBy(p=>p.DateLog).ToList<LogEntry>();
+			}
+		}
+		/// <summary>
 		/// The current phase.
 		/// </summary>
 		private int _currentPhase;
@@ -81,6 +95,7 @@ namespace Its.StudentModule.ObjectModel
 			this._key = student.Key;
 			this._owner = student;
 			this._logs = new List<LogEntry> ();
+			this._actionLogBuffer = new List<LogEntry>();
 		}
 
 		public StudentLog (Student student, List<LogEntry> logs)
@@ -88,6 +103,7 @@ namespace Its.StudentModule.ObjectModel
 			this._key = student.Key;
 			this._owner = student;
 			this._logs = logs;
+			this._actionLogBuffer = new List<LogEntry>();
 		}
 
 		/// <summary>
@@ -98,6 +114,36 @@ namespace Its.StudentModule.ObjectModel
 		{
 			//Adds the log into the list.
 			this._logs.Add (log);
+		}
+		
+		/// <summary>
+		/// Adds the log.
+		/// </summary>
+		/// <param name="logs">Logs.</param>
+		public void AddLog (List<LogEntry> logs)
+		{
+			//Adds the log into the list.
+			this._logs.AddRange(logs);
+		}
+		
+		/// <summary>
+		/// Adds the log to the buffer that will be flushed to disk at a later stage.
+		/// </summary>
+		/// <param name="log">Log.</param>
+		public void AddToLogBuffer(LogEntry log)
+		{
+			//Adds the log into the list.
+			this._actionLogBuffer.Add (log);
+		}
+		
+		/// <summary>
+		/// Adds the log to the buffer that will be flushed to disk at a later stage.
+		/// </summary>
+		/// <param name="logs">Logs.</param>
+		public void AddToLogBuffer(List<LogEntry> logs)
+		{
+			//Adds the log into the list.
+			this._actionLogBuffer.AddRange(logs);
 		}
 
 		/// <summary>
@@ -113,13 +159,15 @@ namespace Its.StudentModule.ObjectModel
 			//Searchs into the log list until the action1 will be found before the action2.
 			foreach (LogEntry log in _logs) {
 				//Checks if the log action key is equal to action2.
-				//If they are equal, then the action1 was done after the action2.
-				if (log.Action.Key == action2) {
-					checkValue = false;
-					break;
-				} else if (log.Action.Key == action1) {
-					checkValue = true;
-					break;
+				if (log.Error == null) {
+					//If they are equal, then the action1 was done after the action2.
+					if (log.Action.Key == action2) {
+						checkValue = false;
+						break;
+					} else if (log.Action.Key == action1) {
+						checkValue = true;
+						break;
+					}
 				}
 			}
 
@@ -171,7 +219,7 @@ namespace Its.StudentModule.ObjectModel
 			//Finds the last index.
 			int index = _logs.FindLastIndex (FindAction);
 			//Calculates the number of elements to erase.
-			int count = _logs.Count - index + 1;
+			int count = _logs.Count - index;
 			//Removes the elements.
 			_logs.RemoveRange(index, count);
 		}
@@ -183,6 +231,45 @@ namespace Its.StudentModule.ObjectModel
 				return true;
 			else
 				return false;
+		}
+		
+		/// <summary>
+		/// Checks whether student has already SUCCESSFULLY performed given action (without committing an error)
+		/// </summary>
+		public bool HasPerformedActionWithoutError(ActionAplication action)
+		{
+			bool found = false;
+
+			for (int i = 0; i < _logs.Count; i++)
+			{
+				LogEntry log = _logs[i];
+				if (log.Action.Equals(action) && log.Error == null)
+				{
+					found = true;
+					break;
+				}
+			}
+
+			return found;
+		}
+		
+		/// <summary>
+		/// Checks whether student has already SUCCESSFULLY performed given action (without committing an error)
+		/// </summary>
+		public List<Error> GetErrorsInCurrentPhase()
+		{
+			List<Error> errors = new List<Error>();
+
+			for (int i = 0; i < _logs.Count; i++)
+			{
+				LogEntry log = _logs[i];
+				if (log.Action.Phase == CurrentPhase && log.Error != null)
+				{
+					errors.Add(log.Error);
+				}
+			}
+
+			return errors;
 		}
 	}
 }

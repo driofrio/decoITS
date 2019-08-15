@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Its.StudentModule.DataAccess;
+using System.Runtime.Remoting.Messaging;
 using Its.ExpertModule.DataAccess;
-using Its.ExpertModule.ObjectModel;
 using Its.ExpertModule.Exceptions;
-using Its.TutoringModule.TutoringCoordinator.ReactiveTutor.ObjectModel;
+using Its.ExpertModule.ObjectModel;
+using Its.StudentModule.DataAccess;
+using Its.TutoringModule.ReactiveTutor.ObjectModel;
+using Its.Utils.StringUtils;
 
 namespace Its.Factories
 {
@@ -21,11 +23,11 @@ namespace Its.Factories
 		/// <summary>
 		/// The ontology.
 		/// </summary>
-		private static OntologyAccess ONTOLOGY;// = OntologyAccess.Instance;
+		private OntologyAccess ONTOLOGY;// = OntologyAccess.Instance;
 		/// <summary>
 		/// The action access.
 		/// </summary>
-		private static ActionAccess ACTION_ACCESS; //= ActionAccess.Instance;
+		private ActionAccess ACTION_ACCESS; //= ActionAccess.Instance;
 		/// <summary>
 		/// The DomainActionsFactory singleton instance.
 		/// </summary>
@@ -34,10 +36,10 @@ namespace Its.Factories
 		/// Gets the instance.
 		/// </summary>
 		/// <value>The instance.</value>
-		public static DomainActionsFactory Instance (string ontologyPath, string logsPath, string expertConfPath){
+		public static DomainActionsFactory Instance (string ontologyPath, string logsPath, string expertConfPath, int initialCol, int initialRow){
 			//get {
 			if (_instance == null)
-				_instance = new DomainActionsFactory (ontologyPath, logsPath, expertConfPath);
+				_instance = new DomainActionsFactory (ontologyPath, logsPath, expertConfPath, initialCol, initialRow);
 
 			return _instance;
 			//}
@@ -58,10 +60,10 @@ namespace Its.Factories
 		/// <summary>
 		/// Initializes a new instance of the <see cref="Its.Factories.DomainActionsFactory"/> class.
 		/// </summary>
-		private DomainActionsFactory (string ontologyPath, string logsPath, string expertConfPath) 
+		private DomainActionsFactory (string ontologyPath, string logsPath, string expertConfPath, int initialCol, int initialRow) 
 		{
 			ONTOLOGY = OntologyAccess.Instance (ontologyPath, logsPath);
-			ACTION_ACCESS = ActionAccess.Instance (expertConfPath);
+			ACTION_ACCESS = ActionAccess.Instance (expertConfPath, initialCol, initialRow);
 		}
 
 		/// <summary>
@@ -158,6 +160,22 @@ namespace Its.Factories
 					SimpleDependence sDep;
 					//Gets the first simple dependence.
 					string sDepStr = dependencies.First.Value;
+					
+					// *** Throw an error if exact same action dependency is used multiple times in the dependency string ***
+					// 
+					// Although below code seems to handle scenarios like [f0t0-(f0t1-f0t2-f0t1)], where
+					// dependency f0t1 is used twice by finding previously created dependency and adding _suffix,
+					// for the benefit of Collective Student Model tutor and Error Prevention Messages,
+					// requirement was added to ensure that any repeating actions are deduplicated by adding .suffix.
+					// 
+					// So a valid format of the above mentioned dependency string would be:  [f0t0-(f0t1-f0t2-f0t1.abc)]
+					// This shold prevent below code from ever entering "if (queryDep1.Count () > 0)" branch and always create
+					// new dependencies
+					if (depContainer.ContainsKey(sDepStr))
+					{
+						throw new ArgumentException("Duplicate action key \"" + sDepStr + "\" found in dependency string. Deduplicate it by adding suffix using \".\" character, for example: \"" + sDepStr + ".123\"");
+					}
+					
 					//Gets the first error.
 					string err = errorMessages.First.Value;
 					//Obtains the error information.
@@ -236,10 +254,21 @@ namespace Its.Factories
 						error = new Error (_genErrorKey.ToString(), errMsg, b);
 						//Increase the generator.
 						_genErrorKey++;
+						
+						// Check if dependency string is repeated in the context of the current action dependence and hence
+						// has a suffix "_x" to differentiate between repeating action dependencies
+						// (for exampl, [f0t0-(f0t1-f0t2-f0t1.1)])
+						string depActionKey = sDepStr;
+						int underscoreIndex = sDepStr.IndexOf(".");
+						if (underscoreIndex != -1)
+						{
+							depActionKey = sDepStr.Substring(0, underscoreIndex);
+						}
+						
 						//Searchs the ActionAplication in the container.
 						var queryAct = 
 							from o in actContainer
-							where o.Key == (sDepStr)
+							where o.Key == (depActionKey)
 							select o;
 						//Creates a new instance of SimpleDependence.
 						sDep = new SimpleDependence (sDepStr, queryAct.First (), error);
@@ -480,6 +509,22 @@ namespace Its.Factories
 					SimpleDependence sDep;
 					//Gets the first simple dependence.
 					string sDepStr = dependencies.First.Value;
+					
+					// *** Throw an error if exact same action dependency is used multiple times in the dependency string ***
+					// 
+					// Although below code seems to handle scenarios like [f0t0-(f0t1-f0t2-f0t1)], where
+					// dependency f0t1 is used twice by finding previously created dependency and adding _suffix,
+					// for the benefit of Collective Student Model tutor and Error Prevention Messages,
+					// requirement was added to ensure that any repeating actions are deduplicated by adding .suffix.
+					// 
+					// So a valid format of the above mentioned dependency string would be:  [f0t0-(f0t1-f0t2-f0t1.abc)]
+					// This shold prevent below code from ever entering "if (queryDep1.Count () > 0)" branch and always create
+					// new dependencies
+					if (depContainer.ContainsKey(sDepStr))
+					{
+						throw new ArgumentException("Duplicate action key \"" + sDepStr + "\" found in dependency string. Deduplicate it by adding suffix using \".\" character, for example: \"" + sDepStr + ".123\"");
+					}
+					
 					//Gets the first error.
 					string err = errorMessages.First.Value;
 					//Obtains the error information.
@@ -564,10 +609,21 @@ namespace Its.Factories
 						error = new Error (_genErrorKey.ToString(), errMsg, b);
 						//Increase the generator.
 						_genErrorKey++;
+						
+						// Check if dependency string is repeated in the context of the current action dependence and hence
+						// has a suffix "_x" to differentiate between repeating action dependencies
+						// (for exampl, [f0t0-(f0t1-f0t2-f0t1.1)])
+						string depActionKey = sDepStr;
+						int underscoreIndex = sDepStr.IndexOf(".");
+						if (underscoreIndex != -1)
+						{
+							depActionKey = sDepStr.Substring(0, underscoreIndex);
+						}
+						
 						//Searchs the ActionAplication in the container.
 						var queryAct = 
 							from o in actContainer
-							where o.Key == (sDepStr)
+							where o.Key == (depActionKey)
 							select o;
 						//Creates a new instance of SimpleDependence.
 						sDep = new SimpleDependence (sDepStr, queryAct.First (), error);
@@ -747,12 +803,14 @@ namespace Its.Factories
 			_genErrorMsgKey = 0;
 			_genErrorKey = 0;
 			//Creates temporary containers.
-			Dictionary<string, Dependence> depContainer = new Dictionary<string, Dependence> ();
+			// Commented out by Ivan Ribakov on 23/04/2018. depContainer initialisation moved inside loop lower in the code.			
+			// Dictionary<string, Dependence> depContainer = new Dictionary<string, Dependence> ();
 			Dictionary<string, ErrorMessage> errMsgContainer = new Dictionary<string, ErrorMessage> ();
 			//Obtains the actions information.
 			List<object[]> actionsInformation = ACTION_ACCESS.GetActions (domainKey);
 			//Creates the ActionAplication list which will be used to create the DomainAction instance.
 			List<ActionAplication> actions = new List<ActionAplication> ();
+			HashSet<string> actionKeys = new HashSet<string>();
 			//Auxiliar Dictionary in which it will be saved the ActionAplication key as the key, 
 			//and the string array with the possible next actions keys.
 			Dictionary<string, string[]> possibleNextActionsCont = new Dictionary<string, string[]> ();
@@ -762,12 +820,34 @@ namespace Its.Factories
 			//Auxiliar Dictionary in which it will be saved the ActionAplication key as the key, 
 			//and the string array with the incompatibilities errors.
 			Dictionary<string, string[]> incompErrorCont = new Dictionary<string, string[]> ();
+
+			string forbiddenActionKeySymbols = ".";
+			
 			//Creates all ActionAplication using action information list.
 			foreach (object[] o in actionsInformation) {
+				
+				//Creates temporary containers.
+				Dictionary<string, Dependence> depContainer = new Dictionary<string, Dependence> ();
+				
 				//Obtains the phase.
 				int phase = int.Parse (o [0].ToString ());
+				
 				//Obtains the key.
 				string key = o [1].ToString ();
+				if (key.IndexOfAny(forbiddenActionKeySymbols.ToCharArray()) != -1)
+				{
+					throw new ArgumentException ("Invalid action key value \"" + key +"\". Action key must not contain any of the following characters: \"" + forbiddenActionKeySymbols + "\"");
+				}
+
+				if (!actionKeys.Contains(key))
+				{
+					actionKeys.Add(key);
+				}
+				else
+				{
+					throw new ArgumentException ("Duplicate action key found: \"" + key +"\".");
+				}
+				
 				//Obtains the name.
 				string name = o [2].ToString ();
 				//Obtains the description.
@@ -779,13 +859,24 @@ namespace Its.Factories
 				string okMessage = "";
 				bool showOkMessage = false;
 				int i = 0;
+				//Checks if the string is empty.
 				if (s != "") {
-					ss = s.Split (new char[] { '-' });
-					okMessage = ss [1];
-					//Obtains the showOkMessage value.
-					i = int.Parse (ss [0]);;
-					if (i == 1)
-						showOkMessage = true;
+                    if (s[0] == '*')
+                    {
+                        okMessage = string.Empty;
+                        showOkMessage = false;
+                    }
+                    else
+                    {
+                        ss = s.Split(new char[] { '-' }, 2);
+                        okMessage = ss[1];
+                        //Obtains the showOkMessage value.
+                        i = int.Parse(ss[0]);
+                        if (i == 1)
+                            showOkMessage = true;
+                    }
+				} else {
+					throw new ArgumentException ("En la columna MensajeOk del fichero de configuracion para la accion " + key + " se encuentra vacia.");
 				}
 				//Obtains the possible next actions.
 				s = o [4].ToString ();
@@ -797,16 +888,7 @@ namespace Its.Factories
 				//Obtains the tutor message.
 				string tMsg = o [5].ToString ();
 				//Creates a TutorMessage
-				TutorMessage tutorMsg;
-				//Checks if the tutor message is empty.
-				if (tMsg != "") {
-					//Adds a value.
-					tutorMsg = new TutorMessage (_genTutorMsgKey.ToString (), tMsg);
-					//Increase the generator.
-					_genTutorMsgKey++;
-				} else {
-					tutorMsg = null;
-				}
+				TutorMessage tutorMsg = createTutorMsgHelper(tMsg);
 				//Obtains the dependencies.
 				s = o [6].ToString ();
 				//Creates the ComplexDependence.
@@ -818,10 +900,22 @@ namespace Its.Factories
 					string[] ssDeps = s.Split (new char[] { '-', '[', ']', '(', ')' });
 					//Obtains the dependence errors.
 					s = o [7].ToString ();
-					string[] ssErr = s.Split (new char[] { '\\' });
+					string[] ssErr = new string[]{};
+					//Checks if the string is empty.
+					if (s != "") {
+						ssErr = s.Split (new char[] { '\\' });
+					} else {
+						throw new ArgumentException ("En la columna MensajesErrorDependencias del fichero de configuracion para la accion " + key + " se encuentra vacia.");
+					}
 					//Obtains the order dependence errors.
 					s = o [8].ToString ();
-					string[] sOrdErr = s.Split (new char[] { '\\' });
+					string[] sOrdErr = new string[]{ };
+					//Checks if the string is empty.
+					if (s == "" && ssDepSt[0][0] == '(') {
+						throw new ArgumentException ("En la columna MensajesErrorOrdenDepend del fichero de configuracion para la accion " + key + " se encuentra vacia.");
+					} else {
+						sOrdErr = s.Split (new char[] { '\\' });
+					}
 					//Creates the multiple LinkedList which will be passed as parameters.
 					LinkedList<string> structure = new LinkedList<string> (ssDepSt);
 					LinkedList<string> dependencies = new LinkedList<string> ();
@@ -913,7 +1007,7 @@ namespace Its.Factories
 						//Increase the generator.
 						_genErrorKey++;
 					} else {
-						maxTimeError = null;
+						throw new ArgumentException ("En la columna MsgErrorTiempoMax del fichero de configuracion para la accion " + key + " se encuentra vacia.");
 					}
 				}
 				//Creates an Error.
@@ -955,7 +1049,7 @@ namespace Its.Factories
 						//Increase the generator.
 						_genErrorKey++;
 					} else {
-						minTimeError = null;
+						throw new ArgumentException ("En la columna MsgErrorTiempoMin del fichero de configuracion para la accion " + key + " se encuentra vacia.");
 					}
 				}
 				//Creates isRepetitive boolean.
@@ -978,17 +1072,49 @@ namespace Its.Factories
 				if (s != "")
 					initPhase = true;
 				//Creates the list in which will be saved the objects names.
-				List<string> objectName;
+				List<string> objectName = null;
 				//Obtains the object names list.
 				s = o [19].ToString ();
-				ss = s.Split (new char[] { '-' });
-				objectName = new List<string> (ss);
-
+				if (s == "" && (lockObj == true || unlockObj == true)) {
+					throw new ArgumentException ("La columna del nombre del objeto no puede permanecer vacia si la acción " + key + " bloquea o desbloquea un objeto");
+				} else {
+					ss = s.Split (new char[] { '-' });
+					objectName = new List<string> (ss);
+				}
 				//Obtains in plan booblean.
 				s = o [20].ToString ();
 				bool isInPlan = true;
 				if (s == "0")
 					isInPlan = false;
+				//Obtains Support Threshold value in the range [0; 1]
+				s = o [21].ToString ();
+				double supportThreshold = 0;
+				if (!StringUtils.IsNullOrWhiteSpace(s))
+				{
+					supportThreshold = double.Parse(s);
+					double epsilon = 0.0001;
+					if (supportThreshold < (0 - epsilon) || supportThreshold > (1 + epsilon))
+					{
+						throw new ArgumentException ("Invalid support threshold value in Action " + key + ": threshold value must be a float in the range [0; 1]");
+					}
+				}
+				//Obtains IsCheckpoint flag value.
+				s = o [22].ToString ();
+				bool isCheckpoint = false;
+				if (s == "1")
+					isCheckpoint = true;
+				// Obtains Collective Student Model tutor messages.
+				// Expecting messages to be defined in the order of increasing level of details:
+				// low detail -> medium detail -> high detail
+				s = o [23].ToString ();
+				string[] csmTutorMessages = s.Split (new char[] { '\\' });
+				string lowDetailMsg = csmTutorMessages.Length >= 1 ? csmTutorMessages[0] : null;
+				string mediumDetailMsg = csmTutorMessages.Length >= 2 ? csmTutorMessages[1] : null;
+				string highDetailMsg = csmTutorMessages.Length >= 3 ? csmTutorMessages[2] : null;
+				TutorMessage lowDetailTutorMessage = createTutorMsgHelper(lowDetailMsg);
+				TutorMessage mediumDetailTutorMessage = createTutorMsgHelper(mediumDetailMsg);
+				TutorMessage highDetailTutorMessage = createTutorMsgHelper(highDetailMsg);
+
 
 				//Creates the ActionAplication.
 				ActionAplication action;
@@ -996,16 +1122,19 @@ namespace Its.Factories
 				if (minTime > 0) {
 					action = new ActionAplication (key, phase, name, description, objectName,
 						lockObj, unlockObj, isRepetitive, initPhase, validatePhaseErrors, dependence, incompatibilities, 
-						false, isInPlan, null, okMessage, showOkMessage, null, tutorMsg, minTime, minTimeError, maxTime, maxTimeError);
+						false, isInPlan, null, okMessage, showOkMessage, null, tutorMsg, minTime, minTimeError, maxTime, maxTimeError,
+						supportThreshold, isCheckpoint, lowDetailTutorMessage, mediumDetailTutorMessage, highDetailTutorMessage);
 
 				} else if (maxTime > 0) {
 					action = new ActionAplication (key, phase, name, description, objectName,
 						lockObj, unlockObj, isRepetitive, initPhase, validatePhaseErrors, dependence, incompatibilities, 
-						false, isInPlan, null, okMessage, showOkMessage, null, tutorMsg, minTime, minTimeError, maxTime, maxTimeError);
+						false, isInPlan, null, okMessage, showOkMessage, null, tutorMsg, minTime, minTimeError, maxTime, maxTimeError,
+						supportThreshold, isCheckpoint, lowDetailTutorMessage, mediumDetailTutorMessage, highDetailTutorMessage);
 				}else {
 					action = new ActionAplication (key, phase, name, description, objectName,
 						lockObj, unlockObj, isRepetitive, initPhase, validatePhaseErrors, dependence, incompatibilities,
-						false, isInPlan, null, okMessage, showOkMessage, null,  tutorMsg);
+						false, isInPlan, null, okMessage, showOkMessage, null,  tutorMsg,
+						supportThreshold, isCheckpoint, lowDetailTutorMessage, mediumDetailTutorMessage, highDetailTutorMessage);
 				}
 				//Adds into the list.
 				actions.Add (action);
@@ -1104,6 +1233,25 @@ namespace Its.Factories
 
 			//Returns the DomainActions.
 			return domain;
+		}
+
+		private TutorMessage createTutorMsgHelper(string msg)
+		{
+			TutorMessage tutorMsg = null;
+			if (!StringUtils.IsNullOrWhiteSpace(msg)) {
+				//Adds a value.
+				tutorMsg = new TutorMessage (_genTutorMsgKey.ToString (), msg);
+				//Increase the generator.
+				_genTutorMsgKey++;
+			}
+
+			return tutorMsg;
+		}
+		
+		public static void DisposeInstance() {
+			if (_instance != null) {
+				_instance = null;
+			}
 		}
 	}
 }

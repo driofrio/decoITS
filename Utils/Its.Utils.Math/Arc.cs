@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Its.Utils.Math
+﻿namespace Its.Utils.Math
 {
 	/// <summary>
 	/// Arc.

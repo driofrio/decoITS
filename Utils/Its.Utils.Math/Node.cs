@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Its.Utils.Math.Exceptions;
+﻿using System.Collections.Generic;
 
 namespace Its.Utils.Math
 {

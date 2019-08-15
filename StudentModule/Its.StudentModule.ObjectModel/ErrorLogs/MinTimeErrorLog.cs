@@ -1,6 +1,5 @@
 ﻿using System;
 using Its.ExpertModule.ObjectModel;
-using Its.TutoringModule.TutoringCoordinator.ReactiveTutor.ObjectModel;
 
 namespace Its.StudentModule.ObjectModel
 {
@@ -34,6 +33,11 @@ namespace Its.StudentModule.ObjectModel
 		public MinTimeErrorLog (ActionAplication action, bool wasApplied, 
 			DateTime date, int time) : base (action,  wasApplied, date, time)
 		{
+		}
+
+		public override string TxtLogString()
+		{
+			return Action.Key + " " + Action.Name + " MinTimeError " + Action.MinTimeError.Message.Message + " " + DateLog.ToString();
 		}
 	}
 }

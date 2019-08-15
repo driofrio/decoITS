@@ -1,43 +1,37 @@
-﻿using System;
-using Its.TutoringModule.TutoringCoordinator.ReactiveTutor;
-using Its.TutoringModule.StudentBehaviorPredictor;
-using Its.StudentModule;
+﻿using System.Collections.Generic;
 using Its.ExpertModule;
+using Its.StudentModule;
+using Its.TutoringModule.CMTutor;
+using Its.TutoringModule.Common;
+using Its.TutoringModule.ReactiveTutor;
+using Its.TutoringModule.ReactiveTutor.ObjectModel;
+using Its.Utils.Config;
+using Its.WorldModule;
 
-namespace Its.TutoringModule.TutoringCoordinator
+namespace Its.TutoringModule.TC
 {
-	public class TutoringCoordinator
+	public class TutoringCoordinator : AbstractTutor
 	{
-		private static StudentControl _studentControl;
-		private static ExpertControl _expertControl;
-		//private static ReactiveTutor.ReactiveTutor _reactiveTutor;
-		private static Its.TutoringModule.StudentBehaviorPredictor.StudentBehaviorPredictorControl _studentBehaviorPredictor;
+		private Tutor rTutor;
+		private CollectiveModelTutor cmTutor;
 
-
-		/// <summary>
-		/// The instance.
-		/// </summary>
-		private static TutoringCoordinator _instance = null;
-
-		/// <summary>
-		/// Gets the instance.
-		/// </summary>
-		/// <value>The instance.</value>
-		public static TutoringCoordinator Instance {
-			get {
-				if (_instance == null)
-					_instance = new TutoringCoordinator ();
-
-				return _instance;
-			}
+		public TutoringCoordinator(Tutor rTutor, CollectiveModelTutor cmTutor, string ontologyPath, string logsPath, string expertConfPath, string worldConfPath, Dictionary<string, WorldControl> worldControl, ExpertControl expertControl, StudentControl studentControl, ITutorConfig config)
+			: base(ontologyPath, logsPath, expertConfPath, worldConfPath, worldControl, expertControl, studentControl, config, true)
+		{
+			this.rTutor = rTutor;
+			this.cmTutor = cmTutor;
 		}
 
-		private TutoringCoordinator ()
+		protected override Dictionary<string, List<string>> GetTutoringStrategyMessages(string actionName, string domainName, string studentKey)
 		{
-			//_studentControl = StudentControl.Instance;
-			//_expertControl = ExpertControl.Instance;
-			//_reactiveTutor = ReactiveTutor.Instance;
-			//_studentBehaviorPredictor = StudentBehaviorPredictor.StudentBehaviorPredictor.Instance;
+			if (cmTutor.HasSupportForAction(actionName, domainName, studentKey))
+			{
+				return cmTutor.GetTutorMessages(actionName, domainName, studentKey);
+			}
+			else
+			{
+				return rTutor.GetTutorMessages(actionName, domainName, studentKey);
+			}
 		}
 	}
 }

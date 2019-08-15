@@ -1168,12 +1168,13 @@ namespace WebApplication1.Controllers
             //return new JSONPResult { Data = re };  //返回 jsonp 数据，输出回调函数
         }
 
-        public ActionResult GetNodeStudents(string strDomainName, int Cluster, int Student, int modo)
+        public ActionResult GetNodeStudents(string strDomainName, int Cluster, string StudentKey, int modo)
         {
             //PredictiveStudentModel model = MapService.getModelByDomain(modo,strDomainName);
             StudentsCluster cluster = model.GetCluster(Cluster - 1);
             dominio = model.Domain.Actions;
-            string student = cluster.GetStudentKeys()[Student-1];
+            //string student = cluster.GetStudentKeys()[Student-1];
+            string student = StudentKey;
             Node<State, Event> nodo = null;
             int lastC = 0;
             SortedDictionary<int, Node<State, Event>> found = new SortedDictionary<int, Node<State, Event>>();
@@ -1533,11 +1534,19 @@ namespace WebApplication1.Controllers
         {
             //PredictiveStudentModel model = MapService.getModelByDomain(modo,strDomainName);
             StudentsCluster cluster = model.GetCluster(Cluster-1);
-            //cluster.GetStudentKeys();
+            List<string> studentKeys = cluster.GetStudentKeys();
+            studentKeys.Sort();
+            List<string> quotedStudentKeys = new List<string>();
+            foreach(string key in studentKeys)
+            {
+                quotedStudentKeys.Add("\"" + key + "\"");
+            }
+
+            var re = "[" + String.Join(", ", quotedStudentKeys.ToArray()) + "]";
             //cluster.GetStudentNodes("id");
             //cluster.GetStudentEvents("id");
-            int NumOfStudents = cluster.NumberOfStudents;
-            var re = "{\"NumOfStudents\":" + NumOfStudents + "}";
+            // int NumOfStudents = cluster.NumberOfStudents;
+            // var re = "{\"NumOfStudents\":" + NumOfStudents + "}";
             return Json(re, JsonRequestBehavior.AllowGet);
         }
 

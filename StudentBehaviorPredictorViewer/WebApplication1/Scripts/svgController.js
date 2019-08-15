@@ -273,10 +273,10 @@ var selectStudent = function () {
         var modo1 = modo();
         $.post(href + "Map/GetStudents", { strDomainName: TxtPhaseSelection, Cluster: clusterSelection, modo: modo1 }, function (data) {
             var dataObj = JSON.parse(data);
-            students = dataObj.NumOfStudents;
+            //students = dataObj.NumOfStudents;
             studentSelection.options.add(new Option("", 0));
-            for (var i = 0; i < students; i++) {
-                studentSelection.options.add(new Option("student " + i, i + 1));
+            for (var i = 0; i < dataObj.length; i++) {
+                studentSelection.options.add(new Option("student " + dataObj[i], dataObj[i]));
             }
         });
     }
@@ -363,7 +363,7 @@ function loadStudentMap() {
         modeSelection = document.getElementById("mode").value;
         var modo1 = modo();
         totalStudent = 1;
-        $.post(href + "Map/GetNodeStudents", { strDomainName: TxtPhaseSelection, Cluster: clusterSelection, Student: studentSelection, modo: modo1 }, function (data) {
+        $.post(href + "Map/GetNodeStudents", { strDomainName: TxtPhaseSelection, Cluster: clusterSelection, StudentKey: studentSelection, modo: modo1 }, function (data) {
             $.each(data, function (i, items) {
                 var newItem = JSON.parse(items);
                 var nElement = newItem.Element;

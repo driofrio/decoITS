@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Its.TutoringModule.TutoringCoordinator.ReactiveTutor.DataAccess
+namespace Its.TutoringModule.ReactiveTutor.DataAccess
 {
 	public class MyClass
 	{

@@ -1,6 +1,5 @@
 ﻿using System;
 using Its.ExpertModule.ObjectModel;
-using Its.TutoringModule.TutoringCoordinator.ReactiveTutor.ObjectModel;
 
 namespace Its.StudentModule.ObjectModel
 {
@@ -49,6 +48,11 @@ namespace Its.StudentModule.ObjectModel
 			DateTime date, Incompatibility incompatibility) : base (action, wasApplied, date)
 		{
 			this._failedIncompatibility = incompatibility;
+		}
+
+		public override string TxtLogString()
+		{
+			return Action.Key + " " + Action.Name + " IncompatibilityError " + FailedIncompatibility.IncompatibilityError.Message.Message + " " + DateLog.ToString();
 		}
 	}
 }

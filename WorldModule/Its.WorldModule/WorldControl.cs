@@ -1,11 +1,12 @@
 ﻿using System;
-using System.Linq;
 using System.Collections.Generic;
-using Its.WorldModule.ObjectModel;
-using Its.StudentModule.ObjectModel;
-using Its.StudentModule.DataAccess;
-using Its.TutoringModule.TutoringCoordinator.ReactiveTutor.ObjectModel;
+using System.Linq;
+using System.Text.RegularExpressions;
 using Its.Factories;
+using Its.StudentModule.DataAccess;
+using Its.StudentModule.ObjectModel;
+using Its.TutoringModule.ReactiveTutor.ObjectModel;
+using Its.WorldModule.ObjectModel;
 
 namespace Its.WorldModule
 {
@@ -20,7 +21,7 @@ namespace Its.WorldModule
 		/// <summary>
 		/// The ONTOLOGY.
 		/// </summary>
-		private static OntologyAccess ONTOLOGY; //= OntologyAccess.Instance;
+		private OntologyAccess ONTOLOGY; //= OntologyAccess.Instance;
 		/// <summary>
 		/// The world objects.
 		/// </summary>
@@ -151,8 +152,11 @@ namespace Its.WorldModule
 			//Creates the key.
 			string errorKey = type;
 			//Concatenates the objects name.
-			foreach (string s in objectName)
+			foreach (string s in objectName) {
 				errorKey = string.Concat (errorKey, s);
+				//Replaces the objects names.
+				errorMsg = String.Format (errorMsg, s);
+			}
 			//Creates a ErrorMessage instance.
 			ErrorMessage errorMessage = new ErrorMessage (errorKey, errorMsg);
 			//Creates the Error instance.
@@ -169,18 +173,32 @@ namespace Its.WorldModule
 		/// <param name="student">Student.</param>
 		public bool ObjectBlockValidate (string objectName, Student student)
 		{
+			//Create the boolean to return.
+			bool result;
 			//Creates an auxiliar WorldObject.
-			WorldObject worldOjb;
+			WorldObject worldOjb = null;
 			//Searchs the WorldObject with the given name and the given student.
 			var queryWorldObj =
 				from wObj in _worldObjects
-				where wObj.Key == objectName && wObj.Value.Owner == student
+				where wObj.Key == objectName
 				select wObj.Value;
-			//Selects the worldObjects.
-			worldOjb = queryWorldObj.First ();
+			if (queryWorldObj.Count() > 0)
+				//Selects the worldObjects.
+				worldOjb = queryWorldObj.First ();
+
+			//Checks if the object exists
+			if (worldOjb != null) {
+				//Checks if the owner is the student given.
+				if (worldOjb.Owner == student || worldOjb.Owner == null)
+					result = false;
+				else
+					result = true;
+			} else {
+				result = false;
+			}
 
 			//Returns the isBLock value.
-			return worldOjb.IsBlock;
+			return result;
 		}
 
 		/// <summary>
@@ -192,16 +210,18 @@ namespace Its.WorldModule
 		{
 			//Creates an auxiliar WorldObject.
 			WorldObject worldOjb;
-			//Searchs the WorldObject with the given name and the given student.
+			//Searchs the WorldObject with the given name.
 			var queryWorldObj =
 				from wObj in _worldObjects
-					where wObj.Key == objectName && wObj.Value.Owner == student
+					where wObj.Key == objectName
 				select wObj.Value;
 			//Selects the worldObjects.
 			worldOjb = queryWorldObj.First ();
 
-			//Returns the isBLock value.
+			//Sets the isBLock value.
 			worldOjb.IsBlock = true;
+			//Sets the owner.
+			worldOjb.Owner = student;
 		}
 
 		/// <summary>
@@ -219,7 +239,7 @@ namespace Its.WorldModule
 			var queryActPos = 
 				from actPos in _npcActionPositions
 				where actPos.Value.Action == action && actPos.Value.Plan == plan
-				    && (System.Text.RegularExpressions.Regex.Match (actPos.Value.WorldObj.Name, regularExp)).Success
+				    && (Regex.Match (actPos.Value.WorldObj.Name, regularExp)).Success
 				select actPos.Value.WorldObj;
 			//Adds the worldObjects into the list.
 			foreach (WorldObject o in queryActPos)
@@ -238,7 +258,7 @@ namespace Its.WorldModule
 			WorldObjectFactory worldFactory=WorldObjectFactory.Instance(worldConfPath);
 			_worldObjects = worldFactory.CreateWorldObjs (domainKey);
 			//Creates the NpcActionPosition
-			_npcActionPositions = worldFactory.CreateNpcActionPositions (domainKey, _worldObjects);
+			//_npcActionPositions = worldFactory.CreateNpcActionPositions (domainKey, _worldObjects);
 		}
 	}
 }
